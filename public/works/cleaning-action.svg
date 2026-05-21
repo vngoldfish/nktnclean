@@ -1,0 +1,14 @@
+<svg width="900" height="620" viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="620" rx="48" fill="#EAF3FF"/>
+  <rect x="70" y="82" width="760" height="420" rx="36" fill="#ffffff"/>
+  <rect x="122" y="138" width="270" height="190" rx="30" fill="#FFF6E8"/>
+  <rect x="154" y="180" width="206" height="32" rx="16" fill="#132238" opacity="0.14"/>
+  <rect x="154" y="232" width="164" height="24" rx="12" fill="#132238" opacity="0.1"/>
+  <circle cx="574" cy="190" r="48" fill="#F2A23A"/>
+  <rect x="518" y="244" width="112" height="160" rx="36" fill="#1D4ED8"/>
+  <path d="M526 346 C456 364 392 398 338 454" stroke="#4E9F70" stroke-width="22" stroke-linecap="round"/>
+  <rect x="292" y="438" width="108" height="28" rx="14" fill="#4E9F70"/>
+  <path d="M624 276 L724 222" stroke="#132238" stroke-width="18" stroke-linecap="round"/>
+  <rect x="704" y="188" width="76" height="52" rx="16" fill="#F2A23A"/>
+  <text x="90" y="556" fill="#132238" font-family="Arial, sans-serif" font-size="30" font-weight="900">清掃作業 / 現場対応</text>
+</svg>

@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 215 34% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 34% 18%;
+    --primary: 194 72% 32%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 171 49% 42%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 205 36% 94%;
+    --muted-foreground: 215 14% 43%;
+    --accent: 194 78% 92%;
+    --accent-foreground: 194 72% 24%;
+    --border: 207 24% 87%;
+    --input: 207 24% 87%;
+    --ring: 194 72% 38%;
+    --radius: 1rem;
+    --font-latin: Inter, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-japanese: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "YuGothic", "Meiryo", sans-serif;
+    --font-chinese: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    --font-nepali: "Noto Sans Devanagari", "Nirmala UI", "Kohinoor Devanagari", sans-serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-nktn-cream text-nktn-ink antialiased;
+    font-family: var(--font-latin);
+    text-rendering: optimizeLegibility;
+  }
+
+  .locale-ja {
+    font-family: var(--font-japanese);
+  }
+
+  .locale-zh {
+    font-family: var(--font-chinese);
+  }
+
+  .locale-ne {
+    font-family: var(--font-nepali);
+  }
+
+  .locale-en,
+  .locale-fil,
+  .locale-id,
+  .locale-vi {
+    font-family: var(--font-latin);
+  }
+
+  ::selection {
+    background: rgba(14, 116, 144, 0.18);
+  }
+}
+
+@layer utilities {
+  .site-shell {
+    background:
+      radial-gradient(circle at 12% 0%, rgba(14, 165, 233, 0.08), transparent 26rem),
+      linear-gradient(180deg, #ffffff 0%, #f8fbfd 46%, #eef7f8 100%);
+  }
+
+  .glass-panel {
+    @apply border border-slate-200/80 bg-white/90 shadow-soft backdrop-blur-xl;
+  }
+
+  .osaka-grid {
+    background-image:
+      linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .vertical-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

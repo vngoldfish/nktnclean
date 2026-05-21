@@ -1,0 +1,16 @@
+<svg width="900" height="620" viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="620" rx="48" fill="#FFF6E8"/>
+  <rect x="56" y="56" width="788" height="508" rx="40" fill="#ffffff"/>
+  <rect x="88" y="88" width="724" height="72" rx="24" fill="#132238"/>
+  <text x="116" y="134" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="800">NKTN FIELD TEAM</text>
+  <circle cx="250" cy="286" r="54" fill="#F2A23A"/>
+  <rect x="188" y="342" width="124" height="150" rx="38" fill="#132238"/>
+  <circle cx="450" cy="258" r="62" fill="#4E9F70"/>
+  <rect x="376" y="332" width="148" height="178" rx="42" fill="#1D4ED8"/>
+  <circle cx="650" cy="286" r="54" fill="#F2A23A"/>
+  <rect x="588" y="342" width="124" height="150" rx="38" fill="#132238"/>
+  <rect x="218" y="384" width="64" height="18" rx="9" fill="#ffffff" opacity="0.9"/>
+  <rect x="414" y="386" width="72" height="18" rx="9" fill="#ffffff" opacity="0.9"/>
+  <rect x="618" y="384" width="64" height="18" rx="9" fill="#ffffff" opacity="0.9"/>
+  <text x="116" y="530" fill="#132238" font-family="Arial, sans-serif" font-size="22" font-weight="800">日本語・Tiếng Việt・English 対応</text>
+</svg>

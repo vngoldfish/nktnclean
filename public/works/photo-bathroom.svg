@@ -1,0 +1,13 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="tile" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7fbff"/><stop offset="1" stop-color="#d6e5f2"/></linearGradient></defs>
+  <rect width="1200" height="800" fill="url(#tile)"/>
+  <g opacity=".35" stroke="#b7c7d6"><path d="M0 120H1200M0 240H1200M0 360H1200M0 480H1200M0 600H1200"/><path d="M160 0V800M320 0V800M480 0V800M640 0V800M800 0V800M960 0V800"/></g>
+  <rect x="120" y="120" width="360" height="520" rx="28" fill="#ffffff" opacity=".9"/>
+  <rect x="170" y="190" width="260" height="170" rx="24" fill="#e9f3fb" stroke="#cbd8e4" stroke-width="8"/>
+  <rect x="205" y="420" width="190" height="130" rx="32" fill="#ffffff" stroke="#cbd8e4" stroke-width="8"/>
+  <rect x="610" y="130" width="360" height="470" rx="30" fill="#ffffff" opacity=".88"/>
+  <rect x="660" y="180" width="260" height="150" rx="20" fill="#dcecf8"/>
+  <rect x="690" y="390" width="200" height="95" rx="20" fill="#132238" opacity=".18"/>
+  <circle cx="970" cy="190" r="38" fill="#4E9F70"/><path d="M952 190l13 14 28-32" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="70" y="735" fill="#132238" font-family="Arial" font-size="34" font-weight="900">Sample photo / 水回り清掃後イメージ</text>
+</svg>

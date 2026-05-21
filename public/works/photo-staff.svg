@@ -1,0 +1,16 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eef6ff"/><stop offset="1" stop-color="#fff6e8"/></linearGradient></defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect x="80" y="105" width="1040" height="560" rx="42" fill="#fff" opacity=".88"/>
+  <rect x="130" y="165" width="940" height="350" rx="30" fill="#e7edf4"/>
+  <circle cx="360" cy="300" r="58" fill="#d8a56e"/>
+  <rect x="285" y="370" width="150" height="190" rx="44" fill="#132238"/>
+  <circle cx="600" cy="275" r="64" fill="#d8a56e"/>
+  <rect x="515" y="352" width="170" height="220" rx="48" fill="#1D4ED8"/>
+  <circle cx="840" cy="300" r="58" fill="#d8a56e"/>
+  <rect x="765" y="370" width="150" height="190" rx="44" fill="#4E9F70"/>
+  <rect x="535" y="405" width="130" height="30" rx="15" fill="#fff" opacity=".9"/>
+  <rect x="130" y="560" width="260" height="34" rx="17" fill="#132238" opacity=".2"/>
+  <rect x="130" y="610" width="360" height="22" rx="11" fill="#132238" opacity=".12"/>
+  <text x="70" y="735" fill="#132238" font-family="Arial" font-size="34" font-weight="900">Sample photo / 現場スタッフイメージ</text>
+</svg>
