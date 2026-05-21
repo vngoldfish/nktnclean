@@ -1,0 +1,19 @@
+<svg width="900" height="620" viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="620" rx="48" fill="#FFF6E8"/>
+  <rect x="112" y="86" width="312" height="448" rx="46" fill="#132238"/>
+  <rect x="142" y="136" width="252" height="320" rx="28" fill="#ffffff"/>
+  <rect x="166" y="166" width="204" height="118" rx="22" fill="#EAF3FF"/>
+  <rect x="166" y="310" width="160" height="18" rx="9" fill="#132238" opacity="0.18"/>
+  <rect x="166" y="348" width="202" height="18" rx="9" fill="#132238" opacity="0.18"/>
+  <rect x="166" y="386" width="120" height="18" rx="9" fill="#132238" opacity="0.18"/>
+  <circle cx="268" cy="492" r="18" fill="#ffffff" opacity="0.8"/>
+  <rect x="500" y="132" width="270" height="98" rx="30" fill="#ffffff"/>
+  <rect x="500" y="262" width="270" height="98" rx="30" fill="#ffffff"/>
+  <rect x="500" y="392" width="270" height="98" rx="30" fill="#ffffff"/>
+  <circle cx="546" cy="181" r="18" fill="#4E9F70"/>
+  <circle cx="546" cy="311" r="18" fill="#4E9F70"/>
+  <circle cx="546" cy="441" r="18" fill="#4E9F70"/>
+  <text x="584" y="190" fill="#132238" font-family="Arial, sans-serif" font-size="24" font-weight="800">写真報告</text>
+  <text x="584" y="320" fill="#132238" font-family="Arial, sans-serif" font-size="24" font-weight="800">完了共有</text>
+  <text x="584" y="450" fill="#132238" font-family="Arial, sans-serif" font-size="24" font-weight="800">品質チェック</text>
+</svg>

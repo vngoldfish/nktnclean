@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://clean.bawui.com
+Sitemap: https://clean.bawui.com/sitemap.xml

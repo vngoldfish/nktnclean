@@ -1,0 +1,19 @@
+<svg width="520" height="520" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="520" rx="40" fill="#ffffff"/>
+  <rect x="36" y="36" width="448" height="448" rx="28" fill="#06C755" opacity="0.08"/>
+  <rect x="72" y="72" width="112" height="112" rx="10" fill="#132238"/>
+  <rect x="96" y="96" width="64" height="64" rx="8" fill="#ffffff"/>
+  <rect x="336" y="72" width="112" height="112" rx="10" fill="#132238"/>
+  <rect x="360" y="96" width="64" height="64" rx="8" fill="#ffffff"/>
+  <rect x="72" y="336" width="112" height="112" rx="10" fill="#132238"/>
+  <rect x="96" y="360" width="64" height="64" rx="8" fill="#ffffff"/>
+  <g fill="#132238">
+    <rect x="228" y="80" width="32" height="32"/><rect x="276" y="80" width="32" height="32"/><rect x="228" y="128" width="32" height="32"/>
+    <rect x="80" y="228" width="32" height="32"/><rect x="128" y="228" width="32" height="32"/><rect x="224" y="224" width="32" height="32"/><rect x="272" y="224" width="32" height="32"/><rect x="368" y="224" width="32" height="32"/><rect x="416" y="224" width="32" height="32"/>
+    <rect x="224" y="272" width="32" height="32"/><rect x="320" y="272" width="32" height="32"/><rect x="416" y="272" width="32" height="32"/>
+    <rect x="224" y="336" width="32" height="32"/><rect x="272" y="336" width="32" height="32"/><rect x="368" y="336" width="32" height="32"/>
+    <rect x="224" y="384" width="32" height="32"/><rect x="320" y="384" width="32" height="32"/><rect x="416" y="384" width="32" height="32"/>
+    <rect x="272" y="432" width="32" height="32"/><rect x="368" y="432" width="32" height="32"/>
+  </g>
+  <text x="260" y="498" text-anchor="middle" fill="#132238" font-family="Arial" font-size="20" font-weight="900">LINE ID: @628qznny</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6f2ea"/><stop offset="1" stop-color="#d8e2ea"/></linearGradient>
+    <linearGradient id="bed" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#e7edf4"/></linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#wall)"/>
+  <rect y="520" width="1200" height="280" fill="#b98f63"/>
+  <path d="M0 520L1200 500V800H0V520Z" fill="#caa275" opacity=".55"/>
+  <rect x="90" y="120" width="320" height="250" rx="12" fill="#ffffff" opacity=".85"/>
+  <rect x="112" y="142" width="276" height="206" rx="8" fill="#d8ecff"/>
+  <circle cx="210" cy="210" r="46" fill="#fff3c4" opacity=".8"/>
+  <rect x="520" y="210" width="520" height="260" rx="26" fill="#26384f"/>
+  <rect x="470" y="390" width="620" height="190" rx="34" fill="url(#bed)"/>
+  <rect x="520" y="340" width="210" height="96" rx="22" fill="#ffffff"/>
+  <rect x="790" y="340" width="210" height="96" rx="22" fill="#ffffff"/>
+  <rect x="490" y="510" width="580" height="34" rx="17" fill="#f2a23a" opacity=".9"/>
+  <rect x="100" y="480" width="180" height="26" rx="13" fill="#132238" opacity=".18"/>
+  <rect x="1050" y="240" width="70" height="260" rx="16" fill="#132238" opacity=".25"/>
+  <text x="70" y="735" fill="#132238" font-family="Arial" font-size="34" font-weight="900">Sample photo / 客室清掃後イメージ</text>
+</svg>

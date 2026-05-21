@@ -1,0 +1,12 @@
+<svg width="900" height="620" viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="620" rx="48" fill="#FFF6E8"/>
+  <rect x="72" y="80" width="756" height="430" rx="38" fill="#ffffff"/>
+  <rect x="112" y="142" width="676" height="120" rx="28" fill="#EAF3FF"/>
+  <rect x="142" y="320" width="616" height="118" rx="32" fill="#132238"/>
+  <rect x="174" y="272" width="246" height="88" rx="24" fill="#ffffff" stroke="#132238" stroke-width="10"/>
+  <rect x="480" y="272" width="246" height="88" rx="24" fill="#ffffff" stroke="#132238" stroke-width="10"/>
+  <rect x="168" y="390" width="564" height="34" rx="17" fill="#F2A23A"/>
+  <circle cx="696" cy="180" r="34" fill="#4E9F70"/>
+  <path d="M681 180 L692 192 L714 166" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="94" y="558" fill="#132238" font-family="Arial, sans-serif" font-size="30" font-weight="900">清掃後チェック / 客室セット</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg width="900" height="620" viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="620" rx="48" fill="#132238"/>
+  <rect x="72" y="72" width="756" height="476" rx="42" fill="#ffffff"/>
+  <rect x="118" y="122" width="280" height="330" rx="34" fill="#FFF6E8"/>
+  <rect x="152" y="168" width="212" height="34" rx="17" fill="#132238"/>
+  <rect x="152" y="232" width="156" height="22" rx="11" fill="#132238" opacity="0.18"/>
+  <rect x="152" y="278" width="188" height="22" rx="11" fill="#132238" opacity="0.18"/>
+  <rect x="152" y="324" width="124" height="22" rx="11" fill="#132238" opacity="0.18"/>
+  <rect x="482" y="128" width="226" height="280" rx="38" fill="#1D4ED8"/>
+  <text x="536" y="292" fill="#ffffff" font-family="Arial, sans-serif" font-size="88" font-weight="900">N</text>
+  <rect x="452" y="438" width="286" height="44" rx="22" fill="#4E9F70"/>
+  <text x="118" y="514" fill="#132238" font-family="Arial, sans-serif" font-size="28" font-weight="900">株式会社NKTN / Bawui Cleaning</text>
+</svg>
