@@ -1,7 +1,5 @@
-import { redirect } from "next/navigation";
-
-import { defaultLocale } from "@/lib/i18n";
+import { LocaleRedirect } from "@/components/locale-redirect";
 
 export default function RootPage() {
-  redirect(`/${defaultLocale}`);
+  return <LocaleRedirect />;
 }

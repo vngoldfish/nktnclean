@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 
+export const dynamic = "force-static";
 export const alt = "株式会社NKTN / Bawui Cleaning - Cleaning + DX";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -44,8 +45,9 @@ export default function Image() {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
-          <div style={{ fontSize: 78, fontWeight: 900, lineHeight: 1.05, letterSpacing: -3 }}>
-            Hotel Cleaning +<br />LINE Cleaning DX
+          <div style={{ display: "flex", flexDirection: "column", fontSize: 78, fontWeight: 900, lineHeight: 1.05, letterSpacing: -3 }}>
+            <span>Hotel Cleaning +</span>
+            <span>LINE Cleaning DX</span>
           </div>
           <div style={{ maxWidth: 920, fontSize: 30, lineHeight: 1.35, color: "#334155" }}>
             Osaka Nishinari based cleaning, photo reports, LINE chatbot, AI translation, and field management across Japan.

@@ -221,6 +221,16 @@ http://localhost:3000/ja
 
 ## Build production
 
+Dự án đã bật Next.js standalone output trong `next.config.ts`:
+
+```ts
+const nextConfig: NextConfig = {
+  output: "standalone",
+};
+```
+
+Build ở máy local:
+
 ```bash
 npm run build
 ```
@@ -230,6 +240,60 @@ Chạy production local:
 ```bash
 npm run start
 ```
+
+## Build local rồi upload lên VPS yếu
+
+Vì VPS yếu, không nên chạy `npm run build` trên VPS. Hãy build ở máy local trước, sau đó upload bản standalone.
+
+Sau khi chạy:
+
+```bash
+npm run build
+```
+
+Next.js sẽ tạo:
+
+```text
+.next/standalone
+.next/static
+public
+```
+
+Chuẩn bị thư mục deploy local:
+
+```text
+deploy/
+  server.js
+  package.json
+  node_modules/
+  .next/
+    static/
+  public/
+```
+
+Cách copy thủ công:
+
+1. Copy toàn bộ nội dung trong `.next/standalone/` vào thư mục deploy.
+2. Copy `.next/static/` vào `deploy/.next/static/`.
+3. Copy `public/` vào `deploy/public/`.
+4. Upload toàn bộ thư mục `deploy/` lên VPS.
+
+Trên VPS chỉ cần chạy:
+
+```bash
+node server.js
+```
+
+Khuyên dùng PM2:
+
+```bash
+pm2 start server.js --name clean-bawui
+pm2 save
+```
+
+Nếu dùng Nginx reverse proxy, trỏ domain `clean.bawui.com` về port mà Node app đang chạy.
+
+Lưu ý: VPS vẫn cần cài Node.js, nhưng không cần `npm install` và không cần `npm run build` nếu upload đầy đủ thư mục standalone.
 
 ## Kiểm tra SEO sau deploy
 
@@ -275,14 +339,60 @@ Email: info@bawui.com
 
 ## Deploy
 
-Khi deploy, cần đặt biến môi trường trên hosting:
+### Deploy lên VPS yếu bằng standalone
+
+Nên build ở local rồi upload thư mục deploy đã chuẩn bị ở phần trên.
+
+Trên VPS, tạo file `.env` cùng cấp với `server.js` nếu cần:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://clean.bawui.com
+NEXT_PUBLIC_GA_ID=G-YSHRZZGGYN
+PORT=3000
+HOSTNAME=0.0.0.0
+```
+
+Chạy app:
+
+```bash
+node server.js
+```
+
+Chạy bằng PM2:
+
+```bash
+pm2 start server.js --name clean-bawui
+pm2 save
+pm2 startup
+```
+
+Nginx reverse proxy ví dụ:
+
+```nginx
+server {
+    server_name clean.bawui.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+### Deploy trên Vercel
+
+Nếu deploy trên Vercel, cần đặt biến môi trường trên hosting:
 
 ```env
 NEXT_PUBLIC_SITE_URL=https://clean.bawui.com
 NEXT_PUBLIC_GA_ID=G-YSHRZZGGYN
 ```
 
-Nếu deploy trên Vercel:
+Các bước:
 
 1. Import project
 2. Set environment variables
