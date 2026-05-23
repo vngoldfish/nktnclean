@@ -16,12 +16,12 @@ export const companyBase = {
 };
 
 const sharedImages = {
-  room: "/works/photo-room.svg",
-  staff: "/works/photo-staff.svg",
-  bathroom: "/works/photo-bathroom.svg",
-  tools: "/works/photo-tools.svg",
-  report: "/works/photo-report.svg",
-  office: "/works/company-office.svg",
+  room: "/works/photo-room.jpg",
+  staff: "/works/photo-staff.jpg",
+  bathroom: "/works/photo-bathroom.jpg",
+  tools: "/works/photo-tools.jpg",
+  report: "/works/photo-report.jpg",
+  office: "/works/company-office.jpg",
 };
 
 const ja = {

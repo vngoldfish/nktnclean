@@ -1,13 +1,99 @@
 <svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs><linearGradient id="tile" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7fbff"/><stop offset="1" stop-color="#d6e5f2"/></linearGradient></defs>
-  <rect width="1200" height="800" fill="url(#tile)"/>
-  <g opacity=".35" stroke="#b7c7d6"><path d="M0 120H1200M0 240H1200M0 360H1200M0 480H1200M0 600H1200"/><path d="M160 0V800M320 0V800M480 0V800M640 0V800M800 0V800M960 0V800"/></g>
-  <rect x="120" y="120" width="360" height="520" rx="28" fill="#ffffff" opacity=".9"/>
-  <rect x="170" y="190" width="260" height="170" rx="24" fill="#e9f3fb" stroke="#cbd8e4" stroke-width="8"/>
-  <rect x="205" y="420" width="190" height="130" rx="32" fill="#ffffff" stroke="#cbd8e4" stroke-width="8"/>
-  <rect x="610" y="130" width="360" height="470" rx="30" fill="#ffffff" opacity=".88"/>
-  <rect x="660" y="180" width="260" height="150" rx="20" fill="#dcecf8"/>
-  <rect x="690" y="390" width="200" height="95" rx="20" fill="#132238" opacity=".18"/>
-  <circle cx="970" cy="190" r="38" fill="#4E9F70"/><path d="M952 190l13 14 28-32" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="70" y="735" fill="#132238" font-family="Arial" font-size="34" font-weight="900">Sample photo / 水回り清掃後イメージ</text>
+  <defs>
+    <linearGradient id="tileGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8f4f8"/><stop offset="1" stop-color="#d1e8f0"/></linearGradient>
+    <linearGradient id="floorGrad" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#a8d4e8"/><stop offset="1" stop-color="#7eb8d4"/></linearGradient>
+    <linearGradient id="sinkGrad" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f0f4f8"/><stop offset="1" stop-color="#d4dce8"/></linearGradient>
+  </defs>
+
+  <!-- Wall tiles -->
+  <rect width="1200" height="550" fill="url(#tileGrad)"/>
+  <!-- Tile pattern -->
+  <g opacity="0.3">
+    <line x1="0" y1="100" x2="1200" y2="100" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="0" y1="400" x2="1200" y2="400" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="0" y1="500" x2="1200" y2="500" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="150" y1="0" x2="150" y2="550" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="300" y1="0" x2="300" y2="550" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="450" y1="0" x2="450" y2="550" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="600" y1="0" x2="600" y2="550" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="750" y1="0" x2="750" y2="550" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="900" y1="0" x2="900" y2="550" stroke="#4a90a4" stroke-width="2"/>
+    <line x1="1050" y1="0" x2="1050" y2="550" stroke="#4a90a4" stroke-width="2"/>
+  </g>
+
+  <!-- Floor tiles -->
+  <rect y="550" width="1200" height="250" fill="url(#floorGrad)"/>
+  <g opacity="0.4">
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="#5a9cb4" stroke-width="2"/>
+    <line x1="0" y1="700" x2="1200" y2="700" stroke="#5a9cb4" stroke-width="2"/>
+    <line x1="200" y1="550" x2="200" y2="800" stroke="#5a9cb4" stroke-width="2"/>
+    <line x1="400" y1="550" x2="400" y2="800" stroke="#5a9cb4" stroke-width="2"/>
+    <line x1="600" y1="550" x2="600" y2="800" stroke="#5a9cb4" stroke-width="2"/>
+    <line x1="800" y1="550" x2="800" y2="800" stroke="#5a9cb4" stroke-width="2"/>
+    <line x1="1000" y1="550" x2="1000" y2="800" stroke="#5a9cb4" stroke-width="2"/>
+  </g>
+
+  <!-- Toilet -->
+  <g>
+    <!-- Base -->
+    <ellipse cx="200" cy="620" rx="80" ry="30" fill="#f5f7fa"/>
+    <!-- Bowl -->
+    <ellipse cx="200" cy="580" rx="70" ry="50" fill="#e8ecf0"/>
+    <ellipse cx="200" cy="575" rx="55" ry="35" fill="#d4dce8"/>
+    <!-- Tank -->
+    <rect x="140" y="480" width="120" height="100" rx="8" fill="#e8ecf0"/>
+    <!-- Flush button -->
+    <circle cx="200" cy="510" r="15" fill="#94a3b8"/>
+  </g>
+
+  <!-- Sink and vanity -->
+  <g>
+    <!-- Vanity cabinet -->
+    <rect x="450" y="480" width="300" height="120" rx="6" fill="#5c4033"/>
+    <!-- Sink bowl -->
+    <ellipse cx="600" cy="480" rx="100" ry="35" fill="url(#sinkGrad)"/>
+    <ellipse cx="600" cy="475" rx="80" ry="25" fill="#f8fafc"/>
+    <!-- Faucet -->
+    <rect x="580" y="430" width="40" height="20" rx="4" fill="#64748b"/>
+    <rect x="590" y="410" width="20" height="25" rx="3" fill="#64748b"/>
+    <!-- Mirror -->
+    <rect x="470" y="280" width="260" height="140" rx="8" fill="#e0e7ff"/>
+    <rect x="480" y="290" width="240" height="120" rx="4" fill="#cbd5e1"/>
+    <!-- Mirror reflection -->
+    <rect x="490" y="300" width="220" height="100" rx="4" fill="#e2e8f0" opacity="0.5"/>
+  </g>
+
+  <!-- Bathtub -->
+  <g>
+    <!-- Tub body -->
+    <rect x="850" y="520" width="280" height="120" rx="20" fill="#e8ecf0"/>
+    <!-- Water -->
+    <rect x="860" y="540" width="260" height="80" rx="15" fill="#bae6fd" opacity="0.6"/>
+    <!-- Faucet -->
+    <rect x="1050" y="500" width="50" height="25" rx="4" fill="#64748b"/>
+    <circle cx="1075" cy="515" r="8" fill="#475569"/>
+  </g>
+
+  <!-- Quality check badges -->
+  <g>
+    <circle cx="280" cy="150" r="30" fill="#22c55e"/>
+    <text x="280" y="158" fill="white" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">✓</text>
+    <text x="280" y="200" fill="#1e3a8a" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">TOILET</text>
+  </g>
+  <g>
+    <circle cx="600" cy="150" r="30" fill="#22c55e"/>
+    <text x="600" y="158" fill="white" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">✓</text>
+    <text x="600" y="200" fill="#1e3a8a" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">SINK</text>
+  </g>
+  <g>
+    <circle cx="990" cy="150" r="30" fill="#22c55e"/>
+    <text x="990" y="158" fill="white" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">✓</text>
+    <text x="990" y="200" fill="#1e3a8a" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">BATH</text>
+  </g>
+
+  <!-- Cleaning supplies -->
+  <rect x="50" y="560" width="40" height="80" rx="4" fill="#fef3c7"/>
+  <rect x="55" y="570" width="30" height="15" rx="2" fill="#fbbf24"/>
 </svg>
