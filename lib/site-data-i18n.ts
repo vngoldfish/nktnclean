@@ -7,7 +7,7 @@ export const companyBase = {
   representative: "NGUYEN THANH LONG",
   representativeKana: "グエン・タン・ロン",
   established: "2024年5月7日",
-  capital: "500万円",
+  capital: "900万円",
   corporateNumber: "7120001264848",
   phone: "080-8029-3713",
   email: "info@bawui.com",
@@ -312,7 +312,8 @@ export const siteContent = {
     blogPage: { badge: "Blog", title: "Giải thích rõ hơn về chất lượng vệ sinh và vận hành lưu trú.", lead: "NKTN chia sẻ kiến thức thực tế về vệ sinh khách sạn/minpaku, báo cáo ảnh và quản lý hiện trường DX từ góc nhìn hiện trường.", contactTitle: "Nếu bạn đang lo lắng về chất lượng vệ sinh, chúng tôi có thể đề xuất phương án phù hợp với hiện trường.", contactLead: "Chúng tôi xác nhận số phòng, khu vực, thời gian check-in và phương thức báo cáo, sau đó đề xuất cơ cấu vệ sinh và luồng quản lý chất lượng khả thi." },
     blogPosts: vietnameseBlogPosts,
     languages: ["Tiếng Nhật", "Tiếng Anh", "Tiếng Việt"],
-  }),} satisfies Record<Locale, typeof ja>;
+  }),
+} satisfies Record<Locale, typeof ja>;
 
 export function getContent(locale: Locale) {
   return siteContent[locale] ?? siteContent[defaultLocale];
