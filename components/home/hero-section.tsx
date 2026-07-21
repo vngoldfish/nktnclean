@@ -33,7 +33,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
 
         {/* Main title — BIG and centered */}
         <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.6, delay: 0.1 }} className="text-center">
-          <h1 className="whitespace-pre-line text-balance text-5xl font-black leading-[1.08] tracking-[-0.04em] text-nktn-ink sm:text-7xl lg:text-8xl">
+          <h1 className="whitespace-normal sm:whitespace-pre-line text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] text-nktn-ink sm:text-7xl lg:text-8xl">
             {content.home.title}
           </h1>
           <p className="mt-6 mx-auto max-w-3xl text-base leading-8 text-nktn-ink/60 sm:text-lg">
@@ -69,7 +69,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-10 flex flex-col items-center gap-4"
+          className="mt-10 flex flex-col items-center gap-4 w-full"
         >
           {/* Phone number — Large like machino */}
           <Link
@@ -86,10 +86,10 @@ export function HeroSection({ locale }: HeroSectionProps) {
           </Link>
 
           {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto px-5 sm:px-0">
             <Link
               href={companyBase.lineUrl}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#06C755] px-8 py-4 text-base font-black text-white shadow-lg hover:bg-[#05b04c] transition"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#06C755] px-8 py-4 text-base font-black text-white shadow-lg hover:bg-[#05b04c] transition"
             >
               <MessageCircle className="size-5" />
               {content.common.lineConsultLong}
@@ -97,7 +97,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
             </Link>
             <Link
               href={`tel:${companyBase.phone}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-800 px-8 py-4 text-base font-black text-white shadow-lg hover:bg-sky-700 transition"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-sky-800 px-8 py-4 text-base font-black text-white shadow-lg hover:bg-sky-700 transition"
             >
               <Phone className="size-5" />
               {content.home.freeEstimate}

@@ -89,7 +89,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="text-center mb-14">
           <p className="text-amber-600 text-sm font-black tracking-widest mb-3">FLOW</p>
-          <h2 className="text-3xl font-black tracking-[-0.04em] sm:text-5xl">
+          <h2 className="text-balance text-3xl font-black tracking-[-0.04em] sm:text-5xl">
             {locale === "ja" ? "ご依頼の流れ" : locale === "en" ? "How It Works" : "Quy trình thực hiện"}
           </h2>
           <p className="mt-5 mx-auto max-w-2xl text-nktn-ink/55 leading-8">
@@ -100,26 +100,20 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               : "Chúng tôi không chỉ dọn dẹp một lần — mà xây dựng hệ thống vệ sinh tối ưu cho từng cơ sở và duy trì chất lượng như đối tác lâu dài."}
           </p>
         </div>
-        <div className="mx-auto max-w-3xl space-y-0">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {content.processSteps.map(([number, title, body], index) => {
             const Icon = processIcons[index] || Phone;
             return (
-              <div key={number} className="flex gap-6 py-8 border-b border-slate-200 last:border-b-0">
-                <div className="shrink-0 flex flex-col items-center">
-                  <span className="grid size-14 sm:size-16 place-items-center rounded-full bg-sky-800 text-white text-lg sm:text-xl font-black shadow-lg">
-                    {number}
-                  </span>
-                  {index < content.processSteps.length - 1 && (
-                    <div className="w-0.5 flex-1 bg-sky-200 mt-2" />
-                  )}
-                </div>
-                <div className="flex-1 pt-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Icon className="size-4 text-sky-700" />
-                    <p className="text-amber-600 text-xs font-black tracking-widest">STEP{number}</p>
+              <div key={title} className="flex gap-4 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-amber-500/10 text-amber-600">
+                  <Icon className="size-6" />
+                </span>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-amber-600">STEP 0{number}</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-black text-nktn-ink">{title}</h3>
-                  <p className="mt-3 leading-7 text-nktn-ink/60">{body}</p>
+                  <h3 className="mt-1 text-lg font-black tracking-[-0.03em] text-nktn-ink">{title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-nktn-ink/60">{body}</p>
                 </div>
               </div>
             );
@@ -163,7 +157,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
             <p className="text-amber-600 text-sm font-black tracking-widest mb-3">{content.home.reviewsTitle}</p>
-            <h2 className="text-3xl font-black tracking-[-0.04em] sm:text-5xl">{content.home.reviewsTitle}</h2>
+            <h2 className="text-balance text-3xl font-black tracking-[-0.04em] sm:text-5xl">{content.home.reviewsTitle}</h2>
             <p className="mt-4 max-w-2xl mx-auto leading-8 text-nktn-ink/60">{content.home.reviewsLead}</p>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

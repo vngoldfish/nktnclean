@@ -20,7 +20,7 @@ export function StrengthsSection({ locale }: StrengthsSectionProps) {
     <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
       <div className="text-center mb-14">
         <Badge variant="orange" className="mb-6">Why NKTN</Badge>
-        <h2 className="text-4xl font-black tracking-[-0.04em] text-nktn-ink sm:text-6xl">
+        <h2 className="whitespace-normal sm:whitespace-pre-line text-balance text-3xl font-black tracking-[-0.04em] text-nktn-ink sm:text-5xl lg:text-6xl">
           {content.home.strengthsTitle}
         </h2>
       </div>
