@@ -24,6 +24,16 @@ export const localeNames: Record<Locale, string> = {
   vi: "Tiếng Việt",
 };
 
+export const localeFlags: Record<Locale, string> = {
+  ja: "🇯🇵",
+  en: "🇺🇸",
+  zh: "🇨🇳",
+  ne: "🇳🇵",
+  fil: "🇵🇭",
+  id: "🇮🇩",
+  vi: "🇻🇳",
+};
+
 export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }

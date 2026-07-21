@@ -55,3 +55,10 @@ Thumbs.db
 
 # Claude local files
 .claude/
+
+# Python
+*.pyc
+__pycache__/
+
+# Debug output
+scripts/image-processing/debug/

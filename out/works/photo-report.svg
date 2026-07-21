@@ -1,19 +1,91 @@
-<svg width="900" height="620" viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="900" height="620" rx="48" fill="#FFF6E8"/>
-  <rect x="112" y="86" width="312" height="448" rx="46" fill="#132238"/>
-  <rect x="142" y="136" width="252" height="320" rx="28" fill="#ffffff"/>
-  <rect x="166" y="166" width="204" height="118" rx="22" fill="#EAF3FF"/>
-  <rect x="166" y="310" width="160" height="18" rx="9" fill="#132238" opacity="0.18"/>
-  <rect x="166" y="348" width="202" height="18" rx="9" fill="#132238" opacity="0.18"/>
-  <rect x="166" y="386" width="120" height="18" rx="9" fill="#132238" opacity="0.18"/>
-  <circle cx="268" cy="492" r="18" fill="#ffffff" opacity="0.8"/>
-  <rect x="500" y="132" width="270" height="98" rx="30" fill="#ffffff"/>
-  <rect x="500" y="262" width="270" height="98" rx="30" fill="#ffffff"/>
-  <rect x="500" y="392" width="270" height="98" rx="30" fill="#ffffff"/>
-  <circle cx="546" cy="181" r="18" fill="#4E9F70"/>
-  <circle cx="546" cy="311" r="18" fill="#4E9F70"/>
-  <circle cx="546" cy="441" r="18" fill="#4E9F70"/>
-  <text x="584" y="190" fill="#132238" font-family="Arial, sans-serif" font-size="24" font-weight="800">写真報告</text>
-  <text x="584" y="320" fill="#132238" font-family="Arial, sans-serif" font-size="24" font-weight="800">完了共有</text>
-  <text x="584" y="450" fill="#132238" font-family="Arial, sans-serif" font-size="24" font-weight="800">品質チェック</text>
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f0f9ff"/><stop offset="1" stop-color="#e0f2fe"/></linearGradient>
+    <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0f172a"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Main dashboard screen -->
+  <rect x="100" y="100" width="600" height="500" rx="20" fill="#1e293b"/>
+  <rect x="110" y="110" width="580" height="480" rx="15" fill="url(#screenGrad)"/>
+
+  <!-- Dashboard header -->
+  <rect x="110" y="110" width="580" height="50" rx="15" fill="#0f172a"/>
+  <text x="400" y="145" fill="#94a3b8" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">FIELD MANAGEMENT DASHBOARD</text>
+
+  <!-- Status cards -->
+  <rect x="130" y="180" width="170" height="100" rx="10" fill="#1e40af"/>
+  <text x="215" y="210" fill="#60a5fa" font-family="Arial" font-size="12" text-anchor="middle">ROOMS TODAY</text>
+  <text x="215" y="255" fill="white" font-family="Arial" font-size="28" font-weight="bold" text-anchor="middle">48/52</text>
+
+  <rect x="320" y="180" width="170" height="100" rx="10" fill="#059669"/>
+  <text x="405" y="210" fill="#34d399" font-family="Arial" font-size="12" text-anchor="middle">COMPLETED</text>
+  <text x="405" y="255" fill="white" font-family="Arial" font-size="28" font-weight="bold" text-anchor="middle">92%</text>
+
+  <rect x="510" y="180" width="170" height="100" rx="10" fill="#d97706"/>
+  <text x="595" y="210" fill="#fbbf24" font-family="Arial" font-size="12" text-anchor="middle">IN PROGRESS</text>
+  <text x="595" y="255" fill="white" font-family="Arial" font-size="28" font-weight="bold" text-anchor="middle">4</text>
+
+  <!-- Photo thumbnails -->
+  <rect x="130" y="300" width="120" height="90" rx="8" fill="#334155"/>
+  <rect x="135" y="305" width="110" height="80" rx="6" fill="#475569"/>
+  <circle cx="190" cy="345" r="20" fill="#22c55e"/>
+  <text x="190" y="352" fill="white" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">✓</text>
+
+  <rect x="270" y="300" width="120" height="90" rx="8" fill="#334155"/>
+  <rect x="275" y="305" width="110" height="80" rx="6" fill="#475569"/>
+  <circle cx="330" cy="345" r="20" fill="#22c55e"/>
+  <text x="330" y="352" fill="white" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">✓</text>
+
+  <rect x="410" y="300" width="120" height="90" rx="8" fill="#334155"/>
+  <rect x="415" y="305" width="110" height="80" rx="6" fill="#475569"/>
+  <circle cx="470" cy="345" r="20" fill="#22c55e"/>
+  <text x="470" y="352" fill="white" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">✓</text>
+
+  <rect x="550" y="300" width="120" height="90" rx="8" fill="#334155"/>
+  <rect x="555" y="305" width="110" height="80" rx="6" fill="#475569"/>
+  <circle cx="610" cy="345" r="20" fill="#22c55e"/>
+  <text x="610" y="352" fill="white" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">✓</text>
+
+  <!-- Progress bars -->
+  <rect x="130" y="420" width="540" height="20" rx="10" fill="#334155"/>
+  <rect x="130" y="420" width="496" height="20" rx="10" fill="#22c55e"/>
+
+  <rect x="130" y="460" width="540" height="20" rx="10" fill="#334155"/>
+  <rect x="130" y="460" width="432" height="20" rx="10" fill="#3b82f6"/>
+
+  <rect x="130" y="500" width="540" height="20" rx="10" fill="#334155"/>
+  <rect x="130" y="500" width="378" height="20" rx="10" fill="#fbbf24"/>
+
+  <!-- Labels -->
+  <text x="130" y="555" fill="#94a3b8" font-family="Arial" font-size="12">Room 101 • 102 • 103</text>
+  <text x="130" y="575" fill="#94a3b8" font-family="Arial" font-size="12">Room 201 • 202 • 203</text>
+  <text x="130" y="595" fill="#94a3b8" font-family="Arial" font-size="12">Room 301 • 302 • 303</text>
+
+  <!-- Mobile device showing LINE chat -->
+  <rect x="800" y="200" width="280" height="500" rx="30" fill="#1e293b"/>
+  <rect x="810" y="220" width="260" height="460" rx="20" fill="#0f172a"/>
+
+  <!-- LINE header -->
+  <rect x="810" y="220" width="260" height="50" rx="20" fill="#00c300"/>
+  <text x="940" y="255" fill="white" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">LINE Official</text>
+
+  <!-- Chat messages -->
+  <rect x="830" y="290" width="180" height="50" rx="15" fill="#334155"/>
+  <text x="920" y="310" fill="#94a3b8" font-family="Arial" font-size="11" text-anchor="middle">Room 305: Done ✓</text>
+  <text x="920" y="328" fill="#94a3b8" font-family="Arial" font-size="11" text-anchor="middle">[Photo attached]</text>
+
+  <rect x="860" y="355" width="180" height="50" rx="15" fill="#00c300"/>
+  <text x="950" y="375" fill="white" font-family="Arial" font-size="11" text-anchor="middle">Thank you! Quality OK</text>
+  <text x="950" y="393" fill="white" font-family="Arial" font-size="11" text-anchor="middle">Next room please</text>
+
+  <rect x="830" y="420" width="180" height="50" rx="15" fill="#334155"/>
+  <text x="920" y="440" fill="#94a3b8" font-family="Arial" font-size="11" text-anchor="middle">Room 306: Starting</text>
+  <text x="920" y="458" fill="#94a3b8" font-family="Arial" font-size="11" text-anchor="middle">ETA: 25 min</text>
+
+  <!-- Status indicator -->
+  <circle cx="950" cy="650" r="8" fill="#22c55e"/>
+  <text x="950" y="680" fill="#22c55e" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">LIVE</text>
 </svg>

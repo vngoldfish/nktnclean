@@ -12,7 +12,7 @@ export const companyBase = {
   phone: "080-8029-3713",
   email: "info@bawui.com",
   lineId: "@628qznny",
-  lineUrl: "https://line.me/R/ti/p/@628qznny",
+  lineUrl: "https://line.me/R/oaMessage/%40628qznny/",
 };
 
 const sharedImages = {
@@ -33,7 +33,12 @@ const ja = {
     ["ホーム", "/"], ["サービス", "/services"], ["強み", "/strengths"], ["DX", "/dx"], ["ブログ", "/blog"], ["会社情報", "/company"], ["お問い合わせ", "/contact"],
   ],
   common: {
-    lineConsult: "LINEで相談", lineConsultLong: "LINEで相談する", contact: "お問い合わせ", viewServices: "サービス内容を見る", readMore: "詳しく読む", allFaq: "FAQをすべて見る", backBlog: "ブログ一覧へ戻る", emailConsult: "メールで相談する", phone: "TEL", mail: "MAIL", language: "Language",
+    lineConsult: "LINEで相談", lineConsultLong: "LINEで相談する", contact: "お問い合わせ", viewServices: "サービス内容を見る", readMore: "詳しく読む", allFaq: "FAQをすべて見る", backBlog: "ブログ一覧へ戻る", emailConsult: "メールで相談する", phone: "TEL", mail: "MAIL", language: "Language", reason: "理由",
+  },
+  topBar: {
+    commitment: "大阪西成から全国へ。清掃のプロが現場をサポート",
+    hours: "受付時間：毎日 9:00〜18:00",
+    lineEstimate: "LINEで無料見積り",
   },
   company: {
     coverage: "全国対応", business: "ホテル・民泊客室清掃、宿泊施設運営サポート、現場管理、Cleaning DX、貿易・総合商社事業",
@@ -43,6 +48,12 @@ const ja = {
   home: {
     badge: "全国対応 / 大阪・西成区拠点 / Cleaning + DX", title: "清掃を、\n勝てる運営に。", lead: "株式会社NKTN（Bawui Cleaning）は、大阪市西成区を拠点に、全国のホテル・民泊客室清掃と現場管理DXを一体で提供します。宿泊施設の現場に寄り添い、清掃品質・報告・進捗管理を仕組みで支えます。",
     control: "現場管理ボード", companyInfo: "会社情報", servicesTitle: "清掃会社では終わらない。現場を回す会社です。", worksTitle: "現場が見えるから、安心して任せられる。", worksLead: "ホテル・民泊清掃、写真報告、スタッフ連携まで。実際の運用をイメージしやすい現場事例として紹介します。", strengthsTitle: "小さな会社。\nでも運用は大手級。", blogTitle: "清掃品質を、言葉でも伝える。", blogLead: "現場で大切にしている品質管理、写真報告、宿泊運営の考え方を発信しています。", faqTitle: "依頼前の不安を、短く解決。", dxTitle: "LINEでつながり、写真で証明する。", dxLead: "LINE公式チャットボット、OUT通知、写真報告の自動送信。管理者・スタッフ・顧客の連絡を短くします。",
+    freeEstimate: "お見積り無料",
+    reviewsTitle: "お客様の声",
+    reviewsLead: "実際にサービスをご利用いただいたお客様からの評価と感想です。",
+    ctaBandTitle: "清掃品質とLINE報告をまとめて相談できます。",
+    ctaBandLead: "お見積り・ご相談無料",
+    trustBadges: ["お見積り無料", "写真報告 100%", "365日対応"],
   },
   services: [
     { title: "ホテル・民泊客室清掃", lead: "次の宿泊に間に合わせる、速くて安定した客室清掃。", points: ["ベッドメイク", "水回り清掃", "備品確認", "清掃後チェック"] },
@@ -127,11 +138,48 @@ const ja = {
       evidence: "NKTNでは、清掃手配・進捗確認・完了共有を組み合わせ、繁忙期でも現場が止まりにくい運用づくりを重視しています。",
     },
   ],
+  reviews: [
+    { score: 98, text: "民泊清掃でお世話になっています。清掃後の写真報告が非常に細かく、遠隔管理でも現地の状況が手にとるようにわかります。LINEでの連絡もスムーズです。", age: "30代", gender: "男性" },
+    { score: 95, text: "ホテルの客室清掃を依頼しています。ベッドメイクの仕上がりが美しく、スタッフの連携も早いです。多言語対応なので外国人スタッフの管理も安心です。", age: "40代", gender: "女性" },
+    { score: 92, text: "LINEでのチェックアウト通知と進捗管理ボードが非常に便利です。フロントと清掃チームの連絡ミスが完全になくなり、業務効率が劇的に改善しました。", age: "30代", gender: "女性" },
+    { score: 96, text: "関西エリアでいくつか清掃会社を変えましたが、NKTNさんが一番品質が安定しています。こちらの要望にも柔軟に対応していただき、長く付き合えるパートナーです。", age: "50代", gender: "男性" },
+  ],
   languages: ["日本語", "English", "Tiếng Việt"],
 };
 
-function makeLocale(base: typeof ja, overrides: Partial<typeof ja>): typeof ja {
-  return { ...base, ...overrides } as typeof ja;
+type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends (infer U)[]
+    ? DeepPartial<U>[]
+    : T[P] extends object
+    ? DeepPartial<T[P]>
+    : T[P];
+};
+
+function deepMerge(target: any, source: any): any {
+  const result = { ...target } as any;
+  for (const key in source) {
+    if (Object.prototype.hasOwnProperty.call(source, key)) {
+      const sourceVal = source[key];
+      const targetVal = target[key];
+      if (
+        sourceVal &&
+        typeof sourceVal === "object" &&
+        !Array.isArray(sourceVal) &&
+        targetVal &&
+        typeof targetVal === "object" &&
+        !Array.isArray(targetVal)
+      ) {
+        result[key] = deepMerge(targetVal, sourceVal);
+      } else {
+        result[key] = sourceVal;
+      }
+    }
+  }
+  return result;
+}
+
+function makeLocale(base: typeof ja, overrides: DeepPartial<typeof ja>): typeof ja {
+  return deepMerge(base, overrides);
 }
 
 const englishWorkCases = [
@@ -162,9 +210,21 @@ export const siteContent = {
   en: makeLocale(ja, {
     meta: { title: "NKTN Inc. | Bawui Cleaning - Cleaning + DX across Japan", description: "Official website of NKTN Inc. / Bawui Cleaning, supporting hotel and vacation rental cleaning with field management DX from Osaka." },
     nav: [["Home", "/"], ["Services", "/services"], ["Strengths", "/strengths"], ["DX", "/dx"], ["Blog", "/blog"], ["Company", "/company"], ["Contact", "/contact"]],
-    common: { lineConsult: "Contact on LINE", lineConsultLong: "Contact us on LINE", contact: "Contact", viewServices: "View services", readMore: "Read more", allFaq: "View all FAQ", backBlog: "Back to blog", emailConsult: "Contact by email", phone: "TEL", mail: "MAIL", language: "Language" },
+    common: { lineConsult: "Contact on LINE", lineConsultLong: "Contact us on LINE", contact: "Contact", viewServices: "View services", readMore: "Read more", allFaq: "View all FAQ", backBlog: "Back to blog", emailConsult: "Contact by email", phone: "TEL", mail: "MAIL", language: "Language", reason: "Reason" },
+    topBar: {
+      commitment: "From Osaka Nishinari to Japan. Pro cleaners support your site.",
+      hours: "Hours: Daily 9:00–18:00",
+      lineEstimate: "Free estimate on LINE",
+    },
     company: { coverage: "Japan-wide", business: "Hotel and vacation rental room cleaning, accommodation operation support, field management, Cleaning DX, trading and general commerce", profileRows: { name: "Company name", corporateNumber: "Corporate number", established: "Established", capital: "Capital", location: "Address", representative: "Representative Director", business: "Business" }, footerLead: "A Cleaning + DX company based in Osaka Nishinari, supporting hotel and vacation rental cleaning and field management across Japan." },
-    home: { badge: "Japan-wide / Osaka Nishinari / Cleaning + DX", title: "Turn cleaning into\na stronger operation.", lead: "NKTN Inc. (Bawui Cleaning) provides hotel and vacation rental room cleaning together with field management DX from Osaka. We support cleaning quality, reporting, and progress management with practical systems.", control: "Field management board", companyInfo: "Company information", servicesTitle: "More than a cleaning company. We run the field.", worksTitle: "Visible field operations make outsourcing safer.", worksLead: "Hotel and vacation rental cleaning, photo reports, and staff coordination. These examples help clients picture how operations work.", strengthsTitle: "A small company.\nBut operations at enterprise level.", blogTitle: "We communicate cleaning quality with words too.", blogLead: "We share how we manage quality, photo reporting, and accommodation operations in the field.", faqTitle: "Clear answers before you request.", dxTitle: "Connect through LINE, prove with photos.", dxLead: "LINE official chatbot, OUT notifications, and automatic photo reports reduce communication between managers, staff, and clients." },
+    home: { badge: "Japan-wide / Osaka Nishinari / Cleaning + DX", title: "Turn cleaning into\na stronger operation.", lead: "NKTN Inc. (Bawui Cleaning) provides hotel and vacation rental room cleaning together with field management DX from Osaka. We support cleaning quality, reporting, and progress management with practical systems.", control: "Field management board", companyInfo: "Company information", servicesTitle: "More than a cleaning company. We run the field.", worksTitle: "Visible field operations make outsourcing safer.", worksLead: "Hotel and vacation rental cleaning, photo reports, and staff coordination. These examples help clients picture how operations work.", strengthsTitle: "A small company.\nBut operations at enterprise level.", blogTitle: "We communicate cleaning quality with words too.", blogLead: "We share how we manage quality, photo reporting, and accommodation operations in the field.", faqTitle: "Clear answers before you request.", dxTitle: "Connect through LINE, prove with photos.", dxLead: "LINE official chatbot, OUT notifications, and automatic photo reports reduce communication between managers, staff, and clients.",
+      freeEstimate: "Free Estimate",
+      reviewsTitle: "Customer Reviews",
+      reviewsLead: "Ratings and feedback from customers who have used our services.",
+      ctaBandTitle: "Discuss cleaning quality and LINE reporting together.",
+      ctaBandLead: "Free Estimate & Consultation",
+      trustBadges: ["Free Estimate", "100% Photo Reports", "365 Days Support"],
+    },
     services: [{ title: "Hotel and vacation rental room cleaning", lead: "Fast, stable room cleaning ready for the next guest.", points: ["Bed making", "Bathroom and water-area cleaning", "Amenity check", "Post-cleaning check"] }, { title: "Field management and quality checks", lead: "We visualize room-by-room progress, photos, and completion status.", points: ["Progress management", "Photo reports", "Standardized quality", "Busy-season support"] }, { title: "Cleaning DX solutions", lead: "LINE official chatbot and automatic notifications reduce communication work.", points: ["LINE integration", "OUT notifications", "Automatic photo sharing", "Field data management"] }],
     servicesPage: { badge: "Services", title: "Cleaning, management, and reporting for stable accommodation operations.", lead: "For hotels and vacation rentals across Japan, NKTN supports not only room cleaning but also field progress, photo reports, and quality checks. We provide operational stability, not just cleaning labor.", facilityTitle: "We support a wide range of accommodation facilities.", facilityLead: "From Osaka and the Kansai area to partner networks across Japan, we build a cleaning structure that fits each site.", qualityTitle: "From photos to completion sharing, we make cleaning quality visible.", cta: "Ask about services" },
     strengths: [{ title: "Japan-wide partner network", body: "Although we are a small company from Osaka, we support sites through professional cleaners and partner companies across Japan." }, { title: "Deadline-first operation", body: "To keep accommodation operations running, we work backward from the required cleaning completion time." }, { title: "Stable quality", body: "We standardize photos, checks, and completion reports to create quality that does not depend on one person." }, { title: "Enterprise-level DX operation", body: "Even with a small core team, LINE, automated reporting, and field management help us operate accurately like a larger company." }],
@@ -183,14 +243,32 @@ export const siteContent = {
     privacyPage: { badge: "Privacy Policy", title: "Privacy Policy", lead: "NKTN Inc. appropriately handles personal information obtained through inquiries and business communication.", sections: [["1. Purpose of use", "We use personal information only as needed for inquiries, estimates, business communication, service provision, recruitment, and partner cooperation."], ["2. Management of personal information", "We manage obtained personal information appropriately to prevent leakage, loss, or alteration."], ["3. Third-party provision", "We do not provide personal information to third parties without consent except as required by law."], ["4. Use of external services", "We may use external services such as LINE, email, and telephone to respond to inquiries."], ["5. Disclosure, correction, and deletion", "When requested by the person concerned, we respond appropriately according to laws and regulations."], ["6. Inquiry contact", "For questions about personal information handling, please contact info@bawui.com."]] },
     blogPage: { badge: "Blog", title: "Cleaning quality and accommodation operations, explained clearly.", lead: "NKTN shares practical knowledge about hotel and vacation rental cleaning, photo reports, and field management DX from the field perspective.", contactTitle: "If you are concerned about cleaning quality, we can propose a site-fit operation.", contactLead: "We confirm room count, area, check-in time, and reporting method, then propose a realistic cleaning structure and quality flow." },
     blogPosts: [{ slug: "stable-cleaning-quality", title: "Three things common to companies with stable hotel and vacation rental cleaning quality", category: "Quality control", date: "2026.05.20", readTime: "4 min read", image: sharedImages.room, excerpt: "Cleaning quality is stabilized not only by staff effort but also by checklists, photo reports, and completion sharing.", points: ["Set cleaning scope and check items in advance", "Share post-cleaning conditions with photos", "Report completion time and issues quickly"], sections: [["Quality is stabilized by people and systems", "In hotel and vacation rental cleaning, it is important to keep consistent quality even when the person in charge changes. Defining cleaning scope, amenity checks, photo reports, and completion sharing reduces missed items and communication gaps."], ["Photo reports reassure managers", "For remote facility management, post-cleaning photos are important decision material. Sharing beds, water areas, amenities, and entrance conditions makes it easier to confirm readiness for the next guest."], ["Completion sharing keeps operations moving", "When managers cannot tell whether cleaning is complete, check-in preparation can be delayed. Sharing completion time and problems early is essential."]], evidence: "NKTN emphasizes post-cleaning checks, photo reports, and completion sharing, and organizes required check items for each site." }, { slug: "minpaku-water-area-check", title: "Water-area checks that reduce complaints in vacation rental operations", category: "Vacation rental cleaning", date: "2026.05.20", readTime: "3 min read", image: sharedImages.bathroom, excerpt: "Bathrooms, toilets, and washbasins strongly affect guest impressions. Odors, water drops, and amenity levels matter as much as appearance.", points: ["Check hair, water drops, and drains in bathrooms", "Avoid missed spots around toilets and floors", "Prepare towels, paper, and amenities"], sections: [["Water areas directly affect reviews", "Bathrooms, toilets, and washbasins are places where guests strongly judge cleanliness. Even small hair, water drops, or odor can lower impressions."], ["Check supplies, not only appearance", "Shortages of toilet paper, towels, amenities, or detergents lead to guest dissatisfaction. Checking supplies during cleaning reduces rework for operators."], ["Keep photos of the post-cleaning condition", "Photos of water areas allow managers to confirm the condition after cleaning and make it easier to understand situations if inquiries occur."]], evidence: "On actual sites, we recommend treating bathrooms, toilets, and washbasins as priority check items." }, { slug: "photo-report-cleaning-company", title: "Why you should choose a cleaning company with photo reports", category: "Cleaning DX", date: "2026.05.20", readTime: "4 min read", image: sharedImages.report, excerpt: "For remote accommodation management, photo reports provide reassurance and reduce mismatches between managers, staff, and clients.", points: ["Check post-cleaning condition remotely", "Understand causes faster during trouble", "Use photos for staff training and quality improvement"], sections: [["Visible reporting matters in remote management", "When managers cannot visit the site, they need a way to confirm that cleaning is truly complete. Photo reports make the condition visible."], ["Trouble checks become faster", "If a guest contacts the operator, post-cleaning photos help confirm the situation and support cause analysis and prevention."], ["Photos become quality improvement data", "Photo reports are not only reports. They help identify common missed items and improve checklists and staff training."]], evidence: "NKTN uses LINE integration, photo reports, and completion sharing to help managers understand field conditions." }, { slug: "busy-season-cleaning-operations", title: "Field design needed to keep cleaning moving during busy seasons", category: "Field operation", date: "2026.05.20", readTime: "5 min read", image: sharedImages.staff, excerpt: "The time between checkout and the next check-in is limited. Strong busy-season operations require time design, staffing, and reporting flow.", points: ["Decide staffing from room count and cleaning time", "Share rooms that may be delayed early", "Centralize completion reports"], sections: [["Time design stabilizes the field", "During busy seasons, multiple rooms must be prepared in a short time between checkout and check-in. Planning from room count, travel time, and cleaning time is important."], ["Share delay information early", "Late arrival, lost property, damage, or missing supplies can happen in cleaning sites. Early sharing allows managers to respond faster."], ["Unify the reporting flow", "When phone calls, personal chats, and verbal reports are mixed, confirmation gaps occur. Gathering completion reports and photos in one place makes field management easier."]], evidence: "NKTN values operations that combine cleaning arrangements, progress checks, and completion sharing so busy-season sites are less likely to stop." }],
+    reviews: [
+      { score: 98, text: "We use their vacation rental cleaning. The post-cleaning photo reports are highly detailed, making remote management as easy as being on site. Communication via LINE is very fast.", age: "30s", gender: "Male" },
+      { score: 95, text: "We outsource hotel cleaning to them. The bed-making is beautiful, their staff coordinate smoothly, and the multilingual support is great. We feel very reassured about their punctuality.", age: "40s", gender: "Female" },
+      { score: 92, text: "The LINE checkout notification and free progress board are very convenient. It eliminated communication lag between reception and cleaning staff, resulting in almost zero errors.", age: "30s", gender: "Female" },
+      { score: 96, text: "We changed multiple cleaning companies in Kansai until we partnered with NKTN. The cleaning quality is extremely stable, and their support is excellent. A highly trusted long-term partner.", age: "50s", gender: "Male" },
+    ],
     languages: ["Japanese", "English", "Vietnamese"],
   }),
   zh: makeLocale(ja, {
     meta: { title: "株式会社NKTN | Bawui Cleaning - 日本全国 Cleaning + DX", description: "株式会社NKTN / Bawui Cleaning 官方网站。以大阪为据点，为酒店和民宿提供客房清洁与现场管理DX。" },
     nav: [["首页", "/"], ["服务", "/services"], ["优势", "/strengths"], ["DX", "/dx"], ["博客", "/blog"], ["公司", "/company"], ["联系", "/contact"]],
-    common: { lineConsult: "通过LINE咨询", lineConsultLong: "通过LINE咨询", contact: "联系", viewServices: "查看服务", readMore: "阅读更多", allFaq: "查看全部FAQ", backBlog: "返回博客列表", emailConsult: "通过邮件咨询", phone: "电话", mail: "邮件", language: "语言" },
+    common: { lineConsult: "通过LINE咨询", lineConsultLong: "通过LINE咨询", contact: "联系", viewServices: "查看服务", readMore: "阅读更多", allFaq: "查看全部FAQ", backBlog: "返回博客列表", emailConsult: "通过邮件咨询", phone: "电话", mail: "邮件", language: "语言", reason: "原因" },
+    topBar: {
+      commitment: "从大阪西成到全日本。专业清洁团队支持您的现场。",
+      hours: "接待时间：每日 9:00〜18:00",
+      lineEstimate: "LINE免费估价",
+    },
     company: { coverage: "日本全国対応", business: "酒店・民宿客房清洁、住宿设施运营支持、现场管理、Cleaning DX、贸易与综合商社业务", profileRows: { name: "公司名称", corporateNumber: "法人番号", established: "成立日期", capital: "注册资本", location: "所在地", representative: "代表董事", business: "业务内容" }, footerLead: "以大阪市西成区为据点，为日本全国酒店・民宿清洁和现场管理DX提供一体化支持的 Cleaning + DX 公司。" },
-    home: { badge: "日本全国対応 / 大阪西成据点 / Cleaning + DX", title: "让清洁成为\n更强的运营力。", lead: "株式会社NKTN（Bawui Cleaning）以大阪市西成区为据点，为日本全国酒店和民宿提供客房清洁与现场管理DX，用系统支持清洁质量、报告和进度管理。", control: "现场管理看板", companyInfo: "公司信息", servicesTitle: "不只是清洁公司，而是推动现场运营的公司。", worksTitle: "看得见现场，委托更安心。", worksLead: "从酒店・民宿清洁、照片报告到员工协作，以案例形式展示实际运营。", strengthsTitle: "小型公司。\n但运营能力达到大型标准。", blogTitle: "用文字传达清洁质量。", blogLead: "发布现场质量管理、照片报告和住宿运营的思考。", faqTitle: "委托前的疑问，先简单解决。", dxTitle: "用LINE连接，用照片证明。", dxLead: "LINE官方聊天机器人、OUT通知、照片报告自动发送，让客户、员工、管理者的沟通更短更清楚。" },
+    home: { badge: "日本全国対応 / 大阪西成据点 / Cleaning + DX", title: "让清洁成为\n更强的运营力。", lead: "株式会社NKTN（Bawui Cleaning）以大阪市西成区为据点，为日本全国酒店和民宿提供客房清洁与现场管理DX，用系统支持清洁质量、报告和进度管理。", control: "现场管理看板", companyInfo: "公司信息", servicesTitle: "不只是清洁公司，而是推动现场运营的公司。", worksTitle: "看得见现场，委托更安心。", worksLead: "从酒店・民宿清洁、照片报告到员工协作，以案例形式展示实际运营。", strengthsTitle: "小型公司。\n但运营能力达到大型标准。", blogTitle: "用文字传达清洁质量。", blogLead: "发布现场质量管理、照片报告和住宿运营的思考。", faqTitle: "委托前的疑问，先简单解决。", dxTitle: "用LINE连接，用照片证明。", dxLead: "LINE官方聊天机器人、OUT通知、照片报告自动发送，让客户、员工、管理者的沟通更短更清楚。",
+      freeEstimate: "免费估价",
+      reviewsTitle: "客户评价",
+      reviewsLead: "来自实际使用我们服务的客户的评价和反馈。",
+      ctaBandTitle: "清洁质量与LINE报告一站式咨询。",
+      ctaBandLead: "免费咨询与估价",
+      trustBadges: ["免费估价", "100%照片报告", "365天对应"],
+    },
     services: [{ title: "酒店・民宿客房清洁", lead: "快速稳定地完成客房清洁，迎接下一位客人。", points: ["铺床", "水回り清洁", "备品确认", "清洁后检查"] }, { title: "现场管理・质量检查", lead: "让每个房间的进度、照片和完成状态可视化。", points: ["进度管理", "照片报告", "质量标准化", "旺季support"] }, { title: "Cleaning DX解决方案", lead: "通过LINE官方聊天机器人和自动通知压缩沟通工作。", points: ["LINE联动", "OUT通知", "自动照片发送", "现场数据管理"] }],
     servicesPage: { badge: "服务", title: "清洁、管理、报告，一站式支持住宿运营。", lead: "面向日本全国酒店和民宿，NKTN不仅提供客房清洁，也支持现场进度、照片报告和质量检查。我们提供的不只是清洁作业，而是住宿运营的稳定。", facilityTitle: "不仅是酒店・民宿，也支持多种住宿设施。", facilityLead: "以大阪和关西为中心，通过日本全国合作网络，根据现场建立清洁体制。", qualityTitle: "从照片到完成共享，让清洁质量可视化。", cta: "咨询服务内容" },
     strengths: [{ title: "日本全国合作网络", body: "虽然是从大阪出发的小公司，但通过专业清洁人员和合作伙伴网络，对应日本各地现场。" }, { title: "以期限遵守为前提", body: "为了不影响住宿运营，我们从清洁完成时间倒推安排现场。" }, { title: "稳定质量", body: "标准化照片、检查和完成报告，打造不依赖单个担当者的质量。" }, { title: "大型公司级DX运营", body: "即使核心团队小，也能通过LINE官方、自动报告和现场管理实现准确运营。" }],
@@ -209,6 +287,12 @@ export const siteContent = {
     privacyPage: { badge: "隐私政策", title: "隐私政策", lead: "株式会社NKTN会妥善处理通过咨询和业务联系取得的个人信息。", sections: [["1. 个人信息的利用目的", "用于咨询、报价、业务联系、服务提供、招聘和合作公司协作所需范围。"], ["2. 个人信息管理", "妥善管理取得的个人信息，防止泄漏、丢失和篡改。"], ["3. 第三方提供", "除法律规定外，未经本人同意不会向第三方提供个人信息。"], ["4. 外部服务使用", "可能使用LINE、邮件、电话等外部服务support咨询。"], ["5. 公开、修改、删除", "本人提出公开、修改、删除等请求时，将依法适当support。"], ["6. 咨询窗口", "有关个人信息处理，请联系 info@bawui.com。"]] },
     blogPage: { badge: "博客", title: "让清洁质量和住宿运营更容易理解。", lead: "NKTN从现场视角发布酒店・民宿清洁、照片报告和现场管理DX的信息。", contactTitle: "如果您为清洁质量烦恼，可以根据现场咨询。", contactLead: "确认房间数、地区、入住时间和报告方式，提出合理的清洁体制和质量管理流程。" },
     blogPosts: [{ slug: "stable-cleaning-quality", title: "酒店・民宿清洁中“质量稳定的公司”共有的3点", category: "质量管理", date: "2026.05.20", readTime: "4 min read", image: sharedImages.room, excerpt: "清洁质量不仅靠员工努力，也靠检查项目、照片报告和完成共享的机制稳定。", points: ["事前决定清洁范围和检查项目", "用清洁后照片共享状态", "及时报告完成时间和问题"], sections: [["质量靠“人”和“机制”稳定", "酒店・民宿清洁中，即使担当者变化，也需要保持一定质量。事前确定清洁范围、备品确认、照片报告和完成共享，可减少遗漏和沟通缺失。"], ["照片报告带来安心", "远程管理设施时，清洁后照片是重要判断材料。共享床、水回り、备品和入口状态，便于确认是否能迎接下一位客人。"], ["完成时间共享避免运营停滞", "无法判断清洁是否完成，会导致入住准备延迟。及时共享完成时间和问题非常重要。"]], evidence: "NKTN重视清洁后检查、照片报告和完成共享，并按现场整理必要检查项目。" }, { slug: "minpaku-water-area-check", title: "减少民宿投诉的水回り检查", category: "民宿清洁", date: "2026.05.20", readTime: "3 min read", image: sharedImages.bathroom, excerpt: "浴室、厕所和洗面台会大大影响客人印象。外观之外，气味、水滴和备品余量也很重要。", points: ["确认浴室头发、水滴和排水口", "避免厕所周边和地面遗漏", "整理毛巾、纸品和备品"], sections: [["水回り容易直接影响评价", "浴室、厕所、洗面台是客人强烈判断清洁感的地方。细小头发、水滴或气味都可能降低印象。"], ["不仅看外观，也确认备品", "厕纸、毛巾、备品和清洁剂不足会造成住宿不满。清洁同时确认备品可减少运营返工。"], ["用照片留下清洁后状态", "留下水回り照片，管理者可确认清洁后状态，发生咨询时也更容易整理情况。"]], evidence: "在实际现场，我们建议将浴室、厕所和洗面台作为重点检查项目。" }, { slug: "photo-report-cleaning-company", title: "为什么应选择有照片报告的清洁公司", category: "Cleaning DX", date: "2026.05.20", readTime: "4 min read", image: sharedImages.report, excerpt: "远程管理住宿设施时，照片报告能提供安心，减少管理者、员工和客户之间的认知差异。", points: ["远程确认清洁后状态", "问题发生时更快掌握原因", "用于员工教育和质量改善"], sections: [["远程管理需要“看得见的报告”", "管理者无法到现场时，需要确认清洁是否真正完成的方式。照片报告能让状态可视化。"], ["问题确认更快", "客人咨询时，清洁后照片有助于确认情况、判断原因和防止再次发生。"], ["照片成为质量改善数据", "照片报告不仅是报告，也能帮助发现常见遗漏并改善检查项目和员工培训。"]], evidence: "NKTN活用LINE联动、照片报告和完成共享，让管理者更容易掌握现场情况。" }, { slug: "busy-season-cleaning-operations", title: "旺季也能运转清洁所需的现场设计", category: "现场运营", date: "2026.05.20", readTime: "5 min read", image: sharedImages.staff, excerpt: "退房到下一次入住之间时间有限。旺季强体制需要时间设计、人力安排和报告流程。", points: ["根据房间数和清洁时间倒推人力", "提前共享可能延迟的房间", "集中完成报告"], sections: [["时间设计让现场稳定", "旺季需要在退房到入住之间的短时间内完成多个房间。根据房间数、移动时间和清洁时间倒推设计很重要。"], ["提前共享可能延迟的信息", "清洁现场会发生到达延迟、遗失物、破损、备品不足等意外。越早共享，管理者越容易support。"], ["统一报告流程", "电话、个人聊天和口头报告混在一起容易发生确认遗漏。把完成报告和照片集中到一个地方，更容易管理现场。"]], evidence: "NKTN重视结合清洁安排、进度确认和完成共享，打造旺季也不易停滞的运营。" }],
+    reviews: [
+      { score: 98, text: "我们使用他们的民宿清洁服务。清洁后的照片报告非常详细，让远程管理变得像在现场一样简单。通过LINE沟通也很迅速。", age: "30代", gender: "男性" },
+      { score: 95, text: "我们委托他们进行酒店客房清洁。铺床非常美观，员工协作顺畅，多语言支持也很棒。对他们的准时和现场纪律非常放心。", age: "40代", gender: "女性" },
+      { score: 92, text: "通过LINE发送的退房通知和免费进度看板非常方便。消除了前台与清洁团队之间的信息延迟，几乎不再出错。", age: "30代", gender: "女性" },
+      { score: 96, text: "在关西换了几家清洁公司，直到与NKTN合作。清洁质量非常稳定，团队支持也很热情，是值得长期信赖的伙伴。", age: "50代", gender: "男性" },
+    ],
     languages: ["日语", "英语", "越南语"],
   }),
   ne: makeLocale(ja, {
@@ -290,9 +374,21 @@ export const siteContent = {
   vi: makeLocale(ja, {
     meta: { title: "NKTN Inc. | Bawui Cleaning - Cleaning + DX toàn Nhật Bản", description: "Website chính thức của NKTN Inc. / Bawui Cleaning, hỗ trợ vệ sinh khách sạn, minpaku và quản lý hiện trường DX từ Osaka." },
     nav: [["Trang chủ", "/"], ["Dịch vụ", "/services"], ["Thế mạnh", "/strengths"], ["DX", "/dx"], ["Blog", "/blog"], ["Công ty", "/company"], ["Liên hệ", "/contact"]],
-    common: { lineConsult: "Tư vấn qua LINE", lineConsultLong: "Liên hệ tư vấn qua LINE", contact: "Liên hệ", viewServices: "Xem dịch vụ", readMore: "Đọc thêm", allFaq: "Xem tất cả FAQ", backBlog: "Quay lại blog", emailConsult: "Tư vấn qua email", phone: "TEL", mail: "MAIL", language: "Ngôn ngữ" },
+    common: { lineConsult: "Tư vấn qua LINE", lineConsultLong: "Liên hệ tư vấn qua LINE", contact: "Liên hệ", viewServices: "Xem dịch vụ", readMore: "Đọc thêm", allFaq: "Xem tất cả FAQ", backBlog: "Quay lại blog", emailConsult: "Tư vấn qua email", phone: "TEL", mail: "MAIL", language: "Ngôn ngữ", reason: "Lý do" },
+    topBar: {
+      commitment: "Từ Osaka Nishinari đến toàn Nhật Bản. Chuyên gia vệ sinh hỗ trợ hiện trường.",
+      hours: "Thời gian nhận: Hàng ngày 9:00〜18:00",
+      lineEstimate: "Báo giá miễn phí qua LINE",
+    },
     company: { coverage: "Toàn Nhật Bản", business: "Vệ sinh phòng khách sạn và minpaku, hỗ trợ vận hành cơ sở lưu trú, quản lý hiện trường, Cleaning DX, thương mại và kinh doanh tổng hợp", profileRows: { name: "Tên công ty", corporateNumber: "Mã số pháp nhân", established: "Thành lập", capital: "Vốn điều lệ", location: "Địa chỉ", representative: "Giám đốc đại diện", business: "Nội dung kinh doanh" }, footerLead: "Công ty Cleaning + DX đặt tại Nishinari, Osaka, hỗ trợ vệ sinh khách sạn/minpaku và quản lý hiện trường trên toàn Nhật Bản." },
-    home: { badge: "Toàn Nhật Bản / Trụ sở Osaka Nishinari / Cleaning + DX", title: "Biến vệ sinh thành\nnăng lực vận hành mạnh hơn.", lead: "NKTN Inc. (Bawui Cleaning) cung cấp dịch vụ vệ sinh phòng khách sạn, minpaku cùng giải pháp quản lý hiện trường DX từ Osaka. Chúng tôi hỗ trợ chất lượng vệ sinh, báo cáo và quản lý tiến độ bằng hệ thống thực tế, dễ vận hành.", control: "Bảng quản lý hiện trường", companyInfo: "Thông tin công ty", servicesTitle: "Không chỉ là công ty vệ sinh. Chúng tôi vận hành cả hiện trường.", worksTitle: "Hiện trường minh bạch giúp việc giao khoán an tâm hơn.", worksLead: "Từ vệ sinh khách sạn/minpaku, báo cáo ảnh đến phối hợp nhân sự. Các ví dụ này giúp hình dung cách vận hành thực tế.", strengthsTitle: "Công ty nhỏ.\nNhưng vận hành chuẩn doanh nghiệp lớn.", blogTitle: "Chúng tôi truyền đạt chất lượng vệ sinh cả bằng ngôn từ.", blogLead: "Chia sẻ góc nhìn thực tế về quản lý chất lượng, báo cáo ảnh và vận hành cơ sở lưu trú.", faqTitle: "Giải đáp ngắn gọn trước khi bạn yêu cầu dịch vụ.", dxTitle: "Kết nối bằng LINE, chứng minh bằng ảnh.", dxLead: "LINE official chatbot, thông báo OUT và gửi báo cáo ảnh tự động giúp rút ngắn liên lạc giữa quản lý, nhân viên và khách hàng." },
+    home: { badge: "Toàn Nhật Bản / Trụ sở Osaka Nishinari / Cleaning + DX", title: "Biến vệ sinh thành\nnăng lực vận hành mạnh hơn.", lead: "NKTN Inc. (Bawui Cleaning) cung cấp dịch vụ vệ sinh phòng khách sạn, minpaku cùng giải pháp quản lý hiện trường DX từ Osaka. Chúng tôi hỗ trợ chất lượng vệ sinh, báo cáo và quản lý tiến độ bằng hệ thống thực tế, dễ vận hành.", control: "Bảng quản lý hiện trường", companyInfo: "Thông tin công ty", servicesTitle: "Không chỉ là công ty vệ sinh. Chúng tôi vận hành cả hiện trường.", worksTitle: "Hiện trường minh bạch giúp việc giao khoán an tâm hơn.", worksLead: "Từ vệ sinh khách sạn/minpaku, báo cáo ảnh đến phối hợp nhân sự. Các ví dụ này giúp hình dung cách vận hành thực tế.", strengthsTitle: "Công ty nhỏ.\nNhưng vận hành chuẩn doanh nghiệp lớn.", blogTitle: "Chúng tôi truyền đạt chất lượng vệ sinh cả bằng ngôn từ.", blogLead: "Chia sẻ góc nhìn thực tế về quản lý chất lượng, báo cáo ảnh và vận hành cơ sở lưu trú.", faqTitle: "Giải đáp ngắn gọn trước khi bạn yêu cầu dịch vụ.", dxTitle: "Kết nối bằng LINE, chứng minh bằng ảnh.", dxLead: "LINE official chatbot, thông báo OUT và gửi báo cáo ảnh tự động giúp rút ngắn liên lạc giữa quản lý, nhân viên và khách hàng.",
+      freeEstimate: "Báo giá miễn phí",
+      reviewsTitle: "Đánh giá của khách hàng",
+      reviewsLead: "Đánh giá và nhận xét từ những khách hàng đã thực tế sử dụng dịch vụ.",
+      ctaBandTitle: "Tư vấn trọn gói chất lượng vệ sinh và báo cáo qua LINE.",
+      ctaBandLead: "Tư vấn & Báo giá miễn phí",
+      trustBadges: ["Báo giá miễn phí", "Báo cáo ảnh 100%", "Hỗ trợ 365 ngày"],
+    },
     services: [{ title: "Vệ sinh phòng khách sạn và minpaku", lead: "Dọn phòng nhanh, ổn định để sẵn sàng đón khách tiếp theo.", points: ["Trải giường", "Vệ sinh khu vực nước", "Kiểm tra vật dụng", "Kiểm tra sau vệ sinh"] }, { title: "Quản lý hiện trường và kiểm tra chất lượng", lead: "Hiển thị tiến độ từng phòng, ảnh và trạng thái hoàn thành.", points: ["Quản lý tiến độ", "Báo cáo ảnh", "Chuẩn hóa chất lượng", "Hỗ trợ mùa cao điểm"] }, { title: "Giải pháp Cleaning DX", lead: "LINE official chatbot và thông báo tự động giúp giảm tải công việc liên lạc.", points: ["Tích hợp LINE", "Thông báo OUT", "Gửi ảnh tự động", "Quản lý dữ liệu hiện trường"] }],
     servicesPage: { badge: "Dịch vụ", title: "Vệ sinh, quản lý và báo cáo để vận hành lưu trú ổn định.", lead: "Dành cho khách sạn và minpaku trên toàn Nhật Bản, NKTN không chỉ hỗ trợ dọn phòng mà còn hỗ trợ tiến độ hiện trường, báo cáo ảnh và kiểm tra chất lượng. Chúng tôi cung cấp sự ổn định vận hành, không chỉ nhân công vệ sinh.", facilityTitle: "Hỗ trợ nhiều loại cơ sở lưu trú, không chỉ khách sạn và minpaku.", facilityLead: "Từ Osaka, khu vực Kansai đến mạng lưới đối tác toàn Nhật Bản, chúng tôi xây dựng đội hình vệ sinh phù hợp với từng hiện trường.", qualityTitle: "Từ ảnh đến chia sẻ hoàn thành, chúng tôi làm rõ chất lượng vệ sinh.", cta: "Tư vấn về dịch vụ" },
     strengths: [{ title: "Mạng lưới đối tác toàn Nhật", body: "Dù là công ty nhỏ xuất phát từ Osaka, chúng tôi hỗ trợ nhiều hiện trường thông qua nhân viên vệ sinh chuyên nghiệp và công ty đối tác trên toàn Nhật Bản." }, { title: "Vận hành đặt thời hạn lên trước", body: "Để không làm gián đoạn vận hành lưu trú, chúng tôi lên kế hoạch ngược từ thời điểm cần hoàn tất vệ sinh." }, { title: "Chất lượng ổn định", body: "Chuẩn hóa ảnh, kiểm tra và báo cáo hoàn thành để chất lượng không phụ thuộc vào một cá nhân." }, { title: "Vận hành DX chuẩn doanh nghiệp lớn", body: "Ngay cả với đội ngũ lõi nhỏ, LINE, báo cáo tự động và quản lý hiện trường giúp chúng tôi vận hành chính xác như một công ty lớn." }],
@@ -311,6 +407,12 @@ export const siteContent = {
     privacyPage: { badge: "Chính sách bảo mật", title: "Chính sách bảo mật", lead: "NKTN Inc. xử lý phù hợp thông tin cá nhân nhận được qua liên hệ và trao đổi công việc.", sections: [["1. Mục đích sử dụng thông tin cá nhân", "Chúng tôi sử dụng thông tin cá nhân trong phạm vi cần thiết cho liên hệ, báo giá, trao đổi công việc, cung cấp dịch vụ, tuyển dụng và hợp tác đối tác."], ["2. Quản lý thông tin cá nhân", "Thông tin cá nhân đã thu thập được quản lý phù hợp để ngăn rò rỉ, mất mát hoặc sửa đổi trái phép."], ["3. Cung cấp cho bên thứ ba", "Trừ trường hợp pháp luật yêu cầu, chúng tôi không cung cấp thông tin cá nhân cho bên thứ ba nếu không có sự đồng ý của người liên quan."], ["4. Sử dụng dịch vụ bên ngoài", "Chúng tôi có thể sử dụng LINE, email, điện thoại và các dịch vụ bên ngoài khác để phản hồi liên hệ."], ["5. Công khai, chỉnh sửa và xóa", "Khi người liên quan yêu cầu công khai, chỉnh sửa hoặc xóa thông tin cá nhân, chúng tôi sẽ xử lý phù hợp theo pháp luật."], ["6. Đầu mối liên hệ", "Với câu hỏi về xử lý thông tin cá nhân, vui lòng liên hệ info@bawui.com."]] },
     blogPage: { badge: "Blog", title: "Giải thích rõ hơn về chất lượng vệ sinh và vận hành lưu trú.", lead: "NKTN chia sẻ kiến thức thực tế về vệ sinh khách sạn/minpaku, báo cáo ảnh và quản lý hiện trường DX từ góc nhìn hiện trường.", contactTitle: "Nếu bạn đang lo lắng về chất lượng vệ sinh, chúng tôi có thể đề xuất phương án phù hợp với hiện trường.", contactLead: "Chúng tôi xác nhận số phòng, khu vực, thời gian check-in và phương thức báo cáo, sau đó đề xuất cơ cấu vệ sinh và luồng quản lý chất lượng khả thi." },
     blogPosts: vietnameseBlogPosts,
+    reviews: [
+      { score: 98, text: "Chúng tôi sử dụng dịch vụ vệ sinh minpaku. Báo cáo ảnh sau dọn dẹp rất chi tiết, giúp quản lý từ xa dễ dàng như đang ở hiện trường. Liên lạc qua LINE cũng rất nhanh chóng.", age: "U30", gender: "Nam" },
+      { score: 95, text: "Ủy thác dọn phòng khách sạn. Giường được trải rất đẹp, nhân viên phối hợp trơn tru và hỗ trợ đa ngôn ngữ tốt. Cực kỳ yên tâm về tính đúng giờ và kỷ luật hiện trường.", age: "U40", gender: "Nữ" },
+      { score: 92, text: "Hệ thống thông báo checkout qua LINE và bảng tiến độ miễn phí rất tiện lợi. Giúp loại bỏ hoàn toàn độ trễ thông tin giữa lễ tân và đội dọn dẹp, hầu như không còn lỗi.", age: "U30", gender: "Nữ" },
+      { score: 96, text: "Đã đổi nhiều công ty dọn dẹp tại Kansai cho đến khi hợp tác với NKTN. Chất lượng dọn phòng cực kỳ ổn định, đội ngũ hỗ trợ nhiệt tình, là đối tác tin cậy lâu dài.", age: "U50", gender: "Nam" },
+    ],
     languages: ["Tiếng Nhật", "Tiếng Anh", "Tiếng Việt"],
   }),
 } satisfies Record<Locale, typeof ja>;

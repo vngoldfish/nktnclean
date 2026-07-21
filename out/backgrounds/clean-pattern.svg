@@ -1,0 +1,32 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#e2e8f0" stroke-width="1" opacity="0.4"/>
+    </pattern>
+    <linearGradient id="fadeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f1f5f9" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1200" height="800" fill="#f8fafc"/>
+
+  <!-- Subtle Grid -->
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <!-- Clean geometric shapes - Top right -->
+  <circle cx="1050" cy="150" r="120" fill="#e0f2fe" opacity="0.3"/>
+  <circle cx="1100" cy="200" r="80" fill="#bae6fd" opacity="0.2"/>
+
+  <!-- Bottom left accent -->
+  <circle cx="150" cy="650" r="100" fill="#dcfce7" opacity="0.25"/>
+  <circle cx="100" cy="700" r="60" fill="#bbf7d0" opacity="0.2"/>
+
+  <!-- Center subtle gradient overlay -->
+  <rect width="1200" height="800" fill="url(#fadeGrad)"/>
+
+  <!-- Professional accent lines -->
+  <line x1="0" y1="400" x2="400" y2="400" stroke="#94a3b8" stroke-width="1" opacity="0.15"/>
+  <line x1="800" y1="400" x2="1200" y2="400" stroke="#94a3b8" stroke-width="1" opacity="0.15"/>
+</svg>

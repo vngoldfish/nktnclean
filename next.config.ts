@@ -7,7 +7,10 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // (Nếu bạn đã thêm ở bước trước)
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   experimental: {
     webpackBuildWorker: false, // <-- Thêm dòng này để sửa lỗi crash bộ nhớ

@@ -40,7 +40,7 @@ const config: Config = {
           blue: "#0E7490",
           cream: "#F8FBFD",
           ink: "#1E293B",
-          orange: "#7DD3FC",
+          orange: "#F59E0B",
         },
       },
       borderRadius: {

@@ -5,6 +5,7 @@ import { ArrowRight, Building2, Mail, MessageCircle, Network, Phone, Sparkles } 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { CtaContactBand } from "@/components/home/cta-contact-band";
 import { type Locale, withLocale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { pageMetadata } from "@/lib/seo";
@@ -32,27 +33,27 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
       <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8">
         <div className="rounded-[2.5rem] bg-white p-6 shadow-soft sm:p-10 lg:p-14">
-          <Button className="h-20 w-full bg-nktn-green text-lg shadow-soft hover:bg-[#438b62] sm:h-28 sm:text-2xl" size="lg" asChild>
+          <Button className="h-20 w-full bg-[#06C755] text-lg shadow-soft hover:bg-[#05b04c] sm:h-28 sm:text-2xl" size="lg" asChild>
             <Link href={companyBase.lineUrl} aria-label="Contact NKTN on LINE"><MessageCircle className="size-8" /> {content.common.lineConsultLong}</Link>
           </Button>
           <div className="mt-5 grid gap-3 lg:grid-cols-3">
-            <Link href={companyBase.lineUrl} className="flex items-center gap-4 rounded-2xl bg-nktn-green/10 p-5 font-black text-nktn-ink transition hover:bg-nktn-green/15">
-              <MessageCircle className="size-6 text-nktn-green" />
+            <Link href={companyBase.lineUrl} className="flex items-center gap-4 rounded-2xl bg-[#06C755]/10 p-5 font-black text-nktn-ink transition hover:bg-[#06C755]/15">
+              <MessageCircle className="size-6 text-[#06C755]" />
               <span><span className="block text-xs text-nktn-ink/50">LINE ID</span>{companyBase.lineId}</span>
             </Link>
             <Link href={`mailto:${companyBase.email}`} className="flex items-center gap-4 rounded-2xl bg-nktn-cream p-5 font-black text-nktn-ink transition hover:bg-nktn-cream/70">
-              <Mail className="size-6 text-nktn-orange" />
+              <Mail className="size-6 text-amber-500" />
               <span><span className="block text-xs text-nktn-ink/50">{content.common.mail}</span>{companyBase.email}</span>
             </Link>
             <Link href={`tel:${companyBase.phone}`} className="flex items-center gap-4 rounded-2xl bg-white p-5 font-black text-nktn-ink shadow-soft ring-1 ring-nktn-ink/8 transition hover:bg-nktn-cream">
-              <Phone className="size-6 text-nktn-blue" />
+              <Phone className="size-6 text-sky-800" />
               <span><span className="block text-xs text-nktn-ink/50">{content.common.phone}</span>{companyBase.phone}</span>
             </Link>
           </div>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {content.contactPage.intents.map(([title, body], index) => {
               const Icon = icons[index];
-              return <Card key={title} className="p-6"><Icon className="size-7 text-nktn-blue" /><h2 className="mt-10 text-xl font-black">{title}</h2><p className="mt-4 leading-7 text-nktn-ink/62">{body}</p></Card>;
+              return <Card key={title} className="p-6"><Icon className="size-7 text-sky-800" /><h2 className="mt-10 text-xl font-black">{title}</h2><p className="mt-4 leading-7 text-nktn-ink/62">{body}</p></Card>;
             })}
           </div>
           <div className="mt-8 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
@@ -61,7 +62,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               <p className="mt-3 leading-8 text-nktn-ink/66">{content.contactPage.companySummary}｜{content.company.profileRows.representative} {companyBase.representative}（{companyBase.representativeKana}）</p>
               <Button className="mt-6" variant="secondary" asChild><Link href={withLocale(locale, "/services")}>{content.common.viewServices} <ArrowRight className="size-4" /></Link></Button>
             </div>
-            <div className="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-nktn-ink/8">
+            <div className="hidden sm:block rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-nktn-ink/8">
               <p className="font-black">{content.contactPage.qrTitle}</p>
               <p className="mt-3 leading-8 text-nktn-ink/66">{content.contactPage.qrLead}</p>
               <Image src="/line-qr-sample.svg" alt="NKTN LINE QR" width={520} height={520} className="mt-5 w-full rounded-3xl bg-white" />
@@ -85,6 +86,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           </div>
         </div>
       </section>
+
+      <CtaContactBand locale={locale} />
     </main>
   );
 }

@@ -1,105 +1,108 @@
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-interface BackgroundProps {
-  className?: string;
+const backgroundVariants = cva("", {
+  variants: {
+    variant: {
+      "clean-white": "bg-clean-white",
+      "fresh-blue": "bg-fresh-blue text-white",
+      "fresh-blue-light": "bg-fresh-blue-light",
+      "trust-green": "bg-trust-green",
+      "pro-gray": "bg-pro-gray",
+      "hero-premium": "bg-hero-premium text-white",
+      "service-card": "bg-service-card rounded-3xl p-8",
+      "stat-card": "bg-stat-card rounded-2xl p-6",
+      "cta-professional": "bg-cta-professional text-white",
+      "fresh-bubbles": "bg-fresh-bubbles",
+      "clean-pattern": "bg-clean-pattern",
+    },
+  },
+  defaultVariants: {
+    variant: "clean-white",
+  },
+});
+
+interface BackgroundProps
+  extends React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof backgroundVariants> {
   children?: React.ReactNode;
 }
 
-// Clean White Background - Pure & Professional
-export function CleanWhiteBackground({ className = "", children }: BackgroundProps) {
+// Unified Background component with CVA variants
+export function Background({
+  variant,
+  className,
+  children,
+  ...props
+}: BackgroundProps) {
   return (
-    <div className={`bg-clean-white ${className}`}>
+    <section
+      className={cn(backgroundVariants({ variant }), className)}
+      {...props}
+    >
       {children}
-    </div>
+    </section>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Backward-compatible named exports
+// ---------------------------------------------------------------------------
+
+// Clean White Background - Pure & Professional
+export const CleanWhiteBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="clean-white" {...props} />;
 
 // Fresh Blue Background - Trust & Cleanliness
-export function FreshBlueBackground({ className = "", children }: BackgroundProps) {
-  return (
-    <div className={`bg-fresh-blue text-white ${className}`}>
-      {children}
-    </div>
-  );
-}
+export const FreshBlueBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="fresh-blue" {...props} />;
 
 // Fresh Blue Light - Soft Professional
-export function FreshBlueLightBackground({ className = "", children }: BackgroundProps) {
-  return (
-    <div className={`bg-fresh-blue-light ${className}`}>
-      {children}
-    </div>
-  );
-}
+export const FreshBlueLightBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="fresh-blue-light" {...props} />;
 
 // Trust Green Background - Fresh & Reliable
-export function TrustGreenBackground({ className = "", children }: BackgroundProps) {
-  return (
-    <div className={`bg-trust-green ${className}`}>
-      {children}
-    </div>
-  );
-}
+export const TrustGreenBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="trust-green" {...props} />;
 
 // Professional Gray - Corporate & Serious
-export function ProGrayBackground({ className = "", children }: BackgroundProps) {
-  return (
-    <div className={`bg-pro-gray ${className}`}>
-      {children}
-    </div>
-  );
-}
+export const ProGrayBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="pro-gray" {...props} />;
 
 // Hero Premium Background
-export function HeroPremiumBackground({ className = "", children }: BackgroundProps) {
-  return (
-    <div className={`bg-hero-premium text-white ${className}`}>
-      {children}
-    </div>
-  );
-}
+export const HeroPremiumBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="hero-premium" {...props} />;
 
 // Service Card with Professional Shadow
-export function ServiceCardBackground({ className = "", children }: BackgroundProps) {
-  return (
-    <div className={`bg-service-card rounded-3xl p-8 ${className}`}>
-      {children}
-    </div>
-  );
-}
+export const ServiceCardBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="service-card" {...props} />;
 
 // Stat Card Background
-export function StatCardBackground({ className = "", children }: BackgroundProps) {
-  return (
-    <div className={`bg-stat-card rounded-2xl p-6 ${className}`}>
-      {children}
-    </div>
-  );
-}
+export const StatCardBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="stat-card" {...props} />;
 
 // CTA Professional Background
-export function CTAProfessionalBackground({ className = "", children }: BackgroundProps) {
-  return (
-    <div className={`bg-cta-professional text-white ${className}`}>
-      {children}
-    </div>
-  );
-}
+export const CTAProfessionalBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="cta-professional" {...props} />;
 
 // Fresh Bubbles Background
-export function FreshBubblesBackground({ className = "", children }: BackgroundProps) {
-  return (
-    <div className={`bg-fresh-bubbles ${className}`}>
-      {children}
-    </div>
-  );
-}
+export const FreshBubblesBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="fresh-bubbles" {...props} />;
 
 // Background with Clean Pattern
-export function CleanPatternBackground({ className = "", children }: BackgroundProps) {
-  return (
-    <div className={`bg-clean-pattern ${className}`}>
-      {children}
-    </div>
-  );
-}
+export const CleanPatternBackground = (
+  props: Omit<BackgroundProps, "variant">
+) => <Background variant="clean-pattern" {...props} />;
+
+export { backgroundVariants, type BackgroundProps };

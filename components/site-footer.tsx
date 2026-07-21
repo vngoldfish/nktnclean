@@ -11,7 +11,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   const content = getContent(locale);
 
   return (
-    <footer className="border-t border-slate-200 bg-slate-950 text-white">
+    <footer className="border-t border-slate-200 bg-sky-950 text-white">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.8fr_0.8fr_1fr]">
           <div>
@@ -67,9 +67,26 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             </Button>
           </div>
         </div>
-        <div className="mt-12 border-t border-white/10 pt-6 text-sm text-white/45">
+
+        {/* Service Areas & Facility Types */}
+        <div className="mt-10 grid gap-6 rounded-2xl bg-white/5 p-6 ring-1 ring-white/8 sm:grid-cols-2">
+          <div>
+            <p className="text-xs font-black tracking-[0.18em] text-white/45 mb-3">対応エリア / SERVICE AREA</p>
+            <p className="text-sm leading-7 text-white/60">大阪市（西成区・浪速区・中央区・北区 他）・堺市・豊中市・関西エリア全域・全国パートナー対応</p>
+          </div>
+          <div>
+            <p className="text-xs font-black tracking-[0.18em] text-white/45 mb-3">対応施設 / FACILITIES</p>
+            <div className="flex flex-wrap gap-2">
+              {content.facilityTypes.map((type) => (
+                <span key={type} className="inline-flex rounded-full bg-white/8 px-3 py-1 text-xs font-bold text-white/65 ring-1 ring-white/10">{type}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 border-t border-white/10 pt-6 text-sm text-white/45">
           <p>© {new Date().getFullYear()} 株式会社NKTN / Bawui Cleaning. All rights reserved.</p>
-          <p className="mt-2">Designed and developed by Bawui（NKTN IT Dept.）</p>
+
         </div>
       </div>
     </footer>

@@ -1,13 +1,67 @@
-<svg width="900" height="620" viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="900" height="620" rx="48" fill="#132238"/>
-  <rect x="72" y="72" width="756" height="476" rx="42" fill="#ffffff"/>
-  <rect x="118" y="122" width="280" height="330" rx="34" fill="#FFF6E8"/>
-  <rect x="152" y="168" width="212" height="34" rx="17" fill="#132238"/>
-  <rect x="152" y="232" width="156" height="22" rx="11" fill="#132238" opacity="0.18"/>
-  <rect x="152" y="278" width="188" height="22" rx="11" fill="#132238" opacity="0.18"/>
-  <rect x="152" y="324" width="124" height="22" rx="11" fill="#132238" opacity="0.18"/>
-  <rect x="482" y="128" width="226" height="280" rx="38" fill="#1D4ED8"/>
-  <text x="536" y="292" fill="#ffffff" font-family="Arial, sans-serif" font-size="88" font-weight="900">N</text>
-  <rect x="452" y="438" width="286" height="44" rx="22" fill="#4E9F70"/>
-  <text x="118" y="514" fill="#132238" font-family="Arial, sans-serif" font-size="28" font-weight="900">株式会社NKTN / Bawui Cleaning</text>
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f1f5f9"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient>
+    <linearGradient id="buildingGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1e3a5f"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Building exterior -->
+  <rect x="200" y="150" width="800" height="500" rx="20" fill="url(#buildingGrad)"/>
+
+  <!-- Windows - Grid pattern -->
+  <!-- Row 1 -->
+  <rect x="250" y="200" width="100" height="80" rx="4" fill="#60a5fa"/>
+  <rect x="370" y="200" width="100" height="80" rx="4" fill="#60a5fa"/>
+  <rect x="490" y="200" width="100" height="80" rx="4" fill="#60a5fa"/>
+  <rect x="610" y="200" width="100" height="80" rx="4" fill="#60a5fa"/>
+  <rect x="730" y="200" width="100" height="80" rx="4" fill="#60a5fa"/>
+  <rect x="850" y="200" width="100" height="80" rx="4" fill="#60a5fa"/>
+
+  <!-- Row 2 -->
+  <rect x="250" y="300" width="100" height="80" rx="4" fill="#3b82f6"/>
+  <rect x="370" y="300" width="100" height="80" rx="4" fill="#3b82f6"/>
+  <rect x="490" y="300" width="100" height="80" rx="4" fill="#3b82f6"/>
+  <rect x="610" y="300" width="100" height="80" rx="4" fill="#3b82f6"/>
+  <rect x="730" y="300" width="100" height="80" rx="4" fill="#3b82f6"/>
+  <rect x="850" y="300" width="100" height="80" rx="4" fill="#3b82f6"/>
+
+  <!-- Row 3 -->
+  <rect x="250" y="400" width="100" height="80" rx="4" fill="#1d4ed8"/>
+  <rect x="370" y="400" width="100" height="80" rx="4" fill="#1d4ed8"/>
+  <rect x="490" y="400" width="100" height="80" rx="4" fill="#1d4ed8"/>
+  <rect x="610" y="400" width="100" height="80" rx="4" fill="#1d4ed8"/>
+  <rect x="730" y="400" width="100" height="80" rx="4" fill="#1d4ed8"/>
+  <rect x="850" y="400" width="100" height="80" rx="4" fill="#1d4ed8"/>
+
+  <!-- Row 4 -->
+  <rect x="250" y="500" width="100" height="80" rx="4" fill="#1e40af"/>
+  <rect x="370" y="500" width="100" height="80" rx="4" fill="#1e40af"/>
+  <rect x="490" y="500" width="100" height="80" rx="4" fill="#1e40af"/>
+  <rect x="610" y="500" width="100" height="80" rx="4" fill="#1e40af"/>
+  <rect x="730" y="500" width="100" height="80" rx="4" fill="#1e40af"/>
+  <rect x="850" y="500" width="100" height="80" rx="4" fill="#1e40af"/>
+
+  <!-- Company sign -->
+  <rect x="400" y="80" width="400" height="60" rx="10" fill="#fbbf24"/>
+  <text x="600" y="120" fill="#1e3a5f" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">株式会社NKTN</text>
+
+  <!-- Logo badge -->
+  <circle cx="600" cy="650" r="50" fill="#22c55e"/>
+  <text x="600" y="660" fill="white" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">NKTN</text>
+
+  <!-- Quality badges -->
+  <circle cx="300" cy="650" r="35" fill="#3b82f6"/>
+  <text x="300" y="657" fill="white" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">ISO</text>
+
+  <circle cx="900" cy="650" r="35" fill="#8b5cf6"/>
+  <text x="900" y="657" fill="white" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">DX</text>
+
+  <!-- Location pin -->
+  <g>
+    <circle cx="600" cy="720" r="25" fill="#ef4444"/>
+    <text x="600" y="727" fill="white" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">📍</text>
+  </g>
+  <text x="600" y="770" fill="#475569" font-family="Arial" font-size="14" text-anchor="middle">大阪市西成区 • 全国対応</text>
 </svg>

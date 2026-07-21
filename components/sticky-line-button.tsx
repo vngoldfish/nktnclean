@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Phone } from "lucide-react";
 
 import { type Locale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
@@ -8,14 +8,23 @@ export function StickyLineButton({ locale }: { locale: Locale }) {
   const content = getContent(locale);
 
   return (
-    <Link
-      href={companyBase.lineUrl}
-      aria-label={content.common.lineConsultLong}
-      data-analytics="line_sticky_click"
-      className="fixed inset-x-4 bottom-4 z-50 flex items-center justify-center gap-2 rounded-full bg-nktn-green px-5 py-4 text-sm font-black text-white shadow-2xl ring-1 ring-white/40 transition hover:bg-[#438b62] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nktn-blue focus-visible:ring-offset-2 sm:hidden"
-    >
-      <MessageCircle className="size-5" />
-      {content.common.lineConsultLong}
-    </Link>
+    <div className="fixed inset-x-0 bottom-0 z-50 flex p-3 gap-2 bg-white/95 backdrop-blur-xl border-t border-slate-200 sm:hidden">
+      <Link
+        href={`tel:${companyBase.phone}`}
+        data-analytics="phone_sticky_click"
+        className="flex-1 flex items-center justify-center gap-2 rounded-full bg-sky-800 py-3.5 text-sm font-black text-white shadow-lg transition hover:bg-sky-700"
+      >
+        <Phone className="size-5" />
+        {content.common.phone}
+      </Link>
+      <Link
+        href={companyBase.lineUrl}
+        data-analytics="line_sticky_click"
+        className="flex-1 flex items-center justify-center gap-2 rounded-full bg-[#06C755] py-3.5 text-sm font-black text-white shadow-lg transition hover:bg-[#05b04c]"
+      >
+        <MessageCircle className="size-5" />
+        {content.common.lineConsult}
+      </Link>
+    </div>
   );
 }

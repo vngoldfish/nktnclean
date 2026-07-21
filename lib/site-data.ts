@@ -22,7 +22,7 @@ export const company = {
   phone: "080-8029-3713",
   email: "info@bawui.com",
   lineId: "@628qznny",
-  lineUrl: "https://line.me/R/ti/p/@628qznny",
+  lineUrl: "https://line.me/R/oaMessage/%40628qznny/",
 };
 
 export const services = [

@@ -1,11 +1,19 @@
 import type { Metadata, Viewport } from "next";
 
+import { defaultLocale, locales } from "@/lib/i18n";
 import { siteUrl } from "@/lib/seo";
 
 import "./global.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+    languages: {
+      ...Object.fromEntries(locales.map((locale) => [locale, `/${locale}/`])),
+      "x-default": `/${defaultLocale}/`,
+    },
+  },
   title: {
     default: "株式会社NKTN | Bawui Cleaning - 全国対応のCleaning + DX",
     template: "%s | 株式会社NKTN / Bawui Cleaning",
