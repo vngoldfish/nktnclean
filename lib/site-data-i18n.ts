@@ -9,7 +9,7 @@ export const companyBase = {
   established: "2024年5月7日",
   capital: "900万円",
   corporateNumber: "7120001264848",
-  phone: "080-8029-3713",
+  phone: "06-7777-9056",
   email: "info@bawui.com",
   lineId: "@628qznny",
   lineUrl: "https://line.me/R/oaMessage/%40628qznny/",
