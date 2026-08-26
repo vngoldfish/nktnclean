@@ -511,29 +511,6 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
           </div>
         </div>
 
-        {/* Visual Proof Gallery */}
-        <div id="comparison-visual-proof" className="comparison-visual-proof mt-8 grid grid-cols-3 gap-2 sm:gap-4">
-          {[
-            { src: "/works/photo-room.jpg", caption: locale === "ja" ? "仕上がり客室" : locale === "vi" ? "Phòng hoàn thiện" : "Finished Room" },
-            { src: "/works/photo-bathroom.jpg", caption: locale === "ja" ? "水回り清掃" : locale === "vi" ? "Vệ sinh chuyên sâu" : "Bathroom Deep Clean" },
-            { src: "/works/photo-report.jpg", caption: locale === "ja" ? "写真報告" : locale === "vi" ? "Báo cáo ảnh 100%" : "Photo Report" },
-          ].map((item) => (
-            <div key={item.src} className="proof-photo-card relative aspect-[3/2] rounded-xl overflow-hidden shadow-xs group">
-              <Image
-                src={item.src}
-                alt={item.caption}
-                fill
-                className="proof-photo-image object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 33vw, 250px"
-              />
-              <div className="proof-photo-overlay absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
-              <span className="proof-photo-caption absolute bottom-2 sm:bottom-2.5 left-2 sm:left-3 text-[10px] sm:text-[11px] font-black text-white drop-shadow-md">
-                {item.caption}
-              </span>
-            </div>
-          ))}
-        </div>
-
         {/* Trust summary box below table */}
         <div id="comparison-trust-summary" className="comparison-trust-summary mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="trust-box flex items-center gap-3 rounded-2xl bg-white p-4 border border-slate-200/80 shadow-soft">

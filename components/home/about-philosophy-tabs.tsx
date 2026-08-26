@@ -59,28 +59,9 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
           </p>
         </div>
 
-        {/* 2. Photo Collage Grid (2x2) */}
-        <div id="about-photo-collage" className="about-photo-collage grid grid-cols-2 gap-3 sm:gap-4 mb-12 max-w-4xl mx-auto">
-          {collageImages.map((img, i) => (
-            <div
-              key={img.src}
-              className={`collage-item relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm group animate-fade-in-up stagger-${i + 1}`}
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="collage-image object-cover transition-transform duration-700 group-hover:scale-110"
-                sizes="(max-width: 768px) 50vw, 400px"
-              />
-              <div className="collage-overlay absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent group-hover:from-slate-900/50 transition-all duration-500" />
-            </div>
-          ))}
-        </div>
-
-        {/* 3. SuperHotelClean Style Tab Selector (PHILOSOPHY / PROFILE) */}
+        {/* 2. SuperHotelClean Style Tab Selector (PHILOSOPHY / PROFILE) */}
         <div id="about-tab-nav" className="about-tab-nav flex justify-center mb-8">
-          <div role="tablist" aria-label="About NKTN" className="tab-switcher-pill inline-flex rounded-lg bg-slate-200/80 p-1">
+          <div role="tablist" aria-label="About NKTN" className="tab-switcher-pill inline-flex rounded-full bg-slate-200/80 p-1 shadow-inner">
             <button
               id="tab-philosophy"
               role="tab"

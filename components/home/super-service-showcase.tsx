@@ -144,7 +144,7 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
               </div>
 
               {/* Bottom Action Arrow */}
-              <div className="service-card-footer p-5 pt-0 flex items-center text-xs font-black text-[#00729F] group-hover:translate-x-1 transition-transform">
+              <div className="service-card-footer p-4 pt-0 flex items-center text-xs font-black text-[#00729F] group-hover:translate-x-1 transition-transform">
                 <span>{locale === "ja" ? "詳しく見る" : locale === "vi" ? "Chi tiết" : "Learn More"}</span>
                 <ChevronRight className="size-4 ml-0.5" />
               </div>
@@ -152,33 +152,11 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
           ))}
         </div>
 
-        {/* Lifestyle Image Strip */}
-        <div id="services-lifestyle-strip" className="services-lifestyle-strip mt-14">
-          <div className="lifestyle-strip-grid grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            {lifestyleStrip.map((photo) => (
-              <div key={photo.src} className="lifestyle-item flex flex-col items-center">
-                <div className="lifestyle-photo-wrapper relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-sm">
-                  <Image
-                    src={photo.src}
-                    alt={photo.caption}
-                    fill
-                    className="lifestyle-image object-cover"
-                    sizes="(max-width: 640px) 50vw, 25vw"
-                  />
-                </div>
-                <p className="lifestyle-caption mt-2 text-[11px] sm:text-xs font-bold text-slate-500 text-center">
-                  {photo.caption}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Bottom Button */}
-        <div id="services-bottom-cta" className="services-bottom-cta mt-12 text-center">
+        <div id="services-bottom-cta" className="services-bottom-cta mt-8 text-center">
           <Link
             href={withLocale(locale, "/services")}
-            className="services-btn-all inline-flex items-center gap-2 rounded-lg bg-[#00729F] hover:bg-[#00466D] px-8 py-3.5 text-xs sm:text-sm font-black text-white transition shadow-sm"
+            className="services-btn-all inline-flex items-center gap-2 rounded-full bg-[#00729F] hover:bg-[#00466D] px-8 py-3 text-xs sm:text-sm font-black text-white transition shadow-sm"
           >
             <span>{locale === "ja" ? "事業内容・サービス一覧を見る" : locale === "vi" ? "Xem tất cả dịch vụ" : "View All Services"}</span>
             <ArrowRight className="size-4" />
