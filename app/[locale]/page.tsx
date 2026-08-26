@@ -37,14 +37,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <ComparisonTable locale={locale} />
       </div>
 
-      {/* 6. Professional Equipment & Chemicals Standards */}
-      <div id="section-wrapper-equipment" className="section-wrapper-equipment reveal-on-scroll">
-        <PartnerEquipmentBand locale={locale} />
-      </div>
-
-      {/* 7. Multinational Workforce, Training & Career Opportunities */}
+      {/* 6. Multinational Workforce, Training & Career Opportunities */}
       <div id="section-wrapper-workforce" className="section-wrapper-workforce reveal-on-scroll">
         <GlobalWorkCulture locale={locale} />
+      </div>
+
+      {/* 7. Professional Equipment & Chemicals Standards */}
+      <div id="section-wrapper-equipment" className="section-wrapper-equipment reveal-on-scroll">
+        <PartnerEquipmentBand locale={locale} />
       </div>
 
       {/* 8. Japanese Corporate FAQ Accordion */}
