@@ -8,9 +8,9 @@ export function CtaContactBand({ locale }: { locale: Locale }) {
   const content = getContent(locale);
 
   return (
-    <section className="bg-gradient-to-b from-sky-900 via-sky-800 to-sky-900 py-12 px-5 sm:px-8">
+    <section className="bg-[#0F172A] py-12 px-5 sm:px-8 border-t border-slate-800">
       <div className="mx-auto max-w-4xl text-center">
-        <p className="text-amber-400 text-sm font-bold tracking-widest mb-3">
+        <p className="text-sky-300 text-sm font-bold tracking-widest mb-3">
           {content.home.ctaBandLead}
         </p>
         <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-8">

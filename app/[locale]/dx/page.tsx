@@ -43,7 +43,7 @@ export default async function DxPage({ params }: { params: Promise<{ locale: Loc
           <CtaContactBand locale={locale} />
         </div>
 
-        <div className="mt-8 rounded-[2.5rem] bg-gradient-to-br from-sky-800 to-sky-900 p-8 text-white lg:p-12">
+        <div className="mt-8 rounded-[2.5rem] bg-[#0F172A] p-8 text-white lg:p-12">
           <p className="text-sky-300 text-sm font-black tracking-widest mb-3">SMART FIELD MANAGEMENT</p>
           <h2 className="mt-6 max-w-4xl text-3xl font-black tracking-[-0.04em] sm:text-5xl">{content.dxPage.smartTitle}</h2>
           <p className="mt-6 max-w-2xl leading-8 text-white/68">{content.dxPage.smartLead}</p>

@@ -105,7 +105,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </div>
 
         {/* Quality Flow */}
-        <div className="mt-16 rounded-[2.5rem] bg-gradient-to-b from-sky-900 via-sky-800 to-sky-900 p-7 text-white shadow-soft lg:p-10">
+        <div className="mt-16 rounded-[2.5rem] bg-[#0F172A] p-7 text-white shadow-soft lg:p-10">
           <p className="text-sky-300 text-sm font-black tracking-widest mb-3">QUALITY FLOW</p>
           <h2 className="mt-6 max-w-4xl text-4xl font-black tracking-[-0.04em]">{content.servicesPage.qualityTitle}</h2>
           <div className="mt-10 grid gap-4 lg:grid-cols-4">

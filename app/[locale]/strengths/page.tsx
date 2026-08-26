@@ -19,7 +19,7 @@ export default async function StrengthsPage({ params }: { params: Promise<{ loca
 
   return (
     <main className="site-shell">
-      <section className="mx-5 my-10 rounded-[2.5rem] bg-gradient-to-br from-sky-800 to-sky-900 px-5 py-20 text-white sm:mx-8 sm:px-8 lg:rounded-[4rem] lg:py-28">
+      <section className="mx-5 my-10 rounded-[2.5rem] bg-[#0F172A] px-5 py-20 text-white sm:mx-8 sm:px-8 lg:rounded-[4rem] lg:py-28">
         <div className="mx-auto max-w-7xl">
           <p className="text-sky-300 text-sm font-black tracking-widest mb-3">{content.strengthsPage.badge}</p>
           <h1 className="max-w-6xl text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] sm:text-6xl">{content.strengthsPage.title}</h1>

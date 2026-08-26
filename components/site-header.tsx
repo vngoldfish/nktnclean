@@ -44,7 +44,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   return (
     <div className="sticky top-0 z-50 shadow-sm">
       {/* Top info bar */}
-      <div className="bg-gradient-to-r from-sky-950 via-sky-900 to-sky-950 text-white text-xs sm:text-sm border-b border-white/5">
+      <div className="bg-[#0B0F19] text-white text-xs sm:text-sm border-b border-white/5">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-2.5 sm:px-8">
           <div className="flex items-center gap-3 sm:gap-5">
             <span className="hidden sm:inline text-white/70">{content.topBar.commitment}</span>

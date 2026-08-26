@@ -254,11 +254,11 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
             </Card>
           ))}
         </div>
-        <div className="mt-10 rounded-[2.5rem] bg-gradient-to-br from-sky-800 to-sky-900 p-7 text-white shadow-soft lg:p-10">
-          <p className="text-sm font-black tracking-[0.2em] text-amber-400">{bottomCard.subtitle}</p>
-          <h2 className="mt-5 text-3xl font-black tracking-[-0.04em]">{bottomCard.title}</h2>
+        <div className="mt-10 rounded-[2.5rem] bg-[#0F172A] p-7 text-white shadow-soft lg:p-10">
+          <p className="text-sm font-bold tracking-[0.2em] text-sky-300">{bottomCard.subtitle}</p>
+          <h2 className="mt-5 text-3xl font-extrabold tracking-tight">{bottomCard.title}</h2>
           <p className="mt-5 max-w-3xl leading-8 text-white/70">{bottomCard.desc}</p>
-          <Button className="mt-8 bg-[#06C755] hover:bg-[#05b04c] text-white" asChild><Link href={companyBase.lineUrl} data-analytics="line_landing_bottom_click">{content.common.lineConsultLong}<ArrowRight className="size-4" /></Link></Button>
+          <Button className="mt-8 bg-[#06C755] hover:bg-[#05b04c] text-white rounded-xl" asChild><Link href={companyBase.lineUrl} data-analytics="line_landing_bottom_click">{content.common.lineConsultLong}<ArrowRight className="size-4" /></Link></Button>
         </div>
       </section>
 
