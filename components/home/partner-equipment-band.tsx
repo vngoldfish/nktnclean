@@ -33,16 +33,16 @@ export function PartnerEquipmentBand({ locale }: PartnerEquipmentBandProps) {
 
   const photoStrip = [
     {
-      src: "/works/photo-tools.jpg",
-      caption: locale === "ja" ? "プロ仕様の清掃機材" : locale === "vi" ? "Thiết bị vệ sinh chuyên nghiệp" : "Professional Equipment",
+      src: "/works/photo-cleaning-cart.jpg",
+      caption: locale === "ja" ? "プロ仕様ホテル専用カート" : locale === "vi" ? "Xe đẩy & Dụng cụ chuyên dụng" : "Hotel Pro Equipment",
     },
     {
-      src: "/works/photo-bathroom.jpg",
-      caption: locale === "ja" ? "輝く仕上がり" : locale === "vi" ? "Kết quả sáng bóng" : "Sparkling Results",
+      src: "/works/photo-water-mirror.jpg",
+      caption: locale === "ja" ? "水回り鏡面仕上げ" : locale === "vi" ? "Đánh bóng buồng tắm sáng bóng" : "Sparkling Bathroom Polish",
     },
     {
-      src: "/works/photo-room.jpg",
-      caption: locale === "ja" ? "完成された客室" : locale === "vi" ? "Phòng hoàn thiện" : "Finished Room",
+      src: "/works/photo-minpaku-living.jpg",
+      caption: locale === "ja" ? "完成されたゲスト空間" : locale === "vi" ? "Không gian lưu trú hoàn thiện" : "Guest-Ready Property",
     },
   ];
 

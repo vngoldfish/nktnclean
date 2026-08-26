@@ -29,7 +29,7 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
         : locale === "vi"
         ? "Tinh thần hiếu khách Omoiyari 'Quét - Lau - Đánh bóng' bảo vệ đánh giá 5 sao. Báo cáo hình ảnh mọi ngóc ngách và quy trình kiểm định 2 lớp."
         : "Hospitality craftsmanship protecting 5-star guest reviews. Full-room photo inspection and dual supervisor audits across Osaka & Kansai.",
-      image: "/works/photo-room.jpg",
+      image: "/works/photo-bed-making.jpg",
       navCatch: locale === "ja" ? "ベッドメイキング\nホテル・民泊客室清掃" : "Bed Making & Hotel Turnover",
       actionText: locale === "ja" ? "ホテル・民泊清掃のご相談" : "Hospitality Inquiries",
       actionHref: "/services",
@@ -47,7 +47,7 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
         : locale === "vi"
         ? "Gửi ảnh nghiệm thu sắc nét và kiểm kê đồ dùng qua LINE ngay khi hoàn tất. Đội kiểm định 2 lớp đảm bảo không bao giờ sót lỗi."
         : "High-resolution photos and inventory reports sent to LINE instantly upon completion. Dual supervisor inspections guarantee zero errors.",
-      image: "/works/photo-report.jpg",
+      image: "/works/photo-inspector-audit.jpg",
       navCatch: locale === "ja" ? "LINE写真報告\n二重検品・遠隔管理" : "LINE Photo Reports & Audit",
       actionText: locale === "ja" ? "DX報告・管理の流れを見る" : locale === "vi" ? "Xem quy trình báo cáo DX" : "View DX Operations",
       actionHref: "/dx",
@@ -65,7 +65,7 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
         : locale === "vi"
         ? "Đội ngũ nhân sự chuyên trách, giao tiếp đa ngôn ngữ (Nhật, Anh, Việt, Trung), được đào tạo bài bản quy trình vệ sinh tiêu chuẩn."
         : "Certified multilingual operations team upholding strict hotel standards with fluent Japanese, English, and Vietnamese coordination.",
-      image: "/works/photo-staff.jpg",
+      image: "/works/photo-training-session.jpg",
       navCatch: locale === "ja" ? "グローバル人材\n専任スタッフと社内研修" : "Multinational Workforce",
       actionText: locale === "ja" ? "企業体制・研修制度を見る" : "About Our Team",
       actionHref: "/company",

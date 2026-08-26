@@ -14,7 +14,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       title: "Home",
       sub: locale === "ja" ? "トップページ" : "Home",
       href: "/",
-      image: "/works/photo-room.jpg",
+      image: "/works/photo-minpaku-living.jpg",
     },
     {
       title: "Company",
@@ -26,13 +26,13 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       title: "Service",
       sub: locale === "ja" ? "事業内容・清掃品目" : "Services",
       href: "/services",
-      image: "/works/photo-bathroom.jpg",
+      image: "/works/photo-bed-making.jpg",
     },
     {
       title: "Contact",
       sub: locale === "ja" ? "お問い合わせ・お見積もり" : "Contact",
       href: "/contact",
-      image: "/works/photo-staff.jpg",
+      image: "/works/photo-training-session.jpg",
     },
   ];
 

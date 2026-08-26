@@ -19,7 +19,7 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
         : locale === "vi" 
         ? "Bọc nệm trải giường chuẩn khách sạn Omoiyari, đánh bóng nhà tắm, bổ sung đầy đủ đồ dùng trước giờ check-in." 
         : "Hotel-grade room turnovers with crisp bed making, pristine bathroom polish, and amenity replenishment.",
-      image: "/works/photo-room.jpg",
+      image: "/works/photo-bed-making.jpg",
       icon: BedDouble,
     },
     {
@@ -31,7 +31,7 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
         : locale === "vi"
         ? "Dọn dẹp sau khi khách check-out, giặt sấy drap nệm, thu gom rác và kiểm tra đồ thất lạc, hỗ trợ chủ nhà vận hành dễ dàng."
         : "Comprehensive vacation rental turnovers: linen washing, trash removal, damage checks, and guest-ready styling.",
-      image: "/works/photo-staff.jpg",
+      image: "/works/photo-minpaku-tatami.jpg",
       icon: HomeIcon,
     },
     {
@@ -43,7 +43,7 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
         : locale === "vi"
         ? "Gửi ảnh nghiệm thu sắc nét và kiểm kê đồ dùng qua LINE ngay khi hoàn tất. Kiểm định 2 lớp đảm bảo chất lượng từ xa."
         : "Instant high-resolution photo proof and inventory alerts sent via LINE with dual supervisor quality inspections.",
-      image: "/works/photo-report.jpg",
+      image: "/works/photo-inspector-audit.jpg",
       icon: Smartphone,
     },
     {
@@ -55,7 +55,7 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
         : locale === "vi"
         ? "Tẩy sạch cặn canxi, ố vàng vách kính, khử mùi hôi ẩm mốc và diệt khuẩn chuyên sâu bằng hóa chất chuyên dụng Nhật Bản."
         : "Professional scale removal, odor elimination, and deep sanitization for sparkling, damage-free bathrooms.",
-      image: "/works/photo-bathroom.jpg",
+      image: "/works/photo-water-mirror.jpg",
       icon: Sparkles,
     },
   ];

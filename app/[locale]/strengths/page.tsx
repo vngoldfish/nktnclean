@@ -32,7 +32,7 @@ export default async function StrengthsPage({ params }: { params: Promise<{ loca
         jpTitle={content.strengthsPage.title}
         lead={content.strengthsPage.lead}
         currentPathName={content.strengthsPage.badge}
-        bgImage="/works/photo-bathroom.jpg"
+        bgImage="/works/photo-inspector-audit.jpg"
       />
 
       {/* 4 Core Strengths */}

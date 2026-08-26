@@ -30,9 +30,9 @@ const facilityIcons = [Hotel, Home, Building2, Building, Layers, Key];
 const qualityIcons = [FileCheck, Brush, Camera, CheckCircle2];
 
 const serviceImages = [
-  "/works/photo-room.jpg",
-  "/works/photo-staff.jpg",
-  "/works/photo-room.jpg",
+  "/works/photo-bed-making.jpg",
+  "/works/photo-minpaku-tatami.jpg",
+  "/works/photo-inspector-audit.jpg",
 ];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
@@ -68,7 +68,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           ? "Từ dọn buồng phòng & trải giường khách sạn, đến vệ sinh trọn gói minpaku/Airbnb, báo cáo ảnh LINE tức thì và kiểm định 2 lớp."
           : "Hotel & vacation rental room turnovers, smart LINE photo reports, and standardized quality operations."}
         currentPathName={content.nav[1][0] || "Services"}
-        bgImage="/works/photo-room.jpg"
+        bgImage="/works/photo-bed-making.jpg"
       />
 
       {/* 2. Core Services Detail List */}

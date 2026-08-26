@@ -30,7 +30,7 @@ export function GlobalWorkCulture({ locale }: GlobalWorkCultureProps) {
           {/* Large Photo */}
           <div className="workforce-photo-wrapper relative aspect-[16/9] rounded-2xl overflow-hidden shadow-md">
             <Image
-              src="/works/photo-staff.jpg"
+              src="/works/photo-training-session.jpg"
               alt="NKTN Global Team"
               fill
               className="workforce-photo-image object-cover"

@@ -143,10 +143,10 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
           {/* Visual Gallery Strip */}
           <div id="company-gallery-strip" className="company-gallery-strip lg:col-span-12 mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { src: "/works/photo-room.jpg", caption: locale === "ja" ? "客室清掃" : locale === "vi" ? "Vệ sinh buồng phòng" : "Room Cleaning" },
-              { src: "/works/photo-bathroom.jpg", caption: locale === "ja" ? "水回り" : locale === "vi" ? "Khu vực vệ sinh" : "Water Area" },
-              { src: "/works/photo-tools.jpg", caption: locale === "ja" ? "専用機材" : locale === "vi" ? "Thiết bị chuyên dụng" : "Pro Equipment" },
-              { src: "/works/photo-staff.jpg", caption: locale === "ja" ? "研修風景" : locale === "vi" ? "Đào tạo nhân sự" : "Training" },
+              { src: "/works/photo-bed-making.jpg", caption: locale === "ja" ? "客室清掃・ベッドメイク" : locale === "vi" ? "Vệ sinh & Trải giường" : "Bed Making" },
+              { src: "/works/photo-minpaku-tatami.jpg", caption: locale === "ja" ? "民泊和室美装" : locale === "vi" ? "Vệ sinh Minpaku" : "Minpaku Care" },
+              { src: "/works/photo-water-mirror.jpg", caption: locale === "ja" ? "水回り鏡面仕上げ" : locale === "vi" ? "Buồng tắm sáng bóng" : "Water Area" },
+              { src: "/works/photo-cleaning-cart.jpg", caption: locale === "ja" ? "専用機材・カート" : locale === "vi" ? "Thiết bị & Xe đẩy" : "Pro Trolley" },
             ].map((item, idx) => (
               <div key={item.src} id={`company-gallery-${idx + 1}`} className="gallery-photo-card relative aspect-[4/3] rounded-xl overflow-hidden shadow-xs group">
                 <Image src={item.src} alt={item.caption} fill className="gallery-photo-image object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 50vw, 25vw" />

@@ -32,7 +32,7 @@ export default async function FaqPage({ params }: { params: Promise<{ locale: Lo
         jpTitle={content.faqPage.title}
         lead={content.faqPage.lead}
         currentPathName={content.faqPage.badge}
-        bgImage="/works/photo-room.jpg"
+        bgImage="/works/photo-linen-supply.jpg"
       />
 
       {/* Main FAQ Content */}
