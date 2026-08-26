@@ -23,19 +23,22 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
   ];
 
   return (
-    <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
-      <div className="mx-auto max-w-6xl">
+    <section
+      id="about-philosophy-section"
+      className="section-about-philosophy py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80"
+    >
+      <div className="about-container mx-auto max-w-6xl">
         
         {/* 1. Header with Mincho Serif */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className="font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
+        <div id="about-header" className="about-header text-center max-w-3xl mx-auto mb-14">
+          <p className="about-eyebrow font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
             ABOUT US
           </p>
-          <h2 className="font-serif-jp text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
+          <h2 className="about-title font-serif-jp text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
             {locale === "ja" ? "私たちについて" : locale === "vi" ? "Về Chúng Tôi" : "About NKTN"}
           </h2>
-          <div className="mx-auto mt-3 h-0.5 w-12 bg-[#00729F]" />
-          <p className="mt-6 text-slate-600 text-sm sm:text-base leading-relaxed">
+          <div className="about-divider mx-auto mt-3 h-0.5 w-12 bg-[#00729F]" />
+          <p className="about-lead mt-6 text-slate-600 text-sm sm:text-base leading-relaxed">
             {locale === "ja" ? (
               <>
                 私たちは大阪・関西エリアを中心に、ホテル客室清掃・民泊清掃・ビルメンテナンスを展開しています。<br className="hidden sm:inline" />
@@ -57,27 +60,27 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
         </div>
 
         {/* 2. Photo Collage Grid (2x2) */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-12 max-w-4xl mx-auto">
+        <div id="about-photo-collage" className="about-photo-collage grid grid-cols-2 gap-3 sm:gap-4 mb-12 max-w-4xl mx-auto">
           {collageImages.map((img, i) => (
             <div
               key={img.src}
-              className={`relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm group animate-fade-in-up stagger-${i + 1}`}
+              className={`collage-item relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm group animate-fade-in-up stagger-${i + 1}`}
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="collage-image object-cover transition-transform duration-700 group-hover:scale-110"
                 sizes="(max-width: 768px) 50vw, 400px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent group-hover:from-slate-900/50 transition-all duration-500" />
+              <div className="collage-overlay absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent group-hover:from-slate-900/50 transition-all duration-500" />
             </div>
           ))}
         </div>
 
         {/* 3. SuperHotelClean Style Tab Selector (PHILOSOPHY / PROFILE) */}
-        <div className="flex justify-center mb-8">
-          <div role="tablist" aria-label="About NKTN" className="inline-flex rounded-lg bg-slate-200/80 p-1">
+        <div id="about-tab-nav" className="about-tab-nav flex justify-center mb-8">
+          <div role="tablist" aria-label="About NKTN" className="tab-switcher-pill inline-flex rounded-lg bg-slate-200/80 p-1">
             <button
               id="tab-philosophy"
               role="tab"
@@ -85,9 +88,9 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
               aria-selected={activeTab === "philosophy"}
               aria-controls="panel-philosophy"
               onClick={() => setActiveTab("philosophy")}
-              className={`px-8 py-3 rounded-md font-serif-jp text-xs sm:text-sm font-black transition-all duration-200 ${
+              className={`tab-btn tab-btn-philosophy px-8 py-3 rounded-md font-serif-jp text-xs sm:text-sm font-black transition-all duration-200 ${
                 activeTab === "philosophy"
-                  ? "bg-[#00729F] text-white shadow-sm"
+                  ? "is-active bg-[#00729F] text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
@@ -100,9 +103,9 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
               aria-selected={activeTab === "profile"}
               aria-controls="panel-profile"
               onClick={() => setActiveTab("profile")}
-              className={`px-8 py-3 rounded-md font-serif-jp text-xs sm:text-sm font-black transition-all duration-200 ${
+              className={`tab-btn tab-btn-profile px-8 py-3 rounded-md font-serif-jp text-xs sm:text-sm font-black transition-all duration-200 ${
                 activeTab === "profile"
-                  ? "bg-[#00729F] text-white shadow-sm"
+                  ? "is-active bg-[#00729F] text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
@@ -112,7 +115,7 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
         </div>
 
         {/* 4. Clean Split Tab Body (Exact Super Hotel Clean visual style) */}
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-10 lg:p-12 shadow-sm">
+        <div id="about-tab-body" className="about-tab-body bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-10 lg:p-12 shadow-sm">
           {activeTab === "philosophy" ? (
             <div
               id="panel-philosophy"

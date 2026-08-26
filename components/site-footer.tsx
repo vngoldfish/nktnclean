@@ -37,46 +37,48 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <footer className="border-t border-slate-200 bg-[#071224] text-white">
+    <footer id="site-footer" className="site-footer border-t border-slate-200 bg-[#071224] text-white">
       
       {/* 1. SuperHotelClean Style 4 Visual Image Banners (#footer_banner) */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 border-b border-white/10">
+      <div id="footer-visual-banners" className="footer-visual-banners grid grid-cols-2 lg:grid-cols-4 border-b border-white/10">
         {footerBanners.map((banner, idx) => (
           <Link
             key={idx}
+            id={`footer-banner-${idx + 1}`}
             href={withLocale(locale, banner.href)}
-            className="group relative h-40 sm:h-48 overflow-hidden flex items-end p-6 border-r border-b lg:border-b-0 border-white/10"
+            className="footer-banner-item group relative h-40 sm:h-48 overflow-hidden flex items-end p-6 border-r border-b lg:border-b-0 border-white/10"
           >
             <Image
               src={banner.image}
               alt={banner.title}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              className="footer-banner-image object-cover transition-transform duration-700 group-hover:scale-110"
               sizes="(max-width: 1024px) 50vw, 25vw"
             />
             {/* Dark gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-slate-900/30 group-hover:from-[#00466D]/90 transition-colors duration-300" />
+            <div className="footer-banner-overlay absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-slate-900/30 group-hover:from-[#00466D]/90 transition-colors duration-300" />
             
-            <div className="relative z-10 w-full flex items-center justify-between">
+            <div className="footer-banner-content relative z-10 w-full flex items-center justify-between">
               <div>
-                <span className="font-serif-jp text-lg sm:text-2xl font-black text-white block group-hover:text-[#19BAD7] transition-colors">
+                <span className="footer-banner-title font-serif-jp text-lg sm:text-2xl font-black text-white block group-hover:text-[#19BAD7] transition-colors">
                   {banner.title}
                 </span>
-                <span className="text-xs text-slate-300/80 font-bold block mt-0.5">
+                <span className="footer-banner-sub text-xs text-slate-300/80 font-bold block mt-0.5">
                   {banner.sub}
                 </span>
               </div>
-              <ChevronRight className="size-5 text-white/50 group-hover:text-[#19BAD7] group-hover:translate-x-1 transition-all" />
+              <ChevronRight className="footer-banner-chevron size-5 text-white/50 group-hover:text-[#19BAD7] group-hover:translate-x-1 transition-all" />
             </div>
           </Link>
         ))}
       </div>
 
       {/* 2. Main Footer Body */}
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:py-20">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.8fr_0.8fr_1fr]">
-          <div>
-            <div className="flex items-center gap-3">
+      <div id="footer-main-container" className="footer-main-container mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:py-20">
+        <div id="footer-main-grid" className="footer-main-grid grid gap-10 lg:grid-cols-[1.1fr_0.8fr_0.8fr_1fr]">
+          {/* Company Brand Column */}
+          <div id="footer-brand-col" className="footer-brand-col">
+            <div className="footer-logo-wrap flex items-center gap-3">
               <span className="grid size-12 place-items-center overflow-hidden rounded-full bg-white shadow-soft ring-1 ring-white/20">
                 <Image src="/logo.png" alt="株式会社NKTN / Bawui Cleaning" width={48} height={48} className="size-12 object-cover" />
               </span>
@@ -85,8 +87,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                 <p className="text-xs text-[#19BAD7] font-bold">{companyBase.brand}</p>
               </div>
             </div>
-            <p className="mt-6 max-w-sm leading-relaxed text-slate-300 text-xs sm:text-sm">{content.company.footerLead}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <p className="footer-lead-text mt-6 max-w-sm leading-relaxed text-slate-300 text-xs sm:text-sm">{content.company.footerLead}</p>
+            <div className="footer-lang-badges mt-5 flex flex-wrap gap-2">
               {content.languages.map((language) => (
                 <span key={language} className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-slate-200 ring-1 ring-white/15">
                   {language}
@@ -95,9 +97,10 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          <div>
+          {/* Navigation Column */}
+          <div id="footer-nav-col" className="footer-nav-col">
             <p className="text-xs font-black tracking-[0.2em] text-[#19BAD7] uppercase">NAVIGATION</p>
-            <ul className="mt-5 space-y-3">
+            <ul className="footer-nav-list mt-5 space-y-3">
               {content.nav.map(([label, href]) => (
                 <li key={href}>
                   <Link href={withLocale(locale, href)} className="text-sm font-bold text-slate-300 transition hover:text-white flex items-center gap-1.5">
@@ -121,9 +124,10 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             </ul>
           </div>
 
-          <div>
+          {/* Services Column */}
+          <div id="footer-services-col" className="footer-services-col">
             <p className="text-xs font-black tracking-[0.2em] text-[#19BAD7] uppercase">SERVICES</p>
-            <ul className="mt-5 space-y-3">
+            <ul className="footer-services-list mt-5 space-y-3">
               {content.services.map((service) => (
                 <li key={service.title} className="text-sm font-bold text-slate-300 flex items-center gap-1.5">
                   <span className="text-[#19BAD7] text-xs">›</span>
@@ -133,7 +137,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             </ul>
           </div>
 
-          <div className="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10">
+          {/* Company Profile Box */}
+          <div id="footer-company-box" className="footer-company-box rounded-3xl bg-white/5 p-6 ring-1 ring-white/10">
             <div className="flex gap-3 text-slate-300 text-xs sm:text-sm">
               <MapPin className="mt-1 size-5 shrink-0 text-[#19BAD7]" />
               <p className="leading-relaxed">
@@ -143,7 +148,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                 {content.company.profileRows.capital}：{companyBase.capital}
               </p>
             </div>
-            <div className="mt-5 space-y-3 text-xs sm:text-sm font-bold text-slate-300">
+            <div className="footer-contact-list mt-5 space-y-3 text-xs sm:text-sm font-bold text-slate-300">
               <Link href={companyBase.lineUrl} data-analytics="line_footer_click" className="flex items-center gap-3 transition hover:text-white">
                 <MessageCircle className="size-4 text-[#06C755]" /> LINE {companyBase.lineId}
               </Link>
@@ -163,7 +168,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         </div>
 
         {/* Service Areas & Facility Types */}
-        <div className="mt-10 grid gap-6 rounded-2xl bg-white/5 p-6 ring-1 ring-white/8 sm:grid-cols-2">
+        <div id="footer-area-facility" className="footer-area-facility mt-10 grid gap-6 rounded-2xl bg-white/5 p-6 ring-1 ring-white/8 sm:grid-cols-2">
           <div>
             <p className="text-xs font-black tracking-[0.18em] text-[#19BAD7] mb-2 uppercase">対応エリア / SERVICE AREA</p>
             <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
@@ -182,7 +187,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4">
+        {/* Copyright */}
+        <div id="footer-copyright" className="footer-copyright mt-10 border-t border-white/10 pt-6 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} 株式会社NKTN / Bawui Cleaning. All rights reserved.</p>
           <p className="text-[11px] text-slate-500">Super Clean Hospitality Standards</p>
         </div>

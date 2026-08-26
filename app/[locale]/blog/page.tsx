@@ -27,7 +27,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: L
   const content = getContent(locale);
 
   return (
-    <main className="site-shell">
+    <main id="blog-page-main" className="blog-page-main site-shell">
       {/* Floating Vertical Contact Buttons */}
       <FloatingContactVertical locale={locale} />
 
@@ -42,57 +42,58 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: L
       />
 
       {/* Blog Cards Grid */}
-      <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-8 sm:grid-cols-2">
+      <section id="blog-posts-section" className="section-blog-posts py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div className="blog-container mx-auto max-w-6xl">
+          <div id="blog-posts-grid" className="blog-posts-grid grid gap-8 sm:grid-cols-2">
             {content.blogPosts.map((post, index) => {
               const imageSrc = blogImageMap[post.slug] || post.image;
               return (
                 <Link
                   key={post.title}
+                  id={`blog-card-${post.slug}`}
                   href={withLocale(locale, `/blog/${post.slug}`)}
-                  className="group rounded-2xl bg-white border border-slate-200/80 overflow-hidden hover:border-[#00729F] hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                  className="blog-card group rounded-2xl bg-white border border-slate-200/80 overflow-hidden hover:border-[#00729F] hover:shadow-md transition-all duration-300 flex flex-col justify-between"
                 >
-                  <div>
+                  <div className="blog-card-body">
                     {/* Thumbnail Image */}
-                    <div className="relative h-60 w-full overflow-hidden">
+                    <div className="blog-thumbnail-wrapper relative h-60 w-full overflow-hidden">
                       <Image
                         src={imageSrc}
                         alt={post.title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="blog-thumbnail-image object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 550px"
                       />
-                      <span className="absolute top-4 left-4 rounded-md bg-[#00729F] px-3 py-1 text-xs font-black text-white shadow-xs">
+                      <span className="blog-category-badge absolute top-4 left-4 rounded-md bg-[#00729F] px-3 py-1 text-xs font-black text-white shadow-xs">
                         {post.category}
                       </span>
                     </div>
 
                     {/* Meta & Content */}
-                    <div className="p-6 sm:p-8">
-                      <div className="flex items-center gap-4 text-xs font-bold text-slate-400 mb-3">
-                        <span className="flex items-center gap-1.5">
+                    <div className="blog-content-box p-6 sm:p-8">
+                      <div className="blog-meta-row flex items-center gap-4 text-xs font-bold text-slate-400 mb-3">
+                        <span className="blog-date flex items-center gap-1.5">
                           <Calendar className="size-3.5 text-[#00729F]" />
                           {post.date}
                         </span>
-                        <span className="flex items-center gap-1.5">
+                        <span className="blog-read-time flex items-center gap-1.5">
                           <Clock className="size-3.5 text-[#00729F]" />
                           {post.readTime}
                         </span>
                       </div>
 
-                      <h2 className="font-serif-jp text-xl sm:text-2xl font-black text-slate-900 leading-snug group-hover:text-[#00729F] transition-colors mb-3">
+                      <h2 className="blog-title font-serif-jp text-xl sm:text-2xl font-black text-slate-900 leading-snug group-hover:text-[#00729F] transition-colors mb-3">
                         {post.title}
                       </h2>
 
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                      <p className="blog-excerpt text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
                         {post.excerpt}
                       </p>
                     </div>
                   </div>
 
                   {/* Read Article Action */}
-                  <div className="p-6 sm:p-8 pt-0 flex items-center text-xs font-black text-[#00729F] group-hover:translate-x-1 transition-transform">
+                  <div className="blog-action-footer p-6 sm:p-8 pt-0 flex items-center text-xs font-black text-[#00729F] group-hover:translate-x-1 transition-transform">
                     <span>{content.common.readMore}</span>
                     <ChevronRight className="size-4 ml-0.5" />
                   </div>

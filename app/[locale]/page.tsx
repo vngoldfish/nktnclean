@@ -15,7 +15,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const locale: Locale = isLocale(localeParam) ? localeParam : "ja";
 
   return (
-    <main className="site-shell overflow-hidden">
+    <main id="home-page-main" className="home-page-main site-shell overflow-hidden">
       {/* 1. Desktop Right Vertical Floating Tab & Mobile Bottom Sticky Dock */}
       <FloatingContactVertical locale={locale} />
 
@@ -23,37 +23,37 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <SuperHeroSlider locale={locale} />
 
       {/* 3. About Us & Philosophy / Profile Tabs */}
-      <div className="reveal-on-scroll">
+      <div id="section-wrapper-about" className="section-wrapper-about reveal-on-scroll">
         <AboutPhilosophyTabs locale={locale} />
       </div>
 
       {/* 4. Core Services (Bed making, Building maintenance, Smart DX, Global Staffing) */}
-      <div className="reveal-on-scroll">
+      <div id="section-wrapper-services" className="section-wrapper-services reveal-on-scroll">
         <SuperServiceShowcase locale={locale} />
       </div>
 
       {/* 5. Quality & Trust Comparison Table (NKTN vs Standard Cleaners) */}
-      <div className="reveal-on-scroll">
+      <div id="section-wrapper-comparison" className="section-wrapper-comparison reveal-on-scroll">
         <ComparisonTable locale={locale} />
       </div>
 
       {/* 6. Professional Equipment & Chemicals Standards */}
-      <div className="reveal-on-scroll">
+      <div id="section-wrapper-equipment" className="section-wrapper-equipment reveal-on-scroll">
         <PartnerEquipmentBand locale={locale} />
       </div>
 
       {/* 7. Multinational Workforce, Training & Career Opportunities */}
-      <div className="reveal-on-scroll">
+      <div id="section-wrapper-workforce" className="section-wrapper-workforce reveal-on-scroll">
         <GlobalWorkCulture locale={locale} />
       </div>
 
       {/* 8. Japanese Corporate FAQ Accordion */}
-      <div className="reveal-on-scroll">
+      <div id="section-wrapper-faq" className="section-wrapper-faq reveal-on-scroll">
         <FaqAccordion locale={locale} />
       </div>
 
       {/* 9. Final High-Converting Contact & Estimate Band */}
-      <div className="reveal-on-scroll">
+      <div id="section-wrapper-cta" className="section-wrapper-cta reveal-on-scroll">
         <CtaContactBand locale={locale} variant="dark" />
       </div>
     </main>

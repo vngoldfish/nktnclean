@@ -19,44 +19,47 @@ export function FaqAccordion({ locale }: FaqAccordionProps) {
   };
 
   return (
-    <section className="py-20 px-5 sm:px-8 bg-white border-b border-slate-200/80">
-      <div className="mx-auto max-w-4xl">
+    <section
+      id="faq-home-section"
+      className="section-faq-home py-20 px-5 sm:px-8 bg-white border-b border-slate-200/80"
+    >
+      <div className="faq-container mx-auto max-w-4xl">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className="font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
+        <div id="faq-header" className="faq-header text-center max-w-3xl mx-auto mb-14">
+          <p className="faq-eyebrow font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
             FAQ
           </p>
-          <h2 className="font-serif-jp text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
+          <h2 className="faq-title font-serif-jp text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
             {locale === "ja" ? "よくあるご質問" : locale === "vi" ? "Câu Hỏi Thường Gặp" : "Frequently Asked Questions"}
           </h2>
-          <div className="mx-auto mt-3 h-0.5 w-12 bg-[#00729F]" />
+          <div className="faq-divider mx-auto mt-3 h-0.5 w-12 bg-[#00729F]" />
         </div>
 
         {/* Japanese Corporate Accordion List */}
-        <div className="divide-y divide-slate-200/80 border-y border-slate-200/80">
+        <div id="faq-accordion-list" className="faq-accordion-list divide-y divide-slate-200/80 border-y border-slate-200/80">
           {content.faqItems.slice(0, 5).map(([question, answer], idx) => {
             const isOpen = openIdx === idx;
             const panelId = `home-faq-panel-${idx}`;
             return (
-              <div key={question} className="transition-colors">
+              <div key={question} id={`faq-item-${idx + 1}`} className="faq-item transition-colors">
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full py-5 px-3 sm:px-4 flex items-center justify-between text-left gap-4 hover:bg-slate-50 transition"
+                  className="faq-toggle-btn w-full py-5 px-3 sm:px-4 flex items-center justify-between text-left gap-4 hover:bg-slate-50 transition"
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                 >
-                  <div className="flex items-center gap-3.5 sm:gap-4">
-                    <span className="grid size-8 shrink-0 place-items-center rounded-md bg-[#00729F] text-white font-black text-xs font-serif-jp">
+                  <div className="faq-question-wrap flex items-center gap-3.5 sm:gap-4">
+                    <span className="faq-q-badge grid size-8 shrink-0 place-items-center rounded-md bg-[#00729F] text-white font-black text-xs font-serif-jp">
                       Q
                     </span>
-                    <span className="font-serif-jp text-sm sm:text-base font-black text-slate-900 leading-snug">
+                    <span className="faq-question-text font-serif-jp text-sm sm:text-base font-black text-slate-900 leading-snug">
                       {question}
                     </span>
                   </div>
                   <ChevronDown
-                    className={`size-5 text-slate-400 shrink-0 transition-transform duration-300 ${
+                    className={`faq-chevron size-5 text-slate-400 shrink-0 transition-transform duration-300 ${
                       isOpen ? "rotate-180 text-[#00729F]" : ""
                     }`}
                   />
@@ -65,14 +68,14 @@ export function FaqAccordion({ locale }: FaqAccordionProps) {
                 <div
                   id={panelId}
                   role="region"
-                  className="grid transition-[grid-template-rows] duration-300 ease-out"
+                  className="faq-answer-panel grid transition-[grid-template-rows] duration-300 ease-out"
                   style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
                 >
-                  <div className="overflow-hidden">
+                  <div className="faq-answer-inner overflow-hidden">
                     <div className="px-4 pb-6 pt-2 pl-14 sm:pl-16 text-xs sm:text-sm text-slate-600 leading-relaxed bg-slate-50/50">
                       <div className="flex items-start gap-3 animate-fade-in">
-                        <span className="font-serif-jp font-black text-amber-600 text-sm shrink-0">A.</span>
-                        <p>{answer}</p>
+                        <span className="faq-a-badge font-serif-jp font-black text-amber-600 text-sm shrink-0">A.</span>
+                        <p className="faq-answer-text">{answer}</p>
                       </div>
                     </div>
                   </div>
@@ -83,12 +86,12 @@ export function FaqAccordion({ locale }: FaqAccordionProps) {
         </div>
 
         {/* View all FAQ button */}
-        <div className="mt-10 text-center">
+        <div id="faq-bottom-cta" className="faq-bottom-cta mt-10 text-center">
           <Link
             href={withLocale(locale, "/faq")}
-            className="inline-flex items-center gap-2 rounded-lg bg-slate-100 hover:bg-slate-200 px-6 py-3 text-xs sm:text-sm font-bold text-slate-700 transition"
+            className="faq-btn-all inline-flex items-center gap-2 rounded-lg bg-slate-100 hover:bg-slate-200 px-6 py-3 text-xs sm:text-sm font-bold text-slate-700 transition"
           >
-            <span>{content.common.allFaq}</span>
+            <span>{locale === "ja" ? "よくある質問一覧を見る" : locale === "vi" ? "Xem tất cả câu hỏi" : "View All FAQs"}</span>
             <ArrowRight className="size-4" />
           </Link>
         </div>

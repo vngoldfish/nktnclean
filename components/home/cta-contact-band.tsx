@@ -83,59 +83,65 @@ export function CtaContactBand({ locale, variant = "dark" }: CtaContactBandProps
 
   // Default: Dark Premium
   return (
-    <section className="relative overflow-hidden bg-slate-950 py-16 px-5 sm:px-8 border-t border-slate-800">
+    <section
+      id="cta-contact-band-section"
+      className="section-cta-contact-band relative overflow-hidden bg-slate-950 py-16 px-5 sm:px-8 border-t border-slate-800"
+    >
       {/* Background Photo with Overlay */}
       <Image
         src="/works/photo-staff.jpg"
         alt="NKTN Cleaning Team"
         fill
-        className="object-cover opacity-20"
+        className="cta-bg-photo object-cover opacity-20"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/80 to-slate-950/90" />
+      <div className="cta-overlay-dark absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/80 to-slate-950/90" />
       {/* Glow highlight */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-sky-500/10 blur-3xl pointer-events-none" />
+      <div className="cta-glow-effect absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-sky-500/10 blur-3xl pointer-events-none" />
 
-      <div className="relative mx-auto max-w-4xl text-center">
-        <p className="text-sky-300 text-xs sm:text-sm font-black tracking-widest uppercase mb-3">
+      <div id="cta-content-container" className="cta-content-container relative mx-auto max-w-4xl text-center">
+        <p className="cta-eyebrow-lead text-sky-300 text-xs sm:text-sm font-black tracking-widest uppercase mb-3">
           {content.home.ctaBandLead}
         </p>
-        <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight mb-8">
+        <h2 className="cta-heading text-white text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight mb-8">
           {content.home.ctaBandTitle}
         </h2>
 
         {/* Giant phone number card */}
         <Link
+          id="cta-phone-card"
           href={`tel:${companyBase.phone}`}
-          className="inline-flex items-center gap-3.5 mb-6 group rounded-2xl bg-white/5 border border-white/10 px-6 py-3.5 hover:bg-white/10 transition-all"
+          className="cta-phone-card inline-flex items-center gap-3.5 mb-6 group rounded-2xl bg-white/5 border border-white/10 px-6 py-3.5 hover:bg-white/10 transition-all"
           data-analytics="phone_cta_click"
         >
-          <span className="grid size-12 sm:size-14 place-items-center rounded-full bg-amber-400 text-slate-950 shadow-md group-hover:scale-105 transition">
+          <span className="cta-phone-icon-wrap grid size-12 sm:size-14 place-items-center rounded-full bg-amber-400 text-slate-950 shadow-md group-hover:scale-105 transition">
             <Phone className="size-6 sm:size-7" />
           </span>
-          <div className="text-left">
-            <span className="block text-slate-400 text-[11px] font-bold">
+          <div className="cta-phone-text text-left">
+            <span className="cta-hours-label block text-slate-400 text-[11px] font-bold">
               {content.topBar.hours}
             </span>
-            <span className="block text-white text-2xl sm:text-4xl font-black tracking-wider">
+            <span className="cta-phone-number block text-white text-2xl sm:text-4xl font-black tracking-wider">
               {companyBase.phone}
             </span>
           </div>
         </Link>
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mt-4">
+        <div id="cta-action-buttons" className="cta-action-buttons flex flex-col sm:flex-row items-center justify-center gap-3.5 mt-4">
           <Link
+            id="cta-btn-line"
             href={companyBase.lineUrl}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#06C755] px-8 py-4 text-base font-black text-white shadow-glow-green hover:bg-[#05b04c] hover:scale-[1.02] transition-all"
+            className="cta-btn-line w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#06C755] px-8 py-4 text-base font-black text-white shadow-glow-green hover:bg-[#05b04c] hover:scale-[1.02] transition-all"
             data-analytics="line_cta_click"
           >
             <MessageCircle className="size-5" />
             {content.common.lineConsultLong}
           </Link>
           <Link
+            id="cta-btn-contact"
             href={withLocale(locale, "/contact")}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-white/10 border border-white/20 px-8 py-4 text-base font-bold text-white shadow-soft hover:bg-white/20 transition-all"
+            className="cta-btn-contact w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-white/10 border border-white/20 px-8 py-4 text-base font-bold text-white shadow-soft hover:bg-white/20 transition-all"
           >
             <FileText className="size-5" />
             {content.common.contact}

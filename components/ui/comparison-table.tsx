@@ -341,48 +341,52 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
   const t = contentMap[locale] || contentMap.ja;
 
   return (
-    <section className="relative overflow-hidden py-20 px-5 sm:px-8 bg-gradient-to-b from-white via-slate-50/50 to-white border-y border-slate-100">
-      <div className="mx-auto max-w-7xl">
+    <section
+      id="comparison-table-section"
+      className="section-comparison-table relative overflow-hidden py-20 px-5 sm:px-8 bg-gradient-to-b from-white via-slate-50/50 to-white border-y border-slate-100"
+    >
+      <div className="comparison-container mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-200/80 px-4 py-1.5 text-xs font-black tracking-widest text-sky-800 uppercase mb-4">
+        <div id="comparison-header" className="comparison-header text-center mb-16 max-w-3xl mx-auto">
+          <span className="comparison-badge inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-200/80 px-4 py-1.5 text-xs font-black tracking-widest text-sky-800 uppercase mb-4">
             <Sparkles className="size-3.5 text-sky-600" />
             {t.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+          <h2 className="comparison-title text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-tight">
             {t.title}
           </h2>
-          <p className="mt-4 text-slate-600 leading-relaxed text-sm sm:text-base">
+          <p className="comparison-lead mt-4 text-slate-600 leading-relaxed text-sm sm:text-base">
             {t.lead}
           </p>
         </div>
 
         {/* --- MOBILE VIEW: Card-based Comparison (< md screens) --- */}
-        <div className="space-y-4 md:hidden">
+        <div id="comparison-mobile-cards" className="comparison-mobile-cards space-y-4 md:hidden">
           {t.features.map((item, idx) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-slate-200/90 bg-white p-4 shadow-sm"
+              id={`comparison-card-${idx + 1}`}
+              className="comparison-card rounded-2xl border border-slate-200/90 bg-white p-4 shadow-sm"
             >
               {/* Feature Title & Description */}
-              <div className="mb-3">
-                <span className="text-[10px] font-mono font-bold text-[#00729F] uppercase tracking-wider block">
+              <div className="comparison-card-header mb-3">
+                <span className="comparison-checkpoint text-[10px] font-mono font-bold text-[#00729F] uppercase tracking-wider block">
                   CHECKPOINT 0{idx + 1}
                 </span>
-                <h4 className="font-serif-jp text-base font-black text-slate-900 leading-snug">
+                <h4 className="comparison-item-title font-serif-jp text-base font-black text-slate-900 leading-snug">
                   {item.title}
                 </h4>
                 {item.desc && (
-                  <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                  <p className="comparison-item-desc text-[11px] text-slate-500 mt-1 leading-relaxed">
                     {item.desc}
                   </p>
                 )}
               </div>
 
               {/* Side-by-side comparison cards */}
-              <div className="grid grid-cols-2 gap-2.5">
+              <div className="comparison-card-grid grid grid-cols-2 gap-2.5">
                 {/* NKTN Highlight Box */}
-                <div className="rounded-xl bg-sky-50/90 border border-sky-200/90 p-3 flex flex-col justify-between">
+                <div className="comparison-box-nktn rounded-xl bg-sky-50/90 border border-sky-200/90 p-3 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between gap-1 mb-2">
                       <span className="text-[10px] font-black text-sky-900 uppercase">
@@ -399,7 +403,7 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
                 </div>
 
                 {/* Others Box */}
-                <div className="rounded-xl bg-slate-50 border border-slate-200 p-3 flex flex-col justify-between text-slate-500">
+                <div className="comparison-box-others rounded-xl bg-slate-50 border border-slate-200 p-3 flex flex-col justify-between text-slate-500">
                   <div>
                     <div className="flex items-center justify-between gap-1 mb-2">
                       <span className="text-[10px] font-bold text-slate-500 truncate">
@@ -427,12 +431,13 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
 
         {/* --- DESKTOP VIEW: Full 3-Column Table (>= md screens) --- */}
         <div
+          id="comparison-desktop-table"
           role="table"
           aria-label={t.title}
-          className="hidden md:block rounded-3xl border border-slate-200/80 bg-white shadow-elevated overflow-hidden"
+          className="comparison-desktop-table hidden md:block rounded-3xl border border-slate-200/80 bg-white shadow-elevated overflow-hidden"
         >
           {/* Table Header Row */}
-          <div role="rowgroup">
+          <div role="rowgroup" className="comparison-table-head">
             <div role="row" className="grid grid-cols-12 bg-slate-900 text-white font-bold text-sm sm:text-base border-b border-slate-800">
               <div role="columnheader" className="col-span-4 p-5 lg:p-6 flex items-center">
                 <span className="text-slate-300 font-bold uppercase tracking-wider text-xs sm:text-sm">
@@ -455,12 +460,12 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
           </div>
 
           {/* Table Rows */}
-          <div role="rowgroup" className="divide-y divide-slate-100">
+          <div role="rowgroup" className="comparison-table-body divide-y divide-slate-100">
             {t.features.map((item, idx) => (
               <div
                 role="row"
                 key={item.title}
-                className={`grid grid-cols-12 transition-colors duration-200 hover:bg-sky-50/30 ${
+                className={`comparison-row grid grid-cols-12 transition-colors duration-200 hover:bg-sky-50/30 ${
                   idx % 2 === 1 ? "bg-slate-50/40" : "bg-white"
                 }`}
               >
@@ -507,22 +512,22 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
         </div>
 
         {/* Visual Proof Gallery */}
-        <div className="mt-8 grid grid-cols-3 gap-4">
+        <div id="comparison-visual-proof" className="comparison-visual-proof mt-8 grid grid-cols-3 gap-2 sm:gap-4">
           {[
-            { src: "/works/photo-room.jpg", caption: locale === "ja" ? "仕上がり客室" : "Finished Room" },
-            { src: "/works/photo-bathroom.jpg", caption: locale === "ja" ? "水回り清掃" : "Bathroom Deep Clean" },
-            { src: "/works/photo-report.jpg", caption: locale === "ja" ? "写真報告" : "Photo Report" },
+            { src: "/works/photo-room.jpg", caption: locale === "ja" ? "仕上がり客室" : locale === "vi" ? "Phòng hoàn thiện" : "Finished Room" },
+            { src: "/works/photo-bathroom.jpg", caption: locale === "ja" ? "水回り清掃" : locale === "vi" ? "Vệ sinh chuyên sâu" : "Bathroom Deep Clean" },
+            { src: "/works/photo-report.jpg", caption: locale === "ja" ? "写真報告" : locale === "vi" ? "Báo cáo ảnh 100%" : "Photo Report" },
           ].map((item) => (
-            <div key={item.src} className="relative aspect-[3/2] rounded-xl overflow-hidden shadow-xs group">
+            <div key={item.src} className="proof-photo-card relative aspect-[3/2] rounded-xl overflow-hidden shadow-xs group">
               <Image
                 src={item.src}
                 alt={item.caption}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="proof-photo-image object-cover transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 768px) 33vw, 250px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
-              <span className="absolute bottom-2.5 left-3 text-[11px] font-black text-white drop-shadow-md">
+              <div className="proof-photo-overlay absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+              <span className="proof-photo-caption absolute bottom-2 sm:bottom-2.5 left-2 sm:left-3 text-[10px] sm:text-[11px] font-black text-white drop-shadow-md">
                 {item.caption}
               </span>
             </div>
@@ -530,45 +535,45 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
         </div>
 
         {/* Trust summary box below table */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="flex items-center gap-3 rounded-2xl bg-white p-4 border border-slate-200/80 shadow-soft">
+        <div id="comparison-trust-summary" className="comparison-trust-summary mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="trust-box flex items-center gap-3 rounded-2xl bg-white p-4 border border-slate-200/80 shadow-soft">
             <div className="grid size-10 place-items-center rounded-xl bg-emerald-50 text-emerald-700">
               <ShieldCheck className="size-5" />
             </div>
             <div>
               <p className="text-xs font-black text-slate-900">
-                {locale === "ja" ? "損害保険 100% 完備" : "Fully Insured Guarantee"}
+                {locale === "ja" ? "損害保険 100% 完備" : locale === "vi" ? "Bảo hiểm bồi thường 100%" : "Fully Insured Guarantee"}
               </p>
               <p className="text-[11px] text-slate-500">
-                {locale === "ja" ? "万が一のトラブルも迅速補償" : "Total protection for your assets"}
+                {locale === "ja" ? "万が一のトラブルも迅速補償" : locale === "vi" ? "Bồi thường nhanh chóng khi có sự cố" : "Total protection for your assets"}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 rounded-2xl bg-white p-4 border border-slate-200/80 shadow-soft">
+          <div className="trust-box flex items-center gap-3 rounded-2xl bg-white p-4 border border-slate-200/80 shadow-soft">
             <div className="grid size-10 place-items-center rounded-xl bg-sky-50 text-sky-700">
               <Sparkles className="size-5" />
             </div>
             <div>
               <p className="text-xs font-black text-slate-900">
-                {locale === "ja" ? "リピート率 95.8%" : "95.8% Partner Retention"}
+                {locale === "ja" ? "リピート率 95.8%" : locale === "vi" ? "Tỷ lệ gia hạn 95.8%" : "95.8% Partner Retention"}
               </p>
               <p className="text-[11px] text-slate-500">
-                {locale === "ja" ? "関西全域のオーナー様から信頼" : "Trusted across Osaka & Kansai"}
+                {locale === "ja" ? "関西全域のオーナー様から信頼" : locale === "vi" ? "Được tin tưởng bởi chủ nhà khắp Kansai" : "Trusted across Osaka & Kansai"}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 rounded-2xl bg-white p-4 border border-slate-200/80 shadow-soft">
+          <div className="trust-box flex items-center gap-3 rounded-2xl bg-white p-4 border border-slate-200/80 shadow-soft">
             <div className="grid size-10 place-items-center rounded-xl bg-amber-50 text-amber-700">
               <Award className="size-5" />
             </div>
             <div>
               <p className="text-xs font-black text-slate-900">
-                {locale === "ja" ? "インボイス適格請求書対応" : "Tax Qualified Invoice"}
+                {locale === "ja" ? "インボイス適格請求書対応" : locale === "vi" ? "Hóa đơn thuế chuẩn Nhật (Invoice)" : "Tax Qualified Invoice"}
               </p>
               <p className="text-[11px] text-slate-500">
-                {locale === "ja" ? "法人経理・税務処理もスムーズ" : "Registered Japanese Corporate"}
+                {locale === "ja" ? "法人経理・税務処理もスムーズ" : locale === "vi" ? "Khấu trừ chi phí doanh nghiệp minh bạch" : "Registered Japanese Corporate"}
               </p>
             </div>
           </div>

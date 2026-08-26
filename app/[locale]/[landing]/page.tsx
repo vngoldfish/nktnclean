@@ -198,7 +198,7 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
   const breadcrumb = breadcrumbJsonLd(currentLocale, [{ name: content.nav[0][0], path: "" }, { name: page.badge, path: `/${landing}` }]);
 
   return (
-    <main className="site-shell">
+    <main id="landing-page-main" className="landing-page-main site-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(serviceJsonLd(currentLocale))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
 
@@ -216,42 +216,46 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
       />
 
       {/* Main Highlights */}
-      <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
-        <div className="mx-auto max-w-5xl space-y-10">
+      <section id="landing-points-section" className="section-landing-points py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div className="landing-container mx-auto max-w-5xl space-y-10">
           
-          <div className="grid gap-4 sm:grid-cols-2">
-            {page.points.map((point) => (
-              <div key={point} className="flex items-start gap-3 rounded-2xl bg-white p-6 border border-slate-200/80 shadow-xs">
+          <div id="landing-points-grid" className="landing-points-grid grid gap-4 sm:grid-cols-2">
+            {page.points.map((point, idx) => (
+              <div key={point} id={`landing-point-${idx + 1}`} className="landing-point-card flex items-start gap-3 rounded-2xl bg-white p-6 border border-slate-200/80 shadow-xs">
                 <CheckCircle2 className="size-5 text-[#19BAD7] shrink-0 mt-0.5" />
-                <p className="font-serif-jp text-sm sm:text-base font-bold text-slate-800 leading-snug">{point}</p>
+                <p className="point-text font-serif-jp text-sm sm:text-base font-bold text-slate-800 leading-snug">{point}</p>
               </div>
             ))}
           </div>
 
           {/* Consultation Card */}
-          <div className="rounded-3xl bg-[#071224] text-white p-8 sm:p-12 border border-white/10 shadow-elevated">
+          <div id="landing-consultation-box" className="landing-consultation-box rounded-3xl bg-[#071224] text-white p-8 sm:p-12 border border-white/10 shadow-elevated">
             <span className="text-xs font-black tracking-widest text-[#19BAD7] uppercase block mb-2">
               NKTN HOSPITALITY OPERATIONS
             </span>
-            <h2 className="font-serif-jp text-2xl sm:text-3xl font-black mb-4">
-              {currentLocale === "ja" ? "清掃品質とLINE報告をまとめて相談できます" : "Discuss Hospitality Turnover & LINE DX Together"}
+            <h2 className="consult-title font-serif-jp text-2xl sm:text-3xl font-black mb-4">
+              {currentLocale === "ja" ? "清掃品質とLINE報告をまとめて相談できます" : currentLocale === "vi" ? "Tư Vấn Đồng Bộ Chất Lượng Vệ Sinh & Báo Cáo LINE" : "Discuss Hospitality Turnover & LINE DX Together"}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed mb-8">
+            <p className="consult-lead text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed mb-8">
               {currentLocale === "ja"
                 ? "部屋数、エリア、チェックアウト時間、現在の報告方法を共有いただければ、現場に合わせた清掃体制とCleaning DXの導線をご提案します。"
+                : currentLocale === "vi"
+                ? "Chia sẻ số lượng phòng, khu vực, giờ checkout và phương thức báo cáo hiện tại để chúng tôi tư vấn quy trình vận hành và Cleaning DX tối ưu nhất."
                 : "Share your room count, area, checkout times, and current reporting methods for a customized cleaning system."}
             </p>
-            <div className="flex flex-col sm:flex-row gap-3.5">
+            <div id="landing-action-buttons" className="landing-action-buttons flex flex-col sm:flex-row gap-3.5">
               <Link
+                id="landing-btn-line"
                 href={companyBase.lineUrl}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#06C755] hover:bg-[#05b04c] px-7 py-4 text-xs sm:text-sm font-black text-white transition shadow-sm"
+                className="landing-btn-line inline-flex items-center justify-center gap-2 rounded-xl bg-[#06C755] hover:bg-[#05b04c] px-7 py-4 text-xs sm:text-sm font-black text-white transition shadow-sm"
               >
                 <MessageCircle className="size-4" />
                 <span>{content.common.lineConsultLong}</span>
               </Link>
               <Link
+                id="landing-btn-services"
                 href={withLocale(currentLocale, "/services")}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 px-7 py-4 text-xs sm:text-sm font-bold text-white transition border border-white/20"
+                className="landing-btn-services inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 px-7 py-4 text-xs sm:text-sm font-bold text-white transition border border-white/20"
               >
                 <span>{content.common.viewServices}</span>
                 <ArrowRight className="size-4" />

@@ -18,7 +18,7 @@ export default async function FaqPage({ params }: { params: Promise<{ locale: Lo
   const breadcrumb = breadcrumbJsonLd(locale, [{ name: content.nav[0][0], path: "" }, { name: content.faqPage.badge, path: "/faq" }]);
 
   return (
-    <main className="site-shell">
+    <main id="faq-page-main" className="faq-page-main site-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqJsonLd(locale))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
 
@@ -36,8 +36,8 @@ export default async function FaqPage({ params }: { params: Promise<{ locale: Lo
       />
 
       {/* Main FAQ Content */}
-      <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
-        <div className="mx-auto max-w-4xl">
+      <section id="faq-list-section" className="section-faq-list py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div id="faq-container" className="faq-container mx-auto max-w-4xl">
           <FaqClient items={content.faqItems} />
         </div>
       </section>
