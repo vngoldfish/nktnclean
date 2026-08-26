@@ -2,13 +2,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { CtaContactBand } from "@/components/home/cta-contact-band";
 import { isLocale, locales, type Locale, withLocale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { breadcrumbJsonLd, jsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
+import { PageHeroHeader } from "@/components/ui/page-hero-header";
+import { FloatingContactVertical } from "@/components/ui/floating-contact-vertical";
+import { CtaContactBand } from "@/components/home/cta-contact-band";
 
 const landingPagesContent = {
   ja: {
@@ -165,41 +165,9 @@ const landingPagesContent = {
 
 type LandingSlug = keyof (typeof landingPagesContent)["ja"];
 
-const bottomCardContent = {
-  ja: {
-    subtitle: "NKTN / Bawui Cleaning",
-    title: "清掃品質とLINE報告をまとめて相談できます。",
-    desc: "部屋数、エリア、チェックアウト時間、現在の報告方法を共有いただければ、現場に合わせた清掃体制とCleaning DXの導線をご提案します。",
-  },
-  en: {
-    subtitle: "NKTN / Bawui Cleaning",
-    title: "Discuss cleaning quality and LINE reporting together.",
-    desc: "Share your room count, area, checkout times, and current reporting methods, and we will propose a cleaning system and Cleaning DX flow tailored to your site.",
-  },
-  vi: {
-    subtitle: "NKTN / Bawui Cleaning",
-    title: "Tư vấn trọn gói chất lượng vệ sinh và báo cáo qua LINE.",
-    desc: "Hãy chia sẻ số lượng phòng, khu vực, thời gian checkout và phương thức báo cáo hiện tại của bạn, chúng tôi sẽ đề xuất quy trình vệ sinh và luồng Cleaning DX phù hợp nhất với hiện trường.",
-  },
-  zh: {
-    subtitle: "NKTN / Bawui Cleaning",
-    title: "清洁质量与LINE报告一站式咨询。",
-    desc: "只要共享房间数、地区、退房时间及现有报告方式，我们就会为您提供适合现场的清洁体制及Cleaning DX流程。",
-  },
-  id: {
-    subtitle: "NKTN / Bawui Cleaning",
-    title: "Diskusikan kualitas pembersihan dan pelaporan LINE bersama.",
-    desc: "Bagikan jumlah kamar Anda, area, waktu check-out, dan metode pelaporan saat ini, dan kami akan mengusulkan sistem pembersihan dan aliran Cleaning DX yang disesuaikan dengan situs Anda.",
-  },
-} as const;
-
 function getLandingPage(locale: Locale, landing: LandingSlug) {
   const translations = landingPagesContent[locale as keyof typeof landingPagesContent] || landingPagesContent.en;
   return translations[landing] || landingPagesContent.en[landing];
-}
-
-function getBottomCardContent(locale: Locale) {
-  return bottomCardContent[locale as keyof typeof bottomCardContent] || bottomCardContent.en;
 }
 
 export function generateStaticParams() {
@@ -227,42 +195,74 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
   const currentLocale = locale as Locale;
   const page = getLandingPage(currentLocale, landing as LandingSlug);
   const content = getContent(currentLocale);
-  const bottomCard = getBottomCardContent(currentLocale);
   const breadcrumb = breadcrumbJsonLd(currentLocale, [{ name: content.nav[0][0], path: "" }, { name: page.badge, path: `/${landing}` }]);
 
   return (
     <main className="site-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(serviceJsonLd(currentLocale))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
-        <Badge variant="orange" className="mb-6">{page.badge}</Badge>
-        <p className="mb-5 text-sm font-black tracking-[0.2em] text-sky-800">{page.keyword}</p>
-        <h1 className="max-w-5xl text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] sm:text-6xl">{page.title}</h1>
-        <p className="mt-8 max-w-3xl text-base leading-8 text-nktn-ink/68">{page.description}</p>
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <Button asChild><Link href={companyBase.lineUrl} data-analytics="line_landing_click"><MessageCircle className="size-4" />{content.common.lineConsultLong}</Link></Button>
-          <Button variant="secondary" asChild><Link href={withLocale(currentLocale, "/services")}>{content.common.viewServices}<ArrowRight className="size-4" /></Link></Button>
+
+      {/* Floating Vertical Contact Buttons */}
+      <FloatingContactVertical locale={currentLocale} />
+
+      {/* Page Hero Header */}
+      <PageHeroHeader
+        locale={currentLocale}
+        enTitle={page.badge}
+        jpTitle={page.title}
+        lead={page.description}
+        currentPathName={page.keyword}
+      />
+
+      {/* Main Highlights */}
+      <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div className="mx-auto max-w-5xl space-y-10">
+          
+          <div className="grid gap-4 sm:grid-cols-2">
+            {page.points.map((point) => (
+              <div key={point} className="flex items-start gap-3 rounded-2xl bg-white p-6 border border-slate-200/80 shadow-xs">
+                <CheckCircle2 className="size-5 text-[#19BAD7] shrink-0 mt-0.5" />
+                <p className="font-serif-jp text-sm sm:text-base font-bold text-slate-800 leading-snug">{point}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Consultation Card */}
+          <div className="rounded-3xl bg-[#071224] text-white p-8 sm:p-12 border border-white/10 shadow-elevated">
+            <span className="text-xs font-black tracking-widest text-[#19BAD7] uppercase block mb-2">
+              NKTN HOSPITALITY OPERATIONS
+            </span>
+            <h2 className="font-serif-jp text-2xl sm:text-3xl font-black mb-4">
+              {currentLocale === "ja" ? "清掃品質とLINE報告をまとめて相談できます" : "Discuss Hospitality Turnover & LINE DX Together"}
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed mb-8">
+              {currentLocale === "ja"
+                ? "部屋数、エリア、チェックアウト時間、現在の報告方法を共有いただければ、現場に合わせた清掃体制とCleaning DXの導線をご提案します。"
+                : "Share your room count, area, checkout times, and current reporting methods for a customized cleaning system."}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3.5">
+              <Link
+                href={companyBase.lineUrl}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#06C755] hover:bg-[#05b04c] px-7 py-4 text-xs sm:text-sm font-black text-white transition shadow-sm"
+              >
+                <MessageCircle className="size-4" />
+                <span>{content.common.lineConsultLong}</span>
+              </Link>
+              <Link
+                href={withLocale(currentLocale, "/services")}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 px-7 py-4 text-xs sm:text-sm font-bold text-white transition border border-white/20"
+              >
+                <span>{content.common.viewServices}</span>
+                <ArrowRight className="size-4" />
+              </Link>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8">
-        <div className="grid gap-5 lg:grid-cols-2">
-          {page.points.map((point) => (
-            <Card key={point} className="flex gap-4 p-6">
-              <CheckCircle2 className="mt-1 size-6 shrink-0 text-sky-800" />
-              <p className="font-bold leading-7 text-nktn-ink/72">{point}</p>
-            </Card>
-          ))}
-        </div>
-        <div className="mt-10 rounded-[2.5rem] bg-[#0F172A] p-7 text-white shadow-soft lg:p-10">
-          <p className="text-sm font-bold tracking-[0.2em] text-sky-300">{bottomCard.subtitle}</p>
-          <h2 className="mt-5 text-3xl font-extrabold tracking-tight">{bottomCard.title}</h2>
-          <p className="mt-5 max-w-3xl leading-8 text-white/70">{bottomCard.desc}</p>
-          <Button className="mt-8 bg-[#06C755] hover:bg-[#05b04c] text-white rounded-xl" asChild><Link href={companyBase.lineUrl} data-analytics="line_landing_bottom_click">{content.common.lineConsultLong}<ArrowRight className="size-4" /></Link></Button>
-        </div>
-      </section>
-
-      <CtaContactBand locale={currentLocale} />
+      {/* Final CTA */}
+      <CtaContactBand locale={currentLocale} variant="dark" />
     </main>
   );
 }

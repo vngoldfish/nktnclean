@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronRight, Clock, Calendar } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { CtaContactBand } from "@/components/home/cta-contact-band";
 import { type Locale, withLocale } from "@/lib/i18n";
 import { getContent } from "@/lib/site-data-i18n";
 import { pageMetadata } from "@/lib/seo";
+import { PageHeroHeader } from "@/components/ui/page-hero-header";
+import { FloatingContactVertical } from "@/components/ui/floating-contact-vertical";
+import { CtaContactBand } from "@/components/home/cta-contact-band";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -29,41 +28,82 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: L
 
   return (
     <main className="site-shell">
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
-        <p className="text-amber-600 text-sm font-black tracking-widest mb-3">{content.blogPage.badge}</p>
-        <h1 className="max-w-6xl text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] sm:text-6xl">{content.blogPage.title}</h1>
-        <p className="mt-8 max-w-3xl text-base leading-8 text-nktn-ink/68">{content.blogPage.lead}</p>
-      </section>
+      {/* Floating Vertical Contact Buttons */}
+      <FloatingContactVertical locale={locale} />
 
-      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8">
-        <div className="grid gap-6 lg:grid-cols-2">
-          {content.blogPosts.map((post, index) => {
-            const imageSrc = blogImageMap[post.slug] || post.image;
-            return (
-              <Card key={post.title} className="group overflow-hidden p-0 transition hover:-translate-y-1 hover:shadow-xl">
-                <Link href={withLocale(locale, `/blog/${post.slug}`)} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nktn-blue">
-                  <Image src={imageSrc} alt={post.title} width={900} height={620} className="h-72 w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                <div className="p-7 lg:p-9">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <Badge variant={index % 2 === 0 ? "blue" : "orange"} className={index % 2 !== 0 ? "bg-amber-500 text-white" : ""}>{post.category}</Badge>
-                    <span className="text-sm font-bold text-nktn-ink/45">{post.date}</span>
-                    <span className="text-sm font-bold text-nktn-ink/45">{post.readTime}</span>
+      {/* Page Hero Header */}
+      <PageHeroHeader
+        locale={locale}
+        enTitle="COLUMN & INSIGHTS"
+        jpTitle={content.blogPage.title}
+        lead={content.blogPage.lead}
+        currentPathName={content.blogPage.badge}
+      />
+
+      {/* Blog Cards Grid */}
+      <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-8 sm:grid-cols-2">
+            {content.blogPosts.map((post, index) => {
+              const imageSrc = blogImageMap[post.slug] || post.image;
+              return (
+                <Link
+                  key={post.title}
+                  href={withLocale(locale, `/blog/${post.slug}`)}
+                  className="group rounded-2xl bg-white border border-slate-200/80 overflow-hidden hover:border-[#00729F] hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Thumbnail Image */}
+                    <div className="relative h-60 w-full overflow-hidden">
+                      <Image
+                        src={imageSrc}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 550px"
+                      />
+                      <span className="absolute top-4 left-4 rounded-md bg-[#00729F] px-3 py-1 text-xs font-black text-white shadow-xs">
+                        {post.category}
+                      </span>
+                    </div>
+
+                    {/* Meta & Content */}
+                    <div className="p-6 sm:p-8">
+                      <div className="flex items-center gap-4 text-xs font-bold text-slate-400 mb-3">
+                        <span className="flex items-center gap-1.5">
+                          <Calendar className="size-3.5 text-[#00729F]" />
+                          {post.date}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <Clock className="size-3.5 text-[#00729F]" />
+                          {post.readTime}
+                        </span>
+                      </div>
+
+                      <h2 className="font-serif-jp text-xl sm:text-2xl font-black text-slate-900 leading-snug group-hover:text-[#00729F] transition-colors mb-3">
+                        {post.title}
+                      </h2>
+
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                    </div>
                   </div>
-                  <h2 className="mt-8 text-3xl font-black tracking-[-0.04em]">{post.title}</h2>
-                  <p className="mt-5 leading-8 text-nktn-ink/66">{post.excerpt}</p>
-                  <div className="mt-8 grid gap-3">
-                    {post.points.slice(0, 2).map((point) => <div key={point} className="flex gap-3 rounded-2xl bg-nktn-cream p-4 font-bold leading-7 text-nktn-ink/72"><CheckCircle2 className="mt-1 size-5 shrink-0 text-sky-800" />{point}</div>)}
+
+                  {/* Read Article Action */}
+                  <div className="p-6 sm:p-8 pt-0 flex items-center text-xs font-black text-[#00729F] group-hover:translate-x-1 transition-transform">
+                    <span>{content.common.readMore}</span>
+                    <ChevronRight className="size-4 ml-0.5" />
                   </div>
-                  <div className="mt-8 inline-flex items-center gap-2 font-black text-sky-800">{content.common.readMore} <ArrowRight className="size-4" /></div>
-                </div>
-              </Link>
-            </Card>
-          );
-        })}
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      <CtaContactBand locale={locale} />
+      {/* Final CTA */}
+      <CtaContactBand locale={locale} variant="dark" />
     </main>
   );
 }

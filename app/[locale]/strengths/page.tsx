@@ -1,9 +1,11 @@
-import { Network, ShieldCheck, TimerReset, Trophy } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Network, ShieldCheck, TimerReset, Trophy, Award, CheckCircle2 } from "lucide-react";
 import { type Locale } from "@/lib/i18n";
 import { getContent } from "@/lib/site-data-i18n";
 import { pageMetadata } from "@/lib/seo";
-import { CtaContactBand } from '@/components/home/cta-contact-band';
+import { PageHeroHeader } from "@/components/ui/page-hero-header";
+import { ComparisonTable } from "@/components/ui/comparison-table";
+import { FloatingContactVertical } from "@/components/ui/floating-contact-vertical";
+import { CtaContactBand } from "@/components/home/cta-contact-band";
 
 const icons = [Network, TimerReset, ShieldCheck, Trophy];
 
@@ -19,54 +21,82 @@ export default async function StrengthsPage({ params }: { params: Promise<{ loca
 
   return (
     <main className="site-shell">
-      <section className="mx-5 my-10 rounded-[2.5rem] bg-[#0F172A] px-5 py-20 text-white sm:mx-8 sm:px-8 lg:rounded-[4rem] lg:py-28">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-sky-300 text-sm font-black tracking-widest mb-3">{content.strengthsPage.badge}</p>
-          <h1 className="max-w-6xl text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] sm:text-6xl">{content.strengthsPage.title}</h1>
-          <p className="mt-8 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">{content.strengthsPage.lead}</p>
+      {/* Floating Vertical Contact Buttons */}
+      <FloatingContactVertical locale={locale} />
+
+      {/* Page Hero Header */}
+      <PageHeroHeader
+        locale={locale}
+        enTitle="WHY CHOOSE US"
+        jpTitle={content.strengthsPage.title}
+        lead={content.strengthsPage.lead}
+        currentPathName={content.strengthsPage.badge}
+      />
+
+      {/* 4 Core Strengths */}
+      <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <p className="font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
+              CORE ADVANTAGES
+            </p>
+            <h2 className="font-serif-jp text-3xl sm:text-4xl font-black text-slate-900 leading-tight">
+              {locale === "ja" ? "NKTNが選ばれる4つの理由" : "4 Pillars of Excellence"}
+            </h2>
+            <div className="mx-auto mt-3 h-0.5 w-12 bg-[#00729F]" />
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {content.strengths.map((strength, index) => {
+              const Icon = icons[index] || ShieldCheck;
+              return (
+                <div
+                  key={strength.title}
+                  className="rounded-2xl bg-white p-7 border border-slate-200/80 shadow-sm hover:border-[#00729F] hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="grid size-12 place-items-center rounded-xl bg-sky-50 text-[#00729F] mb-6">
+                      <Icon className="size-6" />
+                    </span>
+                    <span className="text-xs font-mono font-bold text-slate-400 block mb-1">
+                      REASON 0{index + 1}
+                    </span>
+                    <h3 className="font-serif-jp text-lg font-black text-slate-900 leading-snug mb-3">
+                      {strength.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      {strength.body}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* 3 Operational Metric Stats */}
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {(locale === "ja"
+              ? [["100%", "報告・連絡・完了管理", "LINEで全室写真付き即時レポート"], ["ON TIME", "納期逆算の清掃設計", "チェックイン前の確実な仕上げ"], ["BIG OPS", "DX駆動の現場運営", "多国籍専属チームによる安定稼働"]]
+              : locale === "vi"
+              ? [["100%", "Báo cáo & Hoàn thành", "Gửi ảnh nghiệm thu tức thì qua LINE"], ["ON TIME", "Đúng giờ tuyệt đối", "Hoàn tất trước giờ check-in"], ["BIG OPS", "Vận hành DX", "Đội ngũ chuyên nghiệp đảm bảo công suất"]]
+              : [["100%", "Complete Reporting", "Instant photo proof via LINE"], ["ON TIME", "Strict Scheduling", "Flawless turnaround before check-in"], ["BIG OPS", "DX-Driven Operations", "Multinational in-house staff coverage"]]
+            ).map(([stat, label, desc]) => (
+              <div key={stat} className="rounded-2xl bg-white p-7 border border-slate-200/80 shadow-sm text-center">
+                <p className="font-serif-jp text-3xl sm:text-4xl font-black text-[#00729F]">{stat}</p>
+                <h4 className="font-serif-jp text-base font-black text-slate-900 mt-2">{label}</h4>
+                <p className="text-xs text-slate-500 mt-1">{desc}</p>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-10">
-        <CtaContactBand locale={locale} />
-      </div>
+      {/* Comparison Table */}
+      <ComparisonTable locale={locale} />
 
-      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8">
-        <div className="grid gap-5 lg:grid-cols-4">
-          {content.strengths.map((strength, index) => {
-            const Icon = icons[index];
-            return (
-              <Card key={strength.title} className="p-7 border border-slate-100 hover:border-sky-100 transition duration-300 hover:shadow-soft hover:-translate-y-0.5">
-                <Icon className="size-8 text-sky-800" />
-                <h2 className="mt-12 text-2xl font-black tracking-[-0.04em]">{strength.title}</h2>
-                <p className="mt-5 leading-8 text-nktn-ink/66">{strength.body}</p>
-              </Card>
-            );
-          })}
-        </div>
-
-        <div className="mt-8 grid gap-5 lg:grid-cols-3">
-          {(locale === "ja"
-            ? [["100%", "報告・連絡・完了管理"], ["ON TIME", "納期逆算 of 清掃設計"], ["BIG OPS", "DX駆動 of 現場運営"]]
-            : locale === "vi"
-            ? [["100%", "Báo cáo / liên lạc / hoàn thành"], ["ON TIME", "Thiết kế dọn dẹp theo thời hạn"], ["BIG OPS", "Vận hành hiện trường bằng DX"]]
-            : locale === "zh"
-            ? [["100%", "报告 / 联络 / 完成管理"], ["ON TIME", "倒推時間的清洁设计"], ["BIG OPS", "DX驱动的现场运营"]]
-            : locale === "id"
-            ? [["100%", "Laporan / kontak / penyelesaian"], ["ON TIME", "Desain pembersihan berorientasi tenggat waktu"], ["BIG OPS", "Operasi lapangan bertenaga DX"]]
-            : [["100%", "Report / contact / completion management"], ["ON TIME", "Deadline-oriented cleaning design"], ["BIG OPS", "DX-powered field operation"]]
-          ).map(([label, body]) => (
-            <div key={label} className="rounded-[2rem] bg-white p-7 border border-slate-100 hover:border-sky-100 shadow-soft transition duration-300 hover:shadow-md hover:-translate-y-0.5">
-              <p className="text-4xl font-black tracking-[-0.04em] text-sky-800">{label}</p>
-              <p className="mt-4 font-bold leading-7 text-nktn-ink/70">{body}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-16">
-          <CtaContactBand locale={locale} />
-        </div>
-      </section>
+      {/* Final CTA */}
+      <CtaContactBand locale={locale} variant="dark" />
     </main>
   );
 }

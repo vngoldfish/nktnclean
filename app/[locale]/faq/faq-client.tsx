@@ -1,44 +1,50 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
-import { Card } from "@/components/ui/card";
-
-function FaqAccordionItem({ question, answer }: { question: string; answer: string }) {
-  const [isOpen, setIsOpen] = useState(false);
+function FaqAccordionItem({ question, answer, defaultOpen }: { question: string; answer: string; defaultOpen?: boolean }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen || false);
 
   return (
-    <Card className="overflow-hidden p-0">
+    <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden transition-all duration-200">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center gap-4 p-6 text-left lg:p-8"
+        className="flex w-full items-center justify-between gap-4 p-5 sm:p-6 text-left hover:bg-slate-50 transition"
       >
-        <HelpCircle className="mt-0.5 size-6 shrink-0 text-nktn-blue" />
-        <h2 className="flex-1 text-xl font-black tracking-[-0.03em]">{question}</h2>
+        <div className="flex items-center gap-3.5 sm:gap-4">
+          <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[#00729F] text-white font-serif-jp font-black text-xs">
+            Q
+          </span>
+          <h2 className="font-serif-jp text-base sm:text-lg font-black text-slate-900 leading-snug">
+            {question}
+          </h2>
+        </div>
         <ChevronDown
-          className={`size-5 shrink-0 text-nktn-ink/40 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+          className={`size-5 shrink-0 text-slate-400 transition-transform duration-300 ${
+            isOpen ? "rotate-180 text-[#00729F]" : ""
+          }`}
         />
       </button>
-      <div
-        className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
-      >
-        <div className="overflow-hidden">
-          <p className="px-6 pb-6 pl-16 leading-8 text-nktn-ink/66 lg:px-8 lg:pb-8 lg:pl-[4.5rem]">
-            {answer}
-          </p>
+
+      {isOpen && (
+        <div className="px-5 sm:px-6 pb-6 pt-2 pl-14 sm:pl-16 bg-slate-50/50 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <div className="flex items-start gap-2.5">
+            <span className="font-serif-jp font-black text-amber-600 text-sm shrink-0">A.</span>
+            <p className="whitespace-pre-line">{answer}</p>
+          </div>
         </div>
-      </div>
-    </Card>
+      )}
+    </div>
   );
 }
 
 export default function FaqClient({ items }: { items: string[][] }) {
   return (
-    <div className="grid gap-4">
-      {items.map(([question, answer]) => (
-        <FaqAccordionItem key={question} question={question} answer={answer} />
+    <div className="space-y-3.5">
+      {items.map(([question, answer], idx) => (
+        <FaqAccordionItem key={question} question={question} answer={answer} defaultOpen={idx === 0} />
       ))}
     </div>
   );

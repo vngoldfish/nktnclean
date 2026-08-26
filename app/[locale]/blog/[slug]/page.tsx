@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck, Calendar, Clock, ChevronRight } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { locales, type Locale, withLocale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { articleJsonLd, breadcrumbJsonLd, jsonLd, localizedPath, pageAlternates } from "@/lib/seo";
+import { FloatingContactVertical } from "@/components/ui/floating-contact-vertical";
+import { CtaContactBand } from "@/components/home/cta-contact-band";
 
 const blogImageMap: Record<string, string> = {
   "stable-cleaning-quality": "/blog/quality-control.jpg",
@@ -34,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
   const imageSrc = blogImageMap[post.slug] || post.image;
 
   return {
-    title: `${post.title} | ${companyBase.name} Blog`,
+    title: `${post.title} | ${companyBase.name} Column`,
     description: post.excerpt,
     alternates: pageAlternates(locale, path),
     openGraph: {
@@ -71,72 +70,149 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ loc
     <main className="site-shell">
       {article && <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(article)} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
-      <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:py-16">
-        <Button variant="secondary" asChild><Link href={withLocale(locale, "/blog")}><ArrowLeft className="size-4" /> {content.common.backBlog}</Link></Button>
+
+      {/* Floating Vertical Contact Buttons */}
+      <FloatingContactVertical locale={locale} />
+
+      {/* Header Breadcrumb & Back */}
+      <section className="bg-[#071224] text-white py-12 px-5 sm:px-8 border-b border-white/10">
+        <div className="mx-auto max-w-5xl">
+          <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-xs font-bold text-slate-300">
+            <Link href={withLocale(locale, "/")} className="hover:text-white transition">Home</Link>
+            <ChevronRight className="size-3.5 text-[#19BAD7]" />
+            <Link href={withLocale(locale, "/blog")} className="hover:text-white transition">{content.blogPage.badge}</Link>
+            <ChevronRight className="size-3.5 text-[#19BAD7]" />
+            <span className="text-[#19BAD7] truncate max-w-xs">{post.title}</span>
+          </nav>
+
+          <div className="flex items-center gap-3 mb-4">
+            <span className="rounded-md bg-[#00729F] px-3 py-1 text-xs font-black text-white uppercase tracking-wider">
+              {post.category}
+            </span>
+            <span className="text-xs font-bold text-slate-300 flex items-center gap-1">
+              <Calendar className="size-3 text-[#19BAD7]" /> {post.date}
+            </span>
+          </div>
+
+          <h1 className="font-serif-jp text-2xl sm:text-4xl lg:text-5xl font-black leading-tight text-white">
+            {post.title}
+          </h1>
+        </div>
       </section>
 
-      <article>
-        <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-              <div className="flex flex-wrap items-center gap-3">
-                <Badge variant="orange">{post.category}</Badge>
-                <span className="text-sm font-bold text-nktn-ink/45">{post.date}</span>
-                <span className="text-sm font-bold text-nktn-ink/45">{post.readTime}</span>
-              </div>
-              <h1 className="mt-8 text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] sm:text-6xl">{post.title}</h1>
-              <p className="mt-8 text-base leading-8 text-nktn-ink/68">{post.excerpt}</p>
-            </div>
-            <Card className="overflow-hidden p-0">
-              <Image src={imageSrc} alt={post.title} width={900} height={620} className="h-[28rem] w-full object-cover" priority />
-            </Card>
-          </div>
-        </section>
-
-        <section className="mx-auto grid max-w-7xl gap-8 px-5 pb-24 sm:px-8 lg:grid-cols-[1fr_22rem]">
-          <div className="rounded-[2.5rem] bg-white p-7 shadow-soft lg:p-10">
-            <div className="grid gap-4">
-              {post.points.map((point) => <div key={point} className="flex gap-3 rounded-2xl bg-nktn-cream p-4 font-black leading-7 text-nktn-ink/74"><CheckCircle2 className="mt-1 size-5 shrink-0 text-sky-800" />{point}</div>)}
+      {/* Article Body */}
+      <article className="py-16 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div className="mx-auto max-w-5xl grid gap-10 lg:grid-cols-12 items-start">
+          
+          {/* Main Column (8 cols) */}
+          <div className="lg:col-span-8 rounded-2xl bg-white p-6 sm:p-10 border border-slate-200/80 shadow-sm space-y-8">
+            
+            {/* Featured Image */}
+            <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden shadow-xs">
+              <Image src={imageSrc} alt={post.title} fill className="object-cover" priority sizes="(max-width: 1024px) 100vw, 700px" />
             </div>
 
-            <div className="mt-12 space-y-12">
+            {/* Excerpt */}
+            <p className="text-sm sm:text-base font-bold text-slate-700 leading-relaxed border-l-4 border-[#00729F] pl-4 py-1 bg-sky-50/50">
+              {post.excerpt}
+            </p>
+
+            {/* Key Points */}
+            <div className="space-y-2.5 pt-2">
+              <p className="font-serif-jp text-xs font-black tracking-widest text-[#00729F] uppercase">
+                KEY CHECKPOINTS
+              </p>
+              {post.points.map((point) => (
+                <div key={point} className="flex items-start gap-2.5 rounded-lg bg-[#F6F6F6] p-3.5 text-xs sm:text-sm font-bold text-slate-800">
+                  <CheckCircle2 className="size-4 text-[#19BAD7] shrink-0 mt-0.5" />
+                  <span>{point}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Sections */}
+            <div className="space-y-8 pt-6 border-t border-slate-100">
               {post.sections.map(([heading, body]) => (
-                <section key={heading}>
-                  <h2 className="text-3xl font-black tracking-[-0.04em]">{heading}</h2>
-                  <p className="mt-5 text-base leading-8 text-nktn-ink/68">{body}</p>
+                <section key={heading} className="space-y-3">
+                  <h2 className="font-serif-jp text-xl sm:text-2xl font-black text-slate-900 leading-snug">
+                    {heading}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed whitespace-pre-line">
+                    {body}
+                  </p>
                 </section>
               ))}
             </div>
 
-            <div className="mt-12 rounded-[2rem] bg-gradient-to-br from-sky-800 to-sky-900 p-7 text-white">
-              <div className="flex gap-4">
-                <ShieldCheck className="mt-1 size-7 shrink-0 text-amber-500" />
-                <div>
-                  <p className="font-black tracking-[0.16em] text-white/50">NKTN NOTE</p>
-                  <p className="mt-3 leading-8 text-white/72">{post.evidence}</p>
-                </div>
+            {/* Evidence Note Box */}
+            <div className="rounded-xl bg-gradient-to-r from-[#00466D] to-[#00729F] p-6 text-white shadow-xs">
+              <div className="flex items-center gap-2 mb-2">
+                <ShieldCheck className="size-5 text-[#19BAD7]" />
+                <span className="font-serif-jp text-xs font-black tracking-widest uppercase">NKTN QUALITY PROMISE</span>
               </div>
+              <p className="text-xs text-slate-200 leading-relaxed">{post.evidence}</p>
+            </div>
+
+            {/* Back Button */}
+            <div className="pt-4 border-t border-slate-100">
+              <Link
+                href={withLocale(locale, "/blog")}
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#00729F] hover:underline"
+              >
+                <ArrowLeft className="size-4" />
+                <span>{content.common.backBlog}</span>
+              </Link>
             </div>
           </div>
 
-          <aside className="space-y-5">
-            <Card className="p-6">
-              <p className="text-sm font-black tracking-[0.18em] text-sky-800">CONTACT</p>
-              <h2 className="mt-5 text-2xl font-black tracking-[-0.04em]">{content.blogPage.contactTitle}</h2>
-              <p className="mt-4 leading-7 text-nktn-ink/62">{content.blogPage.contactLead}</p>
-              <Button className="mt-6 w-full bg-[#06C755] hover:bg-[#05b04c] text-white" asChild><Link href={companyBase.lineUrl}>{content.common.lineConsult} <ArrowRight className="size-4" /></Link></Button>
-              <Button className="mt-3 w-full" variant="secondary" asChild><Link href={`mailto:${companyBase.email}`}>{content.common.emailConsult}</Link></Button>
-            </Card>
+          {/* Sidebar Column (4 cols) */}
+          <aside className="lg:col-span-4 space-y-6">
+            {/* Quick Contact Card */}
+            <div className="rounded-2xl bg-white p-6 border border-slate-200/80 shadow-sm">
+              <p className="font-serif-jp text-xs font-black tracking-widest text-[#00729F] uppercase mb-1">
+                CONTACT
+              </p>
+              <h3 className="font-serif-jp text-lg font-black text-slate-900 mb-2">
+                {content.blogPage.contactTitle}
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                {content.blogPage.contactLead}
+              </p>
+              <Link
+                href={companyBase.lineUrl}
+                className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-[#06C755] hover:bg-[#05b04c] py-3 text-xs font-black text-white shadow-xs transition"
+              >
+                <span>{content.common.lineConsult}</span>
+                <ArrowRight className="size-4" />
+              </Link>
+            </div>
 
-            <Card className="p-6">
-              <p className="text-sm font-black tracking-[0.18em] text-amber-500">RELATED</p>
-              <div className="mt-5 space-y-4">
-                {relatedPosts.map((item) => <Link key={item.slug} href={withLocale(locale, `/blog/${item.slug}`)} className="block rounded-2xl bg-nktn-cream p-4 font-black leading-7 transition hover:bg-amber-100">{item.title}</Link>)}
+            {/* Related Posts */}
+            <div className="rounded-2xl bg-white p-6 border border-slate-200/80 shadow-sm">
+              <p className="font-serif-jp text-xs font-black tracking-widest text-[#00729F] uppercase mb-3">
+                RELATED ARTICLES
+              </p>
+              <div className="space-y-3">
+                {relatedPosts.map((item) => (
+                  <Link
+                    key={item.slug}
+                    href={withLocale(locale, `/blog/${item.slug}`)}
+                    className="block p-3 rounded-lg bg-[#F6F6F6] hover:bg-sky-50 transition border border-slate-100"
+                  >
+                    <p className="font-serif-jp text-xs font-black text-slate-800 line-clamp-2 hover:text-[#00729F]">
+                      {item.title}
+                    </p>
+                  </Link>
+                ))}
               </div>
-            </Card>
+            </div>
           </aside>
-        </section>
+
+        </div>
       </article>
+
+      {/* Final CTA */}
+      <CtaContactBand locale={locale} variant="dark" />
     </main>
   );
 }

@@ -5,14 +5,17 @@ import {
   Coins,
   MapPin,
   User,
-  Briefcase
+  Briefcase,
+  CheckCircle2,
+  ShieldCheck,
+  Award
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { type Locale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { pageMetadata } from "@/lib/seo";
-import { CtaContactBand } from '@/components/home/cta-contact-band';
+import { PageHeroHeader } from "@/components/ui/page-hero-header";
+import { FloatingContactVertical } from "@/components/ui/floating-contact-vertical";
+import { CtaContactBand } from "@/components/home/cta-contact-band";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -37,67 +40,107 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
 
   return (
     <main className="site-shell">
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
-        <p className="text-sky-800 text-sm font-black tracking-widest mb-3">{content.companyPage.badge}</p>
-        <h1 className="max-w-5xl text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] sm:text-6xl">
-          {content.companyPage.title}
-        </h1>
-        <p className="mt-8 max-w-3xl text-base leading-8 text-nktn-ink/68">
-          {content.companyPage.lead}
-        </p>
-      </section>
+      {/* Desktop Vertical Tab + Mobile Sticky Dock */}
+      <FloatingContactVertical locale={locale} />
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-5 pb-24 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
-        {/* Profile Card */}
-        <Card className="p-8 border border-slate-100 hover:border-sky-100 transition duration-300 hover:shadow-soft hover:-translate-y-0.5">
-          <p className="text-sm font-black tracking-[0.2em] text-sky-800">PROFILE</p>
-          <div className="mt-8 divide-y divide-nktn-ink/10">
-            {rows.map(({ icon: Icon, label, value, link }) => (
-              <div key={label} className="grid gap-2 py-5 sm:grid-cols-[12rem_1fr] items-start">
-                <div className="flex items-center gap-2">
-                  <Icon className="size-4 text-nktn-blue/70 shrink-0" />
-                  <p className="font-black text-nktn-ink/60 text-sm">{label}</p>
-                </div>
-                {link ? (
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold leading-7 text-sky-800 hover:text-sky-900 hover:underline text-sm sm:text-base inline-flex flex-wrap items-center gap-1.5"
-                  >
-                    {value}
-                    <span className="text-[10px] font-bold text-sky-800/60 bg-sky-50 border border-sky-100 rounded px-1.5 py-0.5 leading-none shrink-0">
-                      {locale === "ja" ? "国税庁/経産省で確認" : locale === "vi" ? "Tra cứu Database" : "Verify Registry"}
-                    </span>
-                  </a>
-                ) : (
-                  <p className="font-bold leading-7 text-nktn-ink text-sm sm:text-base">{value}</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </Card>
+      {/* Corporate Page Hero Header */}
+      <PageHeroHeader
+        locale={locale}
+        enTitle="COMPANY"
+        jpTitle={content.companyPage.title}
+        lead={content.companyPage.lead}
+        currentPathName={content.companyPage.badge}
+      />
 
-        {/* Story Card */}
-        <div className="rounded-[2.5rem] bg-white p-8 border border-slate-100 hover:border-sky-100 transition duration-300 hover:shadow-soft hover:-translate-y-0.5">
-          <p className="text-sm font-black tracking-[0.2em] text-sky-800">STORY</p>
-          <h2 className="mt-6 text-3xl font-black tracking-[-0.04em]">{content.companyPage.storyTitle}</h2>
-          <p className="mt-6 leading-8 text-nktn-ink/66">{content.companyPage.storyLead}</p>
+      {/* Main Content */}
+      <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-12 items-start">
           
-          <div className="mt-8 space-y-3">
-            {content.trustPoints.map((point) => (
-              <div key={point} className="flex items-start gap-3 rounded-2xl bg-nktn-cream px-5 py-4 font-bold leading-7 text-nktn-ink/72 transition hover:bg-nktn-cream/80">
-                <Badge variant="blue" className="mt-0.5 shrink-0 px-2 py-0">✓</Badge>
-                <span>{point}</span>
-              </div>
-            ))}
+          {/* Profile Card (Left 7 cols) */}
+          <div className="lg:col-span-7 rounded-2xl bg-white p-6 sm:p-10 border border-slate-200/80 shadow-sm">
+            <p className="font-serif-jp text-xs font-black tracking-[0.2em] text-[#00729F] uppercase mb-1">
+              PROFILE
+            </p>
+            <h2 className="font-serif-jp text-2xl sm:text-3xl font-black text-slate-900 mb-6">
+              {locale === "ja" ? "会社概要" : locale === "vi" ? "Thông Tin Công Ty" : "Company Profile"}
+            </h2>
+
+            <div className="divide-y divide-slate-100 text-xs sm:text-sm">
+              {rows.map(({ icon: Icon, label, value, link }) => (
+                <div key={label} className="grid py-4 sm:grid-cols-[10rem_1fr] items-start gap-2">
+                  <div className="flex items-center gap-2 text-slate-500 font-bold">
+                    <Icon className="size-4 text-[#00729F] shrink-0" />
+                    <span>{label}</span>
+                  </div>
+                  <div>
+                    {link ? (
+                      <a
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-[#00729F] hover:underline inline-flex flex-wrap items-center gap-1.5"
+                      >
+                        <span>{value}</span>
+                        <span className="text-[10px] bg-sky-50 border border-sky-200 rounded px-1.5 py-0.5 text-sky-800 shrink-0">
+                          {locale === "ja" ? "公的データベース照会" : "Verify Registry"}
+                        </span>
+                      </a>
+                    ) : (
+                      <span className="font-bold text-slate-800">{value}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* Story & Philosophy (Right 5 cols) */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="rounded-2xl bg-white p-6 sm:p-8 border border-slate-200/80 shadow-sm">
+              <p className="font-serif-jp text-xs font-black tracking-[0.2em] text-[#00729F] uppercase mb-1">
+                OUR STORY & MISSION
+              </p>
+              <h3 className="font-serif-jp text-xl sm:text-2xl font-black text-slate-900 mb-4">
+                {content.companyPage.storyTitle}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                {content.companyPage.storyLead}
+              </p>
+
+              <div className="space-y-3">
+                {content.trustPoints.map((point) => (
+                  <div
+                    key={point}
+                    className="flex items-start gap-2.5 rounded-xl bg-[#F6F6F6] p-3 text-xs sm:text-sm font-bold text-slate-800"
+                  >
+                    <CheckCircle2 className="size-4 text-[#19BAD7] shrink-0 mt-0.5" />
+                    <span className="leading-snug">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Insurance & Quality Seal Box */}
+            <div className="rounded-2xl bg-gradient-to-r from-[#00466D] to-[#00729F] p-6 text-white shadow-sm">
+              <div className="flex items-center gap-3 mb-2">
+                <ShieldCheck className="size-6 text-[#19BAD7]" />
+                <h4 className="font-serif-jp text-base font-black">
+                  {locale === "ja" ? "最高1億円 損害賠償保険完備" : "Fully Insured Guarantee"}
+                </h4>
+              </div>
+              <p className="text-xs text-slate-200 leading-relaxed">
+                {locale === "ja"
+                  ? "万が一の什器備品の破損やトラブル発生時にも迅速に対応できる安心の補償体制を整えています。"
+                  : "Complete liability insurance safeguarding your properties and valuable assets."}
+              </p>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8">
-        <CtaContactBand locale={locale} />
-      </section>
+      {/* Final CTA */}
+      <CtaContactBand locale={locale} variant="dark" />
     </main>
   );
 }

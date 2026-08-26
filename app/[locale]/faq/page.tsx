@@ -1,6 +1,8 @@
 import { type Locale } from "@/lib/i18n";
 import { getContent } from "@/lib/site-data-i18n";
 import { breadcrumbJsonLd, faqJsonLd, jsonLd, pageMetadata } from "@/lib/seo";
+import { PageHeroHeader } from "@/components/ui/page-hero-header";
+import { FloatingContactVertical } from "@/components/ui/floating-contact-vertical";
 import { CtaContactBand } from "@/components/home/cta-contact-band";
 import FaqClient from "./faq-client";
 
@@ -19,17 +21,28 @@ export default async function FaqPage({ params }: { params: Promise<{ locale: Lo
     <main className="site-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqJsonLd(locale))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
-        <p className="text-sky-800 text-sm font-black tracking-widest mb-3">{content.faqPage.badge}</p>
-        <h1 className="max-w-5xl text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] sm:text-6xl">{content.faqPage.title}</h1>
-        <p className="mt-8 max-w-3xl text-base leading-8 text-nktn-ink/68">{content.faqPage.lead}</p>
+
+      {/* Floating Vertical Contact Buttons */}
+      <FloatingContactVertical locale={locale} />
+
+      {/* Page Hero Header */}
+      <PageHeroHeader
+        locale={locale}
+        enTitle="FREQUENTLY ASKED QUESTIONS"
+        jpTitle={content.faqPage.title}
+        lead={content.faqPage.lead}
+        currentPathName={content.faqPage.badge}
+      />
+
+      {/* Main FAQ Content */}
+      <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div className="mx-auto max-w-4xl">
+          <FaqClient items={content.faqItems} />
+        </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 pb-24 sm:px-8">
-        <FaqClient items={content.faqItems} />
-      </section>
-
-      <CtaContactBand locale={locale} />
+      {/* Final CTA */}
+      <CtaContactBand locale={locale} variant="dark" />
     </main>
   );
 }

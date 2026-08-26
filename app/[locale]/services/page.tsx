@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { 
   CheckCircle2, 
   Hotel, 
@@ -10,18 +12,29 @@ import {
   Key,
   FileCheck,
   Brush,
-  Camera
+  Camera,
+  MessageCircle,
+  ArrowRight,
+  ShieldCheck
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
-import { type Locale } from "@/lib/i18n";
-import { getContent } from "@/lib/site-data-i18n";
+
+import { type Locale, withLocale } from "@/lib/i18n";
+import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { breadcrumbJsonLd, jsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
-import { CtaContactBand } from '@/components/home/cta-contact-band';
+import { PageHeroHeader } from "@/components/ui/page-hero-header";
+import { ComparisonTable } from "@/components/ui/comparison-table";
+import { FloatingContactVertical } from "@/components/ui/floating-contact-vertical";
+import { CtaContactBand } from "@/components/home/cta-contact-band";
 
 const serviceIcons = [Hotel, ClipboardCheck, Smartphone];
 const facilityIcons = [Hotel, Home, Building2, Building, Layers, Key];
 const qualityIcons = [FileCheck, Brush, Camera, CheckCircle2];
+
+const serviceImages = [
+  "/works/photo-room.jpg",
+  "/works/photo-staff.jpg",
+  "/works/photo-room.jpg",
+];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -42,93 +55,181 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(serviceJsonLd(locale))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumb)} />
       
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
-        <p className="text-sky-800 text-sm font-black tracking-widest mb-3">{content.servicesPage.badge}</p>
-        <h1 className="max-w-5xl text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] sm:text-6xl">
-          {content.servicesPage.title}
-        </h1>
-        <p className="mt-8 max-w-3xl text-base leading-8 text-nktn-ink/68">
-          {content.servicesPage.lead}
-        </p>
-      </section>
+      {/* Floating Vertical Contact Buttons */}
+      <FloatingContactVertical locale={locale} />
 
-      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8">
-        {/* Services List */}
-        <div className="grid gap-6">
+      {/* Corporate Page Hero Header */}
+      <PageHeroHeader
+        locale={locale}
+        enTitle="SERVICE & SOLUTIONS"
+        jpTitle={content.servicesPage.title}
+        lead={content.servicesPage.lead}
+        currentPathName={content.servicesPage.badge}
+      />
+
+      {/* Core Services Section */}
+      <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div className="mx-auto max-w-6xl space-y-12">
+          
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <p className="font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
+              SERVICE LINEUP
+            </p>
+            <h2 className="font-serif-jp text-3xl sm:text-4xl font-black text-slate-900">
+              {locale === "ja" ? "主要サービス品目" : locale === "vi" ? "Danh Mục Dịch Vụ Chính" : "Our Core Services"}
+            </h2>
+            <div className="mx-auto mt-3 h-0.5 w-12 bg-[#00729F]" />
+          </div>
+
           {content.services.map((service, index) => {
             const Icon = serviceIcons[index] || Hotel;
+            const imageSrc = serviceImages[index] || "/works/photo-room.jpg";
+            const isEven = index % 2 === 0;
+
             return (
-              <Card key={service.title} className="grid gap-8 p-7 lg:grid-cols-[0.7fr_1.3fr] lg:p-10 border border-slate-100 hover:border-sky-100 transition duration-300 hover:shadow-soft hover:-translate-y-0.5">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <p className="text-sm font-black tracking-[0.2em] text-sky-800">0{index + 1}</p>
-                    <Icon className="size-5 text-sky-800" />
+              <div
+                key={service.title}
+                className="rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-10 shadow-sm overflow-hidden"
+              >
+                <div className={`grid gap-8 lg:grid-cols-12 lg:items-center ${isEven ? "" : "lg:grid-flow-dense"}`}>
+                  
+                  {/* Left or Right Image */}
+                  <div className={`lg:col-span-5 relative aspect-[4/3] rounded-xl overflow-hidden shadow-xs ${isEven ? "" : "lg:col-start-8"}`}>
+                    <Image
+                      src={imageSrc}
+                      alt={service.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 450px"
+                    />
+                    <span className="absolute top-3 left-3 rounded-md bg-[#00729F] px-3 py-1 text-xs font-black text-white font-mono shadow-xs">
+                      0{index + 1}
+                    </span>
                   </div>
-                  <h2 className="mt-6 text-3xl font-black tracking-[-0.04em]">{service.title}</h2>
-                  <p className="mt-5 leading-8 text-nktn-ink/64">{service.lead}</p>
-                </div>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {service.points.map((point) => (
-                    <div key={point} className="flex items-center gap-3 rounded-2xl bg-nktn-cream p-4 font-bold">
-                      <CheckCircle2 className="size-5 text-sky-800 shrink-0" />
-                      <span>{point}</span>
+
+                  {/* Content */}
+                  <div className={`lg:col-span-7 space-y-4 ${isEven ? "" : "lg:col-start-1"}`}>
+                    <div className="flex items-center gap-2 text-[#00729F]">
+                      <Icon className="size-5" />
+                      <span className="font-serif-jp text-xs font-black tracking-widest uppercase">
+                        SERVICE 0{index + 1}
+                      </span>
                     </div>
-                  ))}
+
+                    <h3 className="font-serif-jp text-2xl sm:text-3xl font-black text-slate-900 leading-snug">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                      {service.lead}
+                    </p>
+
+                    <div className="grid gap-2.5 sm:grid-cols-2 pt-2">
+                      {service.points.map((point) => (
+                        <div
+                          key={point}
+                          className="flex items-center gap-2.5 rounded-lg bg-[#F6F6F6] p-3 text-xs sm:text-sm font-bold text-slate-800"
+                        >
+                          <CheckCircle2 className="size-4 text-[#19BAD7] shrink-0" />
+                          <span>{point}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="pt-4 flex gap-3">
+                      <Link
+                        href={companyBase.lineUrl}
+                        className="inline-flex items-center gap-2 rounded-lg bg-[#06C755] hover:bg-[#05b04c] px-5 py-3 text-xs sm:text-sm font-black text-white transition shadow-xs"
+                      >
+                        <MessageCircle className="size-4" />
+                        <span>{locale === "ja" ? "LINEで相談・見積もり" : "Inquire via LINE"}</span>
+                      </Link>
+                    </div>
+                  </div>
+
                 </div>
-              </Card>
+              </div>
             );
           })}
         </div>
+      </section>
 
-        {/* Facility Types */}
-        <div className="mt-16 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-          <Card className="p-7 lg:p-10 border border-slate-100">
-            <Badge variant="blue">対応施設</Badge>
-            <h2 className="mt-6 text-3xl font-black tracking-[-0.04em]">{content.servicesPage.facilityTitle}</h2>
-            <p className="mt-5 leading-8 text-nktn-ink/64">{content.servicesPage.facilityLead}</p>
-          </Card>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Facilities Supported */}
+      <section className="py-20 px-5 sm:px-8 bg-white border-b border-slate-200/80">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <p className="font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
+              FACILITIES
+            </p>
+            <h2 className="font-serif-jp text-3xl sm:text-4xl font-black text-slate-900 leading-tight">
+              {content.servicesPage.facilityTitle}
+            </h2>
+            <div className="mx-auto mt-3 h-0.5 w-12 bg-[#00729F]" />
+            <p className="mt-4 text-slate-600 text-sm sm:text-base">
+              {content.servicesPage.facilityLead}
+            </p>
+          </div>
+
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
             {content.facilityTypes.map((facility, index) => {
               const FacilityIcon = facilityIcons[index] || Hotel;
               return (
-                <div key={facility} className="flex items-center gap-3 rounded-2xl bg-white p-5 font-black shadow-soft border border-slate-100 transition duration-300 hover:shadow-md hover:-translate-y-0.5">
-                  <FacilityIcon className="size-5 text-sky-800 shrink-0" />
-                  <span>{facility}</span>
+                <div
+                  key={facility}
+                  className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-[#F6F6F6] border border-slate-200/80 hover:bg-white hover:border-[#00729F] transition-all duration-200"
+                >
+                  <span className="grid size-12 place-items-center rounded-xl bg-white text-[#00729F] shadow-xs mb-3">
+                    <FacilityIcon className="size-6" />
+                  </span>
+                  <span className="text-xs sm:text-sm font-black text-slate-900">{facility}</span>
                 </div>
               );
             })}
           </div>
         </div>
+      </section>
 
-        <div className="mt-16">
-          <CtaContactBand locale={locale} />
-        </div>
+      {/* Quality Flow Section */}
+      <section className="py-20 px-5 sm:px-8 bg-[#071224] text-white border-b border-white/10">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <p className="font-serif-jp text-xs font-black tracking-[0.25em] text-[#19BAD7] uppercase mb-2">
+              QUALITY FLOW
+            </p>
+            <h2 className="font-serif-jp text-3xl sm:text-4xl font-black leading-tight">
+              {content.servicesPage.qualityTitle}
+            </h2>
+            <div className="mx-auto mt-3 h-0.5 w-12 bg-[#19BAD7]" />
+          </div>
 
-        {/* Quality Flow */}
-        <div className="mt-16 rounded-[2.5rem] bg-[#0F172A] p-7 text-white shadow-soft lg:p-10">
-          <p className="text-sky-300 text-sm font-black tracking-widest mb-3">QUALITY FLOW</p>
-          <h2 className="mt-6 max-w-4xl text-4xl font-black tracking-[-0.04em]">{content.servicesPage.qualityTitle}</h2>
-          <div className="mt-10 grid gap-4 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {content.qualityFlow.map(([number, title, body], index) => {
               const QualityIcon = qualityIcons[index] || CheckCircle2;
               return (
-                <div key={number} className="rounded-[1.75rem] bg-white/9 p-5 ring-1 ring-white/12 transition duration-300 hover:bg-white/15">
-                  <div className="flex items-center justify-between">
-                    <p className="text-sm font-black tracking-[0.2em] text-sky-300">{number}</p>
-                    <QualityIcon className="size-5 text-sky-300" />
+                <div
+                  key={number}
+                  className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col justify-between hover:bg-white/10 transition duration-300"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-black tracking-[0.2em] text-[#19BAD7]">{number}</span>
+                      <QualityIcon className="size-5 text-[#19BAD7]" />
+                    </div>
+                    <h3 className="font-serif-jp text-lg font-black mb-3">{title}</h3>
+                    <p className="text-xs text-slate-300 leading-relaxed">{body}</p>
                   </div>
-                  <h3 className="mt-8 text-2xl font-black">{title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-white/64">{body}</p>
                 </div>
               );
             })}
           </div>
         </div>
-
-        <div className="mt-16">
-          <CtaContactBand locale={locale} />
-        </div>
       </section>
+
+      {/* Comparison Table */}
+      <ComparisonTable locale={locale} />
+
+      {/* Final CTA */}
+      <CtaContactBand locale={locale} variant="dark" />
     </main>
   );
 }

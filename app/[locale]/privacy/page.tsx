@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { CtaContactBand } from "@/components/home/cta-contact-band";
 import { type Locale, withLocale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { pageMetadata } from "@/lib/seo";
+import { PageHeroHeader } from "@/components/ui/page-hero-header";
+import { FloatingContactVertical } from "@/components/ui/floating-contact-vertical";
+import { CtaContactBand } from "@/components/home/cta-contact-band";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -20,38 +20,54 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
 
   return (
     <main className="site-shell">
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28 text-center sm:text-left">
-        <p className="text-amber-600 text-sm font-black tracking-widest mb-3">{content.privacyPage.badge}</p>
-        <h1 className="max-w-5xl text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] text-nktn-ink sm:text-6xl">{content.privacyPage.title}</h1>
-        <p className="mt-8 max-w-3xl text-base leading-8 text-nktn-ink/68">{content.privacyPage.lead}</p>
-      </section>
+      {/* Floating Vertical Contact Buttons */}
+      <FloatingContactVertical locale={locale} />
 
-      <section className="mx-auto max-w-5xl px-5 pb-24 sm:px-8">
-        <Card className="p-7 lg:p-10">
-          <div className="space-y-10">
-            {content.privacyPage.sections.map(([title, body]) => (
-              <section key={title}>
-                <h2 className="text-xl font-black tracking-[-0.03em] text-sky-950">{title}</h2>
-                <p className="mt-4 leading-8 text-nktn-ink/66">{body}</p>
-              </section>
-            ))}
-          </div>
-          <div className="mt-10 border-t border-slate-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      {/* Page Hero Header */}
+      <PageHeroHeader
+        locale={locale}
+        enTitle="LEGAL & COMPLIANCE"
+        jpTitle={content.privacyPage.title}
+        lead={content.privacyPage.lead}
+        currentPathName={content.privacyPage.badge}
+      />
+
+      {/* Privacy Content */}
+      <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
+        <div className="mx-auto max-w-4xl rounded-2xl bg-white p-6 sm:p-12 border border-slate-200/80 shadow-sm space-y-10">
+          {content.privacyPage.sections.map(([title, body]) => (
+            <section key={title} className="space-y-3">
+              <h2 className="font-serif-jp text-lg sm:text-xl font-black text-slate-900 leading-snug">
+                {title}
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed whitespace-pre-line">
+                {body}
+              </p>
+            </section>
+          ))}
+
+          <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <p className="text-sm font-bold text-nktn-ink/45">{locale === "ja" ? "お問い合わせ窓口" : "Contact Inquiry"}</p>
-              <p className="text-base font-black text-nktn-ink/80 mt-1">{companyBase.email}</p>
+              <p className="text-xs font-bold text-slate-400">
+                {locale === "ja" ? "個人情報に関するお問い合わせ窓口" : "Privacy Inquiry Contact"}
+              </p>
+              <p className="text-sm font-bold text-slate-800 mt-1">
+                {companyBase.name}（{companyBase.email}）
+              </p>
             </div>
-            <Button asChild>
-              <Link href={withLocale(locale, "/contact")}>
-                {content.common.contact} <ArrowRight className="size-4" />
-              </Link>
-            </Button>
+            <Link
+              href={withLocale(locale, "/contact")}
+              className="inline-flex items-center gap-2 rounded-xl bg-[#00729F] hover:bg-[#00466D] px-6 py-3 text-xs sm:text-sm font-black text-white transition shadow-xs"
+            >
+              <span>{content.common.contact}</span>
+              <ArrowRight className="size-4" />
+            </Link>
           </div>
-        </Card>
+        </div>
       </section>
 
-      <CtaContactBand locale={locale} />
+      {/* Final CTA */}
+      <CtaContactBand locale={locale} variant="dark" />
     </main>
   );
 }
-
