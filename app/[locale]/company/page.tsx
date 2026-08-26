@@ -26,8 +26,8 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
   
   const rows = [
     { icon: Building2, label: content.company.profileRows.name, value: `${companyBase.name}（${companyBase.brand}）` },
-    { icon: FileText, label: content.company.profileRows.corporateNumber, value: companyBase.corporateNumber },
-    { icon: FileText, label: content.company.profileRows.invoiceNumber, value: companyBase.invoiceNumber },
+    { icon: FileText, label: content.company.profileRows.corporateNumber, value: companyBase.corporateNumber, link: `https://info.gbiz.go.jp/hojin/detail?hojinBango=${companyBase.corporateNumber}` },
+    { icon: FileText, label: content.company.profileRows.invoiceNumber, value: companyBase.invoiceNumber, link: `https://www.invoice-kohyo.nta.go.jp/regno-search/detail?selRegNo=${companyBase.invoiceNumber}` },
     { icon: Calendar, label: content.company.profileRows.established, value: companyBase.established },
     { icon: Coins, label: content.company.profileRows.capital, value: companyBase.capital },
     { icon: MapPin, label: content.company.profileRows.location, value: companyBase.location },
@@ -52,13 +52,27 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
         <Card className="p-8 transition duration-300 hover:shadow-lg">
           <p className="text-sm font-black tracking-[0.2em] text-amber-600">PROFILE</p>
           <div className="mt-8 divide-y divide-nktn-ink/10">
-            {rows.map(({ icon: Icon, label, value }) => (
+            {rows.map(({ icon: Icon, label, value, link }) => (
               <div key={label} className="grid gap-2 py-5 sm:grid-cols-[12rem_1fr] items-start">
                 <div className="flex items-center gap-2">
                   <Icon className="size-4 text-nktn-blue/70 shrink-0" />
                   <p className="font-black text-nktn-ink/60 text-sm">{label}</p>
                 </div>
-                <p className="font-bold leading-7 text-nktn-ink text-sm sm:text-base">{value}</p>
+                {link ? (
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold leading-7 text-sky-800 hover:text-amber-600 hover:underline text-sm sm:text-base inline-flex flex-wrap items-center gap-1.5"
+                  >
+                    {value}
+                    <span className="text-[10px] font-bold text-sky-800/60 bg-sky-50 border border-sky-100 rounded px-1.5 py-0.5 leading-none shrink-0">
+                      {locale === "ja" ? "国税庁/経産省で確認" : locale === "vi" ? "Tra cứu Database" : "Verify Registry"}
+                    </span>
+                  </a>
+                ) : (
+                  <p className="font-bold leading-7 text-nktn-ink text-sm sm:text-base">{value}</p>
+                )}
               </div>
             ))}
           </div>

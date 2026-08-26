@@ -43,7 +43,7 @@ const ja = {
   },
   company: {
     coverage: "全国対応", business: "ホテル・民泊客室清掃、宿泊施設運営サポート、現場管理、Cleaning DX、貿易・総合商社事業",
-    profileRows: { name: "会社名", corporateNumber: "法人番号", invoiceNumber: "登録番号", established: "設立", capital: "資本金", location: "所在地", representative: "代表取締役", business: "事業内容" },
+    profileRows: { name: "会社名", corporateNumber: "法人番号", invoiceNumber: "適格請求書発行事業者登録番号", established: "設立", capital: "資本金", location: "所在地", representative: "代表取締役", business: "事業内容" },
     footerLead: "大阪市西成区を拠点に、全国のホテル・民泊客室清掃と現場管理DXを一体で支えるCleaning + DXカンパニーです。",
   },
   home: {
