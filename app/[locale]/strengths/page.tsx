@@ -21,7 +21,7 @@ export default async function StrengthsPage({ params }: { params: Promise<{ loca
     <main className="site-shell">
       <section className="mx-5 my-10 rounded-[2.5rem] bg-gradient-to-br from-sky-800 to-sky-900 px-5 py-20 text-white sm:mx-8 sm:px-8 lg:rounded-[4rem] lg:py-28">
         <div className="mx-auto max-w-7xl">
-          <p className="text-amber-400 text-sm font-black tracking-widest mb-3">{content.strengthsPage.badge}</p>
+          <p className="text-sky-300 text-sm font-black tracking-widest mb-3">{content.strengthsPage.badge}</p>
           <h1 className="max-w-6xl text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] sm:text-6xl">{content.strengthsPage.title}</h1>
           <p className="mt-8 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">{content.strengthsPage.lead}</p>
         </div>
@@ -36,8 +36,8 @@ export default async function StrengthsPage({ params }: { params: Promise<{ loca
           {content.strengths.map((strength, index) => {
             const Icon = icons[index];
             return (
-              <Card key={strength.title} className="p-7">
-                <Icon className="size-8 text-amber-500" />
+              <Card key={strength.title} className="p-7 border border-slate-100 hover:border-sky-100 transition duration-300 hover:shadow-soft hover:-translate-y-0.5">
+                <Icon className="size-8 text-sky-800" />
                 <h2 className="mt-12 text-2xl font-black tracking-[-0.04em]">{strength.title}</h2>
                 <p className="mt-5 leading-8 text-nktn-ink/66">{strength.body}</p>
               </Card>
@@ -47,16 +47,16 @@ export default async function StrengthsPage({ params }: { params: Promise<{ loca
 
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
           {(locale === "ja"
-            ? [["100%", "報告・連絡・完了管理"], ["ON TIME", "納期逆算の清掃設計"], ["BIG OPS", "DX駆動の現場運営"]]
+            ? [["100%", "報告・連絡・完了管理"], ["ON TIME", "納期逆算 of 清掃設計"], ["BIG OPS", "DX駆動 of 現場運営"]]
             : locale === "vi"
             ? [["100%", "Báo cáo / liên lạc / hoàn thành"], ["ON TIME", "Thiết kế dọn dẹp theo thời hạn"], ["BIG OPS", "Vận hành hiện trường bằng DX"]]
             : locale === "zh"
-            ? [["100%", "报告 / 联络 / 完成管理"], ["ON TIME", "倒推时间的清洁设计"], ["BIG OPS", "DX驱动的现场运营"]]
+            ? [["100%", "报告 / 联络 / 完成管理"], ["ON TIME", "倒推時間的清洁设计"], ["BIG OPS", "DX驱动的现场运营"]]
             : locale === "id"
             ? [["100%", "Laporan / kontak / penyelesaian"], ["ON TIME", "Desain pembersihan berorientasi tenggat waktu"], ["BIG OPS", "Operasi lapangan bertenaga DX"]]
             : [["100%", "Report / contact / completion management"], ["ON TIME", "Deadline-oriented cleaning design"], ["BIG OPS", "DX-powered field operation"]]
           ).map(([label, body]) => (
-            <div key={label} className="rounded-[2rem] bg-white p-7 shadow-soft">
+            <div key={label} className="rounded-[2rem] bg-white p-7 border border-slate-100 hover:border-sky-100 shadow-soft transition duration-300 hover:shadow-md hover:-translate-y-0.5">
               <p className="text-4xl font-black tracking-[-0.04em] text-sky-800">{label}</p>
               <p className="mt-4 font-bold leading-7 text-nktn-ink/70">{body}</p>
             </div>
