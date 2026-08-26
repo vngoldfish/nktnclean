@@ -81,7 +81,7 @@ export function CtaContactBand({ locale, variant = "dark" }: CtaContactBandProps
     );
   }
 
-  // Default: Dark Premium
+  // Default: Dark Premium (Clean 3-Channel Grid)
   return (
     <section
       id="cta-contact-band-section"
@@ -92,60 +92,106 @@ export function CtaContactBand({ locale, variant = "dark" }: CtaContactBandProps
         src="/works/photo-staff.jpg"
         alt="NKTN Cleaning Team"
         fill
-        className="cta-bg-photo object-cover opacity-20"
+        className="cta-bg-photo object-cover opacity-15"
         sizes="100vw"
       />
-      <div className="cta-overlay-dark absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/80 to-slate-950/90" />
+      <div className="cta-overlay-dark absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/85 to-slate-950/95" />
       {/* Glow highlight */}
-      <div className="cta-glow-effect absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-sky-500/10 blur-3xl pointer-events-none" />
+      <div className="cta-glow-effect absolute top-0 left-1/2 -translate-x-1/2 w-96 h-28 bg-sky-500/10 blur-3xl pointer-events-none" />
 
-      <div id="cta-content-container" className="cta-content-container relative mx-auto max-w-4xl text-center">
-        <p className="cta-eyebrow-lead text-sky-300 text-xs sm:text-sm font-black tracking-widest uppercase mb-3">
+      <div id="cta-content-container" className="cta-content-container relative mx-auto max-w-5xl text-center">
+        <p className="cta-eyebrow-lead text-[#19BAD7] text-xs font-black tracking-[0.25em] uppercase mb-2">
           {content.home.ctaBandLead}
         </p>
-        <h2 className="cta-heading text-white text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight mb-8">
+        <h2 className="cta-heading font-serif-jp text-white text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight mb-10">
           {content.home.ctaBandTitle}
         </h2>
 
-        {/* Giant phone number card */}
-        <Link
-          id="cta-phone-card"
-          href={`tel:${companyBase.phone}`}
-          className="cta-phone-card inline-flex items-center gap-3.5 mb-6 group rounded-2xl bg-white/5 border border-white/10 px-6 py-3.5 hover:bg-white/10 transition-all"
-          data-analytics="phone_cta_click"
-        >
-          <span className="cta-phone-icon-wrap grid size-12 sm:size-14 place-items-center rounded-full bg-amber-400 text-slate-950 shadow-md group-hover:scale-105 transition">
-            <Phone className="size-6 sm:size-7" />
-          </span>
-          <div className="cta-phone-text text-left">
-            <span className="cta-hours-label block text-slate-400 text-[11px] font-bold">
-              {content.topBar.hours}
-            </span>
-            <span className="cta-phone-number block text-white text-2xl sm:text-4xl font-black tracking-wider">
-              {companyBase.phone}
-            </span>
-          </div>
-        </Link>
-
-        {/* Action buttons */}
-        <div id="cta-action-buttons" className="cta-action-buttons flex flex-col sm:flex-row items-center justify-center gap-3.5 mt-4">
+        {/* 3 Balanced Contact Cards Grid */}
+        <div id="cta-action-grid" className="cta-action-grid grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
+          
+          {/* Channel 1: Phone */}
           <Link
-            id="cta-btn-line"
+            id="cta-card-phone"
+            href={`tel:${companyBase.phone}`}
+            className="cta-card rounded-2xl bg-white/5 border border-white/10 p-5 hover:bg-white/10 hover:border-amber-400/40 transition-all flex flex-col justify-between group"
+            data-analytics="phone_cta_click"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="grid size-9 place-items-center rounded-xl bg-amber-400 text-slate-950 shadow-xs">
+                  <Phone className="size-4.5" />
+                </span>
+                <span className="text-[11px] font-bold text-slate-400">{content.topBar.hours}</span>
+              </div>
+              <p className="text-xs font-bold text-slate-300 mb-1">
+                {locale === "ja" ? "お電話でのご相談" : locale === "vi" ? "Tư vấn qua điện thoại" : "Phone Call"}
+              </p>
+              <p className="font-serif-jp text-xl sm:text-2xl font-black text-white tracking-wide">
+                {companyBase.phone}
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-bold text-amber-400 group-hover:translate-x-0.5 transition-transform">
+              <span>{locale === "ja" ? "電話をかける" : locale === "vi" ? "Gọi ngay" : "Call Now"}</span>
+              <ArrowRight className="size-3.5" />
+            </div>
+          </Link>
+
+          {/* Channel 2: LINE (Recommended) */}
+          <Link
+            id="cta-card-line"
             href={companyBase.lineUrl}
-            className="cta-btn-line w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#06C755] px-8 py-4 text-base font-black text-white shadow-glow-green hover:bg-[#05b04c] hover:scale-[1.02] transition-all"
+            className="cta-card rounded-2xl bg-gradient-to-b from-[#06C755]/20 to-[#06C755]/10 border border-[#06C755]/40 p-5 hover:border-[#06C755] hover:from-[#06C755]/30 transition-all flex flex-col justify-between group relative overflow-hidden"
             data-analytics="line_cta_click"
           >
-            <MessageCircle className="size-5" />
-            {content.common.lineConsultLong}
+            <span className="absolute top-2.5 right-3 rounded-md bg-[#06C755] px-2 py-0.5 text-[10px] font-black text-white uppercase shadow-xs">
+              {locale === "ja" ? "推奨・最速" : locale === "vi" ? "Khuyên dùng" : "Fastest"}
+            </span>
+            <div>
+              <div className="flex items-center mb-3">
+                <span className="grid size-9 place-items-center rounded-xl bg-[#06C755] text-white shadow-xs">
+                  <MessageCircle className="size-4.5" />
+                </span>
+              </div>
+              <p className="text-xs font-bold text-emerald-200 mb-1">
+                {locale === "ja" ? "LINE公式アカウント" : "Official LINE Account"}
+              </p>
+              <p className="font-serif-jp text-base sm:text-lg font-black text-white leading-snug">
+                {content.common.lineConsultLong}
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs font-bold text-[#06C755] group-hover:translate-x-0.5 transition-transform">
+              <span>{locale === "ja" ? "LINEで相談・見積もり" : locale === "vi" ? "Nhắn tin LINE" : "Chat on LINE"}</span>
+              <ArrowRight className="size-3.5" />
+            </div>
           </Link>
+
+          {/* Channel 3: Contact Form */}
           <Link
-            id="cta-btn-contact"
+            id="cta-card-contact"
             href={withLocale(locale, "/contact")}
-            className="cta-btn-contact w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-white/10 border border-white/20 px-8 py-4 text-base font-bold text-white shadow-soft hover:bg-white/20 transition-all"
+            className="cta-card rounded-2xl bg-white/5 border border-white/10 p-5 hover:bg-white/10 hover:border-[#19BAD7]/40 transition-all flex flex-col justify-between group"
           >
-            <FileText className="size-5" />
-            {content.common.contact}
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="grid size-9 place-items-center rounded-xl bg-[#00729F] text-white shadow-xs">
+                  <FileText className="size-4.5" />
+                </span>
+                <span className="text-[11px] font-bold text-slate-400">24/7 Intake</span>
+              </div>
+              <p className="text-xs font-bold text-slate-300 mb-1">
+                {locale === "ja" ? "Webフォーム問い合わせ" : locale === "vi" ? "Biểu mẫu trực tuyến" : "Web Inquiry Form"}
+              </p>
+              <p className="font-serif-jp text-base sm:text-lg font-black text-white leading-snug">
+                {content.common.contact}
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-bold text-[#19BAD7] group-hover:translate-x-0.5 transition-transform">
+              <span>{locale === "ja" ? "フォームを開く" : locale === "vi" ? "Gửi yêu cầu" : "Open Form"}</span>
+              <ArrowRight className="size-3.5" />
+            </div>
           </Link>
+
         </div>
       </div>
     </section>

@@ -52,13 +52,13 @@ export default async function LocaleLayout({ children, params }: Readonly<{ chil
   };
 
   return (
-    <div lang={locale} className={`locale-${locale}`}>
+    <div lang={locale} className={`locale-${locale} min-h-screen flex flex-col pb-14 md:pb-0`}>
       <Analytics />
       <AnalyticsEvents />
       <ScrollAnimationInitializer />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <SiteHeader locale={locale as Locale} />
-      {children}
+      <div className="flex-1">{children}</div>
       <SiteFooter locale={locale as Locale} />
     </div>
   );

@@ -88,15 +88,8 @@ export default async function DxPage({ params }: { params: Promise<{ locale: Loc
                 {content.dxPage.smartLead}
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  id="dx-line-btn"
-                  href={companyBase.lineUrl}
-                  className="dx-line-btn inline-flex items-center gap-2 rounded-xl bg-[#06C755] hover:bg-[#05b04c] px-6 py-3.5 text-xs sm:text-sm font-black text-white transition shadow-sm"
-                >
-                  <MessageCircle className="size-4" />
-                  <span>{content.common.lineConsultLong}</span>
-                </Link>
+              <div className="mt-6 flex items-center gap-2 text-xs font-mono font-bold text-[#19BAD7]">
+                <span>LINE API INTEGRATION & REALTIME REPORTING</span>
               </div>
             </div>
           </div>

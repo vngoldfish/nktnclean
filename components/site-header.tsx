@@ -45,18 +45,15 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     <div className="sticky top-0 z-50 shadow-sm">
       {/* Top info bar */}
       <div className="bg-[#0B0F19] text-white text-xs sm:text-sm border-b border-white/5">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-2.5 sm:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-2 sm:px-8">
           <div className="flex items-center gap-3 sm:gap-5">
             <span className="hidden sm:inline text-white/70">{content.topBar.commitment}</span>
             <span className="text-amber-400 font-bold">{content.topBar.hours}</span>
           </div>
           <div className="flex items-center gap-3">
-            <Link href={`tel:${companyBase.phone}`} className="flex items-center gap-2 text-base sm:text-lg font-black text-amber-400 hover:text-amber-300 transition">
-              <Phone className="size-4 sm:size-4.5" />
-              {companyBase.phone}
-            </Link>
-            <Link href={companyBase.lineUrl} className="hidden sm:inline-flex items-center gap-1 rounded-xl bg-[#06C755] px-3.5 py-1 text-xs font-bold text-white hover:bg-[#05b04c] transition" data-analytics="line_topbar_click">
-              {content.topBar.lineEstimate}
+            <Link href={`tel:${companyBase.phone}`} className="flex items-center gap-1.5 text-xs sm:text-sm font-black text-amber-400 hover:text-amber-300 transition">
+              <Phone className="size-3.5 sm:size-4" />
+              <span>{companyBase.phone}</span>
             </Link>
           </div>
         </div>
@@ -129,21 +126,13 @@ export function SiteHeader({ locale }: { locale: Locale }) {
               )}
             </div>
 
-            {/* Premium CTA Buttons Group */}
-            <Link
-              href={companyBase.lineUrl}
-              className="hidden sm:inline-flex items-center gap-1 rounded-2xl bg-[#06C755] px-4 py-2 text-xs font-black text-white hover:bg-[#05b04c] shadow-sm transition"
-              data-analytics="line_header_click"
-            >
-              <MessageCircle className="size-4" />
-              {content.common.lineConsult}
-            </Link>
+            {/* Premium Header CTA */}
             <Link
               href={withLocale(locale, "/contact")}
-              className="hidden sm:inline-flex items-center gap-1 rounded-2xl bg-sky-800 px-4 py-2 text-xs font-black text-white hover:bg-sky-700 shadow-sm transition"
+              className="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-sky-800 hover:bg-sky-900 px-5 py-2 text-xs font-black text-white shadow-xs transition"
             >
-              <FileText className="size-4" />
-              {content.common.contact}
+              <FileText className="size-3.5" />
+              <span>{content.common.contact}</span>
             </Link>
 
             <button

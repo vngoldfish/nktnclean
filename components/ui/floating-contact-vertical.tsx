@@ -46,15 +46,15 @@ export function FloatingContactVertical({ locale }: FloatingContactVerticalProps
         </Link>
       </div>
 
-      {/* 2. Mobile Bottom Sticky Conversion Bar */}
-      <div id="mobile-sticky-dock" className="mobile-sticky-dock fixed inset-x-0 bottom-0 z-50 flex md:hidden p-2.5 gap-2 bg-white/95 backdrop-blur-xl border-t border-slate-200 shadow-elevated">
+      {/* 2. Mobile Bottom Sticky Conversion Bar (Compact & Sleek) */}
+      <div id="mobile-sticky-dock" className="mobile-sticky-dock fixed inset-x-0 bottom-0 z-50 flex md:hidden px-3 py-2 gap-2 bg-slate-950/90 backdrop-blur-md border-t border-white/10 shadow-lg">
         <Link
           id="dock-btn-phone"
           href={`tel:${companyBase.phone}`}
           data-analytics="phone_sticky_click"
-          className="dock-btn-phone flex-1 flex items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-xs font-bold text-white shadow-soft active:scale-95 transition"
+          className="dock-btn-phone flex-1 flex items-center justify-center gap-1.5 rounded-lg bg-white/10 py-2.5 text-xs font-bold text-white hover:bg-white/15 active:scale-95 transition"
         >
-          <Phone className="size-4 text-amber-400" />
+          <Phone className="size-3.5 text-amber-400" />
           <span>{locale === "ja" ? "電話相談" : locale === "vi" ? "Gọi điện" : "Call Us"}</span>
         </Link>
 
@@ -62,10 +62,10 @@ export function FloatingContactVertical({ locale }: FloatingContactVerticalProps
           id="dock-btn-line"
           href={companyBase.lineUrl}
           data-analytics="line_sticky_click"
-          className="dock-btn-line flex-1 flex items-center justify-center gap-2 rounded-xl bg-[#06C755] py-3 text-xs font-bold text-white shadow-soft active:scale-95 transition"
+          className="dock-btn-line flex-1 flex items-center justify-center gap-1.5 rounded-lg bg-[#06C755] py-2.5 text-xs font-bold text-white shadow-xs active:scale-95 transition"
         >
-          <MessageCircle className="size-4" />
-          <span>{locale === "ja" ? "LINE見積もり" : locale === "vi" ? "Báo giá LINE" : "LINE Quote"}</span>
+          <MessageCircle className="size-3.5" />
+          <span>{locale === "ja" ? "LINE見積もり" : locale === "vi" ? "LINE báo giá" : "LINE Quote"}</span>
         </Link>
       </div>
     </>

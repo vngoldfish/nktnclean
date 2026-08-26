@@ -138,15 +138,8 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                       ))}
                     </div>
 
-                    <div className="service-detail-action pt-4 flex gap-3">
-                      <Link
-                        id={`service-line-btn-${index + 1}`}
-                        href={companyBase.lineUrl}
-                        className="service-line-btn inline-flex items-center gap-2 rounded-lg bg-[#06C755] hover:bg-[#05b04c] px-5 py-3 text-xs sm:text-sm font-black text-white transition shadow-xs"
-                      >
-                        <MessageCircle className="size-4" />
-                        <span>{locale === "ja" ? "LINEで相談・見積もり" : locale === "vi" ? "Tư vấn báo giá LINE" : "Inquire via LINE"}</span>
-                      </Link>
+                    <div className="service-detail-action pt-2 flex items-center text-xs font-black text-[#00729F]">
+                      <span className="font-mono tracking-wider uppercase">NKTN PROFESSIONAL STANDARD</span>
                     </div>
                   </div>
 
