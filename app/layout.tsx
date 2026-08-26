@@ -38,10 +38,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" },
       { url: "/logo.png", type: "image/png" },
     ],
-    shortcut: "/favicon.svg",
+    shortcut: "/favicon.png",
     apple: "/logo.png",
   },
   openGraph: {
