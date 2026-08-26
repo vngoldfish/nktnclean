@@ -65,7 +65,7 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
         : locale === "vi"
         ? "Đội ngũ nhân sự chuyên trách, giao tiếp đa ngôn ngữ (Nhật, Anh, Việt, Trung), được đào tạo bài bản quy trình vệ sinh tiêu chuẩn."
         : "Certified multilingual operations team upholding strict hotel standards with fluent Japanese, English, and Vietnamese coordination.",
-      image: "/works/photo-room.jpg",
+      image: "/works/photo-staff.jpg",
       navCatch: locale === "ja" ? "グローバル人材\n専任スタッフと社内研修" : "Multinational Workforce",
       actionText: locale === "ja" ? "企業体制・研修制度を見る" : "About Our Team",
       actionHref: "/company",

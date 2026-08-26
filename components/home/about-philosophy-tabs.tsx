@@ -25,9 +25,9 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
   return (
     <section
       id="about-philosophy-section"
-      className="section-about-philosophy min-h-[70vh] lg:min-h-[85vh] py-16 sm:py-20 lg:py-24 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80 scroll-mt-20 flex flex-col justify-center"
+      className="section-about-philosophy py-16 sm:py-20 lg:py-24 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80 scroll-mt-20"
     >
-      <div className="about-container mx-auto max-w-6xl w-full my-auto">
+      <div className="about-container mx-auto max-w-6xl w-full">
         
         {/* 1. Header with Mincho Serif */}
         <div id="about-header" className="about-header text-center max-w-3xl mx-auto mb-10 sm:mb-12">
@@ -69,7 +69,7 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
               aria-selected={activeTab === "philosophy"}
               aria-controls="panel-philosophy"
               onClick={() => setActiveTab("philosophy")}
-              className={`tab-btn tab-btn-philosophy px-8 py-3 rounded-md font-serif-jp text-xs sm:text-sm font-black transition-all duration-200 ${
+              className={`tab-btn tab-btn-philosophy px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-serif-jp text-xs sm:text-sm font-black transition-all duration-200 ${
                 activeTab === "philosophy"
                   ? "is-active bg-[#00729F] text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
@@ -84,7 +84,7 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
               aria-selected={activeTab === "profile"}
               aria-controls="panel-profile"
               onClick={() => setActiveTab("profile")}
-              className={`tab-btn tab-btn-profile px-8 py-3 rounded-md font-serif-jp text-xs sm:text-sm font-black transition-all duration-200 ${
+              className={`tab-btn tab-btn-profile px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-serif-jp text-xs sm:text-sm font-black transition-all duration-200 ${
                 activeTab === "profile"
                   ? "is-active bg-[#00729F] text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
