@@ -82,12 +82,12 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
   return (
     <section
       id="services-showcase-section"
-      className="section-services-showcase min-h-0 lg:min-h-[80vh] py-16 sm:py-20 lg:py-28 px-5 sm:px-8 bg-white border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
+      className="section-services-showcase py-16 sm:py-20 lg:py-24 px-5 sm:px-8 bg-white border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20"
     >
-      <div className="services-container mx-auto max-w-6xl w-full">
+      <div className="services-container mx-auto max-w-6xl">
         
         {/* Section Title */}
-        <div id="services-header" className="services-header text-center max-w-3xl mx-auto mb-16">
+        <div id="services-header" className="services-header text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <p className="services-eyebrow font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
             SERVICE
           </p>

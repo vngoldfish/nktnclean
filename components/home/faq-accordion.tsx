@@ -21,12 +21,12 @@ export function FaqAccordion({ locale }: FaqAccordionProps) {
   return (
     <section
       id="faq-home-section"
-      className="section-faq-home min-h-0 lg:min-h-[75vh] py-16 sm:py-20 lg:py-28 px-5 sm:px-8 bg-white border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
+      className="section-faq-home py-16 sm:py-20 lg:py-24 px-5 sm:px-8 bg-white border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20"
     >
-      <div className="faq-container mx-auto max-w-4xl w-full">
+      <div className="faq-container mx-auto max-w-4xl">
         
         {/* Section Header */}
-        <div id="faq-header" className="faq-header text-center max-w-3xl mx-auto mb-14">
+        <div id="faq-header" className="faq-header text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <p className="faq-eyebrow font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
             FAQ
           </p>

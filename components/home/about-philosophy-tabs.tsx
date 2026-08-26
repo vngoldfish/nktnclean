@@ -25,12 +25,12 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
   return (
     <section
       id="about-philosophy-section"
-      className="section-about-philosophy min-h-0 lg:min-h-[80vh] py-16 sm:py-20 lg:py-28 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
+      className="section-about-philosophy py-16 sm:py-20 lg:py-24 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20"
     >
-      <div className="about-container mx-auto max-w-6xl w-full">
+      <div className="about-container mx-auto max-w-6xl">
         
         {/* 1. Header with Mincho Serif */}
-        <div id="about-header" className="about-header text-center max-w-3xl mx-auto mb-14">
+        <div id="about-header" className="about-header text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <p className="about-eyebrow font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
             ABOUT US
           </p>

@@ -85,7 +85,7 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
   return (
     <section
       id="hero-slider-section"
-      className="hero-slider-section relative overflow-hidden bg-slate-950 text-white min-h-[580px] sm:min-h-[640px] lg:min-h-[calc(100vh-5.5rem)] flex flex-col justify-between"
+      className="hero-slider-section relative overflow-hidden bg-slate-950 text-white min-h-[520px] sm:min-h-[580px] lg:h-[620px] flex flex-col justify-between"
     >
       {/* 1. Background Images with smooth fade + Ken Burns transition */}
       <div id="hero-slider-bg-wrapper" className="hero-slider-bg-wrapper absolute inset-0">

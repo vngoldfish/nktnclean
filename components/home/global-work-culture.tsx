@@ -21,12 +21,12 @@ export function GlobalWorkCulture({ locale }: GlobalWorkCultureProps) {
   return (
     <section
       id="workforce-culture-section"
-      className="section-workforce-culture min-h-0 lg:min-h-[80vh] py-16 sm:py-20 lg:py-28 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
+      className="section-workforce-culture py-16 sm:py-20 lg:py-24 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20"
     >
-      <div className="workforce-container mx-auto max-w-5xl w-full">
+      <div className="workforce-container mx-auto max-w-5xl">
         
         {/* 1. Visual Banner — Split Layout: Photo Left + Header Right */}
-        <div id="workforce-banner" className="workforce-banner grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-14">
+        <div id="workforce-banner" className="workforce-banner grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-10 sm:mb-12">
           {/* Large Photo */}
           <div className="workforce-photo-wrapper relative aspect-[16/9] rounded-2xl overflow-hidden shadow-md">
             <Image
