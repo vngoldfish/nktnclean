@@ -49,9 +49,9 @@ export function PartnerEquipmentBand({ locale }: PartnerEquipmentBandProps) {
   return (
     <section
       id="partner-equipment-section"
-      className="section-partner-equipment py-14 px-5 sm:px-8 bg-white border-b border-slate-200/80"
+      className="section-partner-equipment min-h-[85vh] lg:min-h-screen py-20 sm:py-24 lg:py-32 px-5 sm:px-8 bg-white border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
     >
-      <div className="equipment-container mx-auto max-w-7xl">
+      <div className="equipment-container mx-auto max-w-7xl w-full">
 
         {/* 1. Photo Strip */}
         <div id="equipment-photo-strip" className="equipment-photo-strip grid grid-cols-3 gap-2 sm:gap-4 mb-10">

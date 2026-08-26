@@ -85,7 +85,7 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
   return (
     <section
       id="hero-slider-section"
-      className="hero-slider-section relative overflow-hidden bg-slate-950 text-white min-h-[580px] lg:min-h-[660px] flex flex-col justify-between"
+      className="hero-slider-section relative overflow-hidden bg-slate-950 text-white min-h-[calc(100svh-4.5rem)] lg:min-h-[calc(100vh-5.5rem)] flex flex-col justify-between"
     >
       {/* 1. Background Images with smooth fade + Ken Burns transition */}
       <div id="hero-slider-bg-wrapper" className="hero-slider-bg-wrapper absolute inset-0">
@@ -114,8 +114,8 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
         ))}
       </div>
 
-      {/* 2. Main Content Area */}
-      <div id="hero-main-content-container" className="hero-main-content-container relative mx-auto max-w-7xl px-5 sm:px-8 pt-16 pb-12 lg:pt-24 lg:pb-16 z-10 w-full">
+      {/* 2. Main Content Area (Vertically Centered) */}
+      <div id="hero-main-content-container" className="hero-main-content-container relative mx-auto max-w-7xl px-5 sm:px-8 my-auto py-10 sm:py-16 lg:py-20 z-10 w-full">
         <div key={activeSlide} id={`hero-slide-content-${activeSlide}`} className="hero-slide-content max-w-3xl">
           {/* Eyebrow badge with clean line */}
           <div className="hero-eyebrow-badge flex items-center gap-3 mb-6 animate-fade-in-up">

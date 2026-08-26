@@ -85,7 +85,7 @@ export function CtaContactBand({ locale, variant = "dark" }: CtaContactBandProps
   return (
     <section
       id="cta-contact-band-section"
-      className="section-cta-contact-band relative overflow-hidden bg-slate-950 py-16 px-5 sm:px-8 border-t border-slate-800"
+      className="section-cta-contact-band relative overflow-hidden bg-slate-950 min-h-[75vh] lg:min-h-[85vh] py-20 sm:py-24 lg:py-32 px-5 sm:px-8 border-t border-slate-800 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
     >
       {/* Background Photo with Overlay */}
       <Image
