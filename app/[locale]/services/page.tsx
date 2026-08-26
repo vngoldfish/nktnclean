@@ -65,6 +65,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         jpTitle={content.servicesPage.title}
         lead={content.servicesPage.lead}
         currentPathName={content.servicesPage.badge}
+        bgImage="/works/photo-room.jpg"
       />
 
       {/* Core Services Section */}
@@ -186,6 +187,32 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Work Showcase Photo Strip */}
+      <section className="py-0 bg-[#F6F6F6]">
+        <div className="grid grid-cols-2 sm:grid-cols-4">
+          {[
+            { src: "/works/photo-room.jpg", label: locale === "ja" ? "客室清掃" : "Room Clean" },
+            { src: "/works/photo-bathroom.jpg", label: locale === "ja" ? "水回り清掃" : "Bathroom" },
+            { src: "/works/photo-tools.jpg", label: locale === "ja" ? "専用機材" : "Pro Tools" },
+            { src: "/works/photo-report.jpg", label: locale === "ja" ? "品質報告" : "QC Report" },
+          ].map((item) => (
+            <div key={item.src} className="relative aspect-[4/3] overflow-hidden group">
+              <Image
+                src={item.src}
+                alt={item.label}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 640px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071224]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <span className="text-xs font-black text-white tracking-wide drop-shadow-md">{item.label}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

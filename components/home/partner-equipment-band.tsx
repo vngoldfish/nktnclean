@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Wrench, Sparkles, ShieldCheck } from "lucide-react";
 import { type Locale } from "@/lib/i18n";
 
@@ -15,13 +16,51 @@ export function PartnerEquipmentBand({ locale }: PartnerEquipmentBandProps) {
     { name: "蔵王産業株式会社", role: "産業用バキューム・洗浄機器" },
   ];
 
+  const photoStrip = [
+    {
+      src: "/works/photo-tools.jpg",
+      caption: locale === "ja" ? "プロ仕様の清掃機材" : locale === "vi" ? "Thiết bị vệ sinh chuyên nghiệp" : "Professional Equipment",
+    },
+    {
+      src: "/works/photo-bathroom.jpg",
+      caption: locale === "ja" ? "輝く仕上がり" : locale === "vi" ? "Kết quả sáng bóng" : "Sparkling Results",
+    },
+    {
+      src: "/works/photo-room.jpg",
+      caption: locale === "ja" ? "完成された客室" : locale === "vi" ? "Phòng hoàn thiện" : "Finished Room",
+    },
+  ];
+
   return (
     <section className="py-14 px-5 sm:px-8 bg-white border-b border-slate-200/80">
       <div className="mx-auto max-w-7xl">
+
+        {/* Photo Strip */}
+        <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-10">
+          {photoStrip.map((photo) => (
+            <div
+              key={photo.src}
+              className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm group"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.caption}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 33vw, 350px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
+              <span className="absolute bottom-3 left-3 right-3 text-[11px] sm:text-xs font-black text-white drop-shadow-sm">
+                {photo.caption}
+              </span>
+            </div>
+          ))}
+        </div>
+
         <div className="text-center max-w-2xl mx-auto mb-8">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 border border-slate-200 px-3.5 py-1 text-[11px] font-black tracking-widest text-slate-700 uppercase mb-2">
             <Wrench className="size-3 text-slate-500" />
-            PROFESSIONAL EQUIPMENT & CHEMICALS
+            PROFESSIONAL EQUIPMENT &amp; CHEMICALS
           </span>
           <h3 className="font-serif-jp text-xl sm:text-2xl font-black text-slate-900">
             {locale === "ja" ? "プロ仕様の専用機材・環境美化商品を使用" : "Professional-Grade Equipment & Sanitizers"}

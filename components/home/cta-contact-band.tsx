@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Phone, MessageCircle, FileText, Sparkles, ArrowRight, ShieldCheck } from "lucide-react";
 
@@ -83,6 +84,15 @@ export function CtaContactBand({ locale, variant = "dark" }: CtaContactBandProps
   // Default: Dark Premium
   return (
     <section className="relative overflow-hidden bg-slate-950 py-16 px-5 sm:px-8 border-t border-slate-800">
+      {/* Background Photo with Overlay */}
+      <Image
+        src="/works/photo-staff.jpg"
+        alt="NKTN Cleaning Team"
+        fill
+        className="object-cover opacity-20"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/80 to-slate-950/90" />
       {/* Glow highlight */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-sky-500/10 blur-3xl pointer-events-none" />
 

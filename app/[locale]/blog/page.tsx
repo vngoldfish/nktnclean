@@ -38,6 +38,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: L
         jpTitle={content.blogPage.title}
         lead={content.blogPage.lead}
         currentPathName={content.blogPage.badge}
+        bgImage="/blog/quality-control.jpg"
       />
 
       {/* Blog Cards Grid */}

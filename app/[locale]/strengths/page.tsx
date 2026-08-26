@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Network, ShieldCheck, TimerReset, Trophy, Award, CheckCircle2 } from "lucide-react";
 import { type Locale } from "@/lib/i18n";
 import { getContent } from "@/lib/site-data-i18n";
@@ -31,6 +32,7 @@ export default async function StrengthsPage({ params }: { params: Promise<{ loca
         jpTitle={content.strengthsPage.title}
         lead={content.strengthsPage.lead}
         currentPathName={content.strengthsPage.badge}
+        bgImage="/works/photo-bathroom.jpg"
       />
 
       {/* 4 Core Strengths */}
@@ -89,6 +91,32 @@ export default async function StrengthsPage({ params }: { params: Promise<{ loca
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* Visual Showcase Strip */}
+      <section className="py-0 bg-white">
+        <div className="grid grid-cols-2 sm:grid-cols-4">
+          {[
+            { src: "/works/photo-room.jpg", label: locale === "ja" ? "仕上がり客室" : "Finished Room" },
+            { src: "/works/photo-staff.jpg", label: locale === "ja" ? "研修風景" : "Staff Training" },
+            { src: "/works/photo-tools.jpg", label: locale === "ja" ? "専用機材" : "Pro Equipment" },
+            { src: "/works/photo-bathroom.jpg", label: locale === "ja" ? "輝く水回り" : "Sparkling Bathroom" },
+          ].map((item) => (
+            <div key={item.src} className="relative aspect-[4/3] overflow-hidden group">
+              <Image
+                src={item.src}
+                alt={item.label}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 640px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071224]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <span className="text-xs font-black text-white tracking-wide drop-shadow-md">{item.label}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

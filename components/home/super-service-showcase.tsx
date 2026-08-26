@@ -61,6 +61,25 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
     },
   ];
 
+  const lifestyleStrip = [
+    {
+      src: "/works/photo-room.jpg",
+      caption: locale === "ja" ? "完成客室" : locale === "vi" ? "Phòng hoàn thiện" : "Finished Room",
+    },
+    {
+      src: "/works/photo-bathroom.jpg",
+      caption: locale === "ja" ? "水回り清掃" : locale === "vi" ? "Vệ sinh nhà tắm" : "Bathroom Polish",
+    },
+    {
+      src: "/works/photo-tools.jpg",
+      caption: locale === "ja" ? "プロ仕様機材" : locale === "vi" ? "Thiết bị chuyên dụng" : "Pro Equipment",
+    },
+    {
+      src: "/works/photo-report.jpg",
+      caption: locale === "ja" ? "写真付き報告" : locale === "vi" ? "Báo cáo bằng ảnh" : "Photo Reports",
+    },
+  ];
+
   return (
     <section className="py-20 px-5 sm:px-8 bg-white border-b border-slate-200/80">
       <div className="mx-auto max-w-6xl">
@@ -90,8 +109,8 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
               className="group rounded-2xl bg-[#F6F6F6] border border-slate-200/80 overflow-hidden hover:border-[#00729F] hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                {/* Photo Banner */}
-                <div className="relative h-44 w-full overflow-hidden">
+                {/* Photo Banner — taller h-52 */}
+                <div className="relative h-52 w-full overflow-hidden">
                   <Image
                     src={item.image}
                     alt={item.jpTitle}
@@ -126,6 +145,28 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Lifestyle Image Strip */}
+        <div className="mt-14">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            {lifestyleStrip.map((photo) => (
+              <div key={photo.src} className="flex flex-col items-center">
+                <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-sm">
+                  <Image
+                    src={photo.src}
+                    alt={photo.caption}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                  />
+                </div>
+                <p className="mt-2 text-[11px] sm:text-xs font-bold text-slate-500 text-center">
+                  {photo.caption}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom Button */}

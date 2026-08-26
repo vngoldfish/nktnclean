@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { 
   Building2,
   FileText,
@@ -50,6 +51,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
         jpTitle={content.companyPage.title}
         lead={content.companyPage.lead}
         currentPathName={content.companyPage.badge}
+        bgImage="/works/company-office.jpg"
       />
 
       {/* Main Content */}
@@ -134,6 +136,22 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
                   : "Complete liability insurance safeguarding your properties and valuable assets."}
               </p>
             </div>
+          </div>
+
+          {/* Visual Gallery Strip */}
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {[
+              { src: "/works/photo-room.jpg", caption: locale === "ja" ? "客室清掃" : "Room Cleaning" },
+              { src: "/works/photo-bathroom.jpg", caption: locale === "ja" ? "水回り" : "Water Area" },
+              { src: "/works/photo-tools.jpg", caption: locale === "ja" ? "専用機材" : "Pro Equipment" },
+              { src: "/works/photo-staff.jpg", caption: locale === "ja" ? "研修風景" : "Training" },
+            ].map((item) => (
+              <div key={item.src} className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-xs group">
+                <Image src={item.src} alt={item.caption} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 50vw, 25vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+                <span className="absolute bottom-2.5 left-3 text-[11px] font-black text-white drop-shadow-md">{item.caption}</span>
+              </div>
+            ))}
           </div>
 
         </div>

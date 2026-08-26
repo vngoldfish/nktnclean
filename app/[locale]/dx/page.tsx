@@ -31,6 +31,7 @@ export default async function DxPage({ params }: { params: Promise<{ locale: Loc
         jpTitle={content.dxPage.title}
         lead={content.dxPage.lead}
         currentPathName={content.dxPage.badge}
+        bgImage="/works/photo-report.jpg"
       />
 
       {/* DX Items */}

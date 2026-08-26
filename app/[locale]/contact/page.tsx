@@ -33,6 +33,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         jpTitle={content.contactPage.title}
         lead={content.contactPage.lead}
         currentPathName={content.contactPage.badge}
+        bgImage="/works/photo-staff.jpg"
       />
 
       {/* Main Contact Channels */}

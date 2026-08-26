@@ -23,20 +23,35 @@ export function GlobalWorkCulture({ locale }: GlobalWorkCultureProps) {
     <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
       <div className="mx-auto max-w-5xl">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className="font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
-            RECRUIT & WORKPLACE
-          </p>
-          <h2 className="font-serif-jp text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
-            {locale === "ja" ? "国籍問わず活躍できる、そういう組織" : locale === "vi" ? "Đội Ngũ Nhân Lực Toàn Cầu & Văn Hóa Đào Tạo" : "Multinational Diversity & Growth"}
-          </h2>
-          <div className="mx-auto mt-3 h-0.5 w-12 bg-[#00729F]" />
-          <p className="mt-6 text-slate-600 text-sm sm:text-base leading-relaxed">
-            {locale === "ja"
-              ? "当社は日本を含め、世界中の人々と海外の文化を尊重する企業風土を実践しています。\nグローバルな環境で、確かな清掃技術とおもてなしマナーを学び、成長できる機会があります。"
-              : "We foster an inclusive culture that respects global diversity, offering rigorous hotel-standard training and clear career advancement."}
-          </p>
+        {/* Visual Banner — Split Layout: Photo Left + Header Right */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-14">
+          {/* Large Photo */}
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-md">
+            <Image
+              src="/works/photo-staff.jpg"
+              alt="NKTN Global Team"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 550px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#071224]/30 via-transparent to-transparent" />
+          </div>
+
+          {/* Header Text */}
+          <div className="text-center lg:text-left">
+            <p className="font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
+              RECRUIT &amp; WORKPLACE
+            </p>
+            <h2 className="font-serif-jp text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
+              {locale === "ja" ? "国籍問わず活躍できる、そういう組織" : locale === "vi" ? "Đội Ngũ Nhân Lực Toàn Cầu & Văn Hóa Đào Tạo" : "Multinational Diversity & Growth"}
+            </h2>
+            <div className="mt-3 h-0.5 w-12 bg-[#00729F] mx-auto lg:mx-0" />
+            <p className="mt-6 text-slate-600 text-sm sm:text-base leading-relaxed">
+              {locale === "ja"
+                ? "当社は日本を含め、世界中の人々と海外の文化を尊重する企業風土を実践しています。\nグローバルな環境で、確かな清掃技術とおもてなしマナーを学び、成長できる機会があります。"
+                : "We foster an inclusive culture that respects global diversity, offering rigorous hotel-standard training and clear career advancement."}
+            </p>
+          </div>
         </div>
 
         {/* 2-Column Checklist with Cyan Checkmark Badges (Exact Super Hotel Clean Style) */}

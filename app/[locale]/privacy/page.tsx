@@ -30,6 +30,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
         jpTitle={content.privacyPage.title}
         lead={content.privacyPage.lead}
         currentPathName={content.privacyPage.badge}
+        bgImage="/works/company-office.jpg"
       />
 
       {/* Privacy Content */}

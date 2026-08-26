@@ -15,6 +15,13 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
   const [activeTab, setActiveTab] = useState<"philosophy" | "profile">("philosophy");
   const content = getContent(locale);
 
+  const collageImages = [
+    { src: "/works/photo-room.jpg", alt: "Premium Room Cleaning" },
+    { src: "/works/photo-staff.jpg", alt: "Professional Staff" },
+    { src: "/works/photo-bathroom.jpg", alt: "Bathroom Deep Clean" },
+    { src: "/works/company-office.jpg", alt: "NKTN Office" },
+  ];
+
   return (
     <section className="py-20 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80">
       <div className="mx-auto max-w-6xl">
@@ -49,7 +56,26 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
           </p>
         </div>
 
-        {/* 2. SuperHotelClean Style Tab Selector (PHILOSOPHY / PROFILE) */}
+        {/* 2. Photo Collage Grid (2x2) */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-12 max-w-4xl mx-auto">
+          {collageImages.map((img) => (
+            <div
+              key={img.src}
+              className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 400px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
+            </div>
+          ))}
+        </div>
+
+        {/* 3. SuperHotelClean Style Tab Selector (PHILOSOPHY / PROFILE) */}
         <div className="flex justify-center mb-8">
           <div className="inline-flex rounded-lg bg-slate-200/80 p-1">
             <button
@@ -75,7 +101,7 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
           </div>
         </div>
 
-        {/* 3. Clean Split Tab Body (Exact Super Hotel Clean visual style) */}
+        {/* 4. Clean Split Tab Body (Exact Super Hotel Clean visual style) */}
         <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-10 lg:p-12 shadow-sm">
           {activeTab === "philosophy" ? (
             <div className="grid gap-10 lg:grid-cols-12 lg:items-center">

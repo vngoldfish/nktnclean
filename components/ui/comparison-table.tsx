@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Check, X, ShieldCheck, Sparkles, Award } from "lucide-react";
 import { type Locale } from "@/lib/i18n";
 
@@ -424,6 +425,29 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Visual Proof Gallery */}
+        <div className="mt-8 grid grid-cols-3 gap-4">
+          {[
+            { src: "/works/photo-room.jpg", caption: locale === "ja" ? "仕上がり客室" : "Finished Room" },
+            { src: "/works/photo-bathroom.jpg", caption: locale === "ja" ? "水回り清掃" : "Bathroom Deep Clean" },
+            { src: "/works/photo-report.jpg", caption: locale === "ja" ? "写真報告" : "Photo Report" },
+          ].map((item) => (
+            <div key={item.src} className="relative aspect-[3/2] rounded-xl overflow-hidden shadow-xs group">
+              <Image
+                src={item.src}
+                alt={item.caption}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 33vw, 250px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+              <span className="absolute bottom-2.5 left-3 text-[11px] font-black text-white drop-shadow-md">
+                {item.caption}
+              </span>
+            </div>
+          ))}
         </div>
 
         {/* Trust summary box below table */}

@@ -212,6 +212,7 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
         jpTitle={page.title}
         lead={page.description}
         currentPathName={page.keyword}
+        bgImage="/works/photo-room.jpg"
       />
 
       {/* Main Highlights */}
