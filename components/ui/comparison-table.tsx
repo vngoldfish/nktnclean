@@ -439,21 +439,21 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
           {/* Table Header Row */}
           <div role="rowgroup" className="comparison-table-head">
             <div role="row" className="grid grid-cols-12 bg-slate-900 text-white font-bold text-sm sm:text-base border-b border-slate-800">
-              <div role="columnheader" className="col-span-4 p-5 lg:p-6 flex items-center">
-                <span className="text-slate-300 font-bold uppercase tracking-wider text-xs sm:text-sm">
+              <div role="columnheader" className="col-span-4 p-4 lg:p-4.5 flex items-center">
+                <span className="text-slate-300 font-bold uppercase tracking-wider text-xs">
                   {locale === "ja" ? "項目 / 条件" : locale === "vi" ? "Tiêu chí so sánh" : "Features & Standards"}
                 </span>
               </div>
-              <div role="columnheader" className="col-span-4 p-5 lg:p-6 bg-sky-800 flex items-center justify-between border-x border-sky-700/60">
+              <div role="columnheader" className="col-span-4 p-3.5 lg:p-4 bg-sky-800 flex items-center justify-between border-x border-sky-700/60">
                 <div className="flex items-center gap-2">
-                  <Award className="size-5 text-amber-400 shrink-0" />
-                  <span className="text-white font-black text-sm lg:text-base">{t.nktnLabel}</span>
+                  <Award className="size-4 text-amber-400 shrink-0" />
+                  <span className="text-white font-black text-xs sm:text-sm lg:text-base">{t.nktnLabel}</span>
                 </div>
-                <span className="inline-flex items-center rounded-md bg-amber-400 px-2 py-0.5 text-[11px] font-black text-slate-900">
+                <span className="inline-flex items-center rounded-md bg-amber-400 px-2 py-0.5 text-[10px] font-black text-slate-900">
                   RECOMMENDED
                 </span>
               </div>
-              <div role="columnheader" className="col-span-4 p-5 lg:p-6 bg-slate-800/80 flex items-center">
+              <div role="columnheader" className="col-span-4 p-3.5 lg:p-4 bg-slate-800/80 flex items-center">
                 <span className="text-slate-400 font-medium text-xs sm:text-sm">{t.othersLabel}</span>
               </div>
             </div>
@@ -470,31 +470,31 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
                 }`}
               >
                 {/* Feature Column */}
-                <div role="rowheader" className="col-span-4 p-5 lg:p-6 flex flex-col justify-center">
-                  <span className="font-extrabold text-slate-900 text-sm lg:text-base">
+                <div role="rowheader" className="col-span-4 p-3.5 lg:p-4 flex flex-col justify-center">
+                  <span className="font-extrabold text-slate-900 text-xs sm:text-sm">
                     {item.title}
                   </span>
-                  <span className="text-xs text-slate-500 mt-1 leading-relaxed">
+                  <span className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
                     {item.desc}
                   </span>
                 </div>
 
                 {/* NKTN Column (Highlight) */}
-                <div role="cell" className="col-span-4 p-5 lg:p-6 bg-sky-50/70 border-x border-sky-100 flex items-center gap-3">
-                  <span className="grid size-8 shrink-0 place-items-center rounded-full bg-sky-800 text-white font-black text-sm shadow-sm">
+                <div role="cell" className="col-span-4 p-3.5 lg:p-4 bg-sky-50/70 border-x border-sky-100 flex items-center gap-2.5">
+                  <span className="grid size-7 shrink-0 place-items-center rounded-full bg-sky-800 text-white font-black text-xs shadow-sm">
                     {item.nktn.symbol}
                   </span>
                   <div>
-                    <span className="font-bold text-sky-950 text-sm leading-snug">
+                    <span className="font-bold text-sky-950 text-xs sm:text-sm leading-snug">
                       {item.nktn.value}
                     </span>
                   </div>
                 </div>
 
                 {/* Others Column */}
-                <div role="cell" className="col-span-4 p-5 lg:p-6 flex items-center gap-3 text-slate-500">
+                <div role="cell" className="col-span-4 p-3.5 lg:p-4 flex items-center gap-2.5 text-slate-500">
                   <span
-                    className={`grid size-7 shrink-0 place-items-center rounded-full text-xs font-bold ${
+                    className={`grid size-6 shrink-0 place-items-center rounded-full text-[11px] font-bold ${
                       item.others.symbol === "✕"
                         ? "bg-rose-50 text-rose-600 border border-rose-100"
                         : "bg-slate-100 text-slate-500"
@@ -502,7 +502,7 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
                   >
                     {item.others.symbol}
                   </span>
-                  <span className="text-sm font-medium text-slate-600 leading-snug">
+                  <span className="text-xs sm:text-sm font-medium text-slate-600 leading-snug">
                     {item.others.value}
                   </span>
                 </div>
