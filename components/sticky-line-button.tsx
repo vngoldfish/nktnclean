@@ -12,7 +12,7 @@ export function StickyLineButton({ locale }: { locale: Locale }) {
       <Link
         href={`tel:${companyBase.phone}`}
         data-analytics="phone_sticky_click"
-        className="flex-1 flex items-center justify-center gap-2 rounded-full bg-sky-800 py-3.5 text-sm font-black text-white shadow-lg transition hover:bg-sky-700"
+        className="flex-1 flex items-center justify-center gap-2 rounded-2xl bg-sky-800 py-3.5 text-sm font-bold text-white shadow-soft transition hover:bg-sky-700"
       >
         <Phone className="size-5" />
         {content.common.phone}
@@ -20,7 +20,7 @@ export function StickyLineButton({ locale }: { locale: Locale }) {
       <Link
         href={companyBase.lineUrl}
         data-analytics="line_sticky_click"
-        className="flex-1 flex items-center justify-center gap-2 rounded-full bg-[#06C755] py-3.5 text-sm font-black text-white shadow-lg transition hover:bg-[#05b04c]"
+        className="flex-1 flex items-center justify-center gap-2 rounded-2xl bg-[#06C755] py-3.5 text-sm font-bold text-white shadow-soft transition hover:bg-[#05b04c]"
       >
         <MessageCircle className="size-5" />
         {content.common.lineConsult}

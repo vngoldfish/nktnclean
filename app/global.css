@@ -65,9 +65,7 @@
 
 @layer utilities {
   .site-shell {
-    background:
-      radial-gradient(circle at 12% 0%, rgba(14, 165, 233, 0.08), transparent 26rem),
-      linear-gradient(180deg, #ffffff 0%, #f8fbfd 46%, #eef7f8 100%);
+    background: #ffffff;
   }
 
   .glass-panel {

@@ -24,10 +24,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
   const content = getContent(locale);
 
   return (
-    <section className="relative overflow-hidden bg-slate-50/50 border-b border-slate-100">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-[0.01]" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px'}} />
-
+    <section className="relative overflow-hidden bg-slate-50/30 border-b border-slate-100">
       <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           
@@ -50,7 +47,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
               animate="visible"
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="whitespace-normal sm:whitespace-pre-line text-balance text-4xl font-black leading-[1.1] tracking-[-0.04em] text-slate-900 sm:text-6xl lg:text-7xl"
+              className="whitespace-normal sm:whitespace-pre-line text-balance text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl"
             >
               {content.home.title}
             </motion.h1>
@@ -74,7 +71,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
             >
               <Link
                 href={companyBase.lineUrl}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#06C755] px-8 py-4 text-base font-black text-white shadow-soft hover:bg-[#05b04c] transition duration-200"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#06C755] px-8 py-4 text-base font-bold text-white shadow-soft hover:bg-[#05b04c] transition duration-200"
               >
                 <MessageCircle className="size-5" />
                 {content.common.lineConsultLong}
@@ -82,7 +79,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
               </Link>
               <Link
                 href={withLocale(locale, "/services")}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-white border border-slate-200 px-8 py-4 text-base font-black text-slate-800 shadow-soft hover:bg-slate-50 transition duration-200"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-white border border-slate-200 px-8 py-4 text-base font-bold text-slate-800 shadow-soft hover:bg-slate-50 transition duration-200"
               >
                 {content.common.viewServices}
               </Link>

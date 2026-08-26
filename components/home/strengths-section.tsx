@@ -20,7 +20,7 @@ export function StrengthsSection({ locale }: StrengthsSectionProps) {
     <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
       <div className="text-center mb-14">
         <Badge variant="blue" className="mb-6 font-bold">Why NKTN</Badge>
-        <h2 className="whitespace-normal sm:whitespace-pre-line text-balance text-3xl font-black tracking-[-0.04em] text-nktn-ink sm:text-5xl lg:text-6xl">
+        <h2 className="whitespace-normal sm:whitespace-pre-line text-balance text-3xl font-extrabold tracking-tight text-nktn-ink sm:text-5xl lg:text-6xl">
           {content.home.strengthsTitle}
         </h2>
       </div>
@@ -40,7 +40,7 @@ export function StrengthsSection({ locale }: StrengthsSectionProps) {
               {/* Number + Icon side */}
               <div className="flex flex-col items-center lg:items-start shrink-0">
                 <div className="flex items-baseline gap-1 mb-3">
-                  <span className="text-sky-800/20 text-8xl sm:text-9xl font-black leading-none">
+                  <span className="text-sky-800/20 text-8xl sm:text-9xl font-extrabold leading-none">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
@@ -50,10 +50,10 @@ export function StrengthsSection({ locale }: StrengthsSectionProps) {
               </div>
               {/* Content side */}
               <div className={`text-center lg:text-left flex-1`}>
-                <p className="text-sky-800 text-sm font-black tracking-widest mb-2">
+                <p className="text-sky-800 text-sm font-bold tracking-widest mb-2">
                   {locale === 'ja' ? `${content.common.reason || "理由"}${index + 1}` : `${content.common.reason || "Reason"} ${index + 1}`}
                 </p>
-                <h3 className="text-2xl sm:text-3xl font-black tracking-[-0.03em] text-nktn-ink mb-4">
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-nktn-ink mb-4">
                   {strength.title}
                 </h3>
                 <p className="text-base leading-8 text-nktn-ink/64 max-w-2xl">
