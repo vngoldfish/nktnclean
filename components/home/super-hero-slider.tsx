@@ -84,20 +84,21 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
 
   return (
     <section className="relative overflow-hidden bg-slate-950 text-white min-h-[580px] lg:min-h-[660px] flex flex-col justify-between">
-      {/* Background Images with smooth fade transition */}
+      {/* Background Images with smooth fade + Ken Burns transition */}
       {slides.map((slide, idx) => (
         <div
           key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            activeSlide === idx ? "opacity-100 scale-100" : "opacity-0 scale-105"
+          className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
+            activeSlide === idx ? "opacity-100" : "opacity-0"
           }`}
-          style={{ transitionProperty: "opacity, transform", transitionDuration: "1200ms" }}
         >
           <Image
             src={slide.image}
             alt={slide.title}
             fill
-            className="object-cover"
+            className={`object-cover transition-transform duration-[8000ms] ease-out ${
+              activeSlide === idx ? "scale-110" : "scale-100"
+            }`}
             priority={idx === 0}
             sizes="100vw"
           />
@@ -109,9 +110,9 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
 
       {/* Main Content Area */}
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 pt-16 pb-12 lg:pt-24 lg:pb-16 z-10 w-full">
-        <div className="max-w-3xl">
+        <div key={activeSlide} className="max-w-3xl">
           {/* Eyebrow badge with clean line */}
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-6 animate-fade-in-up">
             <span className="h-px w-8 bg-[#19BAD7]" />
             <span className="text-xs font-black tracking-[0.25em] text-[#19BAD7] uppercase">
               {current.badge}
@@ -119,12 +120,12 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
           </div>
 
           {/* Large Mincho Serif Catchphrase (SuperHotelClean signature style) */}
-          <h1 className="font-serif-jp text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.2] tracking-normal text-white drop-shadow-md whitespace-pre-line">
+          <h1 className="font-serif-jp text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.2] tracking-normal text-white drop-shadow-md whitespace-pre-line animate-fade-in-up stagger-2">
             {current.title}
           </h1>
 
           {/* Descriptive text */}
-          <p className="mt-6 text-sm sm:text-base lg:text-lg leading-relaxed text-slate-200/90 font-medium max-w-2xl">
+          <p className="mt-6 text-sm sm:text-base lg:text-lg leading-relaxed text-slate-200/90 font-medium max-w-2xl animate-fade-in-up stagger-3">
             {current.desc}
           </p>
 

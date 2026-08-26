@@ -129,3 +129,171 @@
   }
 }
 
+/* ========================================
+   ANIMATION SYSTEM — Smooth Page & Tab Transitions
+   Japanese Hospitality Aesthetic
+   ======================================== */
+
+/* --- Fade In Up (Sections appearing on scroll) --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* --- Animation Utility Classes --- */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-float-soft {
+  animation: floatSoft 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* --- Stagger Delays --- */
+.stagger-1 { animation-delay: 0.08s; }
+.stagger-2 { animation-delay: 0.16s; }
+.stagger-3 { animation-delay: 0.24s; }
+.stagger-4 { animation-delay: 0.32s; }
+.stagger-5 { animation-delay: 0.40s; }
+.stagger-6 { animation-delay: 0.48s; }
+.stagger-7 { animation-delay: 0.56s; }
+.stagger-8 { animation-delay: 0.64s; }
+
+/* --- Tab Content Transitions --- */
+.tab-content-enter {
+  animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.tab-indicator {
+  transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Page Transition (main content on load) --- */
+.page-enter {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+/* --- Hero Section Ken Burns Zoom --- */
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.hero-ken-burns {
+  animation: kenBurns 20s ease-in-out alternate infinite;
+}
+
+/* --- Image Reveal (lazy load feel) --- */
+@keyframes imageReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.img-reveal {
+  animation: imageReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* --- Smooth Link/Button Hover --- */
+.smooth-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.smooth-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* --- Section Scroll Reveal (CSS-only with Intersection Observer helper) --- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}

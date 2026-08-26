@@ -6,6 +6,7 @@ import { AnalyticsEvents } from "@/components/analytics-events";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyLineButton } from "@/components/sticky-line-button";
+import { ScrollAnimationInitializer } from "@/components/ui/scroll-animation-init";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { absoluteUrl, localeHomeMetadata } from "@/lib/seo";
@@ -55,6 +56,7 @@ export default async function LocaleLayout({ children, params }: Readonly<{ chil
     <div lang={locale} className={`locale-${locale}`}>
       <Analytics />
       <AnalyticsEvents />
+      <ScrollAnimationInitializer />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <SiteHeader locale={locale as Locale} />
       {children}

@@ -24,25 +24,39 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <SuperHeroSlider locale={locale} />
 
       {/* 3. About Us & Philosophy / Profile Tabs */}
-      <AboutPhilosophyTabs locale={locale} />
+      <div className="reveal-on-scroll">
+        <AboutPhilosophyTabs locale={locale} />
+      </div>
 
       {/* 4. Core Services (Bed making, Building maintenance, Smart DX, Global Staffing) */}
-      <SuperServiceShowcase locale={locale} />
+      <div className="reveal-on-scroll">
+        <SuperServiceShowcase locale={locale} />
+      </div>
 
       {/* 5. Quality & Trust Comparison Table (NKTN vs Standard Cleaners) */}
-      <ComparisonTable locale={locale} />
+      <div className="reveal-on-scroll">
+        <ComparisonTable locale={locale} />
+      </div>
 
       {/* 6. Professional Equipment & Chemicals Standards */}
-      <PartnerEquipmentBand locale={locale} />
+      <div className="reveal-on-scroll">
+        <PartnerEquipmentBand locale={locale} />
+      </div>
 
       {/* 7. Multinational Workforce, Training & Career Opportunities */}
-      <GlobalWorkCulture locale={locale} />
+      <div className="reveal-on-scroll">
+        <GlobalWorkCulture locale={locale} />
+      </div>
 
       {/* 8. Japanese Corporate FAQ Accordion */}
-      <FaqAccordion locale={locale} />
+      <div className="reveal-on-scroll">
+        <FaqAccordion locale={locale} />
+      </div>
 
       {/* 9. Final High-Converting Contact & Estimate Band */}
-      <CtaContactBand locale={locale} variant="dark" />
+      <div className="reveal-on-scroll">
+        <CtaContactBand locale={locale} variant="dark" />
+      </div>
     </main>
   );
 }

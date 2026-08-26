@@ -21,13 +21,13 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       title: "Company",
       sub: locale === "ja" ? "会社概要・企業理念" : "Company",
       href: "/company",
-      image: "/works/photo-staff.jpg",
+      image: "/works/company-office.jpg",
     },
     {
       title: "Service",
       sub: locale === "ja" ? "事業内容・清掃品目" : "Services",
       href: "/services",
-      image: "/works/photo-room.jpg",
+      image: "/works/photo-bathroom.jpg",
     },
     {
       title: "Contact",

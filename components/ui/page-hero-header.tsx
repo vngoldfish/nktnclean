@@ -33,7 +33,7 @@ export function PageHeroHeader({
             src={bgImage}
             alt={jpTitle}
             fill
-            className="object-cover"
+            className="object-cover hero-ken-burns"
             priority
             sizes="100vw"
           />
@@ -46,7 +46,7 @@ export function PageHeroHeader({
       
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8 w-full">
         {/* Breadcrumbs */}
-        <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-bold text-slate-300">
+        <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-bold text-slate-300 animate-fade-in">
           <Link href={withLocale(locale, "/")} className="hover:text-white transition">
             {content.nav[0][0] || "Home"}
           </Link>
@@ -55,7 +55,7 @@ export function PageHeroHeader({
         </nav>
 
         {/* Eyebrow */}
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-4 animate-fade-in-up">
           <span className="h-px w-8 bg-[#19BAD7]" />
           <span className="text-xs font-black tracking-[0.25em] text-[#19BAD7] uppercase">
             {enTitle}
@@ -63,12 +63,12 @@ export function PageHeroHeader({
         </div>
 
         {/* Title in Mincho Serif */}
-        <h1 className="font-serif-jp text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight drop-shadow-md">
+        <h1 className="font-serif-jp text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight drop-shadow-md animate-fade-in-up stagger-2">
           {jpTitle}
         </h1>
 
         {/* Lead */}
-        <p className="mt-5 max-w-3xl text-sm sm:text-base leading-relaxed text-slate-200 font-medium">
+        <p className="mt-5 max-w-3xl text-sm sm:text-base leading-relaxed text-slate-200 font-medium animate-fade-in-up stagger-3">
           {lead}
         </p>
       </div>

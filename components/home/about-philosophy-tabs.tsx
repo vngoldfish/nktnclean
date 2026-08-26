@@ -58,19 +58,19 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
 
         {/* 2. Photo Collage Grid (2x2) */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-12 max-w-4xl mx-auto">
-          {collageImages.map((img) => (
+          {collageImages.map((img, i) => (
             <div
               key={img.src}
-              className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm"
+              className={`relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm group animate-fade-in-up stagger-${i + 1}`}
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 sizes="(max-width: 768px) 50vw, 400px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent group-hover:from-slate-900/50 transition-all duration-500" />
             </div>
           ))}
         </div>
@@ -104,7 +104,7 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
         {/* 4. Clean Split Tab Body (Exact Super Hotel Clean visual style) */}
         <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-10 lg:p-12 shadow-sm">
           {activeTab === "philosophy" ? (
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div key="philosophy" className="grid gap-10 lg:grid-cols-12 lg:items-center tab-content-enter">
               <div className="lg:col-span-6 relative aspect-[16/10] rounded-xl overflow-hidden shadow-sm">
                 <Image
                   src="/works/photo-staff.jpg"
@@ -159,7 +159,7 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
               </div>
             </div>
           ) : (
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div key="profile" className="grid gap-10 lg:grid-cols-12 lg:items-center tab-content-enter">
               <div className="lg:col-span-6 relative aspect-[16/10] rounded-xl overflow-hidden shadow-sm">
                 <Image
                   src="/works/photo-room.jpg"

@@ -7,11 +7,11 @@ function FaqAccordionItem({ question, answer, defaultOpen }: { question: string;
   const [isOpen, setIsOpen] = useState(defaultOpen || false);
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden transition-all duration-200">
+    <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden transition-all duration-200 hover:shadow-sm">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between gap-4 p-5 sm:p-6 text-left hover:bg-slate-50 transition"
+        className="flex w-full items-center justify-between gap-4 p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors duration-200"
       >
         <div className="flex items-center gap-3.5 sm:gap-4">
           <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[#00729F] text-white font-serif-jp font-black text-xs">
@@ -28,14 +28,20 @@ function FaqAccordionItem({ question, answer, defaultOpen }: { question: string;
         />
       </button>
 
-      {isOpen && (
-        <div className="px-5 sm:px-6 pb-6 pt-2 pl-14 sm:pl-16 bg-slate-50/50 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
-          <div className="flex items-start gap-2.5">
-            <span className="font-serif-jp font-black text-amber-600 text-sm shrink-0">A.</span>
-            <p className="whitespace-pre-line">{answer}</p>
+      {/* Smooth expand/collapse with grid rows trick */}
+      <div
+        className="grid transition-[grid-template-rows] duration-300 ease-out"
+        style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+      >
+        <div className="overflow-hidden">
+          <div className="px-5 sm:px-6 pb-6 pt-2 pl-14 sm:pl-16 bg-slate-50/50 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <div className="flex items-start gap-2.5 animate-fade-in">
+              <span className="font-serif-jp font-black text-amber-600 text-sm shrink-0">A.</span>
+              <p className="whitespace-pre-line">{answer}</p>
+            </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
