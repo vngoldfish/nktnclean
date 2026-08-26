@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { type LucideIcon, Network, TimerReset, ShieldCheck, Trophy } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -19,7 +16,7 @@ export function StrengthsSection({ locale }: StrengthsSectionProps) {
   return (
     <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
       <div className="text-center mb-14">
-        <Badge variant="blue" className="mb-6 font-bold">Why NKTN</Badge>
+        <Badge variant="blue" className="mb-6 font-bold rounded-md">Why NKTN</Badge>
         <h2 className="whitespace-normal sm:whitespace-pre-line text-balance text-3xl font-extrabold tracking-tight text-nktn-ink sm:text-5xl lg:text-6xl">
           {content.home.strengthsTitle}
         </h2>
@@ -29,12 +26,8 @@ export function StrengthsSection({ locale }: StrengthsSectionProps) {
           const Icon = strengthIcons[index] || ShieldCheck;
           const isEven = index % 2 === 0;
           return (
-            <motion.div
+            <div
               key={strength.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: 0.1 }}
               className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-16 py-14 border-b border-slate-200 last:border-b-0 ${isEven ? '' : 'lg:flex-row-reverse'}`}
             >
               {/* Number + Icon side */}
@@ -60,7 +53,7 @@ export function StrengthsSection({ locale }: StrengthsSectionProps) {
                   {strength.body}
                 </p>
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>

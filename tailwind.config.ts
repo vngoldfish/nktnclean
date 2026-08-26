@@ -36,9 +36,9 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
         nktn: {
-          green: "#2CB1A4",
-          blue: "#0E7490",
-          cream: "#F8FBFD",
+          green: "#047857",
+          blue: "#1E3A8A",
+          cream: "#F8FAFC",
           ink: "#1E293B",
           orange: "#F59E0B",
         },
@@ -49,8 +49,8 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        soft: "0 18px 50px rgba(15, 23, 42, 0.08)",
-        glass: "0 16px 44px rgba(14, 116, 144, 0.10)",
+        soft: "0 4px 20px -2px rgba(15, 23, 42, 0.05)",
+        glass: "0 4px 16px -2px rgba(30, 58, 138, 0.05)",
       },
     },
   },
