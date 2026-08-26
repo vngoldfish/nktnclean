@@ -1,9 +1,7 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, ArrowRight, BedDouble, Building, Smartphone, Users } from "lucide-react";
+import { ArrowRight, ChevronRight, BedDouble, Building, Smartphone, Users } from "lucide-react";
 import { type Locale, withLocale } from "@/lib/i18n";
 import { companyBase } from "@/lib/site-data-i18n";
 
@@ -12,153 +10,129 @@ interface SuperServiceShowcaseProps {
 }
 
 export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
-  const [hoveredIdx, setHoveredIdx] = useState(0);
-
   const services = [
     {
       id: "bed-making",
       enTitle: "Bed making",
-      jpTitle: locale === "ja" ? "ベッドメイキング・日常清掃" : locale === "vi" ? "Bọc nệm Ga gối & Vệ sinh Hàng ngày" : "Bed Making & Daily Turnover",
+      jpTitle: locale === "ja" ? "ベッドメイキング・日常清掃" : locale === "vi" ? "Bọc nệm Ga gối & Dọn buồng" : "Bed Making & Daily Turnover",
       desc: locale === "ja" 
-        ? "おもてなしの心をモットーに、民泊・ホテルのルームクリーンサービスをご提供。シワのないシーツ張りからアメニティ補充まで徹底管理します。" 
+        ? "ホテル・民泊に特化した客室清掃。シワのないシーツ張りから水回り磨き、アメニティ補充まで徹底管理します。" 
         : locale === "vi" 
-        ? "Lấy sự chu đáo làm kim chỉ nam, cung cấp dịch vụ dọn phòng khách sạn và Airbnb. Từ bọc nệm phẳng phiu đến kiểm kê đồ dùng." 
-        : "Hotel-grade room turnovers from crisp bed making to amenity restocking, safeguarding 5-star reviews.",
+        ? "Vệ sinh buồng phòng khách sạn & Airbnb. Đảm bảo ga gối phẳng phiu, đánh bóng nhà tắm và châm đầy đồ dùng." 
+        : "Hotel-grade room turnovers from crisp bed making to amenity replenishment.",
       image: "/works/photo-room.jpg",
       icon: BedDouble,
     },
     {
       id: "building-maintenance",
       enTitle: "Building maintenance",
-      jpTitle: locale === "ja" ? "原状回復・定期美装・退去清掃" : locale === "vi" ? "Hoàn trả Hiện trạng & Bảo trì Định kỳ" : "Restoration & Periodic Cleaning",
+      jpTitle: locale === "ja" ? "原状回復・定期美装・退去清掃" : locale === "vi" ? "Bảo trì Tòa nhà & Hoàn trả" : "Building Maintenance & Deep Clean",
       desc: locale === "ja"
-        ? "エアコン内部高圧洗浄、換気扇油汚れ分解、床ワックスがけなど。建物の美観と安全な衛生環境を長期的に維持します。"
+        ? "エアコン内部高圧洗浄、換気扇油汚れ分解、床面ワックス塗布など。建物の美観と清潔環境を維持します。"
         : locale === "vi"
-        ? "Xịt rửa điều hòa áp lực cao, tẩy dầu mỡ máy hút mùi, đánh bóng sàn gỗ. Giữ gìn giá trị tài sản dài lâu."
-        : "Deep restorative turnover including HVAC pressure cleaning, kitchen grease extraction, and floor waxing.",
+        ? "Xịt rửa điều hòa áp lực cao, tẩy dầu mỡ máy hút mùi, phủ sáp sàn gỗ. Bảo dưỡng bất động sản định kỳ."
+        : "Periodic deep cleaning, floor waxing, kitchen grease extraction, and HVAC pressure washing.",
       image: "/works/photo-staff.jpg",
       icon: Building,
     },
     {
       id: "dx-operations",
       enTitle: "Smart DX Operations",
-      jpTitle: locale === "ja" ? "LINEリアルタイム写真報告・管理" : locale === "vi" ? "Báo cáo Ảnh chụp Tức thì qua LINE" : "Real-Time Photo DX Tracking",
+      jpTitle: locale === "ja" ? "LINE写真付き完了報告・管理" : locale === "vi" ? "Báo cáo Ảnh tức thì qua LINE" : "LINE Photo DX Management",
       desc: locale === "ja"
-        ? "清掃完了後すぐにLINEで全箇所写真と消耗品残量を送信。遠隔地のオーナー様でも現地の状況を即座に確認できます。"
+        ? "清掃完了後すぐにLINEで全箇所写真と消耗品残量を報告。遠隔地のオーナー様でも現地の状況を即座に把握できます。"
         : locale === "vi"
-        ? "Gửi báo cáo ảnh chụp chi tiết từng ngóc ngách và lượng đồ tiêu hao qua LINE ngay khi hoàn tất."
-        : "Automated instant photo delivery and amenity inventory alerts via LINE for seamless remote property oversight.",
+        ? "Gửi ảnh nghiệm thu và kiểm kê đồ tiêu hao qua LINE ngay khi hoàn tất. Quản lý từ xa thuận tiện."
+        : "Real-time photo proof and inventory replenishment alerts sent directly to LINE.",
       image: "/works/photo-room.jpg",
       icon: Smartphone,
     },
     {
       id: "global-staffing",
       enTitle: "Global Hospitality Team",
-      jpTitle: locale === "ja" ? "多言語対応・専属スタッフ体制" : locale === "vi" ? "Đội ngũ Chuyên nghiệp Đa ngôn ngữ" : "Multilingual Hospitality Team",
+      jpTitle: locale === "ja" ? "多言語対応・専任スタッフ体制" : locale === "vi" ? "Đội ngũ Đa ngôn ngữ Chuyên nghiệp" : "Multilingual Hospitality Team",
       desc: locale === "ja"
-        ? "日本語・英語・ベトナム語・中国語での円滑な連携。ホテル水準の厳しい研修をクリアしたスタッフのみが現場を担当します。"
+        ? "日・英・越・中での円滑なコミュニケーション。ホテル水準の厳しい社内研修をクリアした専任スタッフが担当します。"
         : locale === "vi"
-        ? "Phục vụ 4 thứ tiếng Nhật, Anh, Việt, Trung. Đội ngũ nhân viên chính thức được huấn luyện chuẩn mực."
-        : "Fluent Japanese, English, Vietnamese, and Chinese coordination by certified in-house cleaning specialists.",
+        ? "Giao tiếp 4 thứ tiếng Nhật, Anh, Việt, Trung. Đội ngũ nhân viên chính thức được đào tạo bài bản."
+        : "Certified multilingual hospitality staff fluent in Japanese, English, Vietnamese, and Chinese.",
       image: "/works/photo-staff.jpg",
       icon: Users,
     },
   ];
 
   return (
-    <section className="py-20 px-5 sm:px-8 bg-slate-900 text-white relative overflow-hidden border-b border-slate-800">
-      <div className="mx-auto max-w-7xl">
+    <section className="py-20 px-5 sm:px-8 bg-white border-b border-slate-200/80">
+      <div className="mx-auto max-w-6xl">
         
-        {/* Section Header (SuperHotelClean signature style) */}
+        {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#19BAD7]/20 border border-[#19BAD7]/30 px-4 py-1.5 text-xs font-black tracking-widest text-[#19BAD7] uppercase mb-4">
-            <Sparkles className="size-3.5" />
+          <p className="font-serif-jp text-xs font-black tracking-[0.25em] text-[#00729F] uppercase mb-2">
             SERVICE
-          </span>
-          <h2 className="font-serif-jp text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
-            {locale === "ja" ? "事業内容" : locale === "vi" ? "Dịch Vụ Cung Cấp" : "Our Core Services"}
+          </p>
+          <h2 className="font-serif-jp text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
+            {locale === "ja" ? "事業内容" : locale === "vi" ? "Dịch Vụ Cung Cấp" : "Core Services"}
           </h2>
-          <p className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <div className="mx-auto mt-3 h-0.5 w-12 bg-[#00729F]" />
+          <p className="mt-6 text-slate-600 text-sm sm:text-base leading-relaxed">
             {locale === "ja"
-              ? "ホテル・民泊のルームクリーンから、ビルメンテナンス、DX管理、専属スタッフ育成まで包括的にサポートいたします。"
+              ? "客室清掃・ベッドメイキングから、ビルメンテナンス、DX管理、多言語スタッフ体制まで包括的にサポートいたします。"
               : "Comprehensive hospitality cleaning, periodic building maintenance, DX automation, and staff management."}
           </p>
         </div>
 
-        {/* Interactive Split Service Grid */}
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-          
-          {/* Left Service Cards List */}
-          <div className="lg:col-span-7 space-y-4">
-            {services.map((item, idx) => {
-              const isHovered = hoveredIdx === idx;
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.id}
-                  onMouseEnter={() => setHoveredIdx(idx)}
-                  className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer ${
-                    isHovered
-                      ? "bg-white/10 border-[#19BAD7] shadow-[0_0_20px_rgba(25,186,215,0.2)] translate-x-2"
-                      : "bg-white/5 border-white/10 hover:bg-white/8"
-                  }`}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className={`grid size-12 place-items-center rounded-xl shrink-0 transition-colors ${
-                      isHovered ? "bg-[#19BAD7] text-slate-950 font-black" : "bg-white/10 text-slate-300"
-                    }`}>
-                      <Icon className="size-6" />
-                    </div>
-
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-2 mb-1">
-                        <span className="font-serif-jp text-xs font-black tracking-[0.2em] text-[#19BAD7] uppercase">
-                          {item.enTitle}
-                        </span>
-                        <span className="text-xs font-mono text-slate-400">0{idx + 1}</span>
-                      </div>
-                      <h3 className="font-serif-jp text-lg sm:text-xl font-black text-white leading-snug">
-                        {item.jpTitle}
-                      </h3>
-                      <p className="mt-2 text-xs sm:text-sm text-slate-300/85 leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
+        {/* 4 Clean Elegant Service Cards */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((item, idx) => (
+            <Link
+              key={item.id}
+              href={withLocale(locale, "/services")}
+              className="group rounded-2xl bg-[#F6F6F6] border border-slate-200/80 overflow-hidden hover:border-[#00729F] hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                {/* Photo Banner */}
+                <div className="relative h-44 w-full overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.jpTitle}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 300px"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/10 transition-colors" />
+                  <span className="absolute top-3 left-3 rounded-md bg-white/90 backdrop-blur-sm px-2.5 py-1 text-[11px] font-black text-[#00729F] tracking-wider uppercase shadow-xs">
+                    0{idx + 1}
+                  </span>
                 </div>
-              );
-            })}
-          </div>
 
-          {/* Right Synchronized Image Preview Container */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-elevated border border-white/20">
-              <Image
-                src={services[hoveredIdx].image}
-                alt={services[hoveredIdx].jpTitle}
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 500px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="text-xs font-black tracking-widest text-[#19BAD7] uppercase block mb-1">
-                  {services[hoveredIdx].enTitle}
-                </span>
-                <h4 className="font-serif-jp text-xl font-black">
-                  {services[hoveredIdx].jpTitle}
-                </h4>
+                {/* Content */}
+                <div className="p-5">
+                  <p className="font-serif-jp text-xs font-black tracking-widest text-[#00729F] uppercase mb-1">
+                    {item.enTitle}
+                  </p>
+                  <h3 className="font-serif-jp text-base font-black text-slate-900 leading-snug group-hover:text-[#00729F] transition-colors">
+                    {item.jpTitle}
+                  </h3>
+                  <p className="mt-3 text-xs text-slate-600 leading-relaxed line-clamp-3">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>
 
+              {/* Bottom Action Arrow */}
+              <div className="p-5 pt-0 flex items-center text-xs font-black text-[#00729F] group-hover:translate-x-1 transition-transform">
+                <span>{locale === "ja" ? "詳しく見る" : "Learn More"}</span>
+                <ChevronRight className="size-4 ml-0.5" />
+              </div>
+            </Link>
+          ))}
         </div>
 
-        {/* Bottom View All Services Button */}
+        {/* Bottom Button */}
         <div className="mt-12 text-center">
           <Link
             href={withLocale(locale, "/services")}
-            className="inline-flex items-center gap-2 rounded-xl bg-[#00729F] hover:bg-[#00466D] px-8 py-4 text-sm font-black text-white shadow-soft transition duration-200"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#00729F] hover:bg-[#00466D] px-8 py-3.5 text-xs sm:text-sm font-black text-white transition shadow-sm"
           >
             <span>{locale === "ja" ? "事業内容・サービス一覧を見る" : "View All Services"}</span>
             <ArrowRight className="size-4" />
