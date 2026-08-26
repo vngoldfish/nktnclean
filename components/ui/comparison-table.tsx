@@ -343,9 +343,9 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
   return (
     <section
       id="comparison-table-section"
-      className="section-comparison-table relative overflow-hidden py-16 sm:py-20 lg:py-24 px-5 sm:px-8 bg-gradient-to-b from-white via-slate-50/50 to-white border-y border-slate-100 scroll-mt-16 sm:scroll-mt-20"
+      className="section-comparison-table relative overflow-hidden min-h-[70vh] lg:min-h-[85vh] py-16 sm:py-20 lg:py-24 px-5 sm:px-8 bg-gradient-to-b from-white via-slate-50/50 to-white border-y border-slate-100 scroll-mt-20 flex flex-col justify-center"
     >
-      <div className="comparison-container mx-auto max-w-7xl">
+      <div className="comparison-container mx-auto max-w-7xl w-full my-auto">
         {/* Section Header */}
         <div id="comparison-header" className="comparison-header text-center mb-10 sm:mb-12 max-w-3xl mx-auto">
           <span className="comparison-badge inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-200/80 px-4 py-1.5 text-xs font-black tracking-widest text-sky-800 uppercase mb-4">

@@ -85,7 +85,7 @@ export function CtaContactBand({ locale, variant = "dark" }: CtaContactBandProps
   return (
     <section
       id="cta-contact-band-section"
-      className="section-cta-contact-band relative overflow-hidden bg-slate-950 py-16 sm:py-20 lg:py-24 px-5 sm:px-8 border-t border-slate-800 scroll-mt-16 sm:scroll-mt-20"
+      className="section-cta-contact-band relative overflow-hidden bg-slate-950 min-h-[65vh] lg:min-h-[75vh] py-16 sm:py-20 lg:py-24 px-5 sm:px-8 border-t border-slate-800 scroll-mt-20 flex flex-col justify-center"
     >
       {/* Background Photo with Overlay */}
       <Image
@@ -99,7 +99,7 @@ export function CtaContactBand({ locale, variant = "dark" }: CtaContactBandProps
       {/* Glow highlight */}
       <div className="cta-glow-effect absolute top-0 left-1/2 -translate-x-1/2 w-96 h-28 bg-sky-500/10 blur-3xl pointer-events-none" />
 
-      <div id="cta-content-container" className="cta-content-container relative mx-auto max-w-5xl text-center">
+      <div id="cta-content-container" className="cta-content-container relative mx-auto max-w-5xl text-center w-full my-auto">
         <p className="cta-eyebrow-lead text-[#19BAD7] text-xs font-black tracking-[0.25em] uppercase mb-2">
           {content.home.ctaBandLead}
         </p>
