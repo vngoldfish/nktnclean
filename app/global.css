@@ -21,6 +21,7 @@
     --radius: 1rem;
     --font-latin: Inter, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-japanese: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "YuGothic", "Meiryo", sans-serif;
+    --font-serif-jp: "Times New Roman", "游明朝", "Yu Mincho", "游明朝体", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "HiraMinProN-W3", "HGS明朝E", "ＭＳ Ｐ明朝", "MS PMincho", serif;
     --font-chinese: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
     --font-nepali: "Noto Sans Devanagari", "Nirmala UI", "Kohinoor Devanagari", sans-serif;
   }
@@ -37,6 +38,11 @@
     @apply bg-nktn-cream text-nktn-ink antialiased;
     font-family: var(--font-latin);
     text-rendering: optimizeLegibility;
+  }
+
+  .font-serif-jp, .rich-font-serif {
+    font-family: var(--font-serif-jp);
+    font-weight: 600;
   }
 
   .locale-ja {
@@ -59,7 +65,7 @@
   }
 
   ::selection {
-    background: rgba(14, 116, 144, 0.18);
+    background: rgba(0, 114, 159, 0.2);
   }
 }
 
@@ -72,11 +78,26 @@
     @apply border border-slate-200/80 bg-white/90 shadow-soft backdrop-blur-xl;
   }
 
+  .glass-card-elevated {
+    @apply border border-slate-200/80 bg-white/95 shadow-elevated backdrop-blur-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
   .osaka-grid {
     background-image:
       linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
       linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
     background-size: 56px 56px;
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .mesh-gradient-hero {
+    background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(4, 120, 87, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(248, 250, 252, 1) 0%, rgba(241, 245, 249, 0.6) 100%);
   }
 
   .text-balance {

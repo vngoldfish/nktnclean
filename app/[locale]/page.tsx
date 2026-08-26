@@ -7,7 +7,6 @@ import {
   ClipboardCheck,
   Smartphone,
   Phone,
-  FileText,
   Camera,
   CheckCircle2,
   Star,
@@ -17,18 +16,26 @@ import {
   Settings2,
   ClipboardList,
   TrendingUp,
+  Sparkles,
+  Award,
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { isLocale, type Locale, withLocale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
-import { HeroSection } from "@/components/home/hero-section";
+
+import { SuperHeroSlider } from "@/components/home/super-hero-slider";
+import { AboutPhilosophyTabs } from "@/components/home/about-philosophy-tabs";
+import { SuperServiceShowcase } from "@/components/home/super-service-showcase";
 import { StrengthsSection } from "@/components/home/strengths-section";
+import { ComparisonTable } from "@/components/ui/comparison-table";
+import { GlobalWorkCulture } from "@/components/home/global-work-culture";
+import { PartnerEquipmentBand } from "@/components/home/partner-equipment-band";
+import { FloatingContactVertical } from "@/components/ui/floating-contact-vertical";
 import { CtaContactBand } from "@/components/home/cta-contact-band";
 
-const serviceIcons = [Hotel, ClipboardCheck, Smartphone];
 const processIcons = [Phone, Search, Handshake, Settings2, ClipboardList, TrendingUp];
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
@@ -38,80 +45,71 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <main className="site-shell overflow-hidden">
-      {/* ========== Hero ========== */}
-      <HeroSection locale={locale} />
+      {/* 1. Desktop Right Vertical Floating Button + Mobile Sticky Bar */}
+      <FloatingContactVertical locale={locale} />
 
-      {/* ========== CTA Band 1 ========== */}
-      <CtaContactBand locale={locale} />
+      {/* 2. Signature Super Clean Multi-slide Corporate Hero */}
+      <SuperHeroSlider locale={locale} />
 
-      {/* ========== Services ========== */}
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sky-800 text-sm font-bold tracking-widest mb-3">SERVICES</p>
-          <h2 className="max-w-4xl mx-auto text-balance text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">{content.home.servicesTitle}</h2>
-          <p className="mt-4 text-nktn-ink/50 text-sm">{content.home.freeEstimate}</p>
-        </div>
-        <div className="grid gap-6 lg:grid-cols-3">
-          {content.services.map((service, index) => {
-            const Icon = serviceIcons[index] || Hotel;
-            return (
-              <Card key={service.title} className="p-7 border border-slate-100 hover:border-sky-100 transition duration-300 hover:shadow-soft hover:-translate-y-0.5">
-                <div className="flex items-center justify-between">
-                  <span className="grid size-12 place-items-center rounded-2xl bg-sky-50 ring-1 ring-sky-100">
-                    <Icon className="size-6 text-nktn-blue" />
-                  </span>
-                  <p className="text-4xl font-extrabold text-sky-800/15">0{index + 1}</p>
-                </div>
-                <CardTitle className="mt-8 text-2xl tracking-tight">{service.title}</CardTitle>
-                <p className="mt-4 leading-8 text-nktn-ink/60">{service.lead}</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {service.points.map((point) => (
-                    <Badge key={point} variant="dark">{point}</Badge>
-                  ))}
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-        <div className="mt-10 text-center">
-          <Button variant="secondary" size="lg" asChild>
-            <Link href={withLocale(locale, "/services")}>{content.common.viewServices} <ArrowRight className="size-4" /></Link>
-          </Button>
-        </div>
-      </section>
+      {/* 3. About & Philosophy / Profile Tabs */}
+      <AboutPhilosophyTabs locale={locale} />
 
-      {/* ========== Why Choose Us ========== */}
+      {/* 4. Interactive Service Showcase (Bed making / Building maintenance / DX) */}
+      <SuperServiceShowcase locale={locale} />
+
+      {/* 5. Direct Comparison Table (Quality & Trust vs Standard Cleaners) */}
+      <ComparisonTable locale={locale} />
+
+      {/* 6. Why Choose Us (Bento Grid Strengths) */}
       <StrengthsSection locale={locale} />
 
-      {/* ========== Process Steps ========== */}
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sky-800 text-sm font-bold tracking-widest mb-3">FLOW</p>
-          <h2 className="text-balance text-3xl font-extrabold tracking-tight sm:text-5xl">
-            {locale === "ja" ? "ご依頼の流れ" : locale === "en" ? "How It Works" : "Quy trình thực hiện"}
+      {/* 7. Professional Equipment & Chemicals Standards */}
+      <PartnerEquipmentBand locale={locale} />
+
+      {/* 8. Multinational Workforce & Hospitality Culture */}
+      <GlobalWorkCulture locale={locale} />
+
+      {/* 9. LINE Quick Quote Accent Band */}
+      <CtaContactBand locale={locale} variant="line-accent" />
+
+      {/* 10. Process Flow Steps */}
+      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 bg-white">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-200/80 px-4 py-1.5 text-xs font-black tracking-widest text-[#00729F] uppercase mb-4">
+            <Clock3 className="size-3.5 text-[#00729F]" />
+            WORKFLOW
+          </span>
+          <h2 className="font-serif-jp text-balance text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+            {locale === "ja" ? "ご依頼から清掃開始までの流れ" : locale === "en" ? "How It Works" : "Quy trình thực hiện"}
           </h2>
-          <p className="mt-5 mx-auto max-w-2xl text-nktn-ink/55 leading-8">
+          <p className="mt-4 text-slate-600 leading-relaxed text-sm sm:text-base">
             {locale === "ja"
-              ? "単発の清掃ではなく、施設ごとに最適化した清掃体制u構築し、長期パートナーとして品質を守り続けます。"
+              ? "単発の清掃ではなく、施設ごとに最適化した清掃体制を構築し、長期パートナーとして品質を守り続けます。"
               : locale === "en"
-              ? "We don't just clean once — we build optimized cleaning systems for each facility and maintain quality as your long-term partner."
-              : "Chúng tôi không chỉ dọn dẹp một lần — mà xây dựng hệ thống vệ sinh tối ưu cho từng cơ sở và duy trì chất lượng như đối tác lâu dài."}
+              ? "We build optimized cleaning systems for each facility and maintain quality as your long-term partner."
+              : "Chúng tôi xây dựng hệ thống vệ sinh tối ưu cho từng cơ sở và duy trì chất lượng như đối tác lâu dài."}
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {content.processSteps.map(([number, title, body], index) => {
             const Icon = processIcons[index] || Phone;
             return (
-              <div key={title} className="flex gap-4 rounded-3xl bg-white p-6 shadow-sm border border-slate-100">
-                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-sky-50 text-sky-800">
-                  <Icon className="size-6" />
-                </span>
+              <div
+                key={title}
+                className="group relative rounded-3xl bg-slate-50/70 p-7 border border-slate-200/80 hover:bg-white hover:border-[#00729F]/40 hover:shadow-elevated transition-all duration-300 flex flex-col justify-between"
+              >
                 <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-sky-800/80">STEP 0{number}</span>
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="grid size-12 place-items-center rounded-2xl bg-white shadow-soft text-[#00729F] border border-slate-100 group-hover:scale-105 group-hover:bg-[#00729F] group-hover:text-white transition-all duration-300">
+                      <Icon className="size-6" />
+                    </span>
+                    <span className="text-xs font-black text-[#00729F] bg-sky-100/80 px-3 py-1 rounded-full">
+                      STEP 0{number}
+                    </span>
                   </div>
-                  <h3 className="mt-1 text-lg font-bold tracking-tight text-nktn-ink">{title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-nktn-ink/60">{body}</p>
+                  <h3 className="font-serif-jp text-lg font-black tracking-tight text-slate-900 mb-2">{title}</h3>
+                  <p className="text-sm leading-relaxed text-slate-600">{body}</p>
                 </div>
               </div>
             );
@@ -119,63 +117,59 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      {/* ========== CTA Band 4 ========== */}
-      <CtaContactBand locale={locale} />
-
-      {/* ========== Works ========== */}
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sky-800 text-sm font-bold tracking-widest mb-3">WORKS</p>
-          <h2 className="max-w-4xl mx-auto text-balance text-3xl font-extrabold tracking-tight sm:text-5xl">{content.home.worksTitle}</h2>
-          <p className="mt-4 max-w-3xl mx-auto leading-8 text-nktn-ink/60">{content.home.worksLead}</p>
-        </div>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {content.workCases.map((work) => (
-            <Card key={work.title} className="overflow-hidden p-0 border border-slate-100 hover:border-sky-100 transition duration-300 hover:shadow-soft hover:-translate-y-0.5">
-              <Image src={work.image} alt={work.title} width={900} height={620} className="h-52 w-full object-cover" />
-              <div className="p-6">
-                <div className="flex items-center justify-between gap-3">
-                  <p className="text-sm font-bold tracking-[0.18em] text-nktn-blue">{work.area}</p>
-                  <Badge variant="orange">{work.status}</Badge>
-                </div>
-                <h3 className="mt-4 text-xl font-bold tracking-tight">{work.title}</h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {work.tags.map((tag) => <Badge key={tag} variant="dark">{tag}</Badge>)}
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* ========== Customer Reviews — styled like machino お客様の声 ========== */}
-      <section className="bg-slate-50/50 py-20 px-5 sm:px-8 border-y border-slate-100">
+      {/* 11. Customer Reviews */}
+      <section className="bg-slate-50/60 py-20 px-5 sm:px-8 border-y border-slate-200/80">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-14">
-            <p className="text-sky-800 text-sm font-bold tracking-widest mb-3">{content.home.reviewsTitle}</p>
-            <h2 className="text-balance text-3xl font-extrabold tracking-tight sm:text-5xl">{content.home.reviewsTitle}</h2>
-            <p className="mt-4 max-w-2xl mx-auto leading-8 text-nktn-ink/60">{content.home.reviewsLead}</p>
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200/80 px-4 py-1.5 text-xs font-black tracking-widest text-amber-800 uppercase mb-4">
+              <Star className="size-3.5 text-amber-500 fill-amber-500" />
+              VOICE & REPUTATION
+            </span>
+            <h2 className="font-serif-jp text-balance text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+              {content.home.reviewsTitle}
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto leading-relaxed text-slate-600 text-sm sm:text-base">
+              {content.home.reviewsLead}
+            </p>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {content.reviews.map((review, index) => (
-              <div key={index} className="rounded-3xl bg-white p-6 border border-slate-100 hover:border-sky-100 shadow-soft transition duration-300 hover:shadow-md">
-                {/* Score */}
-                <div className="text-center mb-4">
-                  <p className="text-xs font-bold text-nktn-ink/40 mb-1">{locale === "ja" ? "満足度" : "Satisfaction"}</p>
-                  <span className="text-4xl font-bold text-sky-800">{review.score}</span>
-                  <span className="text-sm text-nktn-ink/40 font-bold">{locale === "ja" ? "点" : "/100"}</span>
+              <div
+                key={index}
+                className="rounded-3xl bg-white p-6 sm:p-7 border border-slate-200/80 hover:border-amber-200/90 shadow-soft transition-all duration-300 hover:shadow-elevated hover:-translate-y-1 flex flex-col justify-between"
+              >
+                <div>
+                  {/* Score & Stars */}
+                  <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                    <div>
+                      <p className="text-[11px] font-bold text-slate-400">
+                        {locale === "ja" ? "評価スコア" : "Rating"}
+                      </p>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-3xl font-black text-sky-950">{review.score}</span>
+                        <span className="text-xs text-slate-400 font-bold">/100</span>
+                      </div>
+                    </div>
+                    <div className="flex text-amber-400 text-xs gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`size-3.5 ${
+                            i < Math.round(review.score / 20)
+                              ? "text-amber-400 fill-amber-400"
+                              : "text-slate-200"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  {/* Review text */}
+                  <p className="text-sm leading-relaxed text-slate-700">{review.text}</p>
                 </div>
-                {/* Stars */}
-                <div className="flex items-center justify-center gap-0.5 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className={`size-4 ${i < Math.round(review.score / 20) ? 'text-amber-400 fill-amber-400' : 'text-slate-200'}`} />
-                  ))}
-                </div>
-                {/* Review text */}
-                <p className="text-sm leading-7 text-nktn-ink/70 text-center">{review.text}</p>
                 {/* Reviewer info */}
-                <div className="mt-4 text-center text-xs text-nktn-ink/45 font-bold">
-                  {review.age} {review.gender}
+                <div className="mt-6 pt-3 border-t border-slate-100 text-xs text-slate-500 font-bold flex items-center justify-between">
+                  <span>{review.age}</span>
+                  <span className="text-slate-400">{review.gender}</span>
                 </div>
               </div>
             ))}
@@ -183,75 +177,38 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      {/* ========== CTA Band 5 ========== */}
-      <CtaContactBand locale={locale} />
-
-      {/* ========== DX ========== */}
+      {/* 12. FAQ Section */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sky-800 text-sm font-bold tracking-widest mb-3">DX SOLUTION</p>
-          <h2 className="max-w-4xl mx-auto text-balance text-3xl font-extrabold tracking-tight sm:text-5xl">{content.home.dxTitle}</h2>
-          <p className="mt-4 max-w-3xl mx-auto leading-8 text-nktn-ink/60">{content.home.dxLead}</p>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {[[MessageCircle, "LINE"], [Clock3, "OUT"], [Camera, "Photo"]].map(([Icon, label]) => {
-            const TypedIcon = Icon as typeof MessageCircle;
-            return (
-              <Card key={label as string} className="p-6 text-center border border-slate-100 hover:border-sky-100 shadow-soft transition duration-300 hover:shadow-md hover:-translate-y-0.5">
-                <div className="grid size-14 mx-auto place-items-center rounded-2xl bg-sky-50 ring-1 ring-sky-100">
-                  <TypedIcon className="size-7 text-nktn-blue" />
-                </div>
-                <p className="mt-6 text-xl font-bold">{label as string}</p>
-              </Card>
-            );
-          })}
-        </div>
-        <div className="mt-8 text-center">
-          <Button variant="secondary" size="lg" asChild>
-            <Link href={withLocale(locale, "/dx")}>DX <ArrowRight className="size-4" /></Link>
-          </Button>
-        </div>
-      </section>
-
-      {/* ========== Blog ========== */}
-      <section className="bg-slate-50 py-20 px-5 sm:px-8 border-y border-slate-100">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-14">
-            <p className="text-sky-800 text-sm font-bold tracking-widest mb-3">BLOG</p>
-            <h2 className="max-w-4xl mx-auto text-balance text-3xl font-extrabold tracking-tight sm:text-5xl">{content.home.blogTitle}</h2>
-            <p className="mt-4 max-w-3xl mx-auto leading-8 text-nktn-ink/60">{content.home.blogLead}</p>
-          </div>
-          <div className="text-center">
-            <Button variant="secondary" size="lg" asChild>
-              <Link href={withLocale(locale, "/blog")}>Blog <ArrowRight className="size-4" /></Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== FAQ ========== */}
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sky-800 text-sm font-bold tracking-widest mb-3">FAQ</p>
-          <h2 className="max-w-4xl mx-auto text-balance text-3xl font-extrabold tracking-tight sm:text-5xl">{content.home.faqTitle}</h2>
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-200/80 px-4 py-1.5 text-xs font-black tracking-widest text-[#00729F] uppercase mb-4">
+            FAQ
+          </span>
+          <h2 className="font-serif-jp max-w-4xl mx-auto text-balance text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight">
+            {content.home.faqTitle}
+          </h2>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {content.faqItems.slice(0, 3).map(([question, answer]) => (
-            <Card key={question} className="p-6 border border-slate-100 hover:border-sky-100 shadow-soft transition duration-300 hover:shadow-md">
-              <h3 className="text-lg font-bold tracking-tight">{question}</h3>
-              <p className="mt-4 leading-7 text-nktn-ink/60">{answer}</p>
+            <Card
+              key={question}
+              className="p-6 sm:p-7 border border-slate-200/80 bg-white shadow-soft hover:border-[#00729F]/40 transition duration-300 hover:shadow-md rounded-3xl"
+            >
+              <h3 className="font-serif-jp text-base font-black tracking-tight text-slate-900 leading-snug">{question}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">{answer}</p>
             </Card>
           ))}
         </div>
         <div className="mt-8 text-center">
-          <Button variant="secondary" size="lg" asChild>
-            <Link href={withLocale(locale, "/faq")}>{content.common.allFaq} <ArrowRight className="size-4" /></Link>
+          <Button variant="secondary" size="lg" className="rounded-2xl font-black" asChild>
+            <Link href={withLocale(locale, "/faq")}>
+              {content.common.allFaq} <ArrowRight className="size-4" />
+            </Link>
           </Button>
         </div>
       </section>
 
-      {/* ========== CTA Band 6 (Final) ========== */}
-      <CtaContactBand locale={locale} />
+      {/* 13. Final CTA Band */}
+      <CtaContactBand locale={locale} variant="dark" />
     </main>
   );
 }
