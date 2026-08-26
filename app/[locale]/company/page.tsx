@@ -27,6 +27,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
   const rows = [
     { icon: Building2, label: content.company.profileRows.name, value: `${companyBase.name}（${companyBase.brand}）` },
     { icon: FileText, label: content.company.profileRows.corporateNumber, value: companyBase.corporateNumber },
+    { icon: FileText, label: content.company.profileRows.invoiceNumber, value: companyBase.invoiceNumber },
     { icon: Calendar, label: content.company.profileRows.established, value: companyBase.established },
     { icon: Coins, label: content.company.profileRows.capital, value: companyBase.capital },
     { icon: MapPin, label: content.company.profileRows.location, value: companyBase.location },

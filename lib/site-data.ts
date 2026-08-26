@@ -18,6 +18,7 @@ export const company = {
   established: "2024年5月7日",
   capital: "500万円",
   corporateNumber: "7120001264848",
+  invoiceNumber: "T7120001264848",
   business: "ホテル・民泊客室清掃、宿泊施設運営サポート、現場管理、Cleaning DX、貿易・総合商社事業",
   phone: "080-8029-3713",
   email: "info@bawui.com",
