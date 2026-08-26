@@ -27,7 +27,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
   const rows = [
     { icon: Building2, label: content.company.profileRows.name, value: `${companyBase.name}（${companyBase.brand}）` },
     { icon: FileText, label: content.company.profileRows.corporateNumber, value: companyBase.corporateNumber, link: `https://info.gbiz.go.jp/hojin/detail?hojinBango=${companyBase.corporateNumber}` },
-    { icon: FileText, label: content.company.profileRows.invoiceNumber, value: companyBase.invoiceNumber, link: `https://www.invoice-kohyo.nta.go.jp/regno-search/detail?selRegNo=${companyBase.invoiceNumber}` },
+    { icon: FileText, label: content.company.profileRows.invoiceNumber, value: companyBase.invoiceNumber, link: `https://www.invoice-kohyo.nta.go.jp/regno-search/detail?selRegNo=${companyBase.corporateNumber}` },
     { icon: Calendar, label: content.company.profileRows.established, value: companyBase.established },
     { icon: Coins, label: content.company.profileRows.capital, value: companyBase.capital },
     { icon: MapPin, label: content.company.profileRows.location, value: companyBase.location },
