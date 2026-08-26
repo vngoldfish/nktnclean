@@ -110,15 +110,15 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                 </li>
               ))}
               <li>
-                <Link href={withLocale(locale, "/faq")} className="text-sm font-bold text-slate-300 transition hover:text-white flex items-center gap-1.5">
+                <Link href={withLocale(locale, "/blog")} className="text-sm font-bold text-slate-300 transition hover:text-white flex items-center gap-1.5">
                   <span className="text-[#19BAD7] text-xs">›</span>
-                  FAQ
+                  {locale === "ja" ? "コラム・ブログ" : locale === "vi" ? "Bài viết & Cẩm nang" : "Column & Blog"}
                 </Link>
               </li>
               <li>
                 <Link href={withLocale(locale, "/privacy")} className="text-sm font-bold text-slate-300 transition hover:text-white flex items-center gap-1.5">
                   <span className="text-[#19BAD7] text-xs">›</span>
-                  Privacy Policy
+                  {locale === "ja" ? "プライバシーポリシー" : locale === "vi" ? "Chính sách bảo mật" : "Privacy Policy"}
                 </Link>
               </li>
             </ul>
