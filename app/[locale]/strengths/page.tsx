@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Network, ShieldCheck, TimerReset, Trophy, Award, CheckCircle2 } from "lucide-react";
+import { Network, ShieldCheck, TimerReset, Trophy } from "lucide-react";
 import { type Locale } from "@/lib/i18n";
 import { getContent } from "@/lib/site-data-i18n";
 import { pageMetadata } from "@/lib/seo";

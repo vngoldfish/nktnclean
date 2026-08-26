@@ -1,9 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronRight, Check } from "lucide-react";
+import { ChevronRight, Check } from "lucide-react";
 import { type Locale, withLocale } from "@/lib/i18n";
-import { companyBase } from "@/lib/site-data-i18n";
 
 interface GlobalWorkCultureProps {
   locale: Locale;
@@ -11,12 +10,12 @@ interface GlobalWorkCultureProps {
 
 export function GlobalWorkCulture({ locale }: GlobalWorkCultureProps) {
   const points = [
-    locale === "ja" ? "その方の多様性を重視した職場環境" : "Inclusive workplace valuing individual diversity",
-    locale === "ja" ? "新卒にこだわらない通年採用と人物重視" : "Year-round hiring focused on character and passion",
-    locale === "ja" ? "アルバイトから管理職・責任者へのキャリアアップ実績多数" : "Proven career growth from room cleaners to supervisors",
-    locale === "ja" ? "ホテル水準の清掃マニュアルと専属トレーナー研修制度" : "Hospitality-grade standard manuals and 1-on-1 coaching",
-    locale === "ja" ? "多国籍スタッフ在籍・職場での語学交流と学びの機会" : "Multinational team fostering multilingual learning",
-    locale === "ja" ? "万が一の事故・物損にも安心の損害賠償保険完備" : "Full insurance coverage protecting staff and clients",
+    locale === "ja" ? "その方の多様性を重視した職場環境" : locale === "vi" ? "Môi trường làm việc tôn trọng và phát huy sự đa dạng văn hóa" : "Inclusive workplace valuing individual diversity",
+    locale === "ja" ? "新卒にこだわらない通年採用と人物重視" : locale === "vi" ? "Tuyển dụng liên tục quanh năm, đánh giá cao tinh thần trách nhiệm" : "Year-round hiring focused on character and passion",
+    locale === "ja" ? "アルバイトから管理職・責任者へのキャリアアップ実績多数" : locale === "vi" ? "Lộ trình thăng tiến rõ ràng từ nhân viên buồng phòng lên giám sát, quản lý" : "Proven career growth from room cleaners to supervisors",
+    locale === "ja" ? "ホテル水準の清掃マニュアルと専属トレーナー研修制度" : locale === "vi" ? "Quy trình vệ sinh chuẩn khách sạn và đào tạo kèm cặp 1-1" : "Hospitality-grade standard manuals and 1-on-1 coaching",
+    locale === "ja" ? "多国籍スタッフ在籍・職場での語学交流と学びの機会" : locale === "vi" ? "Đội ngũ đa quốc gia, cơ hội học hỏi ngoại ngữ và giao lưu văn hóa" : "Multinational team fostering multilingual learning",
+    locale === "ja" ? "万が一の事故・物損にも安心の損害賠償保険完備" : locale === "vi" ? "Bảo hiểm trách nhiệm bồi thường đầy đủ, an tâm tuyệt đối khi làm việc" : "Full insurance coverage protecting staff and clients",
   ];
 
   return (
@@ -80,16 +79,18 @@ export function GlobalWorkCulture({ locale }: GlobalWorkCultureProps) {
                 Recruit
               </span>
               <h3 className="font-serif-jp text-lg sm:text-xl font-black text-slate-900 mt-3 group-hover:text-[#00729F] transition-colors">
-                {locale === "ja" ? "正社員・契約社員・現場責任者募集" : "Full-time & Supervisor Roles"}
+                {locale === "ja" ? "正社員・契約社員・現場責任者募集" : locale === "vi" ? "Tuyển dụng Nhân viên Chính thức & Giám sát Vận hành" : "Full-time & Supervisor Roles"}
               </h3>
               <p className="text-xs text-slate-600 mt-2 leading-relaxed">
                 {locale === "ja" 
                   ? "ホテル清掃の現場管理、インスペクター点検、シフト調整などの運営全般を担当。未経験からでも丁寧な研修制度があります。" 
+                  : locale === "vi"
+                  ? "Phụ trách quản lý hiện trường buồng phòng, kiểm định chất lượng, điều phối ca làm việc. Đào tạo tận tình từ cơ bản đến nâng cao."
                   : "On-site operations, inspection audits, and shift management with comprehensive training."}
               </p>
             </div>
             <div className="mt-6 flex items-center text-xs font-black text-[#00729F] group-hover:translate-x-1 transition-transform">
-              <span>{locale === "ja" ? "採用詳細・ご応募はこちら" : "Apply Now"}</span>
+              <span>{locale === "ja" ? "採用詳細・ご応募はこちら" : locale === "vi" ? "Xem chi tiết & Ứng tuyển" : "Apply Now"}</span>
               <ChevronRight className="size-4 ml-0.5" />
             </div>
           </Link>
@@ -104,16 +105,18 @@ export function GlobalWorkCulture({ locale }: GlobalWorkCultureProps) {
                 Partner / Part-time
               </span>
               <h3 className="font-serif-jp text-lg sm:text-xl font-black text-slate-900 mt-3 group-hover:text-[#00729F] transition-colors">
-                {locale === "ja" ? "客室清掃スタッフ・協力会社様募集" : "Cleaners & Partner Inquiries"}
+                {locale === "ja" ? "客室清掃スタッフ・協力会社様募集" : locale === "vi" ? "Cộng tác viên Dọn phòng & Doanh nghiệp Hợp tác" : "Cleaners & Partner Inquiries"}
               </h3>
               <p className="text-xs text-slate-600 mt-2 leading-relaxed">
                 {locale === "ja" 
                   ? "週2日〜OK、Wワーク・副業歓迎。大阪・関西エリアで清掃業務を請け負っていただける協力会社様・個人事業主様も随時募集中です。" 
+                  : locale === "vi"
+                  ? "Linh hoạt từ 2 ngày/tuần, phù hợp làm thêm. Chào đón các đơn vị đối tác, nhà thầu phụ cùng hợp tác cung cấp dịch vụ tại Kansai."
                   : "Flexible schedules, part-time shifts, and corporate partnership opportunities across Kansai."}
               </p>
             </div>
             <div className="mt-6 flex items-center text-xs font-black text-[#00729F] group-hover:translate-x-1 transition-transform">
-              <span>{locale === "ja" ? "協力会社・応募お問い合わせ" : "Partner Inquiries"}</span>
+              <span>{locale === "ja" ? "協力会社・応募お問い合わせ" : locale === "vi" ? "Liên hệ hợp tác & Tuyển dụng" : "Partner Inquiries"}</span>
               <ChevronRight className="size-4 ml-0.5" />
             </div>
           </Link>

@@ -5,7 +5,6 @@ import { Analytics } from "@/components/analytics";
 import { AnalyticsEvents } from "@/components/analytics-events";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { StickyLineButton } from "@/components/sticky-line-button";
 import { ScrollAnimationInitializer } from "@/components/ui/scroll-animation-init";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
@@ -61,7 +60,6 @@ export default async function LocaleLayout({ children, params }: Readonly<{ chil
       <SiteHeader locale={locale as Locale} />
       {children}
       <SiteFooter locale={locale as Locale} />
-      <StickyLineButton locale={locale as Locale} />
     </div>
   );
 }

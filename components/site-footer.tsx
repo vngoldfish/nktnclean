@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Mail, MapPin, MessageCircle, Phone, ChevronRight } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { type Locale, withLocale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";

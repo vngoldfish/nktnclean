@@ -1,4 +1,4 @@
-import { MessageCircle, Clock3, Camera, BarChart3, ArrowRight, Smartphone, ShieldCheck } from "lucide-react";
+import { MessageCircle, Clock3, Camera, BarChart3 } from "lucide-react";
 import Link from "next/link";
 import { type Locale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";

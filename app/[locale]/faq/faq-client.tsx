@@ -1,25 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useId } from "react";
 import { ChevronDown } from "lucide-react";
 
 function FaqAccordionItem({ question, answer, defaultOpen }: { question: string; answer: string; defaultOpen?: boolean }) {
   const [isOpen, setIsOpen] = useState(defaultOpen || false);
+  const panelId = useId();
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden transition-all duration-200 hover:shadow-sm">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         className="flex w-full items-center justify-between gap-4 p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors duration-200"
       >
         <div className="flex items-center gap-3.5 sm:gap-4">
           <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[#00729F] text-white font-serif-jp font-black text-xs">
             Q
           </span>
-          <h2 className="font-serif-jp text-base sm:text-lg font-black text-slate-900 leading-snug">
+          <span className="font-serif-jp text-base sm:text-lg font-black text-slate-900 leading-snug">
             {question}
-          </h2>
+          </span>
         </div>
         <ChevronDown
           className={`size-5 shrink-0 text-slate-400 transition-transform duration-300 ${
@@ -30,6 +33,8 @@ function FaqAccordionItem({ question, answer, defaultOpen }: { question: string;
 
       {/* Smooth expand/collapse with grid rows trick */}
       <div
+        id={panelId}
+        role="region"
         className="grid transition-[grid-template-rows] duration-300 ease-out"
         style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
       >

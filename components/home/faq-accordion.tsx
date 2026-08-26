@@ -37,12 +37,15 @@ export function FaqAccordion({ locale }: FaqAccordionProps) {
         <div className="divide-y divide-slate-200/80 border-y border-slate-200/80">
           {content.faqItems.slice(0, 5).map(([question, answer], idx) => {
             const isOpen = openIdx === idx;
+            const panelId = `home-faq-panel-${idx}`;
             return (
-              <div key={idx} className="transition-colors">
+              <div key={question} className="transition-colors">
                 <button
+                  type="button"
                   onClick={() => toggle(idx)}
                   className="w-full py-5 px-3 sm:px-4 flex items-center justify-between text-left gap-4 hover:bg-slate-50 transition"
                   aria-expanded={isOpen}
+                  aria-controls={panelId}
                 >
                   <div className="flex items-center gap-3.5 sm:gap-4">
                     <span className="grid size-8 shrink-0 place-items-center rounded-md bg-[#00729F] text-white font-black text-xs font-serif-jp">
@@ -59,14 +62,21 @@ export function FaqAccordion({ locale }: FaqAccordionProps) {
                   />
                 </button>
 
-                {isOpen && (
-                  <div className="px-4 pb-6 pt-2 pl-14 sm:pl-16 text-xs sm:text-sm text-slate-600 leading-relaxed bg-slate-50/50">
-                    <div className="flex items-start gap-3">
-                      <span className="font-serif-jp font-black text-amber-600 text-sm shrink-0">A.</span>
-                      <p>{answer}</p>
+                <div
+                  id={panelId}
+                  role="region"
+                  className="grid transition-[grid-template-rows] duration-300 ease-out"
+                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-4 pb-6 pt-2 pl-14 sm:pl-16 text-xs sm:text-sm text-slate-600 leading-relaxed bg-slate-50/50">
+                      <div className="flex items-start gap-3 animate-fade-in">
+                        <span className="font-serif-jp font-black text-amber-600 text-sm shrink-0">A.</span>
+                        <p>{answer}</p>
+                      </div>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

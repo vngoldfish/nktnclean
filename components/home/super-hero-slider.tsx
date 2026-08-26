@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Phone, ArrowRight, Sparkles, ChevronRight, ShieldCheck, Star } from "lucide-react";
+import { MessageCircle, ArrowRight, Sparkles, ChevronRight, ShieldCheck, Star } from "lucide-react";
 import { type Locale, withLocale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 
@@ -94,7 +94,7 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
         >
           <Image
             src={slide.image}
-            alt={slide.title}
+            alt={slide.title.replace(/\n/g, " ")}
             fill
             className={`object-cover transition-transform duration-[8000ms] ease-out ${
               activeSlide === idx ? "scale-110" : "scale-100"
@@ -171,12 +171,16 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
       {/* SuperHotelClean Slider Navigation Tabs Bar (header_slider_nav) */}
       <div className="relative z-20 bg-slate-950/80 backdrop-blur-md border-t border-white/10 w-full">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid grid-cols-3 divide-x divide-white/10">
+          <div role="tablist" aria-label="Hero slider navigation" className="grid grid-cols-3 divide-x divide-white/10">
             {slides.map((slide, idx) => {
               const isActive = activeSlide === idx;
               return (
                 <button
                   key={slide.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-label={`Slide ${idx + 1}: ${slide.badge}`}
                   onClick={() => setActiveSlide(idx)}
                   className={`py-4 px-3 sm:px-6 text-left transition-all duration-300 relative group ${
                     isActive ? "bg-white/10" : "hover:bg-white/5 opacity-70 hover:opacity-100"

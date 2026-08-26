@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Check, X, ShieldCheck, Sparkles, Award } from "lucide-react";
+import { ShieldCheck, Sparkles, Award } from "lucide-react";
 import { type Locale } from "@/lib/i18n";
 
 interface ComparisonTableProps {
@@ -358,39 +358,42 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
         </div>
 
         {/* Comparison Table Container */}
-        <div className="rounded-3xl border border-slate-200/80 bg-white shadow-elevated overflow-hidden">
+        <div role="table" aria-label={t.title} className="rounded-3xl border border-slate-200/80 bg-white shadow-elevated overflow-hidden">
           {/* Table Header Row */}
-          <div className="grid grid-cols-12 bg-slate-900 text-white font-bold text-sm sm:text-base border-b border-slate-800">
-            <div className="col-span-5 sm:col-span-4 p-4 sm:p-6 flex items-center">
-              <span className="text-slate-300 font-bold uppercase tracking-wider text-xs sm:text-sm">
-                {locale === "ja" ? "項目 / 条件" : locale === "vi" ? "Tiêu chí so sánh" : "Features & Standards"}
-              </span>
-            </div>
-            <div className="col-span-4 sm:col-span-4 p-4 sm:p-6 bg-sky-800 flex items-center justify-between border-x border-sky-700/60">
-              <div className="flex items-center gap-2">
-                <Award className="size-5 text-amber-400 shrink-0 hidden sm:inline" />
-                <span className="text-white font-black text-xs sm:text-base">{t.nktnLabel}</span>
+          <div role="rowgroup">
+            <div role="row" className="grid grid-cols-12 bg-slate-900 text-white font-bold text-sm sm:text-base border-b border-slate-800">
+              <div role="columnheader" className="col-span-5 sm:col-span-4 p-4 sm:p-6 flex items-center">
+                <span className="text-slate-300 font-bold uppercase tracking-wider text-xs sm:text-sm">
+                  {locale === "ja" ? "項目 / 条件" : locale === "vi" ? "Tiêu chí so sánh" : "Features & Standards"}
+                </span>
               </div>
-              <span className="hidden lg:inline-flex items-center rounded-md bg-amber-400 px-2 py-0.5 text-[11px] font-black text-slate-900">
-                RECOMMENDED
-              </span>
-            </div>
-            <div className="col-span-3 sm:col-span-4 p-4 sm:p-6 bg-slate-800/80 flex items-center">
-              <span className="text-slate-400 font-medium text-xs sm:text-sm">{t.othersLabel}</span>
+              <div role="columnheader" className="col-span-4 sm:col-span-4 p-4 sm:p-6 bg-sky-800 flex items-center justify-between border-x border-sky-700/60">
+                <div className="flex items-center gap-2">
+                  <Award className="size-5 text-amber-400 shrink-0 hidden sm:inline" />
+                  <span className="text-white font-black text-xs sm:text-base">{t.nktnLabel}</span>
+                </div>
+                <span className="hidden lg:inline-flex items-center rounded-md bg-amber-400 px-2 py-0.5 text-[11px] font-black text-slate-900">
+                  RECOMMENDED
+                </span>
+              </div>
+              <div role="columnheader" className="col-span-3 sm:col-span-4 p-4 sm:p-6 bg-slate-800/80 flex items-center">
+                <span className="text-slate-400 font-medium text-xs sm:text-sm">{t.othersLabel}</span>
+              </div>
             </div>
           </div>
 
           {/* Table Rows */}
-          <div className="divide-y divide-slate-100">
+          <div role="rowgroup" className="divide-y divide-slate-100">
             {t.features.map((item, idx) => (
               <div
+                role="row"
                 key={item.title}
                 className={`grid grid-cols-12 transition-colors duration-200 hover:bg-sky-50/30 ${
                   idx % 2 === 1 ? "bg-slate-50/40" : "bg-white"
                 }`}
               >
                 {/* Feature Column */}
-                <div className="col-span-5 sm:col-span-4 p-4 sm:p-6 flex flex-col justify-center">
+                <div role="rowheader" className="col-span-5 sm:col-span-4 p-4 sm:p-6 flex flex-col justify-center">
                   <span className="font-extrabold text-slate-900 text-sm sm:text-base">
                     {item.title}
                   </span>
@@ -400,7 +403,7 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
                 </div>
 
                 {/* NKTN Column (Highlight) */}
-                <div className="col-span-4 sm:col-span-4 p-4 sm:p-6 bg-sky-50/70 border-x border-sky-100 flex items-center gap-2.5 sm:gap-3">
+                <div role="cell" className="col-span-4 sm:col-span-4 p-4 sm:p-6 bg-sky-50/70 border-x border-sky-100 flex items-center gap-2.5 sm:gap-3">
                   <span className="grid size-7 sm:size-8 shrink-0 place-items-center rounded-full bg-sky-800 text-white font-black text-xs sm:text-sm shadow-sm">
                     {item.nktn.symbol}
                   </span>
@@ -412,7 +415,7 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
                 </div>
 
                 {/* Others Column */}
-                <div className="col-span-3 sm:col-span-4 p-4 sm:p-6 flex items-center gap-2 sm:gap-3 text-slate-500">
+                <div role="cell" className="col-span-3 sm:col-span-4 p-4 sm:p-6 flex items-center gap-2 sm:gap-3 text-slate-500">
                   <span className={`grid size-6 sm:size-7 shrink-0 place-items-center rounded-full text-xs font-bold ${
                     item.others.symbol === "✕" ? "bg-rose-50 text-rose-600 border border-rose-100" : "bg-slate-100 text-slate-500"
                   }`}>

@@ -21,6 +21,7 @@ export function FloatingContactVertical({ locale }: FloatingContactVerticalProps
           className="flex items-center gap-2 bg-[#06C755] text-white py-4 px-3 rounded-l-xl shadow-elevated hover:bg-[#05b04c] hover:pr-4 transition-all duration-200"
           data-analytics="vertical_line_click"
           title="LINEでお問い合わせ・お見積もり"
+          aria-label={locale === "ja" ? "LINEでお問い合わせ・お見積もり" : "Contact via LINE"}
         >
           <MessageCircle className="size-5 shrink-0" />
           <span className="text-xs font-black vertical-label tracking-widest">
@@ -34,6 +35,7 @@ export function FloatingContactVertical({ locale }: FloatingContactVerticalProps
           className="flex items-center gap-2 bg-[#00729F] text-white py-5 px-3 rounded-l-xl shadow-elevated hover:bg-[#00466D] hover:pr-4 transition-all duration-200"
           data-analytics="vertical_contact_click"
           title="お問い合わせ・ご依頼"
+          aria-label={locale === "ja" ? "お問い合わせ・ご依頼" : "Contact Form"}
         >
           <Mail className="size-5 shrink-0" />
           <span className="text-xs font-black vertical-label tracking-widest">

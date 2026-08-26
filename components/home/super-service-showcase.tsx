@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight, BedDouble, Building, Smartphone, Users } from "lucide-react";
 import { type Locale, withLocale } from "@/lib/i18n";
-import { companyBase } from "@/lib/site-data-i18n";
 
 interface SuperServiceShowcaseProps {
   locale: Locale;
@@ -96,6 +95,8 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
           <p className="mt-6 text-slate-600 text-sm sm:text-base leading-relaxed">
             {locale === "ja"
               ? "客室清掃・ベッドメイキングから、ビルメンテナンス、DX管理、多言語スタッフ体制まで包括的にサポートいたします。"
+              : locale === "vi"
+              ? "Từ vệ sinh buồng phòng & trải giường chuẩn khách sạn, đến bảo trì tòa nhà định kỳ, quản lý DX và đào tạo nhân sự đa quốc gia."
               : "Comprehensive hospitality cleaning, periodic building maintenance, DX automation, and staff management."}
           </p>
         </div>

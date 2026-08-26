@@ -7,7 +7,7 @@ import { companyBase, getContent } from "@/lib/site-data-i18n";
 
 interface CtaContactBandProps {
   locale: Locale;
-  variant?: "dark" | "line-accent" | "light-clean" | "compact";
+  variant?: "dark" | "line-accent" | "light-clean";
 }
 
 export function CtaContactBand({ locale, variant = "dark" }: CtaContactBandProps) {

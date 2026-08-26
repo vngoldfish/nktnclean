@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck, Calendar, Clock, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck, Calendar, ChevronRight } from "lucide-react";
 
 import { locales, type Locale, withLocale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";

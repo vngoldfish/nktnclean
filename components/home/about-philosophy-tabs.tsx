@@ -77,8 +77,13 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
 
         {/* 3. SuperHotelClean Style Tab Selector (PHILOSOPHY / PROFILE) */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex rounded-lg bg-slate-200/80 p-1">
+          <div role="tablist" aria-label="About NKTN" className="inline-flex rounded-lg bg-slate-200/80 p-1">
             <button
+              id="tab-philosophy"
+              role="tab"
+              type="button"
+              aria-selected={activeTab === "philosophy"}
+              aria-controls="panel-philosophy"
               onClick={() => setActiveTab("philosophy")}
               className={`px-8 py-3 rounded-md font-serif-jp text-xs sm:text-sm font-black transition-all duration-200 ${
                 activeTab === "philosophy"
@@ -89,6 +94,11 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
               PHILOSOPHY（企業理念）
             </button>
             <button
+              id="tab-profile"
+              role="tab"
+              type="button"
+              aria-selected={activeTab === "profile"}
+              aria-controls="panel-profile"
               onClick={() => setActiveTab("profile")}
               className={`px-8 py-3 rounded-md font-serif-jp text-xs sm:text-sm font-black transition-all duration-200 ${
                 activeTab === "profile"
@@ -104,7 +114,13 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
         {/* 4. Clean Split Tab Body (Exact Super Hotel Clean visual style) */}
         <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-10 lg:p-12 shadow-sm">
           {activeTab === "philosophy" ? (
-            <div key="philosophy" className="grid gap-10 lg:grid-cols-12 lg:items-center tab-content-enter">
+            <div
+              id="panel-philosophy"
+              role="tabpanel"
+              aria-labelledby="tab-philosophy"
+              key="philosophy"
+              className="grid gap-10 lg:grid-cols-12 lg:items-center tab-content-enter"
+            >
               <div className="lg:col-span-6 relative aspect-[16/10] rounded-xl overflow-hidden shadow-sm">
                 <Image
                   src="/works/photo-staff.jpg"
@@ -159,7 +175,13 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
               </div>
             </div>
           ) : (
-            <div key="profile" className="grid gap-10 lg:grid-cols-12 lg:items-center tab-content-enter">
+            <div
+              id="panel-profile"
+              role="tabpanel"
+              aria-labelledby="tab-profile"
+              key="profile"
+              className="grid gap-10 lg:grid-cols-12 lg:items-center tab-content-enter"
+            >
               <div className="lg:col-span-6 relative aspect-[16/10] rounded-xl overflow-hidden shadow-sm">
                 <Image
                   src="/works/photo-room.jpg"
@@ -180,20 +202,20 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
 
                 <div className="divide-y divide-slate-100 text-xs sm:text-sm">
                   <div className="py-2 grid grid-cols-3 gap-2">
-                    <span className="font-bold text-slate-400">所在地</span>
+                    <span className="font-bold text-slate-400">{content.company.profileRows.location}</span>
                     <span className="col-span-2 font-bold text-slate-800">{companyBase.location}</span>
                   </div>
                   <div className="py-2 grid grid-cols-3 gap-2">
-                    <span className="font-bold text-slate-400">代表者</span>
+                    <span className="font-bold text-slate-400">{content.company.profileRows.representative}</span>
                     <span className="col-span-2 font-bold text-slate-800">{companyBase.representative}（{companyBase.representativeKana}）</span>
                   </div>
                   <div className="py-2 grid grid-cols-3 gap-2">
-                    <span className="font-bold text-slate-400">資本金</span>
+                    <span className="font-bold text-slate-400">{content.company.profileRows.capital}</span>
                     <span className="col-span-2 font-bold text-slate-800">{companyBase.capital}</span>
                   </div>
                   <div className="py-2 grid grid-cols-3 gap-2">
-                    <span className="font-bold text-slate-400">適格事業者</span>
-                    <span className="col-span-2 font-bold text-slate-800">{companyBase.invoiceNumber}（インボイス対応）</span>
+                    <span className="font-bold text-slate-400">{content.company.profileRows.invoiceNumber}</span>
+                    <span className="col-span-2 font-bold text-slate-800">{companyBase.invoiceNumber}</span>
                   </div>
                 </div>
 

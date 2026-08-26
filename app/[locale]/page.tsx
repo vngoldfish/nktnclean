@@ -1,5 +1,4 @@
 import { isLocale, type Locale } from "@/lib/i18n";
-import { getContent } from "@/lib/site-data-i18n";
 
 import { SuperHeroSlider } from "@/components/home/super-hero-slider";
 import { AboutPhilosophyTabs } from "@/components/home/about-philosophy-tabs";

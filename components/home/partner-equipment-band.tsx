@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Wrench, Sparkles, ShieldCheck } from "lucide-react";
+import { Wrench } from "lucide-react";
 import { type Locale } from "@/lib/i18n";
 
 interface PartnerEquipmentBandProps {
@@ -9,11 +9,26 @@ interface PartnerEquipmentBandProps {
 
 export function PartnerEquipmentBand({ locale }: PartnerEquipmentBandProps) {
   const brands = [
-    { name: "ケルヒャージャパン", role: "高圧洗浄機・プロ用スチーム" },
-    { name: "シーバイエス株式会社", role: "ホテル専用業務用洗剤・ワックス" },
-    { name: "株式会社テラモト", role: "環境美化・清掃用品システム" },
-    { name: "株式会社リンレイ", role: "フロアメンテナンス・保護剤" },
-    { name: "蔵王産業株式会社", role: "産業用バキューム・洗浄機器" },
+    {
+      name: "ケルヒャージャパン",
+      role: locale === "ja" ? "高圧洗浄機・プロ用スチーム" : locale === "vi" ? "Máy xịt rửa áp lực cao & hơi nước" : "High-Pressure Steam & Washers",
+    },
+    {
+      name: "シーバイエス株式会社",
+      role: locale === "ja" ? "ホテル専用業務用洗剤・ワックス" : locale === "vi" ? "Hóa chất & sáp chuyên dụng khách sạn" : "Hotel Specialized Detergents & Wax",
+    },
+    {
+      name: "株式会社テラモト",
+      role: locale === "ja" ? "環境美化・清掃用品システム" : locale === "vi" ? "Hệ thống dụng cụ vệ sinh môi trường" : "Environmental Cleaning Systems",
+    },
+    {
+      name: "株式会社リンレイ",
+      role: locale === "ja" ? "フロアメンテナンス・保護剤" : locale === "vi" ? "Bảo trì & hóa chất phủ bóng sàn" : "Floor Care & Coating Chemicals",
+    },
+    {
+      name: "蔵王産業株式会社",
+      role: locale === "ja" ? "産業用バキューム・洗浄機器" : locale === "vi" ? "Máy hút bụi & máy giặt thảm công nghiệp" : "Industrial Vacuum & Carpet Cleaners",
+    },
   ];
 
   const photoStrip = [

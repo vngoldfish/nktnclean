@@ -13,12 +13,10 @@ import {
   FileCheck,
   Brush,
   Camera,
-  MessageCircle,
-  ArrowRight,
-  ShieldCheck
+  MessageCircle
 } from "lucide-react";
 
-import { type Locale, withLocale } from "@/lib/i18n";
+import { type Locale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { breadcrumbJsonLd, jsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 import { PageHeroHeader } from "@/components/ui/page-hero-header";

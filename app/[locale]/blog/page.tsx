@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ChevronRight, Clock, Calendar } from "lucide-react";
+import { ChevronRight, Clock, Calendar } from "lucide-react";
 
 import { type Locale, withLocale } from "@/lib/i18n";
 import { getContent } from "@/lib/site-data-i18n";

@@ -1,15 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Building2, Mail, MessageCircle, Network, Phone, Sparkles, MapPin, Clock3 } from "lucide-react";
+import { ArrowRight, Mail, MessageCircle, Phone, MapPin } from "lucide-react";
 
-import { type Locale, withLocale } from "@/lib/i18n";
+import { type Locale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { pageMetadata } from "@/lib/seo";
 import { PageHeroHeader } from "@/components/ui/page-hero-header";
 import { FloatingContactVertical } from "@/components/ui/floating-contact-vertical";
 import { CtaContactBand } from "@/components/home/cta-contact-band";
-
-const icons = [Building2, Sparkles, Network];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
