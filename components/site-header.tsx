@@ -42,46 +42,76 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   };
 
   return (
-    <div className="sticky top-0 z-50 shadow-sm">
-      {/* Top info bar */}
-      <div className="bg-[#0B0F19] text-white text-xs sm:text-sm border-b border-white/5">
+    <div id="site-header-wrapper" className="sticky top-0 z-50 transition-all duration-300">
+      {/* 1. Top High-Trust Bar */}
+      <div id="top-info-bar" className="bg-[#071224] text-slate-300 text-xs border-b border-white/10">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-2 sm:px-8">
-          <div className="flex items-center gap-3 sm:gap-5">
-            <span className="hidden sm:inline text-white/70">{content.topBar.commitment}</span>
-            <span className="text-amber-400 font-bold">{content.topBar.hours}</span>
+          <div className="flex items-center gap-3 sm:gap-6">
+            <span className="hidden sm:inline-flex items-center gap-2 text-slate-300 font-medium">
+              <span className="size-1.5 rounded-full bg-[#19BAD7] animate-pulse" />
+              {content.topBar.commitment}
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-amber-400 font-bold bg-amber-400/10 px-2 py-0.5 rounded text-[11px]">
+              {content.topBar.hours}
+            </span>
           </div>
-          <div className="flex items-center gap-3">
-            <Link href={`tel:${companyBase.phone}`} className="flex items-center gap-1.5 text-xs sm:text-sm font-black text-amber-400 hover:text-amber-300 transition">
-              <Phone className="size-3.5 sm:size-4" />
+
+          <div className="flex items-center gap-4">
+            <Link
+              href={`tel:${companyBase.phone}`}
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold text-amber-400 hover:text-amber-300 transition"
+              aria-label={locale === "ja" ? `電話相談: ${companyBase.phone}` : `Call: ${companyBase.phone}`}
+            >
+              <Phone className="size-3.5 text-amber-400" />
               <span>{companyBase.phone}</span>
             </Link>
           </div>
         </div>
       </div>
-      {/* Main header */}
-      <header className="border-b-2 border-sky-800 bg-white/92 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-          <Link href={withLocale(locale, "/")} onClick={() => setIsOpen(false)} className="flex items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-800 focus-visible:ring-offset-2">
-            <span className="grid size-11 place-items-center overflow-hidden rounded-full bg-white shadow-soft ring-2 ring-sky-800/10">
-              <Image src="/logo.png" alt="株式会社NKTN / Bawui Cleaning" width={44} height={44} className="size-11 object-cover" priority />
+
+      {/* 2. Main Navigation Header */}
+      <header id="main-header" className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-[0_4px_25px_-5px_rgba(0,0,0,0.06)]">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
+          
+          {/* Brand Logo */}
+          <Link
+            id="header-brand-logo"
+            href={withLocale(locale, "/")}
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00729F]"
+          >
+            <span className="grid size-11 place-items-center overflow-hidden rounded-full bg-white shadow-xs ring-1 ring-slate-200/80 shrink-0">
+              <Image
+                src="/logo.png"
+                alt="株式会社NKTN / Bawui Cleaning"
+                width={44}
+                height={44}
+                className="size-11 object-cover"
+                priority
+              />
             </span>
-            <span className="leading-tight">
-              <span className="block text-sm font-black tracking-[0.16em] text-sky-950">株式会社NKTN</span>
-              <span className="block text-xs font-extrabold text-amber-600">Bawui Cleaning</span>
-            </span>
+            <div className="leading-tight">
+              <span className="block text-sm font-black tracking-[0.14em] text-slate-900 font-serif-jp">
+                株式会社NKTN
+              </span>
+              <span className="block text-[11px] font-extrabold text-amber-600 tracking-wider">
+                Bawui Cleaning
+              </span>
+            </div>
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Global navigation">
+          {/* Desktop Navigation Links */}
+          <nav id="header-desktop-nav" className="hidden lg:flex items-center gap-1" aria-label="Global navigation">
             {content.nav.map(([label, href]) => {
               const active = isActive(href);
               return (
                 <Link
                   key={href}
                   href={withLocale(locale, href)}
-                  className={`rounded-full px-4 py-2 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-800 ${
+                  className={`rounded-full px-3.5 py-1.5 text-[13px] font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00729F] ${
                     active
-                      ? "bg-sky-50 text-sky-900 shadow-sm ring-1 ring-sky-100/80"
-                      : "text-nktn-ink/68 hover:bg-slate-50 hover:text-nktn-ink"
+                      ? "bg-[#00729F]/10 text-[#00729F] font-black"
+                      : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                   }`}
                 >
                   {label}
@@ -90,22 +120,26 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             })}
           </nav>
 
-          <div className="flex items-center gap-2">
+          {/* Action Group: Language Selector + Primary Contact Button */}
+          <div id="header-action-group" className="flex items-center gap-2.5">
+            
+            {/* Language Selector Dropdown */}
             <div className="relative" ref={languageRef}>
               <button
                 type="button"
-                className="grid size-10 place-items-center rounded-full bg-white text-nktn-ink ring-1 ring-slate-200 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-800"
+                id="header-language-btn"
+                className="flex items-center gap-1.5 h-9 px-3 rounded-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00729F] transition"
                 aria-label={content.common.language}
                 aria-expanded={isLanguageOpen}
                 onClick={() => setIsLanguageOpen((current) => !current)}
               >
-                <span className="relative grid size-6 place-items-center">
-                  <Globe2 className="size-5" />
-                  <span className="absolute -right-2 -top-2 text-base leading-none">{localeFlags[locale]}</span>
-                </span>
+                <Globe2 className="size-4 text-slate-500" />
+                <span className="text-sm leading-none">{localeFlags[locale]}</span>
+                <span className="hidden sm:inline text-[11px] font-bold text-slate-600 uppercase">{locale}</span>
               </button>
+
               {isLanguageOpen && (
-                <div className="absolute right-0 top-12 grid w-48 gap-1 rounded-3xl bg-white p-2 shadow-soft ring-1 ring-slate-200">
+                <div className="absolute right-0 top-11 grid w-44 gap-1 rounded-2xl bg-white p-2 shadow-xl ring-1 ring-slate-200 z-50 animate-scale-in">
                   {locales.map((item) => (
                     <Link
                       key={item}
@@ -116,9 +150,13 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                         saveLocale(item);
                         setIsLanguageOpen(false);
                       }}
-                      className={`flex items-center gap-3 rounded-2xl px-3 py-2 text-sm font-black transition ${item === locale ? "bg-sky-800 text-white" : "text-nktn-ink/72 hover:bg-slate-50 hover:text-nktn-ink"}`}
+                      className={`flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-bold transition ${
+                        item === locale
+                          ? "bg-[#00729F] text-white font-black"
+                          : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                      }`}
                     >
-                      <span className="text-2xl leading-none">{localeFlags[item]}</span>
+                      <span className="text-lg leading-none">{localeFlags[item]}</span>
                       <span>{localeNames[item]}</span>
                     </Link>
                   ))}
@@ -126,18 +164,21 @@ export function SiteHeader({ locale }: { locale: Locale }) {
               )}
             </div>
 
-            {/* Premium Header CTA */}
+            {/* Primary Corporate Contact Button */}
             <Link
+              id="header-contact-btn"
               href={withLocale(locale, "/contact")}
-              className="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-sky-800 hover:bg-sky-900 px-5 py-2 text-xs font-black text-white shadow-xs transition"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#00466D] to-[#00729F] hover:from-[#003859] hover:to-[#005f85] px-5 py-2 text-xs font-black text-white shadow-xs hover:shadow-md transition-all duration-300"
             >
               <FileText className="size-3.5" />
               <span>{content.common.contact}</span>
             </Link>
 
+            {/* Mobile Hamburger Menu Toggle */}
             <button
               type="button"
-              className="lg:hidden grid size-10 place-items-center rounded-full bg-slate-100 text-nktn-ink hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-800"
+              id="header-mobile-toggle"
+              className="lg:hidden grid size-9 place-items-center rounded-full bg-slate-100 text-slate-800 hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00729F] transition"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
               aria-controls="mobile-navigation"
@@ -148,9 +189,14 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           </div>
         </div>
 
+        {/* Mobile Navigation Drawer */}
         {isOpen && (
-          <nav id="mobile-navigation" className="mx-5 mb-4 rounded-3xl bg-white/95 p-3 shadow-soft ring-1 ring-slate-200 backdrop-blur-xl sm:mx-8 lg:hidden" aria-label="Mobile navigation">
-            <div className="grid gap-2">
+          <nav
+            id="mobile-navigation"
+            className="mx-4 mb-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-200 lg:hidden animate-fade-in-up"
+            aria-label="Mobile navigation"
+          >
+            <div className="grid gap-1">
               {content.nav.map(([label, href]) => {
                 const active = isActive(href);
                 return (
@@ -158,8 +204,8 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                     key={href}
                     href={withLocale(locale, href)}
                     onClick={() => setIsOpen(false)}
-                    className={`rounded-2xl px-4 py-3 text-sm font-black transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-800 ${
-                      active ? "bg-sky-50 text-sky-900" : "text-nktn-ink hover:bg-slate-50"
+                    className={`rounded-xl px-4 py-2.5 text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00729F] ${
+                      active ? "bg-[#00729F]/10 text-[#00729F] font-black" : "text-slate-800 hover:bg-slate-50"
                     }`}
                   >
                     {label}
@@ -167,9 +213,12 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                 );
               })}
             </div>
-            <div className="mt-3 rounded-2xl bg-slate-50 p-2">
-              <p className="px-2 pb-2 text-xs font-black uppercase tracking-[0.18em] text-nktn-ink/45">{content.common.language}</p>
-              <div className="grid grid-cols-2 gap-2">
+
+            <div className="mt-3 rounded-xl bg-slate-50 p-2.5 border border-slate-100">
+              <p className="px-2 pb-1.5 text-[10px] font-black uppercase tracking-wider text-slate-400">
+                {content.common.language}
+              </p>
+              <div className="grid grid-cols-2 gap-1.5">
                 {locales.map((item) => (
                   <Link
                     key={item}
@@ -178,29 +227,24 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                       saveLocale(item);
                       setIsOpen(false);
                     }}
-                    className={`rounded-2xl px-3 py-2 text-xs font-black text-center ${item === locale ? "bg-sky-800 text-white" : "bg-white text-nktn-ink/70"}`}
+                    className={`rounded-lg px-2.5 py-1.5 text-[11px] font-bold text-center transition ${
+                      item === locale ? "bg-[#00729F] text-white" : "bg-white text-slate-700 hover:bg-slate-100"
+                    }`}
                   >
                     {localeLabels[item]}
                   </Link>
                 ))}
               </div>
             </div>
-            <div className="mt-3 grid grid-cols-2 gap-2">
-              <Link
-                href={companyBase.lineUrl}
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-1 rounded-2xl bg-[#06C755] py-3 text-xs font-black text-white hover:bg-[#05b04c]"
-              >
-                <MessageCircle className="size-3.5" />
-                {content.common.lineConsult}
-              </Link>
+
+            <div className="mt-3">
               <Link
                 href={withLocale(locale, "/contact")}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-1 rounded-2xl bg-sky-800 py-3 text-xs font-black text-white hover:bg-sky-700"
+                className="flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-[#00466D] to-[#00729F] py-3 text-xs font-black text-white shadow-xs"
               >
                 <FileText className="size-3.5" />
-                {content.common.contact}
+                <span>{content.common.contact}</span>
               </Link>
             </div>
           </nav>

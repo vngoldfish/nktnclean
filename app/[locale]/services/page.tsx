@@ -13,10 +13,11 @@ import {
   FileCheck,
   Brush,
   Camera,
-  MessageCircle
+  MessageCircle,
+  ChevronRight
 } from "lucide-react";
 
-import { type Locale } from "@/lib/i18n";
+import { type Locale, withLocale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { breadcrumbJsonLd, jsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 import { PageHeroHeader } from "@/components/ui/page-hero-header";
@@ -138,8 +139,18 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                       ))}
                     </div>
 
-                    <div className="service-detail-action pt-2 flex items-center text-xs font-black text-[#00729F]">
-                      <span className="font-mono tracking-wider uppercase">NKTN PROFESSIONAL STANDARD</span>
+                    <div className="service-detail-action pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 text-xs font-bold text-slate-500">
+                        <span className="inline-block size-2 rounded-full bg-[#06C755]" />
+                        <span>{locale === "ja" ? "専任スタッフ常駐・写真付き報告対応" : locale === "vi" ? "Đội ngũ chuyên trách • Báo cáo hình ảnh" : "Dedicated Staff • Instant Photo Proof"}</span>
+                      </div>
+                      <Link
+                        href={withLocale(locale, "/contact")}
+                        className="inline-flex items-center gap-1 text-xs font-black text-[#00729F] hover:text-[#00466D] transition group/link"
+                      >
+                        <span>{locale === "ja" ? "詳細・お見積もり相談" : locale === "vi" ? "Tư vấn báo giá" : "Request a Quote"}</span>
+                        <ChevronRight className="size-3.5 group-hover/link:translate-x-0.5 transition-transform" />
+                      </Link>
                     </div>
                   </div>
 
