@@ -15,7 +15,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const locale: Locale = isLocale(localeParam) ? localeParam : "ja";
 
   return (
-    <main id="home-page-main" className="home-page-main site-shell overflow-hidden">
+    <main id="home-page-main" className="home-page-main site-shell">
       {/* 1. Desktop Right Vertical Floating Tab & Mobile Bottom Sticky Dock */}
       <FloatingContactVertical locale={locale} />
 

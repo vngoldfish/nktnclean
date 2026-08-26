@@ -6,6 +6,7 @@ import { AnalyticsEvents } from "@/components/analytics-events";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ScrollAnimationInitializer } from "@/components/ui/scroll-animation-init";
+import { SmoothScrollProvider } from "@/components/ui/smooth-scroll-provider";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 import { absoluteUrl, localeHomeMetadata } from "@/lib/seo";
@@ -52,14 +53,16 @@ export default async function LocaleLayout({ children, params }: Readonly<{ chil
   };
 
   return (
-    <div lang={locale} className={`locale-${locale} min-h-screen flex flex-col pb-14 md:pb-0`}>
-      <Analytics />
-      <AnalyticsEvents />
-      <ScrollAnimationInitializer />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <SiteHeader locale={locale as Locale} />
-      <div className="flex-1">{children}</div>
-      <SiteFooter locale={locale as Locale} />
-    </div>
+    <SmoothScrollProvider>
+      <div lang={locale} className={`locale-${locale} min-h-screen flex flex-col pb-14 md:pb-0`}>
+        <Analytics />
+        <AnalyticsEvents />
+        <ScrollAnimationInitializer />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <SiteHeader locale={locale as Locale} />
+        <div className="flex-1">{children}</div>
+        <SiteFooter locale={locale as Locale} />
+      </div>
+    </SmoothScrollProvider>
   );
 }
