@@ -40,14 +40,14 @@ export function CtaContactBand({ locale }: { locale: Locale }) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
           <Link
             href={withLocale(locale, "/contact")}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-black text-sky-900 shadow-lg hover:bg-slate-100 transition"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-black text-sky-900 shadow-soft hover:bg-slate-100 transition"
           >
             <FileText className="size-5" />
             {content.common.contact}
           </Link>
           <Link
             href={companyBase.lineUrl}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#06C755] px-8 py-4 text-base font-black text-white shadow-lg hover:bg-[#05b04c] transition"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#06C755] px-8 py-4 text-base font-black text-white shadow-soft hover:bg-[#05b04c] transition"
             data-analytics="line_cta_click"
           >
             <MessageCircle className="size-5" />

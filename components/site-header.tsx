@@ -55,7 +55,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
               <Phone className="size-4 sm:size-4.5" />
               {companyBase.phone}
             </Link>
-            <Link href={companyBase.lineUrl} className="hidden sm:inline-flex items-center gap-1 rounded-full bg-[#06C755] px-3.5 py-1 text-xs font-bold text-white hover:bg-[#05b04c] transition" data-analytics="line_topbar_click">
+            <Link href={companyBase.lineUrl} className="hidden sm:inline-flex items-center gap-1 rounded-xl bg-[#06C755] px-3.5 py-1 text-xs font-bold text-white hover:bg-[#05b04c] transition" data-analytics="line_topbar_click">
               {content.topBar.lineEstimate}
             </Link>
           </div>
@@ -132,17 +132,17 @@ export function SiteHeader({ locale }: { locale: Locale }) {
             {/* Premium CTA Buttons Group */}
             <Link
               href={companyBase.lineUrl}
-              className="hidden sm:inline-flex items-center gap-1 rounded-full bg-[#06C755] px-4 py-2 text-xs font-black text-white hover:bg-[#05b04c] shadow-sm transition"
+              className="hidden sm:inline-flex items-center gap-1 rounded-2xl bg-[#06C755] px-4 py-2 text-xs font-black text-white hover:bg-[#05b04c] shadow-sm transition"
               data-analytics="line_header_click"
             >
-              <MessageCircle className="size-3.5" />
+              <MessageCircle className="size-4" />
               {content.common.lineConsult}
             </Link>
             <Link
               href={withLocale(locale, "/contact")}
-              className="hidden sm:inline-flex items-center gap-1 rounded-full bg-amber-500 px-4 py-2 text-xs font-black text-white hover:bg-amber-600 shadow-sm transition"
+              className="hidden sm:inline-flex items-center gap-1 rounded-2xl bg-sky-800 px-4 py-2 text-xs font-black text-white hover:bg-sky-700 shadow-sm transition"
             >
-              <FileText className="size-3.5" />
+              <FileText className="size-4" />
               {content.common.contact}
             </Link>
 
@@ -189,7 +189,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
                       saveLocale(item);
                       setIsOpen(false);
                     }}
-                    className={`rounded-xl px-3 py-2 text-xs font-black ${item === locale ? "bg-sky-800 text-white" : "bg-white text-nktn-ink/70"}`}
+                    className={`rounded-2xl px-3 py-2 text-xs font-black text-center ${item === locale ? "bg-sky-800 text-white" : "bg-white text-nktn-ink/70"}`}
                   >
                     {localeLabels[item]}
                   </Link>
@@ -200,7 +200,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
               <Link
                 href={companyBase.lineUrl}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-1 rounded-full bg-[#06C755] py-3 text-xs font-black text-white hover:bg-[#05b04c]"
+                className="flex items-center justify-center gap-1 rounded-2xl bg-[#06C755] py-3 text-xs font-black text-white hover:bg-[#05b04c]"
               >
                 <MessageCircle className="size-3.5" />
                 {content.common.lineConsult}
@@ -208,7 +208,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
               <Link
                 href={withLocale(locale, "/contact")}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-1 rounded-full bg-amber-500 py-3 text-xs font-black text-white hover:bg-amber-600"
+                className="flex items-center justify-center gap-1 rounded-2xl bg-sky-800 py-3 text-xs font-black text-white hover:bg-sky-700"
               >
                 <FileText className="size-3.5" />
                 {content.common.contact}

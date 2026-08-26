@@ -2,16 +2,19 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, FileCheck, Camera, CalendarDays, Phone, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Phone, MessageCircle } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
-import { type Locale } from "@/lib/i18n";
+import { type Locale, withLocale } from "@/lib/i18n";
 import { companyBase, getContent } from "@/lib/site-data-i18n";
 
-const fadeUp = { hidden: { opacity: 0, y: 22 }, visible: { opacity: 1, y: 0 } };
+const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 
-const trustBadgeIcons = [FileCheck, Camera, CalendarDays];
+const sharedImages = {
+  room: "/works/photo-room.jpg",
+  staff: "/works/photo-staff.jpg",
+};
 
 interface HeroSectionProps {
   locale: Locale;
@@ -21,118 +24,118 @@ export function HeroSection({ locale }: HeroSectionProps) {
   const content = getContent(locale);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-white to-amber-50/40">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px'}} />
+    <section className="relative overflow-hidden bg-slate-50/50 border-b border-slate-100">
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-[0.01]" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px'}} />
 
       <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
-        {/* Top badge line */}
-        <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.5 }} className="text-center mb-6">
-          <Badge variant="blue" className="text-sm px-5 py-2">{content.home.badge}</Badge>
-        </motion.div>
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+          
+          {/* Left Column - Content */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              transition={{ duration: 0.5 }}
+              className="mb-6"
+            >
+              <Badge variant="blue" className="text-xs px-4 py-1.5 font-bold tracking-wide">
+                {content.home.badge}
+              </Badge>
+            </motion.div>
 
-        {/* Main title — BIG and centered */}
-        <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.6, delay: 0.1 }} className="text-center">
-          <h1 className="whitespace-normal sm:whitespace-pre-line text-balance text-4xl font-black leading-[1.08] tracking-[-0.04em] text-nktn-ink sm:text-7xl lg:text-8xl">
-            {content.home.title}
-          </h1>
-          <p className="mt-6 mx-auto max-w-3xl text-base leading-8 text-nktn-ink/60 sm:text-lg">
-            {content.home.lead}
-          </p>
-        </motion.div>
+            <motion.h1
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="whitespace-normal sm:whitespace-pre-line text-balance text-4xl font-black leading-[1.1] tracking-[-0.04em] text-slate-900 sm:text-6xl lg:text-7xl"
+            >
+              {content.home.title}
+            </motion.h1>
 
-        {/* Trust Badges — Large, prominent, centered */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-6"
-        >
-          {content.home.trustBadges.map((badge: string, index: number) => {
-            const Icon = trustBadgeIcons[index] || FileCheck;
-            return (
-              <div
-                key={badge}
-                className="flex flex-col items-center gap-2 rounded-2xl bg-white px-6 py-5 shadow-lg ring-1 ring-slate-200/60"
+            <motion.p
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg"
+            >
+              {content.home.lead}
+            </motion.p>
+
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
+            >
+              <Link
+                href={companyBase.lineUrl}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#06C755] px-8 py-4 text-base font-black text-white shadow-soft hover:bg-[#05b04c] transition duration-200"
               >
-                <span className="grid size-12 place-items-center rounded-full bg-amber-100">
-                  <Icon className="size-6 text-amber-600" />
-                </span>
-                <span className="text-sm font-black text-nktn-ink tracking-wide">{badge}</span>
-              </div>
-            );
-          })}
-        </motion.div>
+                <MessageCircle className="size-5" />
+                {content.common.lineConsultLong}
+                <ArrowRight className="size-4" />
+              </Link>
+              <Link
+                href={withLocale(locale, "/services")}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-white border border-slate-200 px-8 py-4 text-base font-black text-slate-800 shadow-soft hover:bg-slate-50 transition duration-200"
+              >
+                {content.common.viewServices}
+              </Link>
+            </motion.div>
 
-        {/* Giant CTA — Phone + LINE */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-10 flex flex-col items-center gap-4 w-full"
-        >
-          {/* Phone number — Large like machino */}
-          <Link
-            href={`tel:${companyBase.phone}`}
-            className="group inline-flex items-center gap-3"
-          >
-            <span className="grid size-12 sm:size-14 place-items-center rounded-full bg-amber-500 text-white shadow-md group-hover:bg-amber-400 transition">
-              <Phone className="size-6 sm:size-7" />
-            </span>
-            <div>
-              <span className="block text-xs font-bold text-nktn-ink/50">{content.topBar.hours}</span>
-              <span className="block text-2xl sm:text-3xl font-black text-nktn-ink tracking-wider">{companyBase.phone}</span>
-            </div>
-          </Link>
-
-          {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto px-5 sm:px-0">
-            <Link
-              href={companyBase.lineUrl}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#06C755] px-8 py-4 text-base font-black text-white shadow-lg hover:bg-[#05b04c] transition"
+            {/* Quick Contact Info */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-8 flex items-center gap-3 border-t border-slate-100 pt-6 w-full"
             >
-              <MessageCircle className="size-5" />
-              {content.common.lineConsultLong}
-              <ArrowRight className="size-4" />
-            </Link>
-            <Link
-              href={`tel:${companyBase.phone}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-sky-800 px-8 py-4 text-base font-black text-white shadow-lg hover:bg-sky-700 transition"
-            >
-              <Phone className="size-5" />
-              {content.home.freeEstimate}
-            </Link>
+              <a href={`tel:${companyBase.phone}`} className="flex items-center gap-2 text-slate-700 hover:text-sky-800 transition">
+                <Phone className="size-5 text-sky-800" />
+                <span className="text-sm font-bold">{companyBase.phone}</span>
+                <span className="text-xs text-slate-400">({content.topBar.hours})</span>
+              </a>
+            </motion.div>
           </div>
-        </motion.div>
 
-        {/* Operations card — below */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-14 mx-auto max-w-2xl"
-        >
-          <Card className="p-6 bg-white/80 backdrop-blur-sm">
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <p className="text-xs font-black tracking-[0.22em] text-nktn-ink/40">TODAY&apos;S CONTROL</p>
-                <h2 className="mt-1 text-lg font-black tracking-[-0.03em]">{content.home.control}</h2>
+          {/* Right Column - Staggered Photos */}
+          <div className="lg:col-span-5 relative mt-8 lg:mt-0">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="grid grid-cols-2 gap-4 lg:h-[480px]"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-soft border border-slate-100 h-64 sm:h-80 lg:h-[90%]">
+                <Image
+                  src={sharedImages.room}
+                  alt="Hotel Room Cleaning"
+                  fill
+                  className="object-cover hover:scale-105 transition duration-500"
+                  sizes="(max-width: 1024px) 50vw, 300px"
+                  priority
+                />
               </div>
-              <div className="text-right">
-                <p className="text-xs text-nktn-ink/40">{content.home.companyInfo}</p>
-                <p className="text-sm font-bold">{content.company.profileRows.established} {companyBase.established}</p>
+              <div className="relative rounded-3xl overflow-hidden shadow-soft border border-slate-100 h-64 sm:h-80 lg:h-[90%] mt-8 lg:mt-12">
+                <Image
+                  src={sharedImages.staff}
+                  alt="Apartment Room Cleaning"
+                  fill
+                  className="object-cover hover:scale-105 transition duration-500"
+                  sizes="(max-width: 1024px) 50vw, 300px"
+                  priority
+                />
               </div>
-            </div>
-            <div className="grid grid-cols-4 gap-2">
-              {["OUT", "Cleaning", "Photo", "Done"].map((item) => (
-                <div key={item} className="flex flex-col items-center gap-1.5 rounded-xl bg-slate-50 px-3 py-3">
-                  <CheckCircle2 className="size-5 text-nktn-green" />
-                  <span className="text-xs font-bold text-nktn-ink/70">{item}</span>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </motion.div>
+            </motion.div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

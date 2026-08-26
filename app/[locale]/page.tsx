@@ -49,7 +49,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ========== Services ========== */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="text-center mb-14">
-          <p className="text-amber-600 text-sm font-black tracking-widest mb-3">SERVICES</p>
+          <p className="text-sky-800 text-sm font-black tracking-widest mb-3">SERVICES</p>
           <h2 className="max-w-4xl mx-auto text-balance text-3xl font-black tracking-[-0.04em] sm:text-5xl lg:text-6xl">{content.home.servicesTitle}</h2>
           <p className="mt-4 text-nktn-ink/50 text-sm">{content.home.freeEstimate}</p>
         </div>
@@ -57,7 +57,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           {content.services.map((service, index) => {
             const Icon = serviceIcons[index] || Hotel;
             return (
-              <Card key={service.title} className="p-7 transition duration-300 hover:shadow-xl hover:-translate-y-1">
+              <Card key={service.title} className="p-7 border border-slate-100 hover:border-sky-100 transition duration-300 hover:shadow-soft hover:-translate-y-0.5">
                 <div className="flex items-center justify-between">
                   <span className="grid size-12 place-items-center rounded-2xl bg-sky-50 ring-1 ring-sky-100">
                     <Icon className="size-6 text-nktn-blue" />
@@ -88,13 +88,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ========== Process Steps ========== */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="text-center mb-14">
-          <p className="text-amber-600 text-sm font-black tracking-widest mb-3">FLOW</p>
+          <p className="text-sky-800 text-sm font-black tracking-widest mb-3">FLOW</p>
           <h2 className="text-balance text-3xl font-black tracking-[-0.04em] sm:text-5xl">
             {locale === "ja" ? "ご依頼の流れ" : locale === "en" ? "How It Works" : "Quy trình thực hiện"}
           </h2>
           <p className="mt-5 mx-auto max-w-2xl text-nktn-ink/55 leading-8">
             {locale === "ja"
-              ? "単発の清掃ではなく、施設ごとに最適化した清掃体制を構築し、長期パートナーとして品質を守り続けます。"
+              ? "単発の清掃ではなく、施設ごとに最適化した清掃体制u構築し、長期パートナーとして品質を守り続けます。"
               : locale === "en"
               ? "We don't just clean once — we build optimized cleaning systems for each facility and maintain quality as your long-term partner."
               : "Chúng tôi không chỉ dọn dẹp một lần — mà xây dựng hệ thống vệ sinh tối ưu cho từng cơ sở và duy trì chất lượng như đối tác lâu dài."}
@@ -104,13 +104,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           {content.processSteps.map(([number, title, body], index) => {
             const Icon = processIcons[index] || Phone;
             return (
-              <div key={title} className="flex gap-4 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-amber-500/10 text-amber-600">
+              <div key={title} className="flex gap-4 rounded-3xl bg-white p-6 shadow-sm border border-slate-100">
+                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-sky-50 text-sky-800">
                   <Icon className="size-6" />
                 </span>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-amber-600">STEP 0{number}</span>
+                    <span className="text-xs font-bold text-sky-800/80">STEP 0{number}</span>
                   </div>
                   <h3 className="mt-1 text-lg font-black tracking-[-0.03em] text-nktn-ink">{title}</h3>
                   <p className="mt-2 text-sm leading-7 text-nktn-ink/60">{body}</p>
@@ -129,13 +129,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ========== Works ========== */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="text-center mb-14">
-          <p className="text-amber-600 text-sm font-black tracking-widest mb-3">WORKS</p>
+          <p className="text-sky-800 text-sm font-black tracking-widest mb-3">WORKS</p>
           <h2 className="max-w-4xl mx-auto text-balance text-3xl font-black tracking-[-0.04em] sm:text-5xl">{content.home.worksTitle}</h2>
           <p className="mt-4 max-w-3xl mx-auto leading-8 text-nktn-ink/60">{content.home.worksLead}</p>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {content.workCases.map((work) => (
-            <Card key={work.title} className="overflow-hidden p-0 transition duration-300 hover:shadow-xl hover:-translate-y-1">
+            <Card key={work.title} className="overflow-hidden p-0 border border-slate-100 hover:border-sky-100 transition duration-300 hover:shadow-soft hover:-translate-y-0.5">
               <Image src={work.image} alt={work.title} width={900} height={620} className="h-52 w-full object-cover" />
               <div className="p-6">
                 <div className="flex items-center justify-between gap-3">
@@ -153,20 +153,20 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* ========== Customer Reviews — styled like machino お客様の声 ========== */}
-      <section className="bg-gradient-to-b from-amber-50 to-white py-20 px-5 sm:px-8">
+      <section className="bg-slate-50/50 py-20 px-5 sm:px-8 border-y border-slate-100">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
-            <p className="text-amber-600 text-sm font-black tracking-widest mb-3">{content.home.reviewsTitle}</p>
+            <p className="text-sky-800 text-sm font-black tracking-widest mb-3">{content.home.reviewsTitle}</p>
             <h2 className="text-balance text-3xl font-black tracking-[-0.04em] sm:text-5xl">{content.home.reviewsTitle}</h2>
             <p className="mt-4 max-w-2xl mx-auto leading-8 text-nktn-ink/60">{content.home.reviewsLead}</p>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {content.reviews.map((review, index) => (
-              <div key={index} className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200/60">
+              <div key={index} className="rounded-3xl bg-white p-6 border border-slate-100 hover:border-sky-100 shadow-soft transition duration-300 hover:shadow-md">
                 {/* Score */}
                 <div className="text-center mb-4">
                   <p className="text-xs font-bold text-nktn-ink/40 mb-1">{locale === "ja" ? "満足度" : "Satisfaction"}</p>
-                  <span className="text-4xl font-black text-amber-500">{review.score}</span>
+                  <span className="text-4xl font-black text-sky-800">{review.score}</span>
                   <span className="text-sm text-nktn-ink/40 font-bold">{locale === "ja" ? "点" : "/100"}</span>
                 </div>
                 {/* Stars */}
@@ -193,15 +193,15 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ========== DX ========== */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="text-center mb-14">
-          <p className="text-amber-600 text-sm font-black tracking-widest mb-3">DX SOLUTION</p>
+          <p className="text-sky-800 text-sm font-black tracking-widest mb-3">DX SOLUTION</p>
           <h2 className="max-w-4xl mx-auto text-balance text-3xl font-black tracking-[-0.04em] sm:text-5xl">{content.home.dxTitle}</h2>
           <p className="mt-4 max-w-3xl mx-auto leading-8 text-nktn-ink/60">{content.home.dxLead}</p>
         </div>
         <div className="grid gap-4 sm:grid-cols-3">
-          {[[Bot, "LINE"], [Clock3, "OUT"], [Sparkles, "Photo"]].map(([Icon, label]) => {
-            const TypedIcon = Icon as typeof Bot;
+          {[[MessageCircle, "LINE"], [Clock3, "OUT"], [Camera, "Photo"]].map(([Icon, label]) => {
+            const TypedIcon = Icon as typeof MessageCircle;
             return (
-              <Card key={label as string} className="p-6 text-center hover:shadow-xl transition duration-300 hover:-translate-y-1">
+              <Card key={label as string} className="p-6 text-center border border-slate-100 hover:border-sky-100 shadow-soft transition duration-300 hover:shadow-md hover:-translate-y-0.5">
                 <div className="grid size-14 mx-auto place-items-center rounded-2xl bg-sky-50 ring-1 ring-sky-100">
                   <TypedIcon className="size-7 text-nktn-blue" />
                 </div>
@@ -218,10 +218,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* ========== Blog ========== */}
-      <section className="bg-slate-50 py-20 px-5 sm:px-8">
+      <section className="bg-slate-50 py-20 px-5 sm:px-8 border-y border-slate-100">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
-            <p className="text-amber-600 text-sm font-black tracking-widest mb-3">BLOG</p>
+            <p className="text-sky-800 text-sm font-black tracking-widest mb-3">BLOG</p>
             <h2 className="max-w-4xl mx-auto text-balance text-3xl font-black tracking-[-0.04em] sm:text-5xl">{content.home.blogTitle}</h2>
             <p className="mt-4 max-w-3xl mx-auto leading-8 text-nktn-ink/60">{content.home.blogLead}</p>
           </div>
@@ -236,12 +236,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ========== FAQ ========== */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="text-center mb-14">
-          <p className="text-amber-600 text-sm font-black tracking-widest mb-3">FAQ</p>
+          <p className="text-sky-800 text-sm font-black tracking-widest mb-3">FAQ</p>
           <h2 className="max-w-4xl mx-auto text-balance text-3xl font-black tracking-[-0.04em] sm:text-5xl">{content.home.faqTitle}</h2>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {content.faqItems.slice(0, 3).map(([question, answer]) => (
-            <Card key={question} className="p-6 hover:shadow-xl transition duration-300">
+            <Card key={question} className="p-6 border border-slate-100 hover:border-sky-100 shadow-soft transition duration-300 hover:shadow-md">
               <h3 className="text-lg font-black tracking-[-0.03em]">{question}</h3>
               <p className="mt-4 leading-7 text-nktn-ink/60">{answer}</p>
             </Card>

@@ -19,7 +19,7 @@ export function StrengthsSection({ locale }: StrengthsSectionProps) {
   return (
     <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
       <div className="text-center mb-14">
-        <Badge variant="orange" className="mb-6">Why NKTN</Badge>
+        <Badge variant="blue" className="mb-6 font-bold">Why NKTN</Badge>
         <h2 className="whitespace-normal sm:whitespace-pre-line text-balance text-3xl font-black tracking-[-0.04em] text-nktn-ink sm:text-5xl lg:text-6xl">
           {content.home.strengthsTitle}
         </h2>
@@ -50,7 +50,7 @@ export function StrengthsSection({ locale }: StrengthsSectionProps) {
               </div>
               {/* Content side */}
               <div className={`text-center lg:text-left flex-1`}>
-                <p className="text-amber-600 text-sm font-black tracking-widest mb-2">
+                <p className="text-sky-800 text-sm font-black tracking-widest mb-2">
                   {locale === 'ja' ? `${content.common.reason || "理由"}${index + 1}` : `${content.common.reason || "Reason"} ${index + 1}`}
                 </p>
                 <h3 className="text-2xl sm:text-3xl font-black tracking-[-0.03em] text-nktn-ink mb-4">
