@@ -85,7 +85,7 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
   return (
     <section
       id="hero-slider-section"
-      className="hero-slider-section relative overflow-hidden bg-slate-950 text-white min-h-[calc(100svh-4.5rem)] lg:min-h-[calc(100vh-5.5rem)] flex flex-col justify-between"
+      className="hero-slider-section relative overflow-hidden bg-slate-950 text-white min-h-[580px] sm:min-h-[640px] lg:min-h-[calc(100vh-5.5rem)] flex flex-col justify-between"
     >
       {/* 1. Background Images with smooth fade + Ken Burns transition */}
       <div id="hero-slider-bg-wrapper" className="hero-slider-bg-wrapper absolute inset-0">
@@ -115,10 +115,10 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
       </div>
 
       {/* 2. Main Content Area (Vertically Centered) */}
-      <div id="hero-main-content-container" className="hero-main-content-container relative mx-auto max-w-7xl px-5 sm:px-8 my-auto py-10 sm:py-16 lg:py-20 z-10 w-full">
+      <div id="hero-main-content-container" className="hero-main-content-container relative mx-auto max-w-7xl px-5 sm:px-8 my-auto py-8 sm:py-12 lg:py-16 z-10 w-full">
         <div key={activeSlide} id={`hero-slide-content-${activeSlide}`} className="hero-slide-content max-w-3xl">
           {/* Eyebrow badge with clean line */}
-          <div className="hero-eyebrow-badge flex items-center gap-3 mb-6 animate-fade-in-up">
+          <div className="hero-eyebrow-badge flex items-center gap-3 mb-4 sm:mb-6 animate-fade-in-up">
             <span className="h-px w-8 bg-[#19BAD7]" />
             <span className="text-xs font-black tracking-[0.25em] text-[#19BAD7] uppercase">
               {current.badge}
@@ -126,30 +126,30 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
           </div>
 
           {/* Large Mincho Serif Catchphrase (SuperHotelClean signature style) */}
-          <h1 className="hero-catchphrase font-serif-jp text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.2] tracking-normal text-white drop-shadow-md whitespace-pre-line animate-fade-in-up stagger-2">
+          <h1 className="hero-catchphrase font-serif-jp text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-[1.2] tracking-normal text-white drop-shadow-md whitespace-pre-line animate-fade-in-up stagger-2">
             {current.title}
           </h1>
 
           {/* Descriptive text */}
-          <p className="hero-description mt-6 text-sm sm:text-base lg:text-lg leading-relaxed text-slate-200/90 font-medium max-w-2xl animate-fade-in-up stagger-3">
+          <p className="hero-description mt-4 sm:mt-6 text-xs sm:text-base lg:text-lg leading-relaxed text-slate-200/90 font-medium max-w-2xl animate-fade-in-up stagger-3">
             {current.desc}
           </p>
 
           {/* CTA Button Group */}
-          <div id="hero-cta-group" className="hero-cta-group mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+          <div id="hero-cta-group" className="hero-cta-group mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <Link
               href={companyBase.lineUrl}
-              className="hero-btn-line inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#06C755] px-7 py-4 text-sm sm:text-base font-black text-white shadow-glow-green hover:bg-[#05b04c] transition duration-200"
+              className="hero-btn-line inline-flex items-center justify-center gap-2 rounded-xl bg-[#06C755] px-6 py-3.5 sm:px-7 sm:py-4 text-xs sm:text-sm font-black text-white shadow-glow-green hover:bg-[#05b04c] transition duration-200"
               data-analytics="hero_slider_line"
             >
-              <MessageCircle className="size-5" />
+              <MessageCircle className="size-4 sm:size-5" />
               {content.common.lineConsultLong}
               <ArrowRight className="size-4" />
             </Link>
 
             <Link
               href={withLocale(locale, current.actionHref)}
-              className="hero-btn-secondary inline-flex items-center justify-center gap-2 rounded-xl bg-white/15 border border-white/30 backdrop-blur-md px-7 py-4 text-sm sm:text-base font-bold text-white hover:bg-white/25 transition duration-200"
+              className="hero-btn-secondary inline-flex items-center justify-center gap-2 rounded-xl bg-white/15 border border-white/30 backdrop-blur-md px-6 py-3.5 sm:px-7 sm:py-4 text-xs sm:text-sm font-bold text-white hover:bg-white/25 transition duration-200"
             >
               <span>{current.actionText}</span>
               <ChevronRight className="size-4 text-[#19BAD7]" />
@@ -157,17 +157,17 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
           </div>
 
           {/* Trust points underneath */}
-          <div id="hero-trust-badges" className="hero-trust-badges mt-8 flex flex-wrap items-center gap-4 text-xs font-bold text-slate-300/80">
+          <div id="hero-trust-badges" className="hero-trust-badges mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4 text-[11px] sm:text-xs font-bold text-slate-300/80">
             <span className="trust-badge-item flex items-center gap-1.5">
-              <ShieldCheck className="size-4 text-[#19BAD7]" />
+              <ShieldCheck className="size-3.5 sm:size-4 text-[#19BAD7]" />
               {locale === "ja" ? "損害賠償保険完備" : "Fully Insured"}
             </span>
             <span className="trust-badge-item flex items-center gap-1.5">
-              <Star className="size-4 text-amber-400 fill-amber-400" />
+              <Star className="size-3.5 sm:size-4 text-amber-400 fill-amber-400" />
               {locale === "ja" ? "顧客満足度 98.2%" : "98.2% Satisfaction"}
             </span>
             <span className="trust-badge-item flex items-center gap-1.5">
-              <Sparkles className="size-4 text-[#19BAD7]" />
+              <Sparkles className="size-3.5 sm:size-4 text-[#19BAD7]" />
               {locale === "ja" ? "最短即日駆けつけ対応" : "Same-Day Rush Dispatch"}
             </span>
           </div>

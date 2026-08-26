@@ -9,6 +9,8 @@ import { useEffect } from "react";
  */
 export function ScrollAnimationInitializer() {
   useEffect(() => {
+    document.documentElement.classList.add("js-ready");
+
     // Respect reduced motion
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     

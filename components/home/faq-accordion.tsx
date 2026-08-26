@@ -21,7 +21,7 @@ export function FaqAccordion({ locale }: FaqAccordionProps) {
   return (
     <section
       id="faq-home-section"
-      className="section-faq-home min-h-[85vh] lg:min-h-screen py-20 sm:py-24 lg:py-32 px-5 sm:px-8 bg-white border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
+      className="section-faq-home min-h-0 lg:min-h-[75vh] py-16 sm:py-20 lg:py-28 px-5 sm:px-8 bg-white border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
     >
       <div className="faq-container mx-auto max-w-4xl w-full">
         

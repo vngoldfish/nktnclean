@@ -25,7 +25,7 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
   return (
     <section
       id="about-philosophy-section"
-      className="section-about-philosophy min-h-[85vh] lg:min-h-screen py-20 sm:py-24 lg:py-32 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
+      className="section-about-philosophy min-h-0 lg:min-h-[80vh] py-16 sm:py-20 lg:py-28 px-5 sm:px-8 bg-[#F6F6F6] border-b border-slate-200/80 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
     >
       <div className="about-container mx-auto max-w-6xl w-full">
         

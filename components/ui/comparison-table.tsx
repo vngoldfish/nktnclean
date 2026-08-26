@@ -343,7 +343,7 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
   return (
     <section
       id="comparison-table-section"
-      className="section-comparison-table relative overflow-hidden min-h-[85vh] lg:min-h-screen py-20 sm:py-24 lg:py-32 px-5 sm:px-8 bg-gradient-to-b from-white via-slate-50/50 to-white border-y border-slate-100 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
+      className="section-comparison-table relative overflow-hidden min-h-0 lg:min-h-[80vh] py-16 sm:py-20 lg:py-28 px-5 sm:px-8 bg-gradient-to-b from-white via-slate-50/50 to-white border-y border-slate-100 scroll-mt-16 sm:scroll-mt-20 flex flex-col justify-center"
     >
       <div className="comparison-container mx-auto max-w-7xl w-full">
         {/* Section Header */}
