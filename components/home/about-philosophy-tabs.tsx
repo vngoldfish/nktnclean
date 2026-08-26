@@ -201,21 +201,21 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
                 </h3>
 
                 <div className="divide-y divide-slate-100 text-xs sm:text-sm">
-                  <div className="py-2 grid grid-cols-3 gap-2">
-                    <span className="font-bold text-slate-400">{content.company.profileRows.location}</span>
-                    <span className="col-span-2 font-bold text-slate-800">{companyBase.location}</span>
+                  <div className="py-2.5 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-2">
+                    <span className="font-bold text-slate-400 sm:text-slate-500">{content.company.profileRows.location}</span>
+                    <span className="sm:col-span-2 font-bold text-slate-800 break-words">{companyBase.location}</span>
                   </div>
-                  <div className="py-2 grid grid-cols-3 gap-2">
-                    <span className="font-bold text-slate-400">{content.company.profileRows.representative}</span>
-                    <span className="col-span-2 font-bold text-slate-800">{companyBase.representative}（{companyBase.representativeKana}）</span>
+                  <div className="py-2.5 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-2">
+                    <span className="font-bold text-slate-400 sm:text-slate-500">{content.company.profileRows.representative}</span>
+                    <span className="sm:col-span-2 font-bold text-slate-800 break-words">{companyBase.representative}（{companyBase.representativeKana}）</span>
                   </div>
-                  <div className="py-2 grid grid-cols-3 gap-2">
-                    <span className="font-bold text-slate-400">{content.company.profileRows.capital}</span>
-                    <span className="col-span-2 font-bold text-slate-800">{companyBase.capital}</span>
+                  <div className="py-2.5 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-2">
+                    <span className="font-bold text-slate-400 sm:text-slate-500">{content.company.profileRows.capital}</span>
+                    <span className="sm:col-span-2 font-bold text-slate-800 break-words">{companyBase.capital}</span>
                   </div>
-                  <div className="py-2 grid grid-cols-3 gap-2">
-                    <span className="font-bold text-slate-400">{content.company.profileRows.invoiceNumber}</span>
-                    <span className="col-span-2 font-bold text-slate-800">{companyBase.invoiceNumber}</span>
+                  <div className="py-2.5 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-2">
+                    <span className="font-bold text-slate-400 sm:text-slate-500">{content.company.profileRows.invoiceNumber}</span>
+                    <span className="sm:col-span-2 font-bold text-slate-800 break-all">{companyBase.invoiceNumber}</span>
                   </div>
                 </div>
 

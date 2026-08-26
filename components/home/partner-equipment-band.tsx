@@ -51,7 +51,7 @@ export function PartnerEquipmentBand({ locale }: PartnerEquipmentBandProps) {
       <div className="mx-auto max-w-7xl">
 
         {/* Photo Strip */}
-        <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-10">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-10">
           {photoStrip.map((photo) => (
             <div
               key={photo.src}
@@ -64,8 +64,8 @@ export function PartnerEquipmentBand({ locale }: PartnerEquipmentBandProps) {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 768px) 33vw, 350px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
-              <span className="absolute bottom-3 left-3 right-3 text-[11px] sm:text-xs font-black text-white drop-shadow-sm">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/15 to-transparent" />
+              <span className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3 text-[10px] sm:text-xs font-black text-white drop-shadow-sm line-clamp-1">
                 {photo.caption}
               </span>
             </div>
@@ -78,23 +78,25 @@ export function PartnerEquipmentBand({ locale }: PartnerEquipmentBandProps) {
             PROFESSIONAL EQUIPMENT &amp; CHEMICALS
           </span>
           <h3 className="font-serif-jp text-xl sm:text-2xl font-black text-slate-900">
-            {locale === "ja" ? "プロ仕様の専用機材・環境美化商品を使用" : "Professional-Grade Equipment & Sanitizers"}
+            {locale === "ja" ? "プロ仕様の専用機材・環境美化商品を使用" : locale === "vi" ? "Thiết Bị & Hóa Chất Chuyên Dụng Chuẩn Nhật" : "Professional-Grade Equipment & Sanitizers"}
           </h3>
           <p className="text-xs text-slate-500 mt-1">
             {locale === "ja" 
               ? "客室素材を傷めず、頑固な油汚れ・水垢・皮脂汚れを根こそぎ落とす高品質な業務用資材を採用しています。" 
+              : locale === "vi"
+              ? "Sử dụng hóa chất và máy móc chuyên dụng cao cấp từ các thương hiệu hàng đầu Nhật Bản, bảo vệ tối đa bề mặt nội thất."
               : "Utilizing top-tier industrial detergents and equipment to ensure damage-free deep sanitation."}
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
           {brands.map((item) => (
             <div
               key={item.name}
-              className="rounded-2xl bg-slate-50/80 p-4 border border-slate-200/70 text-center hover:bg-white hover:border-[#00729F]/40 transition-all duration-200"
+              className="rounded-2xl bg-slate-50/80 p-3 sm:p-4 border border-slate-200/70 text-center hover:bg-white hover:border-[#00729F]/40 transition-all duration-200"
             >
               <p className="text-xs sm:text-sm font-black text-slate-800">{item.name}</p>
-              <p className="text-[10px] text-slate-500 mt-0.5">{item.role}</p>
+              <p className="text-[10px] text-slate-500 mt-0.5 leading-snug">{item.role}</p>
             </div>
           ))}
         </div>

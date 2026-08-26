@@ -357,26 +357,98 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
           </p>
         </div>
 
-        {/* Comparison Table Container */}
-        <div role="table" aria-label={t.title} className="rounded-3xl border border-slate-200/80 bg-white shadow-elevated overflow-hidden">
+        {/* --- MOBILE VIEW: Card-based Comparison (< md screens) --- */}
+        <div className="space-y-4 md:hidden">
+          {t.features.map((item, idx) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-slate-200/90 bg-white p-4 shadow-sm"
+            >
+              {/* Feature Title & Description */}
+              <div className="mb-3">
+                <span className="text-[10px] font-mono font-bold text-[#00729F] uppercase tracking-wider block">
+                  CHECKPOINT 0{idx + 1}
+                </span>
+                <h4 className="font-serif-jp text-base font-black text-slate-900 leading-snug">
+                  {item.title}
+                </h4>
+                {item.desc && (
+                  <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                    {item.desc}
+                  </p>
+                )}
+              </div>
+
+              {/* Side-by-side comparison cards */}
+              <div className="grid grid-cols-2 gap-2.5">
+                {/* NKTN Highlight Box */}
+                <div className="rounded-xl bg-sky-50/90 border border-sky-200/90 p-3 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between gap-1 mb-2">
+                      <span className="text-[10px] font-black text-sky-900 uppercase">
+                        {locale === "ja" ? "NKTN (当社)" : locale === "vi" ? "NKTN" : "NKTN"}
+                      </span>
+                      <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#00729F] text-white font-black text-xs shadow-xs">
+                        {item.nktn.symbol}
+                      </span>
+                    </div>
+                    <p className="text-xs font-bold text-sky-950 leading-snug">
+                      {item.nktn.value}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Others Box */}
+                <div className="rounded-xl bg-slate-50 border border-slate-200 p-3 flex flex-col justify-between text-slate-500">
+                  <div>
+                    <div className="flex items-center justify-between gap-1 mb-2">
+                      <span className="text-[10px] font-bold text-slate-500 truncate">
+                        {locale === "ja" ? "一般他社" : locale === "vi" ? "Đơn vị khác" : "Others"}
+                      </span>
+                      <span
+                        className={`grid size-6 shrink-0 place-items-center rounded-full text-xs font-bold ${
+                          item.others.symbol === "✕"
+                            ? "bg-rose-50 text-rose-600 border border-rose-100"
+                            : "bg-slate-200/80 text-slate-600"
+                        }`}
+                      >
+                        {item.others.symbol}
+                      </span>
+                    </div>
+                    <p className="text-xs font-medium text-slate-600 leading-snug">
+                      {item.others.value}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* --- DESKTOP VIEW: Full 3-Column Table (>= md screens) --- */}
+        <div
+          role="table"
+          aria-label={t.title}
+          className="hidden md:block rounded-3xl border border-slate-200/80 bg-white shadow-elevated overflow-hidden"
+        >
           {/* Table Header Row */}
           <div role="rowgroup">
             <div role="row" className="grid grid-cols-12 bg-slate-900 text-white font-bold text-sm sm:text-base border-b border-slate-800">
-              <div role="columnheader" className="col-span-5 sm:col-span-4 p-4 sm:p-6 flex items-center">
+              <div role="columnheader" className="col-span-4 p-5 lg:p-6 flex items-center">
                 <span className="text-slate-300 font-bold uppercase tracking-wider text-xs sm:text-sm">
                   {locale === "ja" ? "項目 / 条件" : locale === "vi" ? "Tiêu chí so sánh" : "Features & Standards"}
                 </span>
               </div>
-              <div role="columnheader" className="col-span-4 sm:col-span-4 p-4 sm:p-6 bg-sky-800 flex items-center justify-between border-x border-sky-700/60">
+              <div role="columnheader" className="col-span-4 p-5 lg:p-6 bg-sky-800 flex items-center justify-between border-x border-sky-700/60">
                 <div className="flex items-center gap-2">
-                  <Award className="size-5 text-amber-400 shrink-0 hidden sm:inline" />
-                  <span className="text-white font-black text-xs sm:text-base">{t.nktnLabel}</span>
+                  <Award className="size-5 text-amber-400 shrink-0" />
+                  <span className="text-white font-black text-sm lg:text-base">{t.nktnLabel}</span>
                 </div>
-                <span className="hidden lg:inline-flex items-center rounded-md bg-amber-400 px-2 py-0.5 text-[11px] font-black text-slate-900">
+                <span className="inline-flex items-center rounded-md bg-amber-400 px-2 py-0.5 text-[11px] font-black text-slate-900">
                   RECOMMENDED
                 </span>
               </div>
-              <div role="columnheader" className="col-span-3 sm:col-span-4 p-4 sm:p-6 bg-slate-800/80 flex items-center">
+              <div role="columnheader" className="col-span-4 p-5 lg:p-6 bg-slate-800/80 flex items-center">
                 <span className="text-slate-400 font-medium text-xs sm:text-sm">{t.othersLabel}</span>
               </div>
             </div>
@@ -393,35 +465,39 @@ export function ComparisonTable({ locale }: ComparisonTableProps) {
                 }`}
               >
                 {/* Feature Column */}
-                <div role="rowheader" className="col-span-5 sm:col-span-4 p-4 sm:p-6 flex flex-col justify-center">
-                  <span className="font-extrabold text-slate-900 text-sm sm:text-base">
+                <div role="rowheader" className="col-span-4 p-5 lg:p-6 flex flex-col justify-center">
+                  <span className="font-extrabold text-slate-900 text-sm lg:text-base">
                     {item.title}
                   </span>
-                  <span className="text-xs text-slate-500 mt-1 hidden sm:block leading-relaxed">
+                  <span className="text-xs text-slate-500 mt-1 leading-relaxed">
                     {item.desc}
                   </span>
                 </div>
 
                 {/* NKTN Column (Highlight) */}
-                <div role="cell" className="col-span-4 sm:col-span-4 p-4 sm:p-6 bg-sky-50/70 border-x border-sky-100 flex items-center gap-2.5 sm:gap-3">
-                  <span className="grid size-7 sm:size-8 shrink-0 place-items-center rounded-full bg-sky-800 text-white font-black text-xs sm:text-sm shadow-sm">
+                <div role="cell" className="col-span-4 p-5 lg:p-6 bg-sky-50/70 border-x border-sky-100 flex items-center gap-3">
+                  <span className="grid size-8 shrink-0 place-items-center rounded-full bg-sky-800 text-white font-black text-sm shadow-sm">
                     {item.nktn.symbol}
                   </span>
                   <div>
-                    <span className="font-bold text-sky-950 text-xs sm:text-sm block leading-snug">
+                    <span className="font-bold text-sky-950 text-sm leading-snug">
                       {item.nktn.value}
                     </span>
                   </div>
                 </div>
 
                 {/* Others Column */}
-                <div role="cell" className="col-span-3 sm:col-span-4 p-4 sm:p-6 flex items-center gap-2 sm:gap-3 text-slate-500">
-                  <span className={`grid size-6 sm:size-7 shrink-0 place-items-center rounded-full text-xs font-bold ${
-                    item.others.symbol === "✕" ? "bg-rose-50 text-rose-600 border border-rose-100" : "bg-slate-100 text-slate-500"
-                  }`}>
+                <div role="cell" className="col-span-4 p-5 lg:p-6 flex items-center gap-3 text-slate-500">
+                  <span
+                    className={`grid size-7 shrink-0 place-items-center rounded-full text-xs font-bold ${
+                      item.others.symbol === "✕"
+                        ? "bg-rose-50 text-rose-600 border border-rose-100"
+                        : "bg-slate-100 text-slate-500"
+                    }`}
+                  >
                     {item.others.symbol}
                   </span>
-                  <span className="text-xs sm:text-sm font-medium text-slate-600 leading-snug">
+                  <span className="text-sm font-medium text-slate-600 leading-snug">
                     {item.others.value}
                   </span>
                 </div>

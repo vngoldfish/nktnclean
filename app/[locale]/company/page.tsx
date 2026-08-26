@@ -68,18 +68,18 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
 
             <div className="divide-y divide-slate-100 text-xs sm:text-sm">
               {rows.map(({ icon: Icon, label, value, link }) => (
-                <div key={label} className="grid py-4 sm:grid-cols-[10rem_1fr] items-start gap-2">
-                  <div className="flex items-center gap-2 text-slate-500 font-bold">
+                <div key={label} className="grid py-3 sm:py-4 sm:grid-cols-[10rem_1fr] items-start gap-1.5 sm:gap-2">
+                  <div className="flex items-center gap-2 text-slate-500 font-bold text-xs sm:text-sm">
                     <Icon className="size-4 text-[#00729F] shrink-0" />
                     <span>{label}</span>
                   </div>
-                  <div>
+                  <div className="break-words">
                     {link ? (
                       <a
                         href={link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-bold text-[#00729F] hover:underline inline-flex flex-wrap items-center gap-1.5"
+                        className="font-bold text-[#00729F] hover:underline inline-flex flex-wrap items-center gap-1.5 break-all"
                       >
                         <span>{value}</span>
                         <span className="text-[10px] bg-sky-50 border border-sky-200 rounded px-1.5 py-0.5 text-sky-800 shrink-0">
@@ -87,7 +87,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ locale
                         </span>
                       </a>
                     ) : (
-                      <span className="font-bold text-slate-800">{value}</span>
+                      <span className="font-bold text-slate-800 break-words">{value}</span>
                     )}
                   </div>
                 </div>

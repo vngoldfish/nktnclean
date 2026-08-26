@@ -182,7 +182,7 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
                   aria-selected={isActive}
                   aria-label={`Slide ${idx + 1}: ${slide.badge}`}
                   onClick={() => setActiveSlide(idx)}
-                  className={`py-4 px-3 sm:px-6 text-left transition-all duration-300 relative group ${
+                  className={`py-3 sm:py-4 px-2 sm:px-6 text-left transition-all duration-300 relative group ${
                     isActive ? "bg-white/10" : "hover:bg-white/5 opacity-70 hover:opacity-100"
                   }`}
                 >
@@ -190,10 +190,10 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
                   {isActive && (
                     <div className="absolute top-0 inset-x-0 h-1 bg-[#19BAD7] shadow-[0_0_10px_#19BAD7]" />
                   )}
-                  <span className="text-[10px] sm:text-xs font-black tracking-widest text-[#19BAD7] block uppercase">
+                  <span className="text-[9px] sm:text-xs font-black tracking-widest text-[#19BAD7] block uppercase">
                     SLIDE 0{idx + 1}
                   </span>
-                  <p className="font-serif-jp text-xs sm:text-sm font-bold text-white whitespace-pre-line line-clamp-2 mt-0.5 leading-snug">
+                  <p className="font-serif-jp text-[11px] sm:text-sm font-bold text-white whitespace-pre-line line-clamp-2 mt-0.5 leading-snug">
                     {slide.navCatch}
                   </p>
                 </button>
