@@ -63,8 +63,10 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         enTitle="OUR SERVICES"
         jpTitle={locale === "ja" ? "事業内容・サービス一覧" : locale === "vi" ? "Danh Mục Dịch Vụ Cung Cấp" : "Services & Hospitality Care"}
         lead={locale === "ja" 
-          ? "ホテル・民泊の客室清掃からビル定期清掃、DX管理まで。高品質なオペレーションで宿泊施設の収益化と高評価を支えます。" 
-          : "End-to-end cleaning operations, smart quality control, and periodic facility care across Japan."}
+          ? "ホテル・民泊の客室清掃・ベッドメイクからLINE写真報告・現場管理まで。専門特化の高品質オペレーションで宿泊施設の収益化と5つ星高評価を支えます。" 
+          : locale === "vi"
+          ? "Từ dọn buồng phòng & trải giường khách sạn, đến vệ sinh trọn gói minpaku/Airbnb, báo cáo ảnh LINE tức thì và kiểm định 2 lớp."
+          : "Hotel & vacation rental room turnovers, smart LINE photo reports, and standardized quality operations."}
         currentPathName={content.nav[1][0] || "Services"}
         bgImage="/works/photo-room.jpg"
       />

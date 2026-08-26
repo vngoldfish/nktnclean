@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronRight, BedDouble, Building, Smartphone, Users } from "lucide-react";
+import { BedDouble, Sparkles, Smartphone, Home as HomeIcon, ChevronRight, ArrowRight } from "lucide-react";
 import { type Locale, withLocale } from "@/lib/i18n";
 
 interface SuperServiceShowcaseProps {
@@ -11,71 +11,52 @@ interface SuperServiceShowcaseProps {
 export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
   const services = [
     {
-      id: "bed-making",
-      enTitle: "Bed making",
-      jpTitle: locale === "ja" ? "ベッドメイキング・日常清掃" : locale === "vi" ? "Bọc nệm Ga gối & Dọn buồng" : "Bed Making & Daily Turnover",
+      id: "hotel-turnover",
+      enTitle: "Hotel Room Turnover",
+      jpTitle: locale === "ja" ? "ホテル客室清掃・ベッドメイク" : locale === "vi" ? "Vệ sinh Buồng phòng Khách sạn" : "Hotel Room Turnover & Bed Making",
       desc: locale === "ja" 
-        ? "ホテル・民泊に特化した客室清掃。シワのないシーツ張りから水回り磨き、アメニティ補充まで徹底管理します。" 
+        ? "ホテル基準のベッドメイキング、徹底した水回り磨き、アメニティ補充。チェックイン時間に合わせた安定稼働を実現します。" 
         : locale === "vi" 
-        ? "Vệ sinh buồng phòng khách sạn & Airbnb. Đảm bảo ga gối phẳng phiu, đánh bóng nhà tắm và châm đầy đồ dùng." 
-        : "Hotel-grade room turnovers from crisp bed making to amenity replenishment.",
+        ? "Bọc nệm trải giường chuẩn khách sạn Omoiyari, đánh bóng nhà tắm, bổ sung đầy đủ đồ dùng trước giờ check-in." 
+        : "Hotel-grade room turnovers with crisp bed making, pristine bathroom polish, and amenity replenishment.",
       image: "/works/photo-room.jpg",
       icon: BedDouble,
     },
     {
-      id: "building-maintenance",
-      enTitle: "Building maintenance",
-      jpTitle: locale === "ja" ? "原状回復・定期美装・退去清掃" : locale === "vi" ? "Bảo trì Tòa nhà & Hoàn trả" : "Building Maintenance & Deep Clean",
+      id: "minpaku-care",
+      enTitle: "Minpaku / Airbnb Care",
+      jpTitle: locale === "ja" ? "民泊・Airbnb清掃代行" : locale === "vi" ? "Dọn dẹp Trọn gói Minpaku & Airbnb" : "Minpaku & Vacation Rental Turnover",
       desc: locale === "ja"
-        ? "エアコン内部高圧洗浄、換気扇油汚れ分解、床面ワックス塗布など。建物の美観と清潔環境を維持します。"
+        ? "ゲスト退室後のリネン回収・洗濯乾燥・ゴミ回収・室内美装。忘れ物や破損の即時報告で民泊運営を全面サポートします。"
         : locale === "vi"
-        ? "Xịt rửa điều hòa áp lực cao, tẩy dầu mỡ máy hút mùi, phủ sáp sàn gỗ. Bảo dưỡng bất động sản định kỳ."
-        : "Periodic deep cleaning, floor waxing, kitchen grease extraction, and HVAC pressure washing.",
+        ? "Dọn dẹp sau khi khách check-out, giặt sấy drap nệm, thu gom rác và kiểm tra đồ thất lạc, hỗ trợ chủ nhà vận hành dễ dàng."
+        : "Comprehensive vacation rental turnovers: linen washing, trash removal, damage checks, and guest-ready styling.",
       image: "/works/photo-staff.jpg",
-      icon: Building,
+      icon: HomeIcon,
     },
     {
       id: "dx-operations",
-      enTitle: "Smart DX Operations",
-      jpTitle: locale === "ja" ? "LINE写真付き完了報告・管理" : locale === "vi" ? "Báo cáo Ảnh tức thì qua LINE" : "LINE Photo DX Management",
+      enTitle: "Smart Photo Inspection",
+      jpTitle: locale === "ja" ? "LINE 100% 写真完了報告" : locale === "vi" ? "Báo cáo Ảnh 100% qua LINE & DX" : "LINE Photo Audit & Inspection",
       desc: locale === "ja"
-        ? "清掃完了後すぐにLINEで全箇所写真と消耗品残量を報告。遠隔地のオーナー様でも現地の状況を即座に把握できます。"
+        ? "清掃完了後すぐにLINEで全箇所写真と消耗品残量を報告。インスペクター二重チェックで遠隔地からでも100%安心です。"
         : locale === "vi"
-        ? "Gửi ảnh nghiệm thu và kiểm kê đồ tiêu hao qua LINE ngay khi hoàn tất. Quản lý từ xa thuận tiện."
-        : "Real-time photo proof and inventory replenishment alerts sent directly to LINE.",
-      image: "/works/photo-room.jpg",
+        ? "Gửi ảnh nghiệm thu sắc nét và kiểm kê đồ dùng qua LINE ngay khi hoàn tất. Kiểm định 2 lớp đảm bảo chất lượng từ xa."
+        : "Instant high-resolution photo proof and inventory alerts sent via LINE with dual supervisor quality inspections.",
+      image: "/works/photo-report.jpg",
       icon: Smartphone,
     },
     {
-      id: "global-staffing",
-      enTitle: "Global Hospitality Team",
-      jpTitle: locale === "ja" ? "多言語対応・専任スタッフ体制" : locale === "vi" ? "Đội ngũ Đa ngôn ngữ Chuyên nghiệp" : "Multilingual Hospitality Team",
+      id: "deep-sanitization",
+      enTitle: "Deep Water Area Polish",
+      jpTitle: locale === "ja" ? "水回り徹底除菌・専門美装" : locale === "vi" ? "Vệ sinh Sâu Buồng tắm & Khử khuẩn" : "Deep Sanitization & Water Area Polish",
       desc: locale === "ja"
-        ? "日・英・越・中での円滑なコミュニケーション。ホテル水準の厳しい社内研修をクリアした専任スタッフが担当します。"
+        ? "浴室の水垢・カビ・皮脂汚れをプロ仕様の資材で根こそぎ除去。消臭・除菌で次のゲストに清潔な空間を届けます。"
         : locale === "vi"
-        ? "Giao tiếp 4 thứ tiếng Nhật, Anh, Việt, Trung. Đội ngũ nhân viên chính thức được đào tạo bài bản."
-        : "Certified multilingual hospitality staff fluent in Japanese, English, Vietnamese, and Chinese.",
-      image: "/works/photo-staff.jpg",
-      icon: Users,
-    },
-  ];
-
-  const lifestyleStrip = [
-    {
-      src: "/works/photo-room.jpg",
-      caption: locale === "ja" ? "完成客室" : locale === "vi" ? "Phòng hoàn thiện" : "Finished Room",
-    },
-    {
-      src: "/works/photo-bathroom.jpg",
-      caption: locale === "ja" ? "水回り清掃" : locale === "vi" ? "Vệ sinh nhà tắm" : "Bathroom Polish",
-    },
-    {
-      src: "/works/photo-tools.jpg",
-      caption: locale === "ja" ? "プロ仕様機材" : locale === "vi" ? "Thiết bị chuyên dụng" : "Pro Equipment",
-    },
-    {
-      src: "/works/photo-report.jpg",
-      caption: locale === "ja" ? "写真付き報告" : locale === "vi" ? "Báo cáo bằng ảnh" : "Photo Reports",
+        ? "Tẩy sạch cặn canxi, ố vàng vách kính, khử mùi hôi ẩm mốc và diệt khuẩn chuyên sâu bằng hóa chất chuyên dụng Nhật Bản."
+        : "Professional scale removal, odor elimination, and deep sanitization for sparkling, damage-free bathrooms.",
+      image: "/works/photo-bathroom.jpg",
+      icon: Sparkles,
     },
   ];
 
@@ -97,10 +78,10 @@ export function SuperServiceShowcase({ locale }: SuperServiceShowcaseProps) {
           <div className="services-divider mx-auto mt-3 h-0.5 w-12 bg-[#00729F]" />
           <p className="services-lead mt-6 text-slate-600 text-sm sm:text-base leading-relaxed">
             {locale === "ja"
-              ? "客室清掃・ベッドメイキングから、ビルメンテナンス、DX管理、多言語スタッフ体制まで包括的にサポートいたします。"
+              ? "ホテル客室清掃・ベッドメイクから民泊清掃代行、LINE写真完了報告、水回り除菌美装まで。宿泊施設に特化したプロの技術で高評価レビューを守ります。"
               : locale === "vi"
-              ? "Từ vệ sinh buồng phòng & trải giường chuẩn khách sạn, đến bảo trì tòa nhà định kỳ, quản lý DX và đào tạo nhân sự đa quốc gia."
-              : "Comprehensive hospitality cleaning, periodic building maintenance, DX automation, and staff management."}
+              ? "Từ vệ sinh buồng phòng & trải giường khách sạn, đến dọn dẹp minpaku/Airbnb trọn gói, báo cáo ảnh LINE tức thì và khử khuẩn chuyên sâu."
+              : "Specialized hotel room turnovers, vacation rental turnovers, instant LINE photo audits, and deep sanitization."}
           </p>
         </div>
 

@@ -41,19 +41,19 @@ export function AboutPhilosophyTabs({ locale }: AboutPhilosophyTabsProps) {
           <p className="about-lead mt-6 text-slate-600 text-sm sm:text-base leading-relaxed">
             {locale === "ja" ? (
               <>
-                私たちは大阪・関西エリアを中心に、ホテル客室清掃・民泊清掃・ビルメンテナンスを展開しています。<br className="hidden sm:inline" />
+                私たちは大阪・関西エリアを中心に、ホテル客室清掃・民泊清掃代行を専門に展開しています。<br className="hidden sm:inline" />
                 「掃く・拭く・磨く」のおもてなし精神と、多国籍グローバル人材の確かな育成力で、<br className="hidden sm:inline" />
-                お客様の大切な施設の価値を守り、活力ある社会活動に貢献します。
+                宿泊施設の高評価レビューと安定した稼働率を現場から支えます。
               </>
             ) : locale === "vi" ? (
               <>
-                NKTN chuyên sâu trong lĩnh vực vệ sinh buồng phòng khách sạn, nhà nghỉ Minpaku và bảo trì tòa nhà tại Osaka.<br className="hidden sm:inline" />
-                Với tinh thần &ldquo;Quét - Lau - Đánh bóng&rdquo; chuẩn Nhật và đội ngũ nhân sự đa quốc gia tận tâm, chúng tôi cam kết bảo vệ giá trị cơ sở lưu trú của bạn.
+                NKTN chuyên sâu trong lĩnh vực vệ sinh buồng phòng khách sạn và nhà nghỉ Minpaku (Airbnb) tại Osaka & Kansai.<br className="hidden sm:inline" />
+                Với tinh thần &ldquo;Quét - Lau - Đánh bóng&rdquo; chuẩn Nhật và đội ngũ nhân sự tận tâm, chúng tôi cam kết bảo vệ điểm số đánh giá 5 sao cho cơ sở lưu trú của bạn.
               </>
             ) : (
               <>
-                Specialized hotel turnover, vacation rental cleaning, and building maintenance across Osaka and Kansai.<br className="hidden sm:inline" />
-                Driven by hospitality craftsmanship and an empowered multinational team.
+                Specialized hotel room turnovers and vacation rental (Minpaku/Airbnb) turnover across Osaka and Kansai.<br className="hidden sm:inline" />
+                Driven by hospitality craftsmanship and strict inspection protocols to elevate guest review scores.
               </>
             )}
           </p>

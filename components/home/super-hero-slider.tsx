@@ -36,21 +36,21 @@ export function SuperHeroSlider({ locale }: SuperHeroSliderProps) {
     },
     {
       id: 1,
-      badge: locale === "ja" ? "BUILDING MAINTENANCE & DEEP CLEAN" : "RESTORATION & MAINTENANCE",
+      badge: locale === "ja" ? "SMART TURNOVER & PHOTO AUDIT" : "LINE REAL-TIME REPORT",
       title: locale === "ja"
-        ? "ビルメンテナンス・退去清掃\nエアコン分解高圧洗浄"
+        ? "LINE写真報告と二重検品体制\n即日対応・遠隔管理も安心"
         : locale === "vi"
-        ? "Bảo trì Tòa nhà & Hoàn trả\nXịt rửa Điều hòa Áp lực cao"
-        : "Building Maintenance &\nMove-Out Deep Restoration",
+        ? "Báo Cáo Ảnh 100% Qua LINE\nKiểm Định 2 Lớp & Vận Hành Từ Xa"
+        : "Real-Time LINE Photo Reports\n& Dual Inspection Quality Control",
       desc: locale === "ja"
-        ? "定期清掃・床ワックス塗布・換気扇油汚れ分解・エアコン内部高圧洗浄まで。施設の資産価値と衛生環境を長期的に維持します。"
+        ? "全室清掃完了後に高画質写真と備品残量をLINEで即時送信。インスペクター（検査員）による二重チェックで清掃ミスゼロを徹底します。"
         : locale === "vi"
-        ? "Tổng vệ sinh định kỳ, đánh bóng phủ sáp sàn, tẩy dầu mỡ bếp và xịt rửa điều hòa. Duy trì giá trị bất động sản dài lâu."
-        : "Periodic maintenance, floor waxing, grease extraction, and HVAC pressure washing preserving property value.",
-      image: "/works/photo-staff.jpg",
-      navCatch: locale === "ja" ? "ビルメンテナンス\n原状回復・定期美装" : "Building Maintenance",
-      actionText: locale === "ja" ? "原状回復・定期清掃を見る" : "View Restoration Services",
-      actionHref: "/services",
+        ? "Gửi ảnh nghiệm thu sắc nét và kiểm kê đồ dùng qua LINE ngay khi hoàn tất. Đội kiểm định 2 lớp đảm bảo không bao giờ sót lỗi."
+        : "High-resolution photos and inventory reports sent to LINE instantly upon completion. Dual supervisor inspections guarantee zero errors.",
+      image: "/works/photo-report.jpg",
+      navCatch: locale === "ja" ? "LINE写真報告\n二重検品・遠隔管理" : "LINE Photo Reports & Audit",
+      actionText: locale === "ja" ? "DX報告・管理の流れを見る" : locale === "vi" ? "Xem quy trình báo cáo DX" : "View DX Operations",
+      actionHref: "/dx",
     },
     {
       id: 2,
